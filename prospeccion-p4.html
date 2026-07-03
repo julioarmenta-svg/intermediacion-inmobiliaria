@@ -58,7 +58,7 @@
             padding: 40px;
             margin-bottom: 25px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.02);
-            min-height: 460px;
+            min-height: 480px;
         }
         .revista-header {
             display: flex;
@@ -79,15 +79,15 @@
             border: 1px solid #dbeafe;
         }
 
-        /* ESTRUCTURA SPLIT CON HERRAMIENTA INTERACTIVA TÁCTIL */
+        /* ESTRUCTURA SPLIT CON HERRAMIENTA INTERACTIVA (Izquierda) */
         .diapositiva-grid {
             display: flex;
             flex-direction: row;
             gap: 35px;
-            align-items: center;
+            align-items: stretch;
         }
         
-        /* TABLERO TÁCTIL IZQUIERDO */
+        /* HERRAMIENTA CON BARRAS Y CASILLAS REFORZADA */
         .col-visual {
             flex: 0.95;
             background-color: #f8fafc;
@@ -96,55 +96,84 @@
             padding: 24px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            width: 100%;
-            aspect-ratio: 4 / 3;
-            justify-content: center;
+            gap: 16px;
+            justify-content: space-between;
         }
         .col-texto {
             flex: 1.05;
         }
         
-        /* Botones / Tarjetas Táctiles */
-        .card-btn {
-            width: 100%;
-            padding: 16px 18px;
-            border-radius: 14px;
+        .simulador-titulo {
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 800;
+            color: #1e293b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-bottom: 4px;
+        }
+        .sim-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .sim-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #64748b;
+        }
+        .sim-input-row {
             display: flex;
             align-items: center;
-            gap: 12px;
-            border: 2px solid #e2e8f0;
-            background-color: #ffffff;
+            gap: 10px;
+        }
+        .sim-range {
+            flex: 1;
             cursor: pointer;
-            text-align: left;
-            transition: all 0.15s ease;
+            height: 6px;
+            background: #cbd5e1;
+            border-radius: 4px;
         }
-        .card-btn:hover {
-            transform: translateX(4px);
-            border-color: #94a3b8;
-        }
-        
-        /* Estados encendidos por clic */
-        .card-btn.active-verde { background-color: #e6f4ea; border-color: #10b981; color: #137333; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15); }
-        .card-btn.active-amarillo { background-color: #fef7e0; border-color: #f59e0b; color: #b06000; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15); }
-        .card-btn.active-rojo { background-color: #fce8e6; border-color: #ef4444; color: #c5221f; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15); }
-        
-        .status-badge {
-            font-size: 10px;
-            font-weight: 900;
-            padding: 4px 10px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            color: #ffffff;
+        .sim-value {
+            font-size: 13px;
+            font-weight: 800;
+            color: #2563eb;
             min-width: 95px;
-            text-align: center;
+            text-align: right;
         }
-        .badge-gris { background-color: #94a3b8; }
-        .badge-verde { background-color: #10b981; }
-        .badge-amarillo { background-color: #f59e0b; }
-        .badge-rojo { background-color: #ef4444; }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            padding: 10px 14px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            width: 100%;
+        }
+        .checkbox-container input {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        
+        /* CUADRO DE RESULTADO DINÁMICO ABAJO */
+        .resultado-box {
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 800;
+            font-size: 13px;
+            margin-top: 10px;
+            border: 1px solid transparent;
+        }
+        .status-success { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
+        .status-alert { background-color: #fee2e2; border-color: #fca5a5; color: #991b1b; }
 
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
@@ -157,6 +186,7 @@
             font-size: 13.5px;
             color: #1e293b;
             line-height: 1.5;
+            margin-top: 15px;
         }
 
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
@@ -198,45 +228,50 @@
                 <span class="revista-contador">Pág. 4 de 10</span>
             </div>
 
-            <!-- ENTORNO SPLIT CON TABLERO INTERACTIVO -->
+            <!-- ESTRUCTURA COMPLETA COMPROBADA -->
             <div class="diapositiva-grid">
                 
-                <!-- Columna Izquierda: Matriz de Control Táctil Viva -->
+                <!-- Columna Izquierda: Simulador de Barras y Casillas -->
                 <div class="col-visual">
-                    <p style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 6px;">👆 Tablero Táctil: Presione un estado para calificar</p>
+                    <h4 class="simulador-titulo">🔧 SIMULADOR DE PRE-CALIFICACIÓN DE LEADS</h4>
                     
-                    <!-- Botón Táctil 1 -->
-                    <button id="btn-verde" class="card-btn active-verde" onclick="presionarFiltro('verde')">
-                        <span id="badge-verde" class="status-badge badge-verde">Calificado</span>
-                        <div>
-                            <p style="font-weight: 700; font-size: 13px;">Ingresos > $35k + Buró Limpio + Logística Ok</p>
-                            <p style="font-size: 11px; opacity: 0.8; font-weight: 400; margin-top: 2px;">Avanza directo a la agenda de visitas.</p>
+                    <!-- Barra 1: Ingresos -->
+                    <div class="sim-group">
+                        <label class="sim-label" for="range-ingresos">Ingreso Familiar Mensual:</label>
+                        <div class="sim-input-row">
+                            <input type="range" id="range-ingresos" class="sim-range" min="20000" max="150000" step="5000" value="45000" oninput="calcularCalificacion()">
+                            <span id="val-ingresos" class="sim-value">$45,000 MXN</span>
                         </div>
-                    </button>
+                    </div>
 
-                    <!-- Botón Táctil 2 -->
-                    <button id="btn-amarillo" class="card-btn" onclick="presionarFiltro('amarillo')">
-                        <span id="badge-amarillo" class="status-badge badge-gris">Condicionado</span>
-                        <div>
-                            <p style="font-weight: 700; font-size: 13px;">Traslado > 75 Mins o Falta Infraestructura familiar</p>
-                            <p style="font-size: 11px; opacity: 0.8; font-weight: 400; margin-top: 2px;">Requiere revisión del cuadrante de búsqueda.</p>
+                    <!-- Barra 2: Tráfico -->
+                    <div class="sim-group">
+                        <label class="sim-label" for="range-trafico">Tiempo de Traslado Máximo (Trabajo):</label>
+                        <div class="sim-input-row">
+                            <input type="range" id="range-trafico" class="sim-range" min="15" max="120" step="5" value="45" oninput="calcularCalificacion()">
+                            <span id="val-trafico" class="sim-value">45 Mins</span>
                         </div>
-                    </button>
+                    </div>
 
-                    <!-- Botón Táctil 3 -->
-                    <button id="btn-rojo" class="card-btn" onclick="presionarFiltro('rojo')">
-                        <span id="badge-rojo" class="status-badge badge-gris">Descartado</span>
-                        <div>
-                            <p style="font-weight: 700; font-size: 13px;">Ingresos Bajos o Mal Historial Crediticio</p>
-                            <p style="font-size: 11px; opacity: 0.8; font-weight: 400; margin-top: 2px;">Servicio suspendido temporalmente por viabilidad.</p>
-                        </div>
-                    </button>
+                    <!-- Casillas de Selección -->
+                    <div class="sim-group" style="gap: 10px;">
+                        <label class="sim-label">Variables de Entorno Indispensables:</label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="check-escuela" checked onchange="calcularCalificacion()">
+                            <span>Infraestructura Escolar / Guarderías Cercanas</span>
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="check-buro" checked onchange="calcularCalificacion()">
+                            <span>Buró de Crédito Sano (Sin Claves de Alerta)</span>
+                        </label>
+                    </div>
+
+                    <!-- Cuadro de Alerta en Tiempo Real -->
+                    <div id="status-render" class="resultado-box status-success">
+                        PROSPECTO COMPATIBLE (Lead Calificado)
+                    </div>
                 </div>
                 
-                <!-- Columna Derecha: Contenido Técnico Completo -->
+                <!-- Columna Derecha: Contenido de Texto e Iconos de Diagnóstico Completo -->
                 <div class="col-texto">
                     <h3 class="slide-titulo">El Perfilamiento</h3>
-                    <p class="slide-txt">La identificación de un cliente potencial a través de una buena intermediación inmobiliaria va mucho más allá de validar si el prospecto 'tiene dinero' o si le atrae la fachada de una casa. El verdadero perfilamiento exige entender y mapear el conjunto completo de la realidad del cliente antes de agendar visitas.</p>
-                    
-                    <p class="slide-txt">Imaginen el caso típico: una pareja de recién casados que busca su primer hogar. Su toma de decisiones abarca la gestión compleja de su plan de vida. Como asesores estratégicos patrimoniales, se deben auditar activamente variables críticas como:</p>
-                    
