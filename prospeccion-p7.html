@@ -56,9 +56,9 @@
             border: 3px solid #cbd5e1;
             border-radius: 24px;
             padding: 40px;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.02);
-            min-height: 460px;
+            /* Eliminamos el min-height fijo para evitar que esconda elementos */
         }
         .revista-header {
             display: flex;
@@ -154,9 +154,29 @@
         .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
         .highlight-box { background-color: #f8fafc; border-left: 5px solid #10b981; padding: 16px; border-radius: 4px; font-size: 13.5px; color: #1e293b; line-height: 1.5; }
         
-        /* CONTROLES DE DIRECCIÓN FIJOS AL PIE DE LA PAGINA */
-        .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
-        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; transition: all 0.1s ease; }
+        /* CONTROLES TOTALMENTE AISLADOS AL FINAL DE LA RAÍZ */
+        .revista-controles { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-top: 40px; 
+            padding-top: 20px;
+            border-top: 2px solid #f1f5f9;
+            gap: 20px; 
+        }
+        .btn-nav { 
+            flex: 1; 
+            display: block; 
+            text-decoration: none; 
+            background-color: #2563eb; 
+            border-bottom: 5px solid #1d4ed8; 
+            padding: 18px; 
+            border-radius: 14px; 
+            font-size: 16px; 
+            font-weight: 800; 
+            color: #ffffff; 
+            text-align: center; 
+            transition: all 0.1s ease; 
+        }
         .btn-nav:hover { background-color: #3b82f6; }
         .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
 
@@ -173,6 +193,7 @@
             <h1>Introducción a la Intermediación Inmobiliaria</h1>
         </header>
 
+        <!-- CONTENEDOR DE LA REVISTA BLINDADO -->
         <div class="revista-wrapper">
             <div class="revista-header">
                 <span class="revista-pills">PÁGINA 7 · INFRAESTRUCTURA Y HERRAMIENTAS DIGITALES</span>
@@ -185,7 +206,7 @@
                 <div class="col-texto">
                     <h3 class="slide-titulo">La Automatización del Embudo de Captación</h3>
                     <p class="slide-txt">Para que un asesor inmobiliario independiente compita al más alto nivel, no puede depender de libretas o formatos en papel. La prospección moderna requiere una **infraestructura digital centralizada** que administre el inventario, automatice la difusión en portales y mida la velocidad de respuesta (SLA).</p>
-                    <p class="slide-txt">El motor de esta operación es el **CRM Inmobiliario** (Customer Relationship Management). Esta herramienta permite cruzar las demandas de compradores calificados (como la pareja bajo análisis logístico) con las propiedades captadas a precio correcto, reduciendo radicalmente los días en el mercado.</p>
+                    <p class="slide-txt">El motor de esta operation es el **CRM Inmobiliario** (Customer Relationship Management). Esta herramienta permite cruzar las demandas de compradores calificados (como la pareja bajo análisis logístico) con las propiedades captadas a precio correcto, reduciendo radicalmente los días en el mercado.</p>
                     
                     <div class="highlight-box">
                         <strong>Métricas Críticas de Prospección Digital:</strong><br>
@@ -214,8 +235,3 @@
                             </tr>
                             <tr>
                                 <td><a href="https://vivanuncios.com.mx" target="_blank" class="crm-btn">Vivanuncios ➔</a></td>
-                                <td><a href="https://tokkobroker.mx" target="_blank" class="crm-btn">Tokko Broker ➔</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://propiedades.com" target="_blank" class="crm-btn">Propiedades.com ➔</a></td>
-                                <td><a href="https://wasi.co" target="_blank" class="crm-btn">Wasi CRM ➔</a></td>
