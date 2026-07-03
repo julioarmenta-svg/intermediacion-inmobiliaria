@@ -9,7 +9,6 @@
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f1f5f9; padding: 40px 20px; color: #334155; }
         .container { max-width: 1200px; margin: 0 auto; background-color: #ffffff; border-radius: 28px; padding: 40px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06); border: 1px solid #e2e8f0; }
         .nav-back { display: inline-block; text-decoration: none; color: #2563eb; font-size: 13px; font-weight: 800; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 0.05em; }
-        .nav-back:hover { color: #1d4ed8; }
         header { margin-bottom: 35px; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px; }
         .tag { font-size: 11px; font-weight: 800; color: #10b981; text-transform: uppercase; letter-spacing: 0.12em; }
         h1 { font-size: 32px; font-weight: 800; color: #0f172a; margin-top: 4px; letter-spacing: -0.02em; }
@@ -24,16 +23,20 @@
         
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 16px; }
+        
+        /* CAJAS DE INFORMACIÓN TÉCNICA */
         .case-box { background-color: #f0fdf4; border-left: 5px solid #10b981; padding: 16px; border-radius: 4px; font-size: 13.5px; color: #1e293b; line-height: 1.5; margin-bottom: 15px; }
+        .ficha-tecnica { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; font-size: 13px; color: #334155; line-height: 1.6; }
+        .ficha-title { font-weight: 800; color: #0f172a; border-bottom: 1px solid #cbd5e1; padding-bottom: 6px; margin-bottom: 10px; text-transform: uppercase; font-size: 11px; letter-spacing: 0.05em; }
         
         .input-m2 { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; font-weight: bold; background-color: white; color: #0f172a; margin-bottom: 4px; }
-        .calc-btn { width: 100%; background-color: #2563eb; color: white; border: none; border-bottom: 4px solid #1d4ed8; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: all 0.1s; }
-        .calc-btn:active { transform: translateY(2px); border-bottom: 2px solid #1d4ed8; }
+        .calc-btn { width: 100%; background-color: #ef4444; color: white; border: none; border-bottom: 4px solid #b91c1c; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: all 0.1s; }
+        .calc-btn:active { transform: translateY(2px); border-bottom: 2px solid #b91c1c; }
         
         .witness-summary { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; font-size: 12px; font-weight: 600; color: #475569; line-height: 1.4; }
         
         /* CUADRO DE DEBATE DINÁMICO */
-        .argumento-box { display: none; padding: 16px; border-radius: 12px; font-size: 13px; font-weight: 700; line-height: 1.5; background-color: #fff7ed; border: 1px solid #ffedd5; color: #9a3412; margin-top: auto; }
+        .argumento-box { display: none; padding: 18px; border-radius: 12px; font-size: 13.5px; font-weight: 700; line-height: 1.6; background-color: #fff7ed; border: 1px solid #ffedd5; color: #9a3412; margin-top: auto; }
         
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
         .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; }
@@ -59,38 +62,47 @@
 
             <div class="diapositiva-grid">
                 
-                <!-- Columna Izquierda: El Hilo Conductor del Caso -->
+                <!-- Columna Izquierda: El Caso Inmobiliario Corregido -->
                 <div class="col-texto">
-                    <h3 class="slide-titulo">Uniendo el Perfilamiento, las 4 Ds y los Datos</h3>
-                    <p class="slide-txt">Retomemos el caso que analizamos en las herramientas digitales anteriores. <strong>Jorge</strong>, un joven en sus treintas recién casado, enfrenta un evento de <strong>Desplazamiento por plan de vida independiente</strong>: se muda de Guadalajara a Chihuahua debido a una nueva oferta de trabajo.</p>
+                    <h3 class="slide-titulo">Análisis Técnico y Auditoría de Valor en Campo</h3>
+                    <p class="slide-txt">Retomemos el caso que analizamos en las herramientas digitales anteriores. <strong>Jorge</strong>, un joven en sus treintas recién casado, enfrenta un evento de <strong>Desplazamiento</strong>: se muda de Guadalajara a Chihuahua debido a una nueva oferta de trabajo.</p>
                     
                     <div class="case-box">
-                        <strong>Diagnóstico de Perfilamiento Exitoso:</strong><br>
-                        • <strong>Equilibrio Financiero:</strong> Él y su esposa trabajan; sus ingresos conjuntos superan los $35k, solventando sin problema las mensualidades del crédito.<br>
-                        • <strong>Entorno y Logística:</strong> Calificaron con éxito la zona tras validar guarderías cercanas, ya que planean tener su primer hijo pronto y requieren optimizar traslados.<br>
-                        • <strong>El Problema:</strong> Al no conocer Chihuahua, la esposa siente que la casa que les ofrecen en la zona está muy cara. Al sentirse inseguros, te contactan como asesor inmobiliario estratégico para auditar el valor real de salida.
+                        <strong>Diagnóstico de Perfilamiento Base:</strong><br>
+                        • <strong>Equilibrio Financiero:</strong> Ingresos conjuntos garantizados por encima de los $35k. Tienen capacidad de pago real aprobada para el crédito hipotecario.<br>
+                        • <strong>Logística Urbana:</strong> Cuadrante previamente validado con guarderías e infraestructura vial hacia el nuevo empleo, cuidando sus tiempos de traslado.<br>
+                        • <strong>El Conflicto:</strong> La esposa de Jorge siente que la casa que les encantó está muy cara. Como no conocen a nadie en Chihuahua, te contratan como consultor estratégico para saber si el precio está elevado o es el correcto antes de ofertar.
                     </div>
-                    
-                    <p class="slide-txt">Como asesora, ingresas de inmediato a los portales y extraes los datos reales de 5 propiedades testigos en el mismo cuadrante urbano de Chihuahua para arrastrar el lápiz frente a ellos.</p>
+
+                    <!-- Ficha Técnica Realista del Inmueble Pretendido -->
+                    <div class="ficha-tecnica">
+                        <div class="ficha-title">📋 Ficha Técnica del Inmueble Promovido</div>
+                        • <strong>Ubicación:</strong> Fraccionamiento Residencial Lomas del Valle, Chihuahua, Chih.<br>
+                        • <strong>Precio de Lista Pretendido:</strong> $3,550,000 MXN<br>
+                        • <strong>Superficie de Construcción:</strong> 190 m²<br>
+                        • <strong>Distribución:</strong> 2 Recámaras amplias, 2.5 Baños, Estancia familiar.<br>
+                        • <strong>Estatus de Equipamiento:</strong> Semiequipada (Cocina integral con granito, closets fijos y clima central. **No incluye muebles sueltos**).<br>
+                        • <strong>Amenidades Exteriores:</strong> Patio trasero mediano (45 m² con terreno excedente encementado, ideal para mascotas) y cochera techada para 2 autos.
+                    </div>
                 </div>
 
-                <!-- Columna Derecha: Simulador de Homologación de Zona Chihuahua -->
+                <!-- Columna Ora: Simulador Analítico y Pregunta de Debate -->
                 <div class="col-visual-interactiva">
-                    <p style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 4px;">🔧 API PORTALES: HOMOLOGACIÓN EN CHIHUAHUA</p>
+                    <p style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 4px;">🔧 API PORTALES: HOMOLOGACIÓN DE VALOR UNITARIO</p>
                     
                     <div class="witness-summary">
-                        📈 <strong>Análisis Cruzado de 5 Testigos Extraídos de Portales:</strong><br>
-                        • Precio promedio homologado detectado: <strong>$16,298 MXN por M²</strong>
+                        📈 <strong>Análisis Cruzado de 5 Testigos Extraídos de Portales en Lomas del Valle:</strong><br>
+                        • Valor promedio real detectado en zona: <strong>$16,298 MXN por M² de construcción</strong>.
                     </div>
 
                     <div>
-                        <label style="font-size: 12px; font-weight: 700; color: #64748b; display: block; margin-bottom: 4px;">Ingresa los M² de la casa que le ofrecen a Jorge:</label>
-                        <input type="number" id="metros-jorge" class="input-m2" value="180" min="50" max="1000">
+                        <label style="font-size: 12px; font-weight: 700; color: #64748b; display: block; margin-bottom: 4px;">Confirma los M² de la Ficha Técnica para auditar:</label>
+                        <input type="number" id="metros-jorge" class="input-m2" value="190" min="50" max="1000">
                     </div>
                     
-                    <button class="calc-btn" onclick="auditarPrecioChihuahua()">Auditar Valor de Mercado ➔</button>
+                    <button class="calc-btn" onclick="auditarPrecioChihuahua()">Auditar Valor Real de Mercado ➔</button>
 
-                    <!-- Zona Dinámica del Debate Grupal de Maestría -->
+                    <!-- Panel Naranja del Debate de Maestría -->
                     <div id="argumento-render" class="argumento-box"></div>
                 </div>
 
@@ -114,12 +126,8 @@
                 return;
             }
 
+            // $16,298 promedio por metro cuadrado extraído de los buscadores inmobiliarios
             var precioMetroPromedio = 16297.8;
             var valorEstimadoMercado = metros * precioMetroPromedio;
             
             box.style.display = "block";
-            box.innerHTML = "📊 <strong>AUDITORÍA ARITMÉTICA DE MERCADO:</strong><br>• El valor sugerido para una propiedad de " + metros + " m² en este cuadrante de Chihuahua es de <strong>$" + Math.round(valorEstimadoMercado).toLocaleString() + " MXN</strong>.<br><br>🚨 <strong>EL ESCENARIO REAL DE NEGOCIACIÓN:</strong><br>Los datos demuestran que la casa efectivamente está sobrevaluada por encima de la media de los buscadores digitales.<br><br>🗣️ <strong style='font-size:14px; color:#c2410c;'>PREGUNTA DE DEBATE GRUPAL (MESA REDONDA):</strong><br><span style='color:#1e293b;'>'Ustedes son los asesores estratégicos patrimoniales de Jorge en Chihuahua: Tienen un cliente con excelente Buró, dinero listo y urgencia por mudarse, pero la casa que les encantó está cara frente a los portales. ¿Qué decisión toman? ¿Buscan otra opción, negocian una baja con el dueño de ese inmueble usando esta calculadora, o dejan que compren con sobreprecio? ¿Cómo defienden su comisión?'</span>";
-        }
-    </script>
-</body>
-</html>
