@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1: Conclusiones de Cierre - URN</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background-color: #f1f5f9; 
+            padding: 40px 20px;
+            color: #334155;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+        .nav-back {
+            display: inline-block;
+            text-decoration: none;
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .nav-back:hover { color: #1d4ed8; }
+        header {
+            margin-bottom: 35px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 20px;
+        }
+        .tag {
+            font-size: 11px;
+            font-weight: 800;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 4px;
+            letter-spacing: -0.02em;
+        }
+        .revista-wrapper {
+            background-color: #ffffff;
+            border: 3px solid #cbd5e1;
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+            min-height: 460px;
+        }
+        
+        /* CABECERA CON BOTONES SUPERIORES PREMIUM FIXED STYLE */
+        .revista-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+            gap: 15px;
+        }
+        .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        .revista-controles-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .revista-contador {
+            font-size: 12px;
+            font-weight: 800;
+            color: #2563eb;
+            background-color: #eff6ff;
+            padding: 8px 14px;
+            border-radius: 20px;
+            border: 1px solid #dbeafe;
+        }
+        
+        .btn-nav-top {
+            background-color: #2563eb;
+            border: none;
+            border-bottom: 3px solid #1d4ed8;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.1s ease;
+        }
+        .btn-nav-top:hover { background-color: #3b82f6; }
+        
+        /* BOTÓN DORADO DE FINALIZAR MÓDULO */
+        .btn-finalizar {
+            background-color: #d97706;
+            border-bottom: 3px solid #b45309;
+        }
+        .btn-finalizar:hover { background-color: #f59e0b; }
+
+        /* ESTRUCTURA SPLIT DIAPOSITIVA PREMIUM 4:3 */
+        .diapositiva-grid {
+            display: flex;
+            flex-direction: row;
+            gap: 35px;
+            align-items: center;
+        }
+        .col-texto {
+            flex: 1.1;
+        }
+        .col-visual {
+            flex: 0.9;
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            width: 100%;
+        }
+        
+        .img-fixed {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #ffffff;
+        }
+
+        .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
+        .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
+        
+        .highlight-box {
+            background-color: #f8fafc;
+            border-left: 5px solid #10b981;
+            padding: 16px;
+            border-radius: 4px;
+            font-size: 13.5px;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) { .diapositiva-grid { flex-direction: column; } .revista-header { flex-direction: column; align-items: flex-start; } }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
+
+        <header>
+            <span class="tag">Módulo 01 · Resumen Ejecutivo de Cierre</span>
+            <h1>Introducción a la Intermediación Inmobiliaria</h1>
+        </header>
+
+        <div class="revista-wrapper">
+            <div class="revista-header">
+                <span class="revista-pills">PÁGINA 10 · CONCLUSIONES Y MANIFIESTO CONSULTOR</span>
+                
+                <div class="revista-controles-top">
+                    <a href="prospeccion-p9.html" class="btn-nav-top">◀ Anterior</a>
+                    <span class="revista-contador">Pág. 10 de 10</span>
+                    <a href="index.html" class="btn-nav-top btn-finalizar">🏁 Finalizar Módulo</a>
+                </div>
+            </div>
+
+            <div class="diapositiva-grid">
+                
+                <!-- Columna Izquierda: Síntesis de la Materia -->
+                <div class="col-texto">
+                    <h3 class="slide-titulo">El Manifiesto de la Consultoría Patrimonial</h3>
+                    <p class="slide-txt">Hemos concluido el primer gran bloque del temario oficial. El paso de un asesor tradicional hacia un **Consultor Patrimonial Estratégico** exige abandonar las viejas prácticas de comercialización empírica y adoptar un rigor metodológico estricto basado en la ética, la psicología de incentivos y los datos duros.</p>
+                    
+                    <div class="highlight-box">
+                        <strong>Pilares de Acción para su Práctica Profesional:</strong><br><br>
+                        • <strong>Inyectar Racionalidad:</strong> Utilizar el ACM y las API proptech para desactivar el Efecto Dotación de los dueños, protegiendo los días en el mercado.<br><br>
+                        • <strong>Perfilamiento Humano:</strong> Validar simultáneamente el Equilibrio Financiero (regla crediticia 3 a 1) y la Logística Urbana antes de agendar recorridos.<br><br>
+                        • <strong>Infraestructura Centralizada:</strong> Apalancarse en los CRMs y embudos digitales automatizados para acelerar las velocidades de respuesta (SLA).
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Imagen Conclusiva del Módulo -->
+                <div class="col-visual">
+                    <img src="imagenes/imagen10.png" class="img-fixed" alt="Conclusiones y Cierre de Módulo 1">
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
