@@ -1,129 +1,120 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intermediación Inmobiliaria - URN</title>
-    <!-- Cargamos Tailwind CSS Estable para diseño tipo Dashboard Premium -->
-    <script src="https://tailwindcss.com"></script>
+    <title>Sistema de Intermediación - URN</title>
+    <!-- Importamos Tailwind clásico por CDN para asegurar renderizado de colores y botones -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://googleapis.com" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        display: ['Playfair Display', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
 </head>
-<body class="bg-[#F8FAFC] text-slate-800 font-sans min-h-screen">
+<body class="bg-slate-900 text-slate-100 min-h-screen antialiased p-4 md:p-8">
 
-    <!-- Navbar Minimalista -->
-    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 backdrop-blur-md bg-white/90">
-        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <span class="w-3 h-3 bg-blue-600 rounded-full animate-pulse"></span>
-                <span class="text-xs font-bold tracking-widest text-slate-400 uppercase">URN VIRTUAL</span>
-            </div>
-            <span class="text-xs font-semibold bg-slate-100 text-slate-600 px-3 py-1 rounded-full border border-slate-200">Maestría en Intermediación</span>
-        </div>
-    </nav>
-
-    <!-- Encabezado de Alto Impacto -->
-    <header class="max-w-6xl mx-auto px-6 pt-12 pb-8">
-        <div class="bg-gradient-to-br from-slate-900 via-slate-850 to-blue-950 text-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-800 relative overflow-hidden">
-            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
-            <div class="relative z-10 max-w-3xl">
-                <span class="text-xs font-bold text-blue-400 tracking-widest uppercase bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">PROGRAMA EJECUTIVO 2026</span>
-                <h1 class="text-4xl md:text-5xl font-extrabold font-display tracking-tight text-white mt-4 mb-4">Intermediación Inmobiliaria</h1>
-                <p class="text-slate-300 font-light text-base md:text-lg leading-relaxed mb-6">Ingeniería de procesos y modelado financiero para la dirección estratégica de proyectos patrimoniales familiares.</p>
-                <div class="inline-flex items-center gap-3 border-t border-slate-700/60 pt-4 w-full">
-                    <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center font-bold text-xs">JA</div>
-                    <div>
-                        <p class="text-xs font-medium text-white">Mtro. Julio Armenta</p>
-                        <p class="text-[10px] text-slate-400 font-light">Especialista en Finanzas, Valuación & Fintech · Exclusivo URN</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- CONTENEDOR DEL FLUJO INTERACTIVO -->
-    <main class="max-w-6xl mx-auto px-6 pb-24">
+    <!-- Contenedor Principal Estilo Dashboard -->
+    <div class="max-w-7xl mx-auto">
         
-        <!-- Tablero de Control / Pasos con Botones Visuales -->
-        <div class="mb-12 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-            <h2 class="text-xs font-bold tracking-wider text-slate-400 uppercase mb-4 px-2">Sistema Operativo Inmobiliario (Haga clic en un paso)</h2>
+        <!-- Encabezado de la Plataforma -->
+        <header class="mb-10 text-center md:text-left border-b border-slate-800 pb-6">
+            <span class="text-xs font-bold tracking-widest text-blue-400 uppercase">UNIVERSIDAD REGIONAL DEL NORTE · MAESTRÍA</span>
+            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-1 text-white">Plataforma de Intermediación Inmobiliaria</h1>
+            <p class="text-slate-400 font-light text-sm mt-1">Estructura operativa dirigida por el Mtro. Julio Armenta</p>
+        </header>
+
+        <!-- INDICADOR VISUAL DE FLUJO (BOTONES GIGANTES DE COLORES CON FLECHAS) -->
+        <div class="mb-12">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 px-2">Diagrama de Flujo del Proceso Patrimonial (Seleccione una Etapa)</h2>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2">
-                <!-- Botón Paso 1 -->
-                <button onclick="switchTab('paso1')" id="btn-paso1" class="tab-btn flex flex-col p-4 rounded-xl border-2 text-left transition-all duration-300 bg-blue-50/50 border-blue-600 shadow-sm">
-                    <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider mb-1">Módulo 01</span>
-                    <span class="text-sm font-bold text-slate-900">Diagnóstico & Prospección</span>
+            <!-- Grid de Botones Interactivos de Alto Contraste -->
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                
+                <!-- Botón 1: Verde (Diagnóstico) -->
+                <button onclick="mostrarSeccion('sec-paso1')" id="btn-sec-paso1" class="group relative flex items-center justify-between p-6 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg border-2 border-emerald-400 transition-all duration-300 scale-102">
+                    <div class="text-left">
+                        <span class="block text-[10px] font-black uppercase tracking-widest text-emerald-200">PASO 01</span>
+                        <span class="text-lg font-black tracking-tight">Prospección & Diagnóstico</span>
+                    </div>
+                    <span class="text-2xl font-bold ml-2 group-hover:translate-x-2 transition-transform duration-300">➔</span>
                 </button>
-                <!-- Botón Paso 2 -->
-                <button onclick="switchTab('paso2')" id="btn-paso2" class="tab-btn flex flex-col p-4 rounded-xl border text-left transition-all duration-300 bg-white border-slate-200 hover:border-slate-300">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Módulo 02</span>
-                    <span class="text-sm font-bold text-slate-700">Operación Comercial</span>
+
+                <!-- Botón 2: Azul (Operación) -->
+                <button onclick="mostrarSeccion('sec-paso2')" id="btn-sec-paso2" class="group relative flex items-center justify-between p-6 rounded-2xl bg-slate-800 hover:bg-blue-600 text-slate-300 hover:text-white shadow-md border-2 border-slate-700 hover:border-blue-400 transition-all duration-300">
+                    <div class="text-left">
+                        <span class="block text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-blue-200">PASO 02</span>
+                        <span class="text-lg font-black tracking-tight">Operación Comercial</span>
+                    </div>
+                    <span class="text-2xl font-bold ml-2 group-hover:translate-x-2 transition-transform duration-300">➔</span>
                 </button>
-                <!-- Botón Paso 3 -->
-                <button onclick="switchTab('paso3')" id="btn-paso3" class="tab-btn flex flex-col p-4 rounded-xl border text-left transition-all duration-300 bg-white border-slate-200 hover:border-slate-300">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Módulo 03</span>
-                    <span class="text-sm font-bold text-slate-700">Análisis & Valuación</span>
+
+                <!-- Botón 3: Morado (Valuación) -->
+                <button onclick="mostrarSeccion('sec-paso3')" id="btn-sec-paso3" class="group relative flex items-center justify-between p-6 rounded-2xl bg-slate-800 hover:bg-purple-600 text-slate-300 hover:text-white shadow-md border-2 border-slate-700 hover:border-purple-400 transition-all duration-300">
+                    <div class="text-left">
+                        <span class="block text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-purple-200">PASO 03</span>
+                        <span class="text-lg font-black tracking-tight">Análisis & Valuación</span>
+                    </div>
+                    <span class="text-2xl font-bold ml-2 group-hover:translate-x-2 transition-transform duration-300">➔</span>
                 </button>
-                <!-- Botón Paso 4 -->
-                <button onclick="switchTab('paso4')" id="btn-paso4" class="tab-btn flex flex-col p-4 rounded-xl border text-left transition-all duration-300 bg-white border-slate-200 hover:border-slate-300">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Módulo 04</span>
-                    <span class="text-sm font-bold text-slate-700">Arquitectura de Crédito</span>
+
+                <!-- Botón 4: Naranja (Crédito) -->
+                <button onclick="mostrarSeccion('sec-paso4')" id="btn-sec-paso4" class="group relative flex items-center justify-between p-6 rounded-2xl bg-slate-800 hover:bg-orange-600 text-slate-300 hover:text-white shadow-md border-2 border-slate-700 hover:border-orange-400 transition-all duration-300">
+                    <div class="text-left">
+                        <span class="block text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-orange-200">PASO 04</span>
+                        <span class="text-lg font-black tracking-tight">Arquitectura de Crédito</span>
+                    </div>
+                    <span class="text-2xl font-bold ml-2 group-hover:translate-x-2 transition-transform duration-300">➔</span>
                 </button>
-                <!-- Botón Paso 5 -->
-                <button onclick="switchTab('paso5')" id="btn-paso5" class="tab-btn flex flex-col p-4 rounded-xl border text-left transition-all duration-300 bg-white border-slate-200 hover:border-slate-300">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Módulo 05</span>
-                    <span class="text-sm font-bold text-slate-700">Control & Cierre Legal</span>
+
+                <!-- Botón 5: Rojo (Cierre Legal) -->
+                <button onclick="mostrarSeccion('sec-paso5')" id="btn-sec-paso5" class="group relative flex items-center justify-between p-6 rounded-2xl bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white shadow-md border-2 border-slate-700 hover:border-rose-400 transition-all duration-300">
+                    <div class="text-left">
+                        <span class="block text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-rose-200">PASO 05</span>
+                        <span class="text-lg font-black tracking-tight">Control & Cierre Legal</span>
+                    </div>
+                    <span class="text-2xl font-bold ml-2 group-hover:translate-x-2 transition-transform duration-300">➔</span>
                 </button>
+
             </div>
         </div>
 
-        <!-- SECCIONES DE CONTENIDO DINÁMICO -->
-        <div class="bg-white rounded-3xl p-6 md:p-10 border border-slate-200 shadow-sm min-h-[400px]">
+        <!-- CONTENEDORES DE INFORMACIÓN ESPECÍFICA (SECCIONES DE ENLACE) -->
+        <div class="bg-slate-800 rounded-3xl p-6 md:p-10 border border-slate-700 shadow-xl min-h-[350px]">
             
-            <!-- CONTENIDO PASO 1 -->
-            <div id="content-paso1" class="tab-content block animate-fadeIn">
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
-                    <span class="text-xs font-bold tracking-widest text-emerald-600 uppercase">FASE ACTIVA</span>
+            <!-- SECCIÓN DEL PASO 1 (ACTIVA POR DEFAULT) -->
+            <div id="sec-paso1" class="seccion-contenido block">
+                <span class="inline-block text-xs font-black bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-3 py-1 rounded-full uppercase tracking-wider mb-4">Módulo de Clase Activo</span>
+                <h3 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-4">Módulo 1: Prospección, Captación y Perfilamiento Humano</h3>
+                <p class="text-slate-300 font-light max-w-3xl leading-relaxed mb-8">Estructuración del embudo digital inicial. Reemplazamos las visitas improvisadas por un diagnóstico completo de los tiempos de traslado, entorno familiar y viabilidad económica de la pareja.</p>
+                
+                <!-- Tarjeta de la evaluación dentro de la sección -->
+                <div class="bg-emerald-950/40 border border-emerald-500/20 rounded-2xl p-6">
+                    <h4 class="text-emerald-400 font-bold text-lg mb-2">🛡️ Entregable Evaluatorio Anti-IA</h4>
+                    <p class="text-slate-300 text-sm font-light leading-relaxed mb-4">Caso Carlos y Ana: Investiga y define una colonia real en tu ciudad que optimice su logística laboral a las 8:00 AM. Ubica 2 guarderías del sector y adjunta captura completa con enlace vivo de una propiedad en el mercado esta semana que se ajuste a su presupuesto familiar.</p>
+                    <span class="text-xs text-emerald-500 font-medium">⚠️ La IA no tiene acceso al inventario vivo de propiedades de esta semana; el uso de datos genéricos anula la entrega.</span>
                 </div>
-                <h3 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight font-display mb-3">Módulo 1: Prospección, Captación y Perfilamiento Humano</h3>
-                <p class="text-slate-500 font-light max-w-3xl leading-relaxed mb-8 text-sm md:text-base">Transformamos la corretía básica en consultoría directiva. Alineamos los inmuebles con el plan de vida real y la logística de traslado de las familias.</p>
+            </div>
 
-                <div class="grid md:grid-cols-3 gap-6 mb-10">
-                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
-                        <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs mb-4">A</div>
-                        <h4 class="font-bold text-slate-900 mb-1 text-sm md:text-base">Captación con Propósito</h4>
-                        <p class="text-xs md:text-sm text-slate-500 font-light leading-relaxed">Filtramos inventario mediante análisis de mercado activo. Eliminamos de raíz propiedades con precios sentimentales o fuera de realidad económica.</p>
-                    </div>
-                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
-                        <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs mb-4">B</div>
-                        <h4 class="font-bold text-slate-900 mb-1 text-sm md:text-base">Diagnóstico Logístico</h4>
-                        <p class="text-xs md:text-sm text-slate-500 font-light leading-relaxed">Mapeo analítico obligatorio de rutas de traslado, entornos seguros y accesibilidad a guarderías y colegios para el núcleo familiar.</p>
-                    </div>
-                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
-                        <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs mb-4">C</div>
-                        <h4 class="font-bold text-slate-900 mb-1 text-sm md:text-base">Calificación Económica</h4>
-                        <p class="text-xs md:text-sm text-slate-500 font-light leading-relaxed">Optimización drástica del tiempo operativo. Filtros de buró e ingresos estructurados antes de programar cualquier visita física al inmueble.</p>
-                    </div>
+            <!-- SECCIÓN DEL PASO 2 -->
+            <div id="sec-paso2" class="seccion-contenido hidden">
+                <span class="inline-block text-xs font-black bg-blue-500/10 border border-blue-500/30 text-blue-400 px-3 py-1 rounded-full uppercase tracking-wider mb-4">Enlace Vinculado</span>
+                <h3 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-4">Módulo 2: Operación Comercial de Inmuebles</h3>
+                <p class="text-slate-300 font-light max-w-3xl leading-relaxed mb-6">Administración analítica de los procesos de venta tradicional, arrendamiento preventivo corporativo y traspasos formales de derechos hipotecarios.</p>
+                <div class="p-6 bg-slate-900/60 rounded-2xl border border-dashed border-slate-700 text-center text-slate-500 text-sm font-light">
+                    Contenido y recursos operativos listos para la sesión presencial remota 2.
                 </div>
+            </div>
 
-                <!-- Bloque Reto Anti-IA -->
-                <div class="bg-slate-900 text-white rounded-2xl p-6 md:p-8 border border-slate-800 shadow-md">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4 pb-4 border-b border-slate-800">
-                        <div>
-                            <span class="text-[10px] font-bold text-blue-400 tracking-wider uppercase block mb-1">EVALUACIÓN BLINDADA ANTI-IA</span>
-                            <h5 class="text-lg font-bold text-white font-display">Entregable 1: Diagnóstico Local Localizado (Caso Carlos y Ana)</h5>
-                        </div>
-                        <span class="bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full">Valor: Módulo 1</span>
-                    </div>
+            <!-- SECCIÓN DEL PASO 3 -->
+            <div id="sec-paso3" class="seccion-contenido hidden">
+                <span class="inline-block text-xs font-black bg-purple-500/10 border border-purple-500/30 text-purple-400 px-3 py-1 rounded-full uppercase tracking-wider mb-4">Enlace Vinculado</span>
+                <h3 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-4">Módulo 3: Análisis de Viabilidad y Valuación</h3>
+                <p class="text-slate-300 font-light max-w-3xl leading-relaxed mb-6">Aplicación metodológica de los tres enfoques de tasación en México: Mercado (comparables), Costos (físico) y Capitalización (rentas del activo).</p>
+                <div class="p-6 bg-slate-900/60 rounded-2xl border border-dashed border-slate-700 text-center text-slate-500 text-sm font-light">
+                    Contenido y recursos operativos listos para la sesión presencial remota 3.
+                </div>
+            </div>
+
+            <!-- SECCIÓN DEL PASO 4 -->
+            <div id="sec-paso4" class="seccion-contenido hidden">
+                <span class="inline-block text-xs font-black bg-orange-500/10 border border-orange-500/30 text-orange-400 px-3 py-1 rounded-full uppercase tracking-wider mb-4">Enlace Vinculado</span>
