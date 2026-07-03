@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 1: Prospección & Diagnóstico - URN</title>
+    <title>Módulo 1: Conceptos Básicos - URN</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -51,8 +51,6 @@
             margin-top: 4px;
             letter-spacing: -0.02em;
         }
-        
-        /* RECUADRO DE LA REVISTA */
         .revista-wrapper {
             background-color: #ffffff;
             border: 3px solid #cbd5e1;
@@ -70,12 +68,7 @@
             padding-bottom: 16px;
             margin-bottom: 24px;
         }
-        .revista-pills {
-            font-size: 12px;
-            font-weight: 800;
-            color: #475569;
-            letter-spacing: 0.05em;
-        }
+        .revista-pills { font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
         .revista-contador {
             font-size: 12px;
             font-weight: 800;
@@ -85,14 +78,8 @@
             border-radius: 20px;
             border: 1px solid #dbeafe;
         }
-
-        /* Bloques de filminas independientes */
-        .slide-content { display: none; }
-        .slide-content.active { display: block; }
-        
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 16px; line-height: 1.6; color: #475569; margin-bottom: 24px; }
-        
         .highlight-box {
             background-color: #f8fafc;
             border-left: 5px solid #2563eb;
@@ -102,121 +89,58 @@
             color: #1e293b;
             line-height: 1.5;
         }
-
-        /* CONTROLES DE CAMBIO DE PÁGINA */
-        .revista-controles {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-            gap: 20px;
-        }
+        .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
         .btn-nav {
             flex: 1;
+            display: block;
+            text-decoration: none;
             background-color: #2563eb;
-            border: none;
             border-bottom: 5px solid #1d4ed8;
             padding: 18px;
             border-radius: 14px;
             font-size: 16px;
             font-weight: 800;
             color: #ffffff;
-            cursor: pointer;
             text-align: center;
             transition: all 0.1s ease;
         }
         .btn-nav:hover { background-color: #3b82f6; }
         .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
-        .btn-nav:disabled { background-color: #cbd5e1; border-bottom: 5px solid #94a3b8; color: #94a3b8; cursor: not-allowed; transform: none; }
+        .btn-disabled { background-color: #cbd5e1; border-bottom: 5px solid #94a3b8; color: #94a3b8; cursor: not-allowed; pointer-events: none; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        
         <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
         <header>
             <span class="tag">Módulo 01 · Presentación de Contenidos</span>
-            <h1>Prospección, Captación y Perfilamiento Humano</h1>
+            <h1>Introducción a la Intermediación Inmobiliaria</h1>
         </header>
 
-        <!-- CONTENEDOR DE LA REVISTA -->
         <div class="revista-wrapper">
             <div class="revista-header">
-                <span id="revista-tema" class="revista-pills">TEMA 1.A · CONCEPTOS BÁSICOS</span>
-                <span id="revista-contador" class="revista-contador">Pág. 1 de 5</span>
+                <span class="revista-pills">PÁGINA 1 · CONCEPTOS BÁSICOS Y DEFINICIÓN</span>
+                <span class="revista-contador">Pág. 1 de 10</span>
             </div>
 
-            <!-- FILMINAS PERFECTAMENTE ALINEADAS Y CERRADAS -->
-            <div class="revista-paginas">
-                
-                <!-- Filmina 1 -->
-                <div id="slide-1" class="slide-content active">
-                    <h3 class="slide-titulo">La Intermediación No Es "Enseñar Casas"</h3>
-                    <p class="slide-txt">El mercado inmobiliario sufre por ineficiencias y fricciones reales: altos costos notariales, impuestos mal planeados e iliquidez del activo. El rol estratégico del intermediario es destrabar operaciones complejas donde comprador y vendedor se encuentran estancados.</p>
-                    <div class="highlight-box">
-                        <strong>George Akerlof — Premio Nobel (Asimetría de Información):</strong> El intermediario profesional actúa como el agente neutral indispensable que equilibra los datos asimétricos del mercado. Brinda certeza jurídica y financiera para que ambas partes operen con absoluta confianza.
-                    </div>
+            <div>
+                <h3 class="slide-titulo">Redefiniendo la Intermediación Inmobiliaria</h3>
+                <p class="slide-txt">El corretaje tradicional se limita a unir la oferta y la demanda a cambio de una comisión. En un entorno directivo y de posgrado, la intermediación se redefine como la dirección de un proyecto patrimonial estratégico que elimina las fricciones del mercado mexicano: altos costos de escrituración, falta de liquidez del activo y riesgos fiscales latentes.</p>
+                <div class="highlight-box">
+                    <strong>George Akerlof — Teoría de Asimetría de Información:</strong> El mercado inmobiliario es asimétrico por naturaleza. El intermediario profesional no es un simple vendedor de casas; es el consultor neutral indispensable que equilibra la información, inyecta racionalidad y brinda certeza jurídica y financiera para consolidar operaciones exitosas.
                 </div>
-
-                <!-- Filmina 2 -->
-                <div id="slide-2" class="slide-content">
-                    <h3 class="slide-titulo">El "Efecto Dotación" y el Sesgo de Precios</h3>
-                    <p class="slide-txt">Como lo documenta Gary Keller, los propietarios tienden a fijar el precio de salida de sus viviendas basándose en necesidades de deudas personales o lazos sentimentales, ignorando el mercado comparativo real.</p>
-                    <div class="highlight-box">
-                        <strong>La Consecuencia Inmobiliaria:</strong> Salir al mercado con un sobreprecio del +18% sobre el valor comercial vuelve al inmueble "invisible" en los portales digitales, transformándolo rápidamente en una propiedad quemada.
-                    </div>
-                </div>
-
-                <!-- Filmina 3 -->
-                <div id="slide-3" class="slide-content">
-                    <h3 class="slide-titulo">Del Corredor Empírico al Asesor de 3 Dimensiones</h3>
-                    <p class="slide-txt">Inspirado en la metodología Ninja Selling de Larry Kendall. El asesor de maestría no coordina visitas físicas aleatorias; ejerce un control riguroso resguardando la transacción en tres frentes simultáneos.</p>
-                    <div class="highlight-box">
-                        <strong>Las 3 Dimensiones Obligatorias:</strong> 1. Comercial (Valuación analítica real), 2. Legal-Fiscal (Auditoría de expedientes y cálculo impositivo), y 3. Mediación (Negociación técnica activa para el cierre).
-                    </div>
-                </div>
-
-                <!-- Filmina 4 -->
-                <div id="slide-4" class="slide-content">
-                    <h3 class="slide-titulo">La Eficiencia Operativa se Mide en "Días en el Mercado" (DoM)</h3>
-                    <p class="slide-txt">Los datos del sector demuestran que una venta por "Trato Directo" carece de filtros de contención, extendiendo el proceso de 9 a 14 meses. Un intermediario profesional calificado reduce los tiempos drásticamente a un rango de 45 a 60 días en promedio.</p>
-                    <div class="highlight-box">
-                        <strong>Táctica Clave del Sistema:</strong> Alianzas estratégicas con brókers hipotecarios. Exigir la carta de crédito bancario autorizado o precalificación antes de la primera visita física elimina a los turistas inmobiliarios.
-                    </div>
-                </div>
-
-                <!-- Filmina 5 -->
-                <div id="slide-5" class="slide-content">
-                    <h3 class="slide-titulo">Técnicas de Captación Avanzada: Las 4 Ds</h3>
-                    <p class="slide-txt">Los líderes de la industria no persiguen listados al azar. Siguen los eventos disparadores de vida que obligan al inventario a cambiar de manos por necesidad real: Divorcio, Deuda, Defunción y Desplazamiento corporativo o industrial (Nearshoring).</p>
-                    <div class="highlight-box">
-                        <strong>Regla de Oro Digital:</strong> El uso de contenidos de valor (Lead Magnets) captura datos reales. Si contactas al prospecto en menos de 5 minutos desde su registro web, la probabilidad de éxito se incrementa un 1,000%.
-                    </div>
-                </div>
-
             </div>
         </div>
 
-        <!-- CONTROLES DE CAMBIO DE PÁGINA (FUERA DE LAS FILMINAS) -->
         <div class="revista-controles">
-            <button id="btn-ant" class="btn-nav" onclick="cambiarPagina(-1)" disabled>◀ Anterior</button>
-            <button id="btn-sig" class="btn-nav" onclick="cambiarPagina(1)">Siguiente ▶</button>
+            <a href="#" class="btn-nav btn-disabled">◀ Anterior</a>
+            <!-- Enlace directo a la página 2 física -->
+            <a href="prospeccion-p2.html" class="btn-nav">Siguiente ▶</a>
         </div>
 
     </div>
 
-    <script>
-        let paginaActual = 1;
-        const totalPaginas = 5;
-        
-        const temas = [
-            "TEMA 1.A · CONCEPTOS BÁSICOS",
-            "TEMA 1.A · EL SESGO DEL PRECIO",
-            "TEMA 1.B · ROLES Y RESPONSABILIDADES",
-            "TEMA 1.C · IMPORTANCIA DE LA INTERMEDIACIÓN",
-            "TEMAS 2.A, B, C · CAPTACIÓN Y HERRAMIENTAS"
-        ];
-
-        function cambiarPagina(direccion) {
-            // Ocultamos la página actual
+</body>
+</html>
