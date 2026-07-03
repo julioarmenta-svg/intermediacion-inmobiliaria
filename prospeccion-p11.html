@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1: Tarea Integradora - URN</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background-color: #f1f5f9; 
+            padding: 40px 20px;
+            color: #334155;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+        .nav-back {
+            display: inline-block;
+            text-decoration: none;
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .nav-back:hover { color: #1d4ed8; }
+        header {
+            margin-bottom: 35px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 20px;
+        }
+        .tag {
+            font-size: 11px;
+            font-weight: 800;
+            color: #4338ca;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 4px;
+            letter-spacing: -0.02em;
+        }
+        .revista-wrapper {
+            background-color: #ffffff;
+            border: 3px solid #cbd5e1;
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+        }
+        .revista-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        .revista-controles-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-nav-top {
+            background-color: #2563eb;
+            border: none;
+            border-bottom: 3px solid #1d4ed8;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.1s ease;
+        }
+        .btn-nav-top:hover { background-color: #3b82f6; }
+        .btn-finalizar { background-color: #d97706; border-bottom: 3px solid #b45309; }
+        .btn-finalizar:hover { background-color: #f59e0b; }
+
+        .instrucciones-body {
+            padding: 10px 5px;
+        }
+        .intro-lead {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #475569;
+            margin-bottom: 25px;
+        }
+        
+        /* BLOQUES DE LOS PASOS CRÍTICOS */
+        .paso-bloque {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.01);
+        }
+        .paso-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .paso-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #0f172a;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .paso-valor {
+            font-size: 13px;
+            font-weight: 800;
+            color: #4338ca;
+            background-color: #e0e7ff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid #c7d2fe;
+        }
+        
+        .paso-txt {
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: #334155;
+            margin-bottom: 12px;
+        }
+        .paso-bloque ul {
+            padding-left: 20px;
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.6;
+        }
+        .paso-bloque li {
+            margin-bottom: 8px;
+        }
+        .paso-bloque strong {
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
+
+        <header>
+            <span class="tag">Evaluación de Fin de Módulo</span>
+            <h1>Proyecto de Infraestructura y Operación Proptech</h1>
+        </header>
+
+        <div class="revista-wrapper">
+            <!-- MENÚ DE NAVEGACIÓN SUPERIOR ESTILO OS PREMIUM -->
+            <div class="revista-header">
+                <span class="revista-pills">PÁGINA 11 · GUÍA TÉCNICA DE LA TAREA INTEGRADORA</span>
+                
+                <div class="revista-controles-top">
+                    <a href="prospeccion-p10.html" class="btn-nav-top">◀ Anterior</a>
+                    <a href="index.html" class="btn-nav-top btn-finalizar">🏁 Finalizar Módulo</a>
+                </div>
+            </div>
+
+            <!-- CUERPO DE LA ASIGNACIÓN ACADÉMICA -->
+            <div class="instrucciones-body">
+                <p class="intro-lead"><strong>Objetivo del Entregable:</strong> Diseñar y documentar la arquitectura operativa, digital y de negociación de tu firma inmobiliaria independiente, aplicando los modelos de comportamiento humano y las herramientas analíticas del Módulo 1 para garantizar operaciones eficientes, éticas y viables en tu mercado local.</p>
+
+                <!-- PASO 1 -->
+                <div class="paso-bloque">
+                    <div class="paso-header">
+                        <span class="paso-title">Paso 1: Arquitectura de Prospección y Captación Digital</span>
+                        <span class="paso-valor">Valor: 25%</span>
+                    </div>
+                    <p class="paso-txt">Documenta formalmente los cimientos tecnológicos y las fuentes de captación primaria para la infraestructura de tu empresa:</p>
+                    <ul>
+                        <li><strong>Matriz de Portales y CRM:</strong> Define minuciosamente qué CRM inmobiliario (ej. EasyBroker, Tokko, Nocnok) y qué portales líderes adoptarás. Justifica la selección analizando costos de suscripción y la capacidad de multidifusión automatizada para mitigar fugas de leads y optimizar el SLA de respuesta comercial (menor a 5 minutos).</li>
+                        <li><strong>Captación por Disparadores de Vida (Las 4 Ds):</strong> Diseña un protocolo operativo para identificar y prospectar propiedades que entren al mercado bajo los efectos de las 4 Ds (Divorcio, Deuda, Defunción o Desplazamiento). Detalla qué canales digitales o alianzas locales utilizarás para detectar estos activos a tiempo.</li>
+                    </ul>
+                </div>
+
+                <!-- PASO 2 -->
+                <div class="paso-bloque">
+                    <div class="paso-header">
+                        <span class="paso-title">Paso 2: Desactivación del Sesgo y Negociación de Precio</span>
+                        <span class="paso-valor">Valor: 25%</span>
+                    </div>
+                    <p class="paso-txt">Simula el uso de herramientas proptech para balancear las expectativas del dueño y defender el valor de salida con datos tangibles:</p>
+                    <ul>
+                        <li><strong>Extracción de Testigos:</strong> Consulta un portal inmobiliario real e identifica una colonia específica de tu ciudad. Extrae un mínimo de 5 propiedades testigos similares que se encuentren actualmente en promoción. Documenta sus precios de lista, m² de construcción construidos y calcula aritméticamente el precio promedio por metro cuadrado de la zona.</li>
+                        <li><strong>Speech de Desactivación del Efecto Dotación:</strong> Imagina que el dueño de tu inmueble captado sufre un marcado "Efecto Dotación" (Richard Thaler) y exige un 25% de sobreprecio por la carga emocional de sus recuerdos. Redacta el guion o speech textual exacto de negociación empática que utilizarás frente a él, apalancándote en los datos promedio por m² calculados para inyectar racionalidad.</li>
+                    </ul>
+                </div>
+
+                <!-- PASO 3 -->
+                <div class="paso-bloque">
+                    <div class="paso-header">
+                        <span class="paso-title">Paso 3: Protocolo Blindado de Perfilamiento Humano</span>
+                        <span class="paso-valor">Valor: 25%</span>
+                    </div>
+                    <p class="paso-txt">Diseña los filtros analíticos estrictos que aplicará tu inmobiliaria antes de agendar cualquier cita física, cuidando el recurso más valioso de tu firma: tu tiempo.</p>
+                    <ul>
+                        <li><strong>Auditoría de Equilibrio Financiero:</strong> Estructura el cuestionario de precalificación de tu firma. Explica paso a paso cómo auditarás la capacidad de pago mensual real del prospecto aplicando de forma integral la regla tradicional 3 a 1 o la flexible 2 a 1 (justificando ingresos comprobables, historial en Buró de Crédito y uso estratégico de subcuentas de vivienda de Infonavit/Fovissste).</li>
