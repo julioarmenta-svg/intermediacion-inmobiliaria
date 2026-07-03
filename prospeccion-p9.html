@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 1: Taller de Homologación - URN</title>
+    <title>Módulo 1: Caso de Estudio - URN</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f1f5f9; padding: 40px 20px; color: #334155; }
         .container { max-width: 1200px; margin: 0 auto; background-color: #ffffff; border-radius: 28px; padding: 40px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06); border: 1px solid #e2e8f0; }
         .nav-back { display: inline-block; text-decoration: none; color: #2563eb; font-size: 13px; font-weight: 800; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .nav-back:hover { color: #1d4ed8; }
         header { margin-bottom: 35px; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px; }
         .tag { font-size: 11px; font-weight: 800; color: #10b981; text-transform: uppercase; letter-spacing: 0.12em; }
         h1 { font-size: 32px; font-weight: 800; color: #0f172a; margin-top: 4px; letter-spacing: -0.02em; }
@@ -17,9 +18,10 @@
         .revista-pills { font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
         .revista-contador { font-size: 12px; font-weight: 800; color: #2563eb; background-color: #eff6ff; padding: 6px 14px; border-radius: 20px; border: 1px solid #dbeafe; }
         
-        .diapositiva-grid { display: flex; flex-direction: row; gap: 35px; align-items: stretch; }
+        /* ESTRUCTURA SPLIT TIPO DIAPOSITIVA PPT */
+        .diapositiva-grid { display: flex; flex-direction: row; gap: 35px; align-items: flex-start; }
         .col-texto { flex: 1.05; }
-        .col-visual-interactiva { flex: 0.95; background-color: #f8fafc; border: 1px solid #cbd5e1; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+        .col-visual-cuestionario { flex: 0.95; background-color: #fff7ed; border: 2px solid #fde68a; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); }
         
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 16px; }
@@ -28,18 +30,14 @@
         .ficha-tecnica { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; font-size: 13px; color: #334155; line-height: 1.6; }
         .ficha-title { font-weight: 800; color: #0f172a; border-bottom: 1px solid #cbd5e1; padding-bottom: 6px; margin-bottom: 10px; text-transform: uppercase; font-size: 11px; letter-spacing: 0.05em; }
         
-        .input-m2 { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; font-weight: bold; background-color: white; color: #0f172a; margin-bottom: 4px; }
-        .calc-btn { width: 100%; background-color: #ef4444; color: white; border: none; border-bottom: 4px solid #b91c1c; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: all 0.1s; }
-        .calc-btn:active { transform: translateY(2px); border-bottom: 2px solid #b91c1c; }
-        
-        .witness-summary { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; font-size: 12px; font-weight: 600; color: #475569; line-height: 1.4; }
-        
-        /* CUADRO DE DEBATE DINÁMICO ORANGE */
-        .argumento-box { display: none; padding: 18px; border-radius: 12px; font-size: 13.5px; font-weight: 700; line-height: 1.6; background-color: #fff7ed; border: 1px solid #ffedd5; color: #9a3412; margin-top: auto; }
+        /* BLOQUES DE PREGUNTAS ANALÍTICAS */
+        .panel-pregunta-item { background: #ffffff; border: 1px solid #fed7aa; border-radius: 10px; padding: 12px 16px; font-size: 13px; font-weight: 600; color: #1e293b; line-height: 1.5; box-shadow: 0 2px 4px rgba(0,0,0,0.01); }
+        .pregunta-num { color: #ea580c; font-weight: 900; margin-right: 4px; }
         
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
-        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; }
+        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; transition: all 0.1s ease; }
         .btn-nav:hover { background-color: #3b82f6; }
+        @media (max-width: 768px) { .diapositiva-grid { flex-direction: column; } }
     </style>
 </head>
 <body>
@@ -60,49 +58,57 @@
 
             <div class="diapositiva-grid">
                 
-                <!-- Columna Izquierda: Planteamiento Real del Escenario Inmobiliario -->
+                <!-- Columna Izquierda: Planteamiento Humano y Real del Caso -->
                 <div class="col-texto">
                     <h3 class="slide-titulo">Integración del Perfilamiento, las 4 Ds y los Datos Reales</h3>
-                    <p class="slide-txt">Este escenario de campo reúne absolutamente todo el conocimiento aprendido en el módulo, obligando al alumno a enfrentar un profundo dilema ético y financiero cruzando las expectativas humanas con la cruda realidad del mercado digital.</p>
+                    <p class="slide-txt">Este escenario de campo reúne absolutamente todo el conocimiento aprendido en el módulo, obligando al alumno a enfrentar un profundo dilema ético y financiero cruzando las expectativas humanas con la realidad del mercado digital.</p>
                     
                     <div class="case-box">
                         <strong>El Escenario de Campo Cruzado:</strong><br>
-                        • <strong>La Demanda (Jorge y Esposa):</strong> Pareja en sus treintas en evento de <strong>Desplazamiento</strong> (Guadalajara a Chihuahua). Tienen ingresos conjuntos de <strong>$60,000 MXN</strong>. Buscan una casa con presupuesto máximo de <strong>$5,000,000 MXN</strong> (el banco les pide aprox. $12k por millón). Al no conocer los precios de Chihuahua, la esposa siente que la zona es sumamente cara.<br>
-                        • <strong>La Oferta (El Vendedor):</strong> Un señor de la tercera edad (el viejito) promueve de forma independiente una casa en la zona. Está en buen estado general; con pintura, interiores y arreglos estéticos menores quedaría impecable.
+                        • <strong>La Demanda (Jorge y Esposa):</strong> Pareja en sus treintas en evento de <strong>Desplazamiento</strong> (Guadalajara a Chihuahua). Tienen ingresos conjuntos de <strong>$60,000 MXN</strong>. Buscan una casa con presupuesto máximo de <strong>$5,000,000 MXN</strong>. Al no conocer los precios de Chihuahua, la esposa siente que la zona es sumamente cara.<br>
+                        • <strong>La Oferta (El Vendedor):</strong> Un señor de la tercera edad (el viejito, tu cliente) promueve de forma independiente una casa en la zona. Está en buen estado general; con pintura, interiores y arreglos estéticos menores quedaría impecable.
                     </div>
 
                     <!-- Ficha Técnica Realista del Inmueble Oportunidad -->
                     <div class="ficha-tecnica">
                         <div class="ficha-title">📋 Ficha Técnica del Inmueble Encontrado</div>
-                        • <strong>Ubicación:</strong> Residencial Lomas del Valle, Chihuahua, Chih.<br>
-                        • <strong>Precio de Lista Ofrecido por el Dueño:</strong> $8,150,000 MXN<br>
+                        • <strong>Ubicación:</strong> Residencial Lomas del Valle, Chihuahua, Chih. (Promedio de zona en portales: $13.2M por 480.6 m²).<br>
+                        • <strong>Precio de Lista Ofrecido por el Viejito:</strong> $8,150,000 MXN<br>
                         • <strong>Superficie de Construcción Real:</strong> 500 m²<br>
                         • <strong>Distribución:</strong> 3 Recámaras, Estancia abierta, Amplio patio trasero con terraza.<br>
-                        • <strong>Estatus de Equipamiento:</strong> Cocina de encino con granito, carpintería fija, clima central. **No incluye muebles**.<br>
-                        • <strong>Diagnóstico Humano:</strong> Jorge y su esposa están enamorados de la casa, pero sufren el sesgo de querer **regatear** el precio, ignorando que la zona es de altísimo valor.
+                        • <strong>Estatus de Equipamiento:</strong> Cocina de encino con granito, carpintería fija, clima central. **No incluye muebles sueltos**.<br>
+                        • <strong>Diagnóstico Humano:</strong> Jorge y su esposa están enamorados de la casa, pero sufren el sesgo de querer **regatear** el precio, ignorando que es una ganga absoluta y que está muy por debajo de la media de la zona.
                     </div>
                 </div>
 
-                <!-- Columna Derecha: El Simulador de Auditoría Proptech y Debate Grupal -->
-                <div class="col-visual-interactiva">
-                    <p style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 4px;">🔧 API INMUEBLES24: ANÁLISIS DE HOMOLOGACIÓN REAL</p>
+                <!-- Columna Derecha: El Cuestionario de Análisis Directivo Desplegado -->
+                <div class="col-visual-cuestionario">
+                    <p style="font-size: 11px; font-weight: 800; color: #c2410c; text-transform: uppercase; border-bottom: 1px solid #fbd5c6; padding-bottom: 6px; margin-bottom: 4px;">🗣️ MESA REDONDA: EVALUACIÓN DE ESTRATEGIAS EN CLASE</p>
+                    <p style="font-size: 13px; font-weight: bold; color: #7c2d12; margin-bottom: 6px;">Analicen el entorno proptech y respondan de forma ética y directiva:</p>
                     
-                    <div class="witness-summary">
-                        📊 <strong>Promedio Matemático de las 5 Casas en Lomas del Valle:</strong><br>
-                        • Valor promedio de mercado: <strong>$13,210,000 MXN</strong><br>
-                        • Superficie promedio registrada: <strong>480.6 M² de construcción</strong><br>
-                        • Precio unitario medio de la zona: <strong>$27,486 MXN por M²</strong>
+                    <div class="panel-pregunta-item">
+                        <span class="pregunta-num">1.</span> ¿Qué recomendación profesional y patrimonial le darían a su cliente (el viejito) al detectar que su precio está un 38% por debajo de los portales?
                     </div>
 
-                    <div>
-                        <label style="font-size: 12px; font-weight: 700; color: #64748b; display: block; margin-bottom: 4px;">Confirma los M² de construcción del viejito para auditar:</label>
-                        <input type="number" id="metros-viejito" class="input-m2" value="500" min="50" max="1000">
+                    <div class="panel-pregunta-item">
+                        <span class="pregunta-num">2.</span> ¿Qué le mencionarían al prospecto (Jorge y esposa) para desactivar su sesgo de regateo y concientizarlos del valor real de la zona?
                     </div>
-                    
-                    <button class="calc-btn" onclick="ejecutarAuditoriaPatrimonial()">Auditar Cruce de Datos ➔</button>
 
-                    <!-- Caja Naranja de Detonación del Debate -->
-                    <div id="argumento-render" class="argumento-box"></div>
+                    <div class="panel-pregunta-item">
+                        <span class="pregunta-num">3.</span> ¿Cuáles son los atributos específicos a considerar en el perfilamiento (financiero y de crédito) que terminan descartando a este prospecto para esta propiedad?
+                    </div>
+
+                    <div class="panel-pregunta-item">
+                        <span class="pregunta-num">4.</span> Evaluando los disparadores de vida analizados (4 Ds), ¿por qué crees que el precio fijado por el vendedor esté tan alarmantemente bajo?
+                    </div>
+
+                    <div class="panel-pregunta-item">
+                        <span class="pregunta-num">5.</span> ¿Qué acciones comerciales inmediatas realizarías para reubicar a Jorge en su presupuesto de $5M y hacer un trabajo ético como asesor inmobiliario?
+                    </div>
+
+                    <div class="panel-pregunta-item">
+                        <span class="pregunta-num">6.</span> Al no existir un contrato de exclusiva firmado, ¿cómo blindarías tu comisión y los intereses patrimoniales de ambas partes en esta negociación?
+                    </div>
                 </div>
 
             </div>
@@ -113,20 +119,5 @@
             <a href="prospeccion-p10.html" class="btn-nav">Siguiente ▶</a>
         </div>
     </div>
-
-    <script>
-        function ejecutarAuditoriaPatrimonial() {
-            var metrosInput = document.getElementById('metros-viejito').value;
-            var metros = parseFloat(metrosInput);
-            var box = document.getElementById('argumento-render');
-            
-            if (isNaN(metros) || metros <= 0) {
-                alert("Introduce metros válidos.");
-                return;
-            }
-
-            // $27,486 pesos por m2 es el promedio real de los 5 testigos de Inmuebles24
-            var precioMetroPromedio = 27486.47;
-            var valorRealMercado = metros * precioMetroPromedio;
-            
-            box.style.display = "block";
+</body>
+</html>
