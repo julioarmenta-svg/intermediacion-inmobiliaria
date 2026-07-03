@@ -79,15 +79,12 @@
             border: 1px solid #dbeafe;
         }
 
-        /* ESTRUCTURA SPLIT DIAPOSITIVA PREMIUM 4:3 */
+        /* ESTRUCTURA SPLIT INVERTIDA (Imagen Izquierda, Texto Derecha) */
         .diapositiva-grid {
             display: flex;
             flex-direction: row;
             gap: 35px;
             align-items: center;
-        }
-        .col-texto {
-            flex: 1.1;
         }
         .col-visual {
             flex: 0.9;
@@ -101,6 +98,9 @@
             overflow: hidden;
             aspect-ratio: 4 / 3;
             width: 100%;
+        }
+        .col-texto {
+            flex: 1.1;
         }
         
         .img-fixed {
@@ -142,7 +142,7 @@
         .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
 
         @media (max-width: 768px) {
-            .diapositiva-grid { flex-direction: column; }
+            .diapositiva-grid { flex-direction: column-reverse; }
         }
     </style>
 </head>
@@ -151,7 +151,6 @@
     <div class="container">
         <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
-        <!-- Encabezado Estandarizado Fijo para Cuidar el Font -->
         <header>
             <span class="tag">Módulo 01 · Presentación de Contenidos</span>
             <h1>Introducción a la Intermediación Inmobiliaria</h1>
@@ -163,32 +162,31 @@
                 <span class="revista-contador">Pág. 6 de 10</span>
             </div>
 
-            <!-- ESTRUCTURA SLIDE PPT -->
+            <!-- ESTRUCTURA INVERTIDA -->
             <div class="diapositiva-grid">
                 
-                <!-- Columna Izquierda: Contenido Técnico -->
+                <!-- Columna Izquierda: Imagen Fija Vinculada -->
+                <div class="col-visual">
+                    <img src="imagenes/imagen6.png" class="img-fixed" alt="Las 4 Ds de la Prospección Inmobiliaria">
+                </div>
+
+                <!-- Columna Derecha: Contenido Técnico Corregido -->
                 <div class="col-texto">
                     <h3 class="slide-titulo">Identificación de Clientes por Eventos de Vida</h3>
                     <p class="slide-txt">Los líderes en el servicio de intermediación inmobiliaria no buscan propiedades al azar recorriendo calles de forma empírica. Basado en las métricas de mayor efectividad de la industria, la captación profesional se enfoca en detectar **eventos disparadores de vida** que obligan legal o financieramente a un inmueble a cambiar de manos. Estos se conocen como las **4 Ds de la Prospección**:</p>
                     
                     <div class="highlight-box">
-                        • <strong>Divorcio:</strong> Liquidación forzosa de la sociedad conyugal donde ambas partes requieren liquidez inmediata para rehacer sus vidas por separado.<br><br>
-                        • <strong>Deuda:</strong> Urgencia financiera o reestructuración patrimonial para mitigar pérdidas antes de caer en un proceso de remate bancario.<br><br>
-                        • <strong>Defunción:</strong> Procesos sucesorios o herencias donde los beneficiarios prefieren vender el activo y repartir el capital equitativamente en lugar de mantener el inmueble.<br><br>
-                        • <strong>Desplazamiento (Nearshoring):</strong> Migración ejecutiva, laboral o de negocios que genera una necesidad inmediata de vender en la ciudad de origen o captar en la zona de destino.
+                        • <strong>Divorcio:</strong> Liquidación de la sociedad conyugal donde ambas partes requieren liquidez para resolver su situación patrimonial por separado.<br><br>
+                        • <strong>Deuda:</strong> Urgencia financiera o reestructuración patrimonial necesaria para mitigar pérdidas antes de caer en un proceso de remate judicial.<br><br>
+                        • <strong>Defunción:</strong> Procesos sucesorios o herencias donde los beneficiarios prefieren vender el activo y repartir el capital equitativamente en lugar de mantener la copropiedad.<br><br>
+                        • <strong>Desplazamiento:</strong> Cambios impulsados por planes de vida independientes, el deseo de emancipación o el crecimiento familiar que exigen de forma natural reubicarse en un nuevo espacio propio.
                     </div>
-                </div>
-
-                <!-- Columna Derecha: Imagen Fija Vinculada -->
-                <div class="col-visual">
-                    <img src="imagenes/imagen6.png" class="img-fixed" alt="Las 4 Ds de la Prospección Inmobiliaria">
                 </div>
 
             </div>
         </div>
 
         <div class="revista-controles">
-            <!-- Regresa de forma limpia al simulador interactivo de la hoja 5 -->
             <a href="prospeccion-p5.html" class="btn-nav">◀ Anterior</a>
             <!-- Apunta de forma fija a la página 7 -->
             <a href="prospeccion-p7.html" class="btn-nav">Siguiente ▶</a>
