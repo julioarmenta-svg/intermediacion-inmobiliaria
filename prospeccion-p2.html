@@ -79,18 +79,18 @@
             border: 1px solid #dbeafe;
         }
 
-        /* ESTRUCTURA SPLIT TIPO DIAPOSITIVA PPT FIXED */
+        /* AJUSTE DE PROPORCIÓN PARA DIAPOSITIVA PREMIUM 4:3 */
         .diapositiva-grid {
             display: flex;
             flex-direction: row;
             gap: 35px;
-            align-items: stretch;
+            align-items: center;
         }
         .col-texto {
-            flex: 1.2;
+            flex: 1.1;
         }
         .col-visual {
-            flex: 0.8;
+            flex: 0.9;
             background-color: #f8fafc;
             border: 1px solid #cbd5e1;
             border-radius: 16px;
@@ -99,22 +99,20 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            min-height: 280px;
+            aspect-ratio: 4 / 3; /* Fuerza la proporción exacta de PowerPoint estándar */
+            width: 100%;
         }
         
         .img-fixed {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
+            object-fit: contain;
+            background-color: #ffffff;
         }
 
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
         
-        /* Tabla de Alineación Corregida */
         .tech-table {
             width: 100%;
             border-collapse: collapse;
@@ -144,7 +142,6 @@
 
         @media (max-width: 768px) {
             .diapositiva-grid { flex-direction: column; }
-            .col-visual { min-height: 250px; }
         }
     </style>
 </head>
@@ -153,7 +150,7 @@
     <div class="container">
         <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
-        <!-- Encabezado Estandarizado Exactamente igual a la Pagina 1 para cuidar el Font -->
+        <!-- Encabezado Estandarizado Fijo para Cuidar el Font -->
         <header>
             <span class="tag">Módulo 01 · Presentación de Contenidos</span>
             <h1>Introducción a la Intermediación Inmobiliaria</h1>
@@ -165,10 +162,9 @@
                 <span class="revista-contador">Pág. 2 de 10</span>
             </div>
 
-            <!-- ESTRUCTURA SLIDE PPT -->
+            <!-- ESTRUCTURA SLIDE PPT CON TAMAÑO ACTUALIZADO -->
             <div class="diapositiva-grid">
                 
-                <!-- Columna Izquierda: Teoría Modificada por el Usuario -->
                 <div class="col-texto">
                     <h3 class="slide-titulo">El Sesgo Operativo en la Fijación de Precios</h3>
                     <p class="slide-txt">Uno de los mayores dolores de cabeza en la calle es la distorsión del valor real. El economista Gary Keller documenta el <strong>"Efecto Dotación"</strong>: los propietarios le asignan un sobreprecio emocional a su inmueble basándose en sus lazos sentimentales o en la cantidad de dinero que necesitan para saldar deudas personales.</p>
@@ -185,7 +181,7 @@
                             <tr>
                                 <td style="color: #ef4444; font-weight: 600;">Fijar el precio de salida un +15% o +20% por encima del valor de mercado.</td>
                                 <td>La propiedad se vuelve "invisible" en portales y se quema rápidamente ante los compradores calificados.</td>
-                                <td style="color: #10b981; font-weight: 600;">Estructura un análisis frío basado en closures reales de notaría, eliminando el sentimiento.</td>
+                                <td style="color: #10b981; font-weight: 600;">Estructura un análisis frío basado en cierres reales de notaría, eliminando el sentimiento.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -193,8 +189,8 @@
                     <p class="slide-txt">El consultor patrimonial inyecta racionalidad al mercado. A diferencia del asesor novato que acepta la propiedad sobrevaluada con tal de "captar algo"; un consultor patrimonial audita el entorno y defiende el precio real para proteger el tiempo de comercialización.</p>
                 </div>
 
-                <!-- Columna Derecha: Imagen Vinculada del Servidor -->
                 <div class="col-visual">
+                    <!-- Jala la nueva imagen cuadrada fija desde tu servidor -->
                     <img src="imagenes/imagen2.png" class="img-fixed" alt="Diagrama de Roles e Impacto de Mercado">
                 </div>
 
@@ -203,7 +199,6 @@
 
         <div class="revista-controles">
             <a href="prospeccion.html" class="btn-nav">◀ Anterior</a>
-            <!-- Apunta de forma fija a la pagina 3 -->
             <a href="prospeccion-p3.html" class="btn-nav">Siguiente ▶</a>
         </div>
 
