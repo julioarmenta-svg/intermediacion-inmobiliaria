@@ -6,176 +6,46 @@
     <title>Módulo 1: Herramientas Digitales - URN</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            background-color: #f1f5f9; 
-            padding: 40px 20px;
-            color: #334155;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            border-radius: 28px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
-            border: 1px solid #e2e8f0;
-        }
-        .nav-back {
-            display: inline-block;
-            text-decoration: none;
-            color: #2563eb;
-            font-size: 13px;
-            font-weight: 800;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f1f5f9; padding: 40px 20px; color: #334155; }
+        .container { max-width: 1200px; margin: 0 auto; background-color: #ffffff; border-radius: 28px; padding: 40px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06); border: 1px solid #e2e8f0; }
+        .nav-back { display: inline-block; text-decoration: none; color: #2563eb; font-size: 13px; font-weight: 800; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 0.05em; }
         .nav-back:hover { color: #1d4ed8; }
-        header {
-            margin-bottom: 35px;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 20px;
-        }
-        .tag {
-            font-size: 11px;
-            font-weight: 800;
-            color: #10b981;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-        }
-        h1 {
-            font-size: 32px;
-            font-weight: 800;
-            color: #0f172a;
-            margin-top: 4px;
-            letter-spacing: -0.02em;
-        }
-        .revista-wrapper {
-            background-color: #ffffff;
-            border: 3px solid #cbd5e1;
-            border-radius: 24px;
-            padding: 40px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
-            min-height: 460px;
-        }
-        .revista-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 16px;
-            margin-bottom: 24px;
-        }
+        header { margin-bottom: 35px; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px; }
+        .tag { font-size: 11px; font-weight: 800; color: #10b981; text-transform: uppercase; letter-spacing: 0.12em; }
+        h1 { font-size: 32px; font-weight: 800; color: #0f172a; margin-top: 4px; letter-spacing: -0.02em; }
+        .revista-wrapper { background-color: #ffffff; border: 3px solid #cbd5e1; border-radius: 24px; padding: 40px; margin-bottom: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.02); min-height: 460px; }
+        .revista-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 16px; margin-bottom: 24px; }
         .revista-pills { font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
-        .revista-contador {
-            font-size: 12px;
-            font-weight: 800;
-            color: #2563eb;
-            background-color: #eff6ff;
-            padding: 6px 14px;
-            border-radius: 20px;
-            border: 1px solid #dbeafe;
-        }
-
-        /* ESTRUCTURA SPLIT DIAPOSITIVA PREMIUM 4:3 */
-        .diapositiva-grid {
-            display: flex;
-            flex-direction: row;
-            gap: 35px;
-            align-items: center;
-        }
-        .col-texto {
-            flex: 1.1;
-        }
+        .revista-contador { font-size: 12px; font-weight: 800; color: #2563eb; background-color: #eff6ff; padding: 6px 14px; border-radius: 20px; border: 1px solid #dbeafe; }
         
-        /* Contenedor Visual con links interactivos */
-        .col-visual {
-            flex: 0.9;
-            background-color: #f8fafc;
-            border: 1px solid #cbd5e1;
-            border-radius: 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 4 / 3;
-            width: 100%;
-            padding: 20px;
-        }
+        /* ESTRUCTURA SPLIT CON PORTAL INTERACTIVO */
+        .diapositiva-grid { display: flex; flex-direction: row; gap: 35px; align-items: stretch; }
+        .col-visual { flex: 0.95; background-color: #f8fafc; border: 2px solid #cbd5e1; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 12px; justify-content: flex-start; }
+        .col-texto { flex: 1.05; }
         
-        .img-fixed {
-            width: 100%;
-            height: 75%;
-            object-fit: contain;
-            background-color: #ffffff;
-            margin-bottom: 15px;
-        }
-
-        /* Botones con enlaces reales a las plataformas */
-        .crm-links-grid {
-            display: flex;
-            gap: 8px;
-            width: 100%;
-            justify-content: center;
-            z-index: 10;
-        }
-        .crm-btn {
-            background-color: #ffffff;
-            border: 1px solid #cbd5e1;
-            color: #475569;
-            text-decoration: none;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 6px 12px;
-            border-radius: 8px;
-            transition: all 0.1s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-        .crm-btn:hover {
-            background-color: #eff6ff;
-            border-color: #2563eb;
-            color: #2563eb;
-            transform: translateY(-1px);
-        }
+        /* Estilos del Formulario Demo Portal */
+        .portal-titulo { font-size: 13px; font-weight: 800; color: #1e293b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 4px; }
+        .form-select { width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 12px; background-color: white; color: #334155; }
+        .portal-btn { width: 100%; background-color: #ef4444; color: white; border: none; border-bottom: 4px solid #b91c1c; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: all 0.1s; }
+        .portal-btn:active { transform: translateY(2px); border-bottom: 2px solid #b91c1c; }
+        
+        /* Contenedor de Resultados del Portal */
+        .resultados-list { flex-grow: 1; min-height: 120px; display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+        .propiedad-card { background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px; display: flex; gap: 12px; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02); animation: fadeIn 0.3s ease-out; }
+        .prop-foto { width: 60px; height: 60px; background-color: #eff6ff; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 24px; border: 1px solid #bfdbfe; }
+        .prop-info h5 { font-size: 13px; font-weight: 800; color: #0f172a; }
+        .prop-info p { font-size: 11px; color: #64748b; margin-top: 2px; }
+        .prop-precio { font-size: 13px; font-weight: 800; color: #10b981; margin-left: auto; }
 
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
-        
-        .highlight-box {
-            background-color: #f8fafc;
-            border-left: 5px solid #10b981;
-            padding: 16px;
-            border-radius: 4px;
-            font-size: 13.5px;
-            color: #1e293b;
-            line-height: 1.5;
-        }
-
+        .highlight-box { background-color: #f8fafc; border-left: 5px solid #10b981; padding: 16px; border-radius: 4px; font-size: 13.5px; color: #1e293b; line-height: 1.5; }
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
-        .btn-nav {
-            flex: 1;
-            display: block;
-            text-decoration: none;
-            background-color: #2563eb;
-            border-bottom: 5px solid #1d4ed8;
-            padding: 18px;
-            border-radius: 14px;
-            font-size: 16px;
-            font-weight: 800;
-            color: #ffffff;
-            text-align: center;
-            transition: all 0.1s ease;
-        }
+        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; transition: all 0.1s ease; }
         .btn-nav:hover { background-color: #3b82f6; }
-        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
-
-        @media (max-width: 768px) {
-            .diapositiva-grid { flex-direction: column; }
-        }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { .diapositiva-grid { flex-direction: column-reverse; } }
     </style>
 </head>
 <body>
@@ -194,16 +64,36 @@
                 <span class="revista-contador">Pág. 7 de 10</span>
             </div>
 
-            <!-- ESTRUCTURA SLIDE PPT -->
             <div class="diapositiva-grid">
                 
-                <!-- Columna Izquierda: Contenido Técnico -->
+                <!-- Columna Izquierda: DEMO BUSCADOR INTERACTIVO -->
+                <div class="col-visual">
+                    <h4 class="portal-titulo">🔍 DEMO: RECONOCIMIENTO DE PROPIEDADES</h4>
+                    
+                    <div style="display: grid; grid-template-cols: 1fr; gap: 8px; width: 100%;">
+                        <select id="select-ciudad" class="form-select">
+                            <option value="chihuahua">Chihuahua, Chih.</option>
+                            <option value="juarez">Cd. Juárez, Chih.</option>
+                        </select>
+                        <select id="select-recamaras" class="form-select">
+                            <option value="2">2 Recámaras</option>
+                            <option value="3">3 Recámaras o más</option>
+                        </select>
+                    </div>
+                    
+                    <button class="portal-btn" onclick="simularBusqueda()">Buscar Propiedades ➔</button>
+                    
+                    <!-- Zona donde se pintan las casas encontradas -->
+                    <div id="resultados-portal" class="resultados-list">
+                        <p style="font-size: 12px; color: #94a3b8; text-align: center; font-style: italic;">Selecciona los filtros superiores para simular el rastreo en portales...</p>
+                    </div>
+                </div>
+                
+                <!-- Columna Derecha: Contenido Técnico Completo -->
                 <div class="col-texto">
                     <h3 class="slide-titulo">La Automatización del Embudo de Captación</h3>
                     <p class="slide-txt">Para que un asesor inmobiliario independiente compita al más alto nivel, no puede depender de libretas o formatos en papel. La prospección moderna requiere una **infraestructura digital centralizada** que administre el inventario, automatice la difusión en portales y mida la velocidad de respuesta (SLA).</p>
-                    
                     <p class="slide-txt">El motor de esta operación es el **CRM Inmobiliario** (Customer Relationship Management). Esta herramienta permite cruzar las demandas de compradores calificados (como la pareja bajo análisis logístico) con las propiedades captadas a precio correcto, reduciendo radicalmente los días en el mercado.</p>
-                    
                     <div class="highlight-box">
                         <strong>Métricas Críticas de Prospección Digital:</strong><br>
                         • <strong>Tiempo de Respuesta (SLA):</strong> Contactar a un lead digital en los primeros 5 minutos incrementa la probabilidad de conversión un 1,000%.<br>
@@ -212,30 +102,32 @@
                     </div>
                 </div>
 
-                <!-- Columna Derecha: Imagen del CRM con Enlaces Reales -->
-                <div class="col-visual">
-                    <!-- Cuando subas tu collage o logo, se proyectará aquí -->
-                    <img src="imagenes/imagen7.png" class="img-fixed" alt="Logos de CRMs Inmobiliarios Famosos">
-                    
-                    <!-- Menú de Enlaces Vivos debajo de la imagen -->
-                    <div class="crm-links-grid">
-                        <a href="https://inmuebles24.com" target="_blank" class="crm-btn">🌐 Inmuebles24 ➔</a>
-                        <a href="https://easybroker.com" target="_blank" class="crm-btn">🌐 EasyBroker ➔</a>
-                        <a href="https://tokkobroker.mx" target="_blank" class="crm-btn">🌐 Tokko Broker ➔</a>
-                    </div>
-                </div>
-
             </div>
         </div>
 
         <div class="revista-controles">
-            <!-- Regresa de forma limpia a la calculadora interactiva -->
-            <a href="prospeccion-p5.html" class="btn-nav">◀ Anterior</a>
-            <!-- Apunta de forma física a la página 8 del expediente de captación -->
+            <a href="prospeccion-p6.html" class="btn-nav">◀ Anterior</a>
             <a href="prospeccion-p8.html" class="btn-nav">Siguiente ▶</a>
         </div>
-
     </div>
 
-</body>
-</html>
+    <script>
+        function simularBusqueda() {
+            var ciudad = document.getElementById('select-ciudad').value;
+            var recamaras = document.getElementById('select-recamaras').value;
+            var contenedor = document.getElementById('resultados-portal');
+            
+            // Animación de carga rápida simulada
+            contenedor.innerHTML = '<p style="font-size:12px; color:#2563eb; text-align:center; font-weight:bold;">🔍 Rastreando en Inmuebles24, EasyBroker y portales locales...</p>';
+            
+            setTimeout(function() {
+                if(ciudad === 'chihuahua' && recamaras === '2') {
+                    contenedor.innerHTML = `
+                        <div class="propiedad-card">
+                            <div class="prop-foto">🏡</div>
+                            <div class="prop-info"><h5>Casa en San Felipe</h5><p>2 Rec · 2 Baños · Zona Escolar</p></div>
+                            <div class="prop-precio">$2.4M</div>
+                        </div>`;
+                } else if(ciudad === 'chihuahua' && recamaras === '3') {
+                    contenedor.innerHTML = `
+                        <div class="propiedad-card">
