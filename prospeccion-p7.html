@@ -60,7 +60,7 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.02);
         }
         
-        /* CABECERA DE LA REVISTA CON BOTONES INTEGRADOS (IMPOSIBLE DE OCULTAR) */
+        /* CABECERA CON BOTONES SUPERIORES QUE TE GUSTARON */
         .revista-header {
             display: flex;
             justify-content: space-between;
@@ -87,7 +87,6 @@
             border: 1px solid #dbeafe;
         }
         
-        /* BOTONES SUPERIORES ESTILIZADOS */
         .btn-nav-top {
             background-color: #2563eb;
             border: none;
@@ -103,16 +102,18 @@
         .btn-nav-top:hover { background-color: #3b82f6; }
         .btn-nav-top:active { transform: translateY(2px); border-bottom: 1px solid #1d4ed8; }
 
-        /* ESTRUCTURA SPLIT DIAPOSITIVA PREMIUM 4:3 */
+        /* DIAPOSITIVA GRID PREMIUM 4:3 */
         .diapositiva-grid {
             display: flex;
             flex-direction: row;
             gap: 35px;
-            align-items: flex-start;
+            align-items: stretch; /* Estiramos para que la tabla use toda la altura necesaria */
         }
         .col-texto {
             flex: 1.1;
         }
+        
+        /* Contenedor corregido para que no ahorque las filas */
         .col-visual {
             flex: 0.9;
             background-color: #f8fafc;
@@ -120,27 +121,30 @@
             border-radius: 16px;
             padding: 24px;
             width: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
-        /* TABLA DEL ECOSISTEMA TOTALMENTE COMPLETA */
+        /* Estilos de tabla expandidos y libres */
         .tech-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 13px;
             background: #ffffff;
+            margin-top: 10px;
         }
-        .tech-table th { background: #f1f5f9; padding: 10px; text-align: left; font-weight: 800; color: #1e293b; border: 1px solid #cbd5e1; text-transform: uppercase; font-size: 11px; }
-        .tech-table td { padding: 8px; border: 1px solid #e2e8f0; color: #475569; vertical-align: middle; }
+        .tech-table th { background: #f1f5f9; padding: 12px; text-align: left; font-weight: 800; color: #1e293b; border: 1px solid #cbd5e1; text-transform: uppercase; font-size: 11px; }
+        .tech-table td { padding: 10px; border: 1px solid #e2e8f0; color: #475569; vertical-align: middle; }
         
         .crm-btn {
-            display: inline-block;
+            display: block;
             background-color: #f8fafc;
             border: 1px solid #cbd5e1;
             color: #475569;
             text-decoration: none;
             font-size: 11px;
             font-weight: 700;
-            padding: 6px 8px;
+            padding: 8px;
             border-radius: 6px;
             transition: all 0.1s ease;
             width: 100%;
@@ -152,7 +156,6 @@
             color: #2563eb;
         }
 
-        /* BOTÓN DE ACCESO AL BUSCADOR */
         .btn-launch-portal {
             display: block;
             text-decoration: none;
@@ -191,7 +194,6 @@
         </header>
 
         <div class="revista-wrapper">
-            <!-- CABECERA CONTROLADORA REFORZADA -->
             <div class="revista-header">
                 <span class="revista-pills">PÁGINA 7 · INFRAESTRUCTURA Y HERRAMIENTAS DIGITALES</span>
                 
@@ -204,7 +206,6 @@
 
             <div class="diapositiva-grid">
                 
-                <!-- Columna Izquierda: Contenido Técnico -->
                 <div class="col-texto">
                     <h3 class="slide-titulo">La Automatización del Embudo de Captación</h3>
                     <p class="slide-txt">Para que un asesor inmobiliario independiente compita al más alto nivel, no puede depender de libretas o formatos en papel. La prospección moderna requiere una **infraestructura digital centralizada** que administre el inventario, automatice la difusión en portales y mida la velocidad de respuesta (SLA).</p>
@@ -220,9 +221,9 @@
                     <a href="prospeccion-p8.html" class="btn-launch-portal">🔍 Lanzar Simulador de Reconocimiento Local ➔</a>
                 </div>
 
-                <!-- Columna Derecha: Tabla Completa Recuperada -->
+                <!-- COLUMNA VISUAL LIBERADA CON LA TABLA COMPLETA DE 8 MARCAS -->
                 <div class="col-visual">
-                    <p style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px;">📋 Ecosistema Inmobiliario Digital en México</p>
+                    <p style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px;">📋 Ecosistema Inmobiliario Digital en México</p>
                     <table class="tech-table">
                         <thead>
                             <tr>
