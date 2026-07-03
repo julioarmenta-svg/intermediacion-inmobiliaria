@@ -79,18 +79,18 @@
             border: 1px solid #dbeafe;
         }
 
-        /* ESTRUCTURA SPLIT TIPO DIAPOSITIVA PPT FIXED */
+        /* AJUSTE DE PROPORCIÓN PARA DIAPOSITIVA PREMIUM 4:3 */
         .diapositiva-grid {
             display: flex;
             flex-direction: row;
             gap: 35px;
-            align-items: stretch;
+            align-items: center;
         }
         .col-texto {
-            flex: 1.2;
+            flex: 1.1;
         }
         .col-visual {
-            flex: 0.8;
+            flex: 0.9;
             background-color: #f8fafc;
             border: 1px solid #cbd5e1;
             border-radius: 16px;
@@ -99,22 +99,20 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            min-height: 280px;
+            aspect-ratio: 4 / 3; /* Fuerza la proporción exacta de PowerPoint estándar */
+            width: 100%;
         }
         
         .img-fixed {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
+            object-fit: contain;
+            background-color: #ffffff;
         }
 
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
         
-        /* Tabla Matriz 3D */
         .tech-table {
             width: 100%;
             border-collapse: collapse;
@@ -144,7 +142,6 @@
 
         @media (max-width: 768px) {
             .diapositiva-grid { flex-direction: column; }
-            .col-visual { min-height: 250px; }
         }
     </style>
 </head>
@@ -165,10 +162,9 @@
                 <span class="revista-contador">Pág. 3 de 10</span>
             </div>
 
-            <!-- ESTRUCTURA SLIDE PPT -->
+            <!-- ESTRUCTURA SLIDE PPT CON TAMAÑO ACTUALIZADO -->
             <div class="diapositiva-grid">
                 
-                <!-- Columna Izquierda: Contenido Técnico Corregido -->
                 <div class="col-texto">
                     <h3 class="slide-titulo">Matriz Operativa del Consultor Patrimonial</h3>
                     <p class="slide-txt">Inspirado en la metodología <em>Ninja Selling</em> de Larry Kendall, un bróker con perfil estratégico no coordina visitas físicas al azar. Su verdadera propuesta de valor radica en ejercer un control simultáneo y blindar la transacción familiar bajo tres frentes obligatorios:</p>
@@ -193,8 +189,8 @@
                     <p class="slide-txt">Dominar esta matriz operativa es lo que separa a un comisionista empírico de un auténtico consultor patrimonial y líder estratégico. Si descuidas cualquiera de estas tres dimensiones, la operación corre el riesgo latente de caerse en la mesa de control de riesgos o en el cierre definitivo ante el notario.</p>
                 </div>
 
-                <!-- Columna Derecha: Imagen Vinculada del Servidor -->
                 <div class="col-visual">
+                    <!-- Jala la tercera imagen en proporción 4:3 -->
                     <img src="imagenes/imagen3.png" class="img-fixed" alt="Matriz del Asesor en 3 Dimensiones">
                 </div>
 
@@ -203,7 +199,7 @@
 
         <div class="revista-controles">
             <a href="prospeccion-p2.html" class="btn-nav">◀ Anterior</a>
-            <!-- Siguiente apunta de forma fija a la página 4 -->
+            <!-- Lanza el flujo directo hacia el archivo de la página 4 física -->
             <a href="prospeccion-p4.html" class="btn-nav">Siguiente ▶</a>
         </div>
 
