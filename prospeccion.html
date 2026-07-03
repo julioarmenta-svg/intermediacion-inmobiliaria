@@ -79,7 +79,7 @@
             border: 1px solid #dbeafe;
         }
 
-        /* ESTRUCTURA SPLIT TIPO DIAPOSITIVA PPT (Texto e Imagen separados) */
+        /* ESTRUCTURA SPLIT TIPO DIAPOSITIVA PPT FIXED */
         .diapositiva-grid {
             display: flex;
             flex-direction: row;
@@ -92,27 +92,24 @@
         .col-visual {
             flex: 0.8;
             background-color: #f8fafc;
-            border: 2px dashed #cbd5e1;
+            border: 1px solid #cbd5e1;
             border-radius: 16px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
             position: relative;
             overflow: hidden;
             min-height: 280px;
         }
         
-        /* Previsualizador de la imagen subida */
-        .img-preview {
+        /* Imagen Fija del Servidor */
+        .img-fixed {
             width: 100%;
             height: 100%;
             object-fit: cover;
             position: absolute;
             top: 0;
             left: 0;
-            display: none;
         }
 
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
@@ -126,27 +123,6 @@
             font-size: 13.5px;
             color: #1e293b;
             line-height: 1.5;
-        }
-        
-        /* Controles de carga multimedia */
-        .upload-trigger {
-            background-color: #eff6ff;
-            color: #2563eb;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 8px 14px;
-            border: 1px solid #bfdbfe;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 10px;
-            z-index: 10;
-        }
-        .upload-trigger:hover { background-color: #dbeafe; }
-        .icon-placeholder {
-            font-size: 32px;
-            margin-bottom: 8px;
-            color: #94a3b8;
-            z-index: 10;
         }
 
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
@@ -170,7 +146,7 @@
 
         @media (max-width: 768px) {
             .diapositiva-grid { flex-direction: column; }
-            .col-visual { min-height: 200px; }
+            .col-visual { min-height: 250px; }
         }
     </style>
 </head>
@@ -186,14 +162,14 @@
 
         <div class="revista-wrapper">
             <div class="revista-header">
-                <span class="revista-pills">PÁGINA 1 · CONCEPTOS BÁSICOS Y DEFINICIÓN</span>
+                <span class="revista-pills">PÁGINA 1 · CONCEPTOS BÁSICOS AND DEFINICIÓN</span>
                 <span class="revista-contador">Pág. 1 de 10</span>
             </div>
 
-            <!-- ESTRUCTURA TIPO SLIDE PPT INTERACTIVO -->
+            <!-- ESTRUCTURA SLIDE PPT CON IMAGEN FIJA -->
             <div class="diapositiva-grid">
                 
-                <!-- Columna Izquierda: Texto de Alta Densidad -->
+                <!-- Columna Izquierda: Contenido Técnico -->
                 <div class="col-texto">
                     <h3 class="slide-titulo">Redefiniendo la Intermediación Inmobiliaria</h3>
                     <p class="slide-txt">El corretaje tradicional se limita a unir la oferta y la demanda a cambio de una comisión. En un entorno directivo y de posgrado, la intermediación se redefine como la dirección de un proyecto patrimonial estratégico que elimina las fricciones del mercado mexicano: altos costos de escrituración, falta de liquidez del activo y riesgos fiscales latentes.</p>
@@ -202,13 +178,10 @@
                     </div>
                 </div>
 
-                <!-- Columna Derecha: El Contenedor Visual de la Diapositiva -->
-                <div class="col-visual" id="dropzone">
-                    <img id="visual-render" class="img-preview" alt="Sustento gráfico de la clase">
-                    <div class="icon-placeholder" id="icon-media">📊</div>
-                    <p style="font-size: 12px; color: #64748b; font-weight: 500; text-align: center; max-width: 180px; z-index: 10;" id="txt-media">Sube un esquema o imagen para esta diapositiva</p>
-                    <label for="slide-upload" class="upload-trigger">Cargar Imagen</label>
-                    <input type="file" id="slide-upload" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                <!-- Columna Derecha: Imagen Vinculada del Servidor -->
+                <div class="col-visual">
+                    <!-- Cuando subas tu archivo a la carpeta, el navegador lo jalará automáticamente de aquí -->
+                    <img src="imagenes/imagen1.png" class="img-fixed" alt="Gráfica de Asimetría de Información - Módulo 1">
                 </div>
 
             </div>
@@ -216,26 +189,11 @@
 
         <div class="revista-controles">
             <a href="#" class="btn-nav btn-disabled">◀ Anterior</a>
+            <!-- Botón de siguiente listo para la página 2 física -->
             <a href="prospeccion-p2.html" class="btn-nav">Siguiente ▶</a>
         </div>
 
     </div>
 
-    <script>
-        // Función nativa para renderizar la imagen cargada dentro de la filmina en tiempo real
-        function previewImage(event) {
-            const reader = new FileReader();
-            reader.onload = function() {
-                const output = document.getElementById('visual-render');
-                output.src = reader.result;
-                output.style.display = 'block';
-                
-                // Ocultamos los textos informativos tras cargar la imagen
-                document.getElementById('icon-media').style.display = 'none';
-                document.getElementById('txt-media').style.display = 'none';
-            }
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
 </body>
 </html>
