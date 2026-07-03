@@ -6,80 +6,83 @@
     <title>Módulo 1: Perfilamiento Humano - URN</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f1f5f9; padding: 40px 20px; color: #334155; }
-        .container { max-width: 1200px; margin: 0 auto; background-color: #ffffff; border-radius: 28px; padding: 40px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06); border: 1px solid #e2e8f0; }
-        .nav-back { display: inline-block; text-decoration: none; color: #2563eb; font-size: 13px; font-weight: 800; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 0.05em; }
+        body { font-family: sans-serif; background-color: #f1f5f9; padding: 40px 20px; color: #334155; }
+        .container { max-width: 1200px; margin: 0 auto; background-color: #ffffff; border-radius: 28px; padding: 40px; border: 1px solid #e2e8f0; }
         header { margin-bottom: 35px; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px; }
-        .tag { font-size: 11px; font-weight: 800; color: #10b981; text-transform: uppercase; letter-spacing: 0.12em; }
-        h1 { font-size: 32px; font-weight: 800; color: #0f172a; margin-top: 4px; letter-spacing: -0.02em; }
-        .revista-wrapper { background-color: #ffffff; border: 3px solid #cbd5e1; border-radius: 24px; padding: 40px; margin-bottom: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.02); min-height: 480px; }
-        .revista-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 16px; margin-bottom: 24px; }
-        .revista-pills { font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
-        .revista-contador { font-size: 12px; font-weight: 800; color: #2563eb; background-color: #eff6ff; padding: 6px 14px; border-radius: 20px; border: 1px solid #dbeafe; }
-        .diapositiva-grid { display: flex; flex-direction: row; gap: 35px; align-items: stretch; }
-        .col-visual { flex: 0.95; background-color: #f8fafc; border: 2px solid #cbd5e1; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 16px; justify-content: space-between; }
-        .col-texto { flex: 1.05; }
-        .simulador-titulo { font-size: 13px; font-weight: 800; color: #1e293b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
-        .sim-group { display: flex; flex-direction: column; gap: 6px; }
-        .sim-label { font-size: 12px; font-weight: 700; color: #64748b; }
-        .sim-input-row { display: flex; align-items: center; gap: 10px; }
-        .sim-range { flex: 1; cursor: pointer; height: 6px; }
-        .sim-value { font-size: 13px; font-weight: 800; color: #2563eb; min-width: 95px; text-align: right; }
-        .checkbox-container { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; color: #475569; cursor: pointer; padding: 10px 14px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; width: 100%; }
-        .checkbox-container input { width: 16px; height: 16px; }
-        .resultado-box { padding: 16px; border-radius: 12px; text-align: center; font-weight: 800; font-size: 13px; border: 1px solid transparent; }
-        .status-success { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
-        .status-alert { background-color: #fee2e2; border-color: #fca5a5; color: #991b1b; }
-        .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
+        .revista-wrapper { background-color: #ffffff; border: 3px solid #cbd5e1; border-radius: 24px; padding: 40px; }
+        .diapositiva-grid { display: flex; flex-direction: row; gap: 35px; }
+        .col-visual { flex: 1; background-color: #f8fafc; border: 2px solid #cbd5e1; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+        .col-texto { flex: 1; }
+        .sim-group { display: flex; flex-direction: column; gap: 8px; }
+        .sim-label { font-size: 13px; font-weight: 750; color: #475569; }
+        .sim-input-row { display: flex; align-items: center; gap: 15px; }
+        
+        /* Forzamos que las barras tengan un tamaño masivo y respondan al tacto */
+        .sim-range { 
+            flex: 1; 
+            cursor: pointer; 
+            height: 12px; 
+            accent-color: #2563eb;
+        }
+        .sim-value { font-size: 14px; font-weight: bold; color: #2563eb; min-width: 110px; text-align: right; }
+        
+        .checkbox-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; }
+        .checkbox-container input { width: 18px; height: 16px; cursor: pointer; }
+        .resultado-box { padding: 16px; border-radius: 12px; text-align: center; font-weight: bold; font-size: 14px; background-color: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; margin-top: auto; }
+        
+        .slide-titulo { font-size: 24px; font-weight: bold; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
-        .highlight-box { background-color: #f8fafc; border-left: 5px solid #10b981; padding: 16px; border-radius: 4px; font-size: 13.5px; color: #1e293b; line-height: 1.5; margin-top: 15px; }
-        .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
-        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; }
-        @media (max-width: 768px) { .diapositiva-grid { flex-direction: column-reverse; } }
+        .highlight-box { background-color: #f8fafc; border-left: 5px solid #10b981; padding: 16px; border-radius: 4px; font-size: 13.5px; color: #1e293b; line-height: 1.5; }
+        .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; }
+        .btn-nav { text-decoration: none; background-color: #2563eb; padding: 14px 28px; border-radius: 10px; font-size: 14px; font-weight: bold; color: #ffffff; }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
         <header>
-            <span class="tag">Módulo 01 · Presentación de Contenidos</span>
+            <p style="font-size: 11px; font-weight: bold; color: #10b981; uppercase">Módulo 01 · Presentación de Contenidos</p>
             <h1>Introducción a la Intermediación Inmobiliaria</h1>
         </header>
         <div class="revista-wrapper">
-            <div class="revista-header">
-                <span class="revista-pills">PÁGINA 4 · IDENTIFICACIÓN DE PROSPECTOS Y PERFILAMIENTO</span>
-                <span class="revista-contador">Pág. 4 de 10</span>
-            </div>
             <div class="diapositiva-grid">
+                
+                <!-- COLUMNA CALCULADORA -->
                 <div class="col-visual">
-                    <h4 class="simulador-titulo">🔧 SIMULADOR DE PRE-CALIFICACIÓN DE LEADS</h4>
+                    <p style="font-size: 12px; font-weight: bold; color: #64748b; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">🔧 SIMULADOR DE PRE-CALIFICACIÓN</p>
+                    
+                    <!-- Barra 1 -->
                     <div class="sim-group">
-                        <label class="sim-label" for="range-ingresos">Ingreso Familiar Mensual:</label>
+                        <label class="sim-label">Ingreso Familiar Mensual:</label>
                         <div class="sim-input-row">
-                            <input type="range" id="range-ingresos" class="sim-range" min="20000" max="150000" step="5000" value="45000" oninput="calcularCalificacion()">
+                            <input type="range" id="range-ingresos" class="sim-range" min="20000" max="150000" step="5000" value="45000">
                             <span id="val-ingresos" class="sim-value">$45,000 MXN</span>
                         </div>
                     </div>
+
+                    <!-- Barra 2 -->
                     <div class="sim-group">
-                        <label class="sim-label" for="range-trafico">Tiempo de Traslado Máximo (Trabajo):</label>
+                        <label class="sim-label">Tiempo de Traslado Máximo (Trabajo):</label>
                         <div class="sim-input-row">
-                            <input type="range" id="range-trafico" class="sim-range" min="15" max="120" step="5" value="45" oninput="calcularCalificacion()">
+                            <input type="range" id="range-trafico" class="sim-range" min="15" max="120" step="5" value="45">
                             <span id="val-trafico" class="sim-value">45 Mins</span>
                         </div>
                     </div>
-                    <div class="sim-group" style="gap: 10px;">
-                        <label class="sim-label">Variables de Entorno Indispensables:</label>
+
+                    <div class="sim-group" style="gap: 12px;">
                         <label class="checkbox-container">
-                            <input type="checkbox" id="check-escuela" checked onchange="calcularCalificacion()">
+                            <input type="checkbox" id="check-escuela" checked>
                             <span>Infraestructura Escolar / Guarderías Cercanas</span>
                         </label>
                         <label class="checkbox-container">
-                            <input type="checkbox" id="check-buro" checked onchange="calcularCalificacion()">
+                            <input type="checkbox" id="check-buro" checked>
                             <span>Buró de Crédito Sano (Sin Claves de Alerta)</span>
                         </label>
                     </div>
-                    <div id="status-render" class="resultado-box status-success">PROSPECTO COMPATIBLE (Lead Calificado)</div>
+
+                    <div id="status-render" class="resultado-box">PROSPECTO COMPATIBLE (Lead Calificado)</div>
                 </div>
+
+                <!-- COLUMNA TEXTO DERECHO -->
                 <div class="col-texto">
                     <h3 class="slide-titulo">El Perfilamiento</h3>
                     <p class="slide-txt">La identificación de un cliente potencial a través de una buena intermediación inmobiliaria va mucho más allá de validar si el prospecto 'tiene dinero' o si le atrae la fachada de una casa. El verdadero perfilamiento exige entender y mapear el conjunto completo de la realidad del cliente antes de agendar visitas.</p>
@@ -91,6 +94,7 @@
                         • <strong>Equilibrio Financiero:</strong> Calcular la capacidad de pago real sin asfixiar el flujo de efectivo ni la liquidez diaria de la nueva familia.
                     </div>
                 </div>
+
             </div>
         </div>
         <div class="revista-controles">
@@ -98,22 +102,24 @@
             <a href="prospeccion-p5.html" class="btn-nav">Siguiente ▶</a>
         </div>
     </div>
+
+    <!-- SCRIPT DE LECTURA DIRECTA POR EVENT LISTENER -->
     <script>
-        function calcularCalificacion() {
-            const ingresos = parseInt(document.getElementById('range-ingresos').value);
-            const trafico = parseInt(document.getElementById('range-trafico').value);
-            const tieneEscuela = document.getElementById('check-escuela').checked;
-            const buroSano = document.getElementById('check-buro').checked;
-            document.getElementById('val-ingresos').innerText = '$' + ingresos.toLocaleString() + ' MXN';
-            document.getElementById('val-trafico').innerText = trafico + ' Mins';
-            const statusRender = document.getElementById('status-render');
-            if (ingresos < 35000) {
-                statusRender.className = "resultado-box status-alert";
-                statusRender.innerText = "❌ DESCARTADO: Ingresos insuficientes para hipoteca estándar";
-            } else if (trafico > 75) {
-                statusRender.className = "resultado-box status-alert";
-                statusRender.innerText = "❌ RIESGO LOGÍSTICO: Desgaste de traslado crítico (Zonas no viables)";
-            } else if (!buroSano) {
-                statusRender.className = "resultado-box status-alert";
-                statusRender.innerText = "❌ RECHAZO FINANCIERO: Bloqueo inmediato por historial crediticio";
-            } else if (!tieneEscuela) {
+        const inputIngresos = document.getElementById('range-ingresos');
+        const inputTrafico = document.getElementById('range-trafico');
+        const txtIngresos = document.getElementById('val-ingresos');
+        const txtTrafico = document.getElementById('val-trafico');
+
+        // Escucha directa de movimiento para forzar que cambien los números
+        inputIngresos.addEventListener('input', function() {
+            let valor = parseInt(inputIngresos.value);
+            txtIngresos.innerText = '$' + valor.toLocaleString() + ' MXN';
+        });
+
+        inputTrafico.addEventListener('input', function() {
+            let mins = parseInt(inputTrafico.value);
+            txtTrafico.innerText = mins + ' Mins';
+        });
+    </script>
+</body>
+</html>
