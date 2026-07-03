@@ -19,10 +19,9 @@
         .sim-range { flex: 1; cursor: pointer; height: 12px; accent-color: #2563eb; }
         .sim-value { font-size: 14px; font-weight: bold; color: #2563eb; min-width: 110px; text-align: right; }
         
-        .checkbox-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; opacity: 0.6; }
-        .checkbox-container input { width: 18px; height: 16px; cursor: not-allowed; }
+        .checkbox-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; cursor: pointer; }
+        .checkbox-container input { width: 18px; height: 16px; cursor: pointer; }
         
-        /* Estilos base del recuadro de resultado */
         .resultado-box { padding: 16px; border-radius: 12px; text-align: center; font-weight: bold; font-size: 14px; margin-top: auto; border: 1px solid transparent; transition: all 0.1s ease; }
         .status-verde { background-color: #d1fae5; color: #065f46; border-color: #a7f3d0; }
         .status-rojo { background-color: #fee2e2; color: #991b1b; border-color: #fca5a5; }
@@ -43,11 +42,10 @@
         <div class="revista-wrapper">
             <div class="diapositiva-grid">
                 
-                <!-- COLUMNA CALCULADORA -->
+                <!-- COLUMNA CALCULADORA INTERACTIVA COMPLETA -->
                 <div class="col-visual">
-                    <p style="font-size: 12px; font-weight: bold; color: #64748b; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">🔧 SIMULADOR DE PRE-CALIFICACIÓN</p>
+                    <p style="font-size: 12px; font-weight: bold; color: #64748b; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">🔧 SIMULADOR DE PRE-CALIFICACIÓN DE LEADS</p>
                     
-                    <!-- Barra 1 -->
                     <div class="sim-group">
                         <label class="sim-label">Ingreso Familiar Mensual:</label>
                         <div class="sim-input-row">
@@ -56,7 +54,6 @@
                         </div>
                     </div>
 
-                    <!-- Barra 2 -->
                     <div class="sim-group">
                         <label class="sim-label">Tiempo de Traslado Máximo (Trabajo):</label>
                         <div class="sim-input-row">
@@ -65,31 +62,29 @@
                         </div>
                     </div>
 
-                    <!-- Casillas Omitidas Temporalmente (Bloqueadas Visualmente) -->
                     <div class="sim-group" style="gap: 12px;">
-                        <label class="sim-label" style="opacity: 0.5;">Variables de Entorno (Omitidas en Paso 2):</label>
+                        <label class="sim-label">Variables de Entorno Indispensables:</label>
                         <label class="checkbox-container">
-                            <input type="checkbox" id="check-escuela" checked disabled>
+                            <input type="checkbox" id="check-escuela" checked>
                             <span>Infraestructura Escolar / Guarderías Cercanas</span>
                         </label>
                         <label class="checkbox-container">
-                            <input type="checkbox" id="check-buro" checked disabled>
+                            <input type="checkbox" id="check-buro" checked>
                             <span>Buró de Crédito Sano (Sin Claves de Alerta)</span>
                         </label>
                     </div>
 
-                    <!-- Recuadro Dinámico de Resultados -->
-                    <div id="status-render" class="resultado-box status-verde">PROSPECTO COMPATIBLE (Lead Calificado)</div>
+                    <div id="status-render" class="resultado-box status-verde">✅ PROSPECTO COMPATIBLE (Lead Calificado)</div>
                 </div>
 
-                <!-- COLUMNA TEXTO DERECHO -->
+                <!-- COLUMNA TEXTO DERECHO INTACTA -->
                 <div class="col-texto">
                     <h3 class="slide-titulo">El Perfilamiento</h3>
                     <p class="slide-txt">La identificación de un cliente potencial a través de una buena intermediación inmobiliaria va mucho más allá de validar si el prospecto 'tiene dinero' o si le atrae la fachada de una casa. El verdadero perfilamiento exige entender y mapear el conjunto completo de la realidad del cliente antes de agendar visitas.</p>
                     <p class="slide-txt">Imaginen el caso típico: una pareja de recién casados que busca su primer hogar. Su toma de decisiones abarca la gestión compleja de su plan de vida. Como asesores estratégicos patrimoniales, se deben auditar activamente variables críticas como:</p>
                     <div class="highlight-box">
                         <strong>Variables de Diagnóstico Obligatorio:</strong><br>
-                        • <strong>Logística Urbana:</strong> Selección de zonas que optimicen los traslados diarios a sus respectivos trabajos, miendo el impacto del tráfico real.<br>
+                        • <strong>Logística Urbana:</strong> Selección de zonas que optimicen los traslados diarios a sus respectivos trabajos, midiendo el impacto del tráfico real.<br>
                         • <strong>Entorno Familiar:</strong> Planificación de espacios a futuro (hijos/mascotas) y disponibilidad de guarderías, escuelas seguras y vecinos estables en el cuadrante.<br>
                         • <strong>Equilibrio Financiero:</strong> Calcular la capacidad de pago real sin asfixiar el flujo de efectivo ni la liquidez diaria de la nueva familia.
                     </div>
@@ -103,39 +98,50 @@
         </div>
     </div>
 
-    <!-- LÓGICA DE CONEXIÓN DE LAS BARRAS CON EL CUADRO INFERIOR -->
+    <!-- INTEGRACIÓN TOTAL DE TODAS LAS SENSACIONES INTERACTIVAS -->
     <script>
         const inputIngresos = document.getElementById('range-ingresos');
         const inputTrafico = document.getElementById('range-trafico');
+        const checkEscuela = document.getElementById('check-escuela');
+        const checkBuro = document.getElementById('check-buro');
+        
         const txtIngresos = document.getElementById('val-ingresos');
         const txtTrafico = document.getElementById('val-trafico');
         const statusBox = document.getElementById('status-render');
 
         function actualizarEvaluacion() {
-            // 1. Leer los valores enteros de las dos barras
             let ingresos = parseInt(inputIngresos.value);
             let trafico = parseInt(inputTrafico.value);
+            let tieneEscuela = checkEscuela.checked;
+            let buroSano = checkBuro.checked;
 
-            // 2. Pintar los textos numéricos a un lado
             txtIngresos.innerText = '$' + ingresos.toLocaleString() + ' MXN';
             txtTrafico.innerText = trafico + ' Mins';
 
-            // 3. Reglas de Negocio en tiempo real para cambiar el color
+            // Evaluación unificada de las 4 variables simultáneas
             if (ingresos < 35000) {
                 statusBox.className = "resultado-box status-rojo";
                 statusBox.innerText = "❌ DESCARTADO: Ingresos menores a $35,000 MXN";
             } else if (trafico > 75) {
                 statusBox.className = "resultado-box status-rojo";
                 statusBox.innerText = "❌ RIESGO LOGÍSTICO: Tráfico mayor a 75 Minutos";
+            } else if (!buroSano) {
+                statusBox.className = "resultado-box status-rojo";
+                statusBox.innerText = "❌ RECHAZO FINANCIERO: Bloqueo por historial crediticio";
+            } else if (!tieneEscuela) {
+                statusBox.className = "resultado-box status-rojo";
+                statusBox.innerText = "⚠️ REVISAR CON EL CLIENTE: Falta de infraestructura familiar";
             } else {
                 statusBox.className = "resultado-box status-verde";
                 statusBox.innerText = "✅ PROSPECTO COMPATIBLE (Lead Calificado)";
             }
         }
 
-        // Registrar los escuchadores para ejecutar la lógica en cada movimiento
+        // Registrar los escuchadores para todos los controles táctiles
         inputIngresos.addEventListener('input', actualizarEvaluacion);
         inputTrafico.addEventListener('input', actualizarEvaluacion);
+        checkEscuela.addEventListener('change', actualizarEvaluacion);
+        checkBuro.addEventListener('change', actualizarEvaluacion);
     </script>
 </body>
 </html>
