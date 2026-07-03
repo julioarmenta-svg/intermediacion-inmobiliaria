@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo 1: Prospección & Diagnóstico - URN</title>
     <style>
-        /* Estilos Base Tecnológicos y Alegres */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
@@ -55,7 +54,7 @@
             letter-spacing: -0.02em;
         }
 
-        /* VISOR DE REVISTA REFORZADO - MÁS GRANDE Y RECUADRO DIDÁCTICO */
+        /* RECUADRO DE LA REVISTA DIDÁCTICA */
         .revista-wrapper {
             background-color: #ffffff;
             border: 3px solid #cbd5e1;
@@ -64,9 +63,6 @@
             margin-bottom: 35px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.02);
             min-height: 480px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
         .revista-header {
             display: flex;
@@ -93,7 +89,7 @@
         }
 
         /* Contenidos de las Filminas */
-        .slide-content { display: none; flex-grow: 1; }
+        .slide-content { display: none; }
         .slide-content.active { display: block; animation: slideIn 0.2s ease-out; }
         
         .slide-titulo {
@@ -110,7 +106,7 @@
             margin-bottom: 24px;
         }
 
-        /* ELEMENTOS DIDÁCTICOS ADICIONALES (Tablas, Bloques de Teoría, Gráficas CSS) */
+        /* Elementos Didácticos */
         .highlight-box {
             background-color: #f8fafc;
             border-left: 5px solid #2563eb;
@@ -122,7 +118,7 @@
             margin-top: 15px;
         }
         
-        /* Gráfica Didáctica CSS Pura */
+        /* Gráfica Didáctica */
         .dom-chart-box {
             margin: 20px 0;
             background: #f8fafc;
@@ -143,11 +139,12 @@
             border-collapse: collapse;
             margin-top: 15px;
             font-size: 13px;
+            margin-bottom: 15px;
         }
         .tech-table th { background: #f1f5f9; padding: 10px; text-align: left; font-weight: 700; color: #1e293b; border: 1px solid #cbd5e1; }
         .tech-table td { padding: 10px; border: 1px solid #e2e8f0; color: #475569; }
 
-        /* Diagrama de Flujo Horizontal Didáctico */
+        /* Diagrama de Flujo Mini */
         .diagrama-flujo-mini {
             display: flex;
             align-items: center;
@@ -161,31 +158,34 @@
         }
         .flow-step { background: white; border: 1px solid #fcd34d; padding: 10px; border-radius: 8px; text-align: center; font-size: 11px; font-weight: 700; flex: 1; color: #b45309; }
 
-        /* CONTROLES DE DIRECCIÓN FIJOS (REFORZADOS) */
+        /* DOS BOTONES GRANDES PARA AVANZAR Y RETROCEDER (NUEVOS) */
         .revista-controles {
             display: flex;
             justify-content: space-between;
             margin-top: 30px;
             padding-top: 20px;
             border-top: 2px solid #f1f5f9;
+            gap: 20px;
         }
         .btn-nav {
+            flex: 1;
             background-color: #2563eb;
             border: none;
-            border-bottom: 4px solid #1d4ed8;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-size: 14px;
+            border-bottom: 5px solid #1d4ed8;
+            padding: 16px;
+            border-radius: 14px;
+            font-size: 15px;
             font-weight: 800;
             color: #ffffff;
             cursor: pointer;
+            text-align: center;
             transition: all 0.1s ease;
         }
         .btn-nav:hover { background-color: #3b82f6; }
-        .btn-nav:active { transform: translateY(2px); border-bottom: 2px solid #1d4ed8; }
-        .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; transform: none; border-bottom: 4px solid #1d4ed8; }
+        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
+        .btn-nav:disabled { background-color: #cbd5e1; border-bottom: 5px solid #94a3b8; color: #94a3b8; cursor: not-allowed; transform: none; }
 
-        /* MENÚ DE ACCIÓN INFERIOR (BOTONES 3D) */
+        /* MENÚ DE ACCIÓN INFERIOR */
         .menu-inferior {
             display: flex;
             flex-direction: row;
@@ -236,6 +236,7 @@
 
         @media (max-width: 768px) {
             .menu-inferior { flex-direction: column; }
+            .revista-controles { flex-direction: column; }
         }
     </style>
 </head>
@@ -250,19 +251,23 @@
             <h1>Prospección, Captación y Perfilamiento Humano</h1>
         </header>
 
-        <!-- VISOR DE REVISTA INTERACTIVA REFORZADO -->
+        <!-- RECUADRO DE LA REVISTA -->
         <div class="revista-wrapper">
             <div class="revista-header">
                 <span id="revista-tema" class="revista-pills">TEMA 1.A · CONCEPTOS BÁSICOS</span>
                 <span id="revista-contador" class="revista-contador">Pág. 1 de 5</span>
             </div>
 
-            <!-- Contenedor Dinámico de Filminas -->
-            <div class="revista-cuerpo-dinamico">
+            <!-- FILMINAS CORREGIDAS UNA POR UNA -->
+            <div class="revista-paginas">
 
                 <!-- Filmina 1 -->
                 <div id="slide-1" class="slide-content active">
                     <h3 class="slide-titulo">La Intermediación No Es "Enseñar Casas"</h3>
-                    <p class="slide-txt">El mercado inmobiliario sufre por ineficiencias y fricciones reales: altos costos notariales, impuestos mal planeados e iliquidez del activo. El rol estratégico del intermediario es destrabar operaciones donde comprador y vendedor se encuentran estancados.</p>
-                    
+                    <p class="slide-txt">El mercado inmobiliario sufre por ineficiencias y fricciones reales: altos costos notariales, impuestos mal planeados e iliquidez del activo. El rol estratégico del intermediario es destrabar operaciones complejas donde comprador y vendedor se encuentran estancados.</p>
                     <div class="highlight-box">
+                        <strong>George Akerlof — Premio Nobel (Asimetría de Información):</strong> El intermediario profesional actúa como el agente neutral indispensable que equilibra los datos asimétricos del mercado. Brinda certeza jurídica y financiera para que ambas partes operen con absoluta confianza.
+                    </div>
+                </div>
+
+                <!-- Filmina 2 -->
