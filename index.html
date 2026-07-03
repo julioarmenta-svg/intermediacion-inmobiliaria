@@ -1,122 +1,129 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intermediación Inmobiliaria - URN Virtual</title>
-    <!-- Importamos Tailwind CSS desde CDN para diseño limpio y moderno estilo Gamma -->
-    <script src="https://jsdelivr.net"></script>
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .font-display { font-family: 'Playfair Display', serif; }
-    </style>
+    <title>Intermediación Inmobiliaria - URN</title>
+    <!-- Cargamos Tailwind CSS Estable para diseño tipo Dashboard Premium -->
+    <script src="https://tailwindcss.com"></script>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased selection:bg-blue-500 selection:text-white">
+<body class="bg-[#F8FAFC] text-slate-800 font-sans min-h-screen">
 
-    <!-- Encabezado Institucional Principal -->
-    <header class="max-w-6xl mx-auto px-6 pt-16 pb-12 border-b border-gray-200">
-        <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-6">
-            <div>
-                <p class="text-xs font-bold tracking-widest text-blue-600 uppercase mb-2">Universidad Regional del Norte · Maestría</p>
-                <h1 class="text-4xl md:text-5xl font-bold font-display text-gray-900 tracking-tight mb-3">Intermediación Inmobiliaria</h1>
-                <p class="text-lg text-gray-500 max-w-2xl font-light leading-relaxed">Sistemas operativos, financieros y legales para la dirección de proyectos patrimoniales familiares.</p>
+    <!-- Navbar Minimalista -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 backdrop-blur-md bg-white/90">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="w-3 h-3 bg-blue-600 rounded-full animate-pulse"></span>
+                <span class="text-xs font-bold tracking-widest text-slate-400 uppercase">URN VIRTUAL</span>
             </div>
-            <div class="text-left md:text-right border-l-2 md:border-l-0 md:border-r-2 border-blue-600 pl-4 md:pl-0 md:pr-4 py-1">
-                <p class="text-sm font-medium text-gray-900">Mtro. Julio Armenta</p>
-                <p class="text-xs text-gray-400 font-light mt-0.5">Especialista en Finanzas, Valuación & Fintech</p>
+            <span class="text-xs font-semibold bg-slate-100 text-slate-600 px-3 py-1 rounded-full border border-slate-200">Maestría en Intermediación</span>
+        </div>
+    </nav>
+
+    <!-- Encabezado de Alto Impacto -->
+    <header class="max-w-6xl mx-auto px-6 pt-12 pb-8">
+        <div class="bg-gradient-to-br from-slate-900 via-slate-850 to-blue-950 text-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-800 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div class="relative z-10 max-w-3xl">
+                <span class="text-xs font-bold text-blue-400 tracking-widest uppercase bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">PROGRAMA EJECUTIVO 2026</span>
+                <h1 class="text-4xl md:text-5xl font-extrabold font-display tracking-tight text-white mt-4 mb-4">Intermediación Inmobiliaria</h1>
+                <p class="text-slate-300 font-light text-base md:text-lg leading-relaxed mb-6">Ingeniería de procesos y modelado financiero para la dirección estratégica de proyectos patrimoniales familiares.</p>
+                <div class="inline-flex items-center gap-3 border-t border-slate-700/60 pt-4 w-full">
+                    <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center font-bold text-xs">JA</div>
+                    <div>
+                        <p class="text-xs font-medium text-white">Mtro. Julio Armenta</p>
+                        <p class="text-[10px] text-slate-400 font-light">Especialista en Finanzas, Valuación & Fintech · Exclusivo URN</p>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Contenedor Principal del Mapa del Curso -->
-    <main class="max-w-6xl mx-auto px-6 py-12">
+    <!-- CONTENEDOR DEL FLUJO INTERACTIVO -->
+    <main class="max-w-6xl mx-auto px-6 pb-24">
         
-        <!-- Bloque de Navegación del Sistema Inmobiliario -->
-        <div class="mb-16">
-            <h2 class="text-sm font-semibold tracking-wider text-gray-400 uppercase mb-6">Mapa del Sistema Patrimonial (5 Pasos)</h2>
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
-                <a href="#paso1" class="flex flex-col p-4 bg-white rounded-xl border border-blue-200 shadow-xs hover:shadow-md transition-all duration-300">
-                    <span class="text-xs font-bold text-blue-600 mb-1">Paso 01</span>
-                    <span class="text-sm font-semibold text-gray-900">Diagnóstico & Prospección</span>
-                </a>
-                <div class="flex flex-col p-4 bg-gray-100 rounded-xl border border-gray-200 opacity-50 cursor-not-allowed">
-                    <span class="text-xs font-bold text-gray-400 mb-1">Paso 02</span>
-                    <span class="text-sm font-semibold text-gray-500">Operación Comercial</span>
-                </div>
-                <div class="flex flex-col p-4 bg-gray-100 rounded-xl border border-gray-200 opacity-50 cursor-not-allowed">
-                    <span class="text-xs font-bold text-gray-400 mb-1">Paso 03</span>
-                    <span class="text-sm font-semibold text-gray-500">Análisis & Valuación</span>
-                </div>
-                <div class="flex flex-col p-4 bg-gray-100 rounded-xl border border-gray-200 opacity-50 cursor-not-allowed">
-                    <span class="text-xs font-bold text-gray-400 mb-1">Paso 04</span>
-                    <span class="text-sm font-semibold text-gray-500">Arquitectura de Crédito</span>
-                </div>
-                <div class="flex flex-col p-4 bg-gray-100 rounded-xl border border-gray-200 opacity-50 cursor-not-allowed">
-                    <span class="text-xs font-bold text-gray-400 mb-1">Paso 05</span>
-                    <span class="text-sm font-semibold text-gray-500">Control & Cierre Legal</span>
-                </div>
+        <!-- Tablero de Control / Pasos con Botones Visuales -->
+        <div class="mb-12 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+            <h2 class="text-xs font-bold tracking-wider text-slate-400 uppercase mb-4 px-2">Sistema Operativo Inmobiliario (Haga clic en un paso)</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2">
+                <!-- Botón Paso 1 -->
+                <button onclick="switchTab('paso1')" id="btn-paso1" class="tab-btn flex flex-col p-4 rounded-xl border-2 text-left transition-all duration-300 bg-blue-50/50 border-blue-600 shadow-sm">
+                    <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider mb-1">Módulo 01</span>
+                    <span class="text-sm font-bold text-slate-900">Diagnóstico & Prospección</span>
+                </button>
+                <!-- Botón Paso 2 -->
+                <button onclick="switchTab('paso2')" id="btn-paso2" class="tab-btn flex flex-col p-4 rounded-xl border text-left transition-all duration-300 bg-white border-slate-200 hover:border-slate-300">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Módulo 02</span>
+                    <span class="text-sm font-bold text-slate-700">Operación Comercial</span>
+                </button>
+                <!-- Botón Paso 3 -->
+                <button onclick="switchTab('paso3')" id="btn-paso3" class="tab-btn flex flex-col p-4 rounded-xl border text-left transition-all duration-300 bg-white border-slate-200 hover:border-slate-300">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Módulo 03</span>
+                    <span class="text-sm font-bold text-slate-700">Análisis & Valuación</span>
+                </button>
+                <!-- Botón Paso 4 -->
+                <button onclick="switchTab('paso4')" id="btn-paso4" class="tab-btn flex flex-col p-4 rounded-xl border text-left transition-all duration-300 bg-white border-slate-200 hover:border-slate-300">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Módulo 04</span>
+                    <span class="text-sm font-bold text-slate-700">Arquitectura de Crédito</span>
+                </button>
+                <!-- Botón Paso 5 -->
+                <button onclick="switchTab('paso5')" id="btn-paso5" class="tab-btn flex flex-col p-4 rounded-xl border text-left transition-all duration-300 bg-white border-slate-200 hover:border-slate-300">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Módulo 05</span>
+                    <span class="text-sm font-bold text-slate-700">Control & Cierre Legal</span>
+                </button>
             </div>
         </div>
 
-        <!-- SECCIÓN: PASO 1 (MÓDULO DE LA CLASE DE HOY) -->
-        <section id="paso1" class="scroll-mt-12">
-            <div class="flex items-center gap-3 mb-6">
-                <span class="px-2.5 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-md tracking-wider uppercase">Fase Activa</span>
-                <span class="text-sm font-medium text-gray-400">Módulo 1</span>
-            </div>
+        <!-- SECCIONES DE CONTENIDO DINÁMICO -->
+        <div class="bg-white rounded-3xl p-6 md:p-10 border border-slate-200 shadow-sm min-h-[400px]">
             
-            <h3 class="text-3xl font-bold font-display text-gray-900 tracking-tight mb-4">Prospección, Captación y Perfilamiento Humano</h3>
-            <p class="text-gray-500 font-light max-w-3xl leading-relaxed mb-10">El diagnóstico inicial enfocado en ingeniería de procesos. Transformamos la actividad tradicional de "enseñar casas" en una consultoría directiva que alinea el inmueble con el plan de vida y la estabilidad de la familia.</p>
+            <!-- CONTENIDO PASO 1 -->
+            <div id="content-paso1" class="tab-content block animate-fadeIn">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="w-2 h-2 bg-emerald-500 rounded-full"></span>
+                    <span class="text-xs font-bold tracking-widest text-emerald-600 uppercase">FASE ACTIVA</span>
+                </div>
+                <h3 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight font-display mb-3">Módulo 1: Prospección, Captación y Perfilamiento Humano</h3>
+                <p class="text-slate-500 font-light max-w-3xl leading-relaxed mb-8 text-sm md:text-base">Transformamos la corretía básica en consultoría directiva. Alineamos los inmuebles con el plan de vida real y la logística de traslado de las familias.</p>
 
-            <!-- Grid de Pilares con Cajas de Diseño Estilo Gamma -->
-            <div class="grid md:grid-cols-3 gap-6 mb-12">
-                <!-- Pilar A -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-2xs hover:border-blue-200 transition-colors duration-300">
-                    <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center mb-4 text-blue-600 font-bold text-sm">A</div>
-                    <h4 class="text-base font-semibold text-gray-900 mb-2">Captación con Propósito</h4>
-                    <p class="text-sm text-gray-500 font-light leading-relaxed">No se infla el inventario recolectando cualquier propiedad de la calle. Filtramos oportunidades mediante rastreo activo en portales web, descartando inmuebles con precios sentimentales o fuera de mercado.</p>
-                </div>
-                <!-- Pilar B -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-2xs hover:border-blue-200 transition-colors duration-300">
-                    <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center mb-4 text-blue-600 font-bold text-sm">B</div>
-                    <h4 class="text-base font-semibold text-gray-900 mb-2">El Diagnóstico Logístico</h4>
-                    <p class="text-sm text-gray-500 font-light leading-relaxed">Análisis profundo del entorno familiar del prospecto. Mapeamos de forma obligatoria los tiempos reales de traslado al trabajo, la seguridad de la zona y la infraestructura clave (guarderías, escuelas y accesos públicos).</p>
-                </div>
-                <!-- Pilar C -->
-                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-2xs hover:border-blue-200 transition-colors duration-300">
-                    <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center mb-4 text-blue-600 font-bold text-sm">C</div>
-                    <h4 class="text-base font-semibold text-gray-900 mb-2">Calificación Económica</h4>
-                    <p class="text-sm text-gray-500 font-light leading-relaxed">Protección del recurso más valioso de la consultoría: el tiempo. Aplicamos filtros financieros iniciales de buró e ingresos antes de agendar citas físicas, garantizando operaciones viables desde el día uno.</p>
-                </div>
-            </div>
-
-            <!-- Bloque Destacado de la Tarea Anti-IA -->
-            <div class="bg-slate-900 text-white rounded-2xl p-8 md:p-10 shadow-lg border border-slate-800">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6 pb-6 border-b border-slate-800">
-                    <div>
-                        <span class="text-xs font-bold text-blue-400 tracking-wider uppercase mb-1 block">Evaluación de Plataforma</span>
-                        <h4 class="text-xl md:text-2xl font-bold font-display tracking-tight text-white">Entregable 1: Diagnóstico Local y Mapeo de Entorno (Caso Carlos y Ana)</h4>
+                <div class="grid md:grid-cols-3 gap-6 mb-10">
+                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs mb-4">A</div>
+                        <h4 class="font-bold text-slate-900 mb-1 text-sm md:text-base">Captación con Propósito</h4>
+                        <p class="text-xs md:text-sm text-slate-500 font-light leading-relaxed">Filtramos inventario mediante análisis de mercado activo. Eliminamos de raíz propiedades con precios sentimentales o fuera de realidad económica.</p>
                     </div>
-                    <div class="bg-slate-800 px-4 py-2 rounded-xl text-center border border-slate-700 md:self-start">
-                        <span class="text-xs text-slate-400 block uppercase">Ponderación</span>
-                        <span class="text-lg font-bold text-blue-400">Módulo 1</span>
+                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs mb-4">B</div>
+                        <h4 class="font-bold text-slate-900 mb-1 text-sm md:text-base">Diagnóstico Logístico</h4>
+                        <p class="text-xs md:text-sm text-slate-500 font-light leading-relaxed">Mapeo analítico obligatorio de rutas de traslado, entornos seguros y accesibilidad a guarderías y colegios para el núcleo familiar.</p>
+                    </div>
+                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
+                        <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs mb-4">C</div>
+                        <h4 class="font-bold text-slate-900 mb-1 text-sm md:text-base">Calificación Económica</h4>
+                        <p class="text-xs md:text-sm text-slate-500 font-light leading-relaxed">Optimización drástica del tiempo operativo. Filtros de buró e ingresos estructurados antes de programar cualquier visita física al inmueble.</p>
                     </div>
                 </div>
-                
-                <div class="space-y-4 text-sm text-slate-300 font-light leading-relaxed mb-6">
-                    <p><strong class="text-white font-medium">El Reto Operativo:</strong> Tomando el caso de estudio de Carlos y Ana (recién casados con planes de familia), debes actuar como su Director de Proyecto Inmobiliario patrimonial.</p>
-                    <p><strong class="text-white font-medium">Instrucciones de Entrega:</strong> Selecciona una colonia real en tu ciudad que optimice los trayectos laborales de la pareja a las 8:00 AM. Identifica 2 guarderías/escuelas activas operando en la zona y adjunta una captura de pantalla completa (con la fecha del navegador visible) que incluya el enlace web vivo de una propiedad en venta esta semana adaptada a su presupuesto.</p>
-                    <p class="text-xs text-amber-400 flex items-center gap-1.5 pt-2">
-                        <span>⚠️</span> Filtro de Validación: Tareas con datos genéricos, textos de libros o capturas sin la fecha visible del día de hoy serán invalidadas. La IA no conoce el tráfico local actual ni el inventario inmobiliario vivo de esta semana.
-                    </p>
-                </div>
-            </div>
-        </section>
 
-    </main>
-
-    <footer class="max-w-6xl mx-auto px-6 py-12 mt-12 border-t border-gray-200 text-xs text-gray-400 font-light flex flex-col md:flex-row justify-between gap-4">
-        <p>&copy; 2026 Universidad Regional del Norte | Dirección de Proyectos Inmobiliarios</p>
+                <!-- Bloque Reto Anti-IA -->
+                <div class="bg-slate-900 text-white rounded-2xl p-6 md:p-8 border border-slate-800 shadow-md">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4 pb-4 border-b border-slate-800">
+                        <div>
+                            <span class="text-[10px] font-bold text-blue-400 tracking-wider uppercase block mb-1">EVALUACIÓN BLINDADA ANTI-IA</span>
+                            <h5 class="text-lg font-bold text-white font-display">Entregable 1: Diagnóstico Local Localizado (Caso Carlos y Ana)</h5>
+                        </div>
+                        <span class="bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold px-3 py-1 rounded-full">Valor: Módulo 1</span>
+                    </div>
