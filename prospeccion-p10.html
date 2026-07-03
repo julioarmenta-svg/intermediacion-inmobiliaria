@@ -58,10 +58,8 @@
             padding: 40px;
             margin-bottom: 25px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.02);
-            min-height: 460px;
         }
         
-        /* CABECERA CON BOTONES SUPERIORES PREMIUM FIXED STYLE */
         .revista-header {
             display: flex;
             justify-content: space-between;
@@ -102,57 +100,80 @@
         }
         .btn-nav-top:hover { background-color: #3b82f6; }
         
-        /* BOTÓN DORADO DE FINALIZAR MÓDULO */
         .btn-finalizar {
             background-color: #d97706;
             border-bottom: 3px solid #b45309;
         }
         .btn-finalizar:hover { background-color: #f59e0b; }
 
-        /* ESTRUCTURA SPLIT DIAPOSITIVA PREMIUM 4:3 */
         .diapositiva-grid {
             display: flex;
             flex-direction: row;
             gap: 35px;
-            align-items: center;
+            align-items: flex-start;
         }
         .col-texto {
             flex: 1.1;
         }
-        .col-visual {
+        
+        /* CONTENEDOR DE ACTIVIDADES EVALUATIVAS (DERECHA) */
+        .col-visual-tareas {
             flex: 0.9;
             background-color: #f8fafc;
             border: 1px solid #cbd5e1;
             border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 4 / 3;
+            padding: 24px;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
         }
         
-        .img-fixed {
+        /* BOTONES DE TAREAS MAESTRAS */
+        .task-trigger-btn {
             width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background-color: #ffffff;
+            text-align: left;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 13.5px;
+            font-weight: 800;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: all 0.15s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
         }
+        .btn-tarea-preguntas { background-color: #0f766e; border-bottom: 5px solid #115e59; box-shadow: 0 4px 6px rgba(15, 118, 110, 0.15); }
+        .btn-tarea-preguntas:hover { background-color: #0d9488; }
+        
+        .btn-tarea-caso { background-color: #4338ca; border-bottom: 5px solid #3730a3; box-shadow: 0 4px 6px rgba(67, 56, 202, 0.15); }
+        .btn-tarea-caso:hover { background-color: #4f46e5; }
+        
+        .task-trigger-btn:active { transform: translateY(3px); border-bottom-width: 1px; }
+
+        /* PANELES DE DESPLIEGUE DE TAREA INTERNA */
+        .task-display-box {
+            display: none;
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 18px;
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: #1e293b;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            animation: fadeIn 0.3s ease-out;
+        }
+        .task-display-box strong { color: #0f172a; }
+        .task-display-box ol, .task-display-box ul { padding-left: 20px; margin-top: 8px; }
+        .task-display-box li { margin-bottom: 8px; }
 
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
-        
-        .highlight-box {
-            background-color: #f8fafc;
-            border-left: 5px solid #10b981;
-            padding: 16px;
-            border-radius: 4px;
-            font-size: 13.5px;
-            color: #1e293b;
-            line-height: 1.5;
-        }
+        .highlight-box { background-color: #f8fafc; border-left: 5px solid #10b981; padding: 16px; border-radius: 4px; font-size: 13.5px; color: #1e293b; line-height: 1.5; }
 
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 768px) { .diapositiva-grid { flex-direction: column; } .revista-header { flex-direction: column; align-items: flex-start; } }
     </style>
 </head>
@@ -167,7 +188,6 @@
         </header>
 
         <div class="revista-wrapper">
-            <!-- CABECERA CON CONTROLES SUPERIORES -->
             <div class="revista-header">
                 <span class="revista-pills">PÁGINA 10 · CONCLUSIONES Y VISIÓN ESTRATÉGICA</span>
                 
@@ -180,7 +200,7 @@
 
             <div class="diapositiva-grid">
                 
-                <!-- Columna Izquierda: Síntesis de la Materia Modificada -->
+                <!-- Columna Izquierda: Síntesis de la Materia -->
                 <div class="col-texto">
                     <h3 class="slide-titulo">La Visión del Consultor Patrimonial</h3>
                     <p class="slide-txt">Hemos concluido el primer gran bloque del temario oficial. El paso de un asesor tradicional hacia un **Consultor Patrimonial Estratégico** exige abandonar las viejas prácticas de comercialización empírica y adoptar un **código de actuación profesional** con rigor metodológico estricto, basado en la ética, la psicología de incentivos y los datos reales.</p>
@@ -193,15 +213,17 @@
                     </div>
                 </div>
 
-                <!-- Columna Derecha: Imagen Conclusiva del Módulo -->
-                <div class="col-visual">
-                    <img src="imagenes/imagen10.png" class="img-fixed" alt="Visión Estratégica y Cierre de Módulo 1">
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-
-</body>
-</html>
+                <!-- Columna Derecha: Panel de Asignación de Tareas Independientes (Nueva) -->
+                <div class="col-visual-tareas">
+                    <p style="font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px;">📋 Evaluación Independiente de Postgrado</p>
+                    
+                    <!-- Botón Enlace 1 -->
+                    <button class="task-trigger-btn btn-tarea-preguntas" onclick="desplegarTarea('preguntas')">📋 1. Cuestionario de Reflexión</button>
+                    
+                    <!-- Panel Desplegable 1 -->
+                    <div id="box-preguntas" class="task-display-box">
+                        <strong>Entregable 1: Cuestionario Crítico (MÁX. 2 CUARTILLAS)</strong><br>
+                        Responda de forma analítica las siguientes 5 preguntas reflexivas basándose en la operación real de campo en México:
+                        <ol>
+                            <li>¿Cómo impacta económicamente la Asimetría de Información de Akerlof a un asesor independiente que no utiliza herramientas proptech?</li>
+                            <li>¿Qué métricas de comportamiento demuestran de forma medible que un propietario está sufriendo el "Efecto Dotación" de Richard Thaler?</li>
