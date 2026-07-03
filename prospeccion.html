@@ -5,30 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo 1: Prospección & Diagnóstico - URN</title>
     <style>
-        /* Estilos Base Puros - Interfaz Clara y Tecnológica */
+        /* Estilos Base Tecnológicos y Alegres */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            background-color: #f8fafc; 
-            padding: 30px 15px;
+            background-color: #f1f5f9; 
+            padding: 40px 20px;
             color: #334155;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             background-color: #ffffff;
-            border-radius: 24px;
-            padding: 35px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
             border: 1px solid #e2e8f0;
         }
-        /* Barra superior de navegación */
+        
         .nav-back {
             display: inline-block;
             text-decoration: none;
             color: #2563eb;
             font-size: 13px;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -36,114 +36,166 @@
         .nav-back:hover { color: #1d4ed8; }
 
         header {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             border-bottom: 2px solid #f1f5f9;
             padding-bottom: 20px;
         }
         .tag {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 800;
             color: #10b981;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
         }
         h1 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 800;
             color: #0f172a;
             margin-top: 4px;
+            letter-spacing: -0.02em;
         }
 
-        /* VISOR INTERACTIVO TIPO REVISTA / FILMINA */
+        /* VISOR DE REVISTA REFORZADO - MÁS GRANDE Y RECUADRO DIDÁCTICO */
         .revista-wrapper {
             background-color: #ffffff;
-            border: 2px solid #e2e8f0;
-            border-radius: 20px;
-            padding: 35px;
+            border: 3px solid #cbd5e1;
+            border-radius: 24px;
+            padding: 40px;
             margin-bottom: 35px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
-            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .revista-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 12px;
-            margin-bottom: 20px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
         }
         .revista-pills {
-            font-size: 11px;
-            font-weight: 700;
-            color: #64748b;
-            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 800;
+            color: #475569;
+            letter-spacing: 0.05em;
         }
         .revista-contador {
             font-size: 12px;
             font-weight: 800;
             color: #2563eb;
             background-color: #eff6ff;
-            padding: 4px 10px;
+            padding: 6px 14px;
             border-radius: 20px;
-        }
-        .slide-content { display: none; min-h: 220px; }
-        .slide-content.active { display: block; }
-        
-        .slide-titulo {
-            font-size: 20px;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 14px;
-        }
-        .slide-txt {
-            font-size: 15px;
-            line-height: 1.6;
-            color: #475569;
-            margin-bottom: 16px;
-        }
-        .highlight-box {
-            background-color: #f8fafc;
-            border-left: 4px solid #2563eb;
-            padding: 12px 16px;
-            border-radius: 0 8px 8px 0;
-            font-size: 13px;
-            color: #334155;
-            margin-top: 10px;
+            border: 1px solid #dbeafe;
         }
 
-        /* Controles de la revista */
+        /* Contenidos de las Filminas */
+        .slide-content { display: none; flex-grow: 1; }
+        .slide-content.active { display: block; animation: slideIn 0.2s ease-out; }
+        
+        .slide-titulo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+        .slide-txt {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #475569;
+            margin-bottom: 24px;
+        }
+
+        /* ELEMENTOS DIDÁCTICOS ADICIONALES (Tablas, Bloques de Teoría, Gráficas CSS) */
+        .highlight-box {
+            background-color: #f8fafc;
+            border-left: 5px solid #2563eb;
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #1e293b;
+            line-height: 1.5;
+            margin-top: 15px;
+        }
+        
+        /* Gráfica Didáctica CSS Pura */
+        .dom-chart-box {
+            margin: 20px 0;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        .chart-row { margin-bottom: 15px; }
+        .chart-label { font-size: 12px; font-weight: 700; margin-bottom: 5px; color: #475569; }
+        .chart-bar-container { background: #e2e8f0; border-radius: 6px; width: 100%; height: 24px; position: relative; }
+        .chart-bar { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; color: white; font-size: 11px; font-weight: 800; }
+        .bar-larga { width: 90%; background-color: #64748b; }
+        .bar-corta { width: 20%; background-color: #3b82f6; }
+
+        /* Tabla Didáctica */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 13px;
+        }
+        .tech-table th { background: #f1f5f9; padding: 10px; text-align: left; font-weight: 700; color: #1e293b; border: 1px solid #cbd5e1; }
+        .tech-table td { padding: 10px; border: 1px solid #e2e8f0; color: #475569; }
+
+        /* Diagrama de Flujo Horizontal Didáctico */
+        .diagrama-flujo-mini {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 20px 0;
+            background: #fffbeb;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #fde68a;
+        }
+        .flow-step { background: white; border: 1px solid #fcd34d; padding: 10px; border-radius: 8px; text-align: center; font-size: 11px; font-weight: 700; flex: 1; color: #b45309; }
+
+        /* CONTROLES DE DIRECCIÓN FIJOS (REFORZADOS) */
         .revista-controles {
             display: flex;
             justify-content: space-between;
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 1px solid #f1f5f9;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #f1f5f9;
         }
         .btn-nav {
-            background-color: #f1f5f9;
+            background-color: #2563eb;
             border: none;
-            padding: 10px 18px;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #475569;
+            border-bottom: 4px solid #1d4ed8;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 800;
+            color: #ffffff;
             cursor: pointer;
             transition: all 0.1s ease;
         }
-        .btn-nav:hover { background-color: #e2e8f0; color: #0f172a; }
-        .btn-nav:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn-nav:hover { background-color: #3b82f6; }
+        .btn-nav:active { transform: translateY(2px); border-bottom: 2px solid #1d4ed8; }
+        .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; transform: none; border-bottom: 4px solid #1d4ed8; }
 
-        /* MENÚ DE ACCIÓN INFERIOR (BOTONES EN 3D) */
+        /* MENÚ DE ACCIÓN INFERIOR (BOTONES 3D) */
         .menu-inferior {
             display: flex;
             flex-direction: row;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 20px;
+            margin-top: 25px;
         }
         .btn-accion {
             flex: 1;
-            padding: 18px;
-            border-radius: 16px;
+            padding: 20px;
+            border-radius: 18px;
             font-size: 15px;
             font-weight: 800;
             text-align: center;
@@ -155,39 +207,31 @@
         }
         .btn-accion:active { transform: translateY(3px); }
         
-        .color-tarea {
-            background-color: #3b82f6;
-            border: none;
-            border-bottom: 5px solid #1d4ed8;
-        }
+        .color-tarea { background-color: #3b82f6; border: none; border-bottom: 5px solid #1d4ed8; }
         .color-tarea:hover { background-color: #60a5fa; }
         .color-tarea:active { border-bottom: 2px solid #1d4ed8; }
 
-        .color-reto {
-            background-color: #f97316;
-            border: none;
-            border-bottom: 5px solid #c2410c;
-        }
+        .color-reto { background-color: #f97316; border: none; border-bottom: 5px solid #c2410c; }
         .color-reto:hover { background-color: #fb923c; }
         .color-reto:active { border-bottom: 2px solid #c2410c; }
 
-        /* Secciones desplegables inferiores */
+        /* Desplegables */
         .desplegable-info {
             display: none;
-            margin-top: 20px;
-            padding: 25px;
-            border-radius: 16px;
+            margin-top: 25px;
+            padding: 30px;
+            border-radius: 20px;
             animation: fadeIn 0.2s ease-out;
         }
         .bg-tarea { background-color: #f0f5ff; border: 2px solid #dbeafe; color: #1e3a8a; }
         .bg-reto { background-color: #fff7ed; border: 2px solid #ffedd5; color: #7c2d12; }
         
-        .desplegable-info h4 { font-size: 18px; font-weight: 800; margin-bottom: 10px; }
-        .desplegable-info p { font-size: 14px; line-height: 1.5; margin-bottom: 12px; }
+        .desplegable-info h4 { font-size: 20px; font-weight: 800; margin-bottom: 12px; }
+        .desplegable-info p { font-size: 15px; line-height: 1.6; margin-bottom: 14px; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(10px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @media (max-width: 768px) {
@@ -202,52 +246,23 @@
         <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
         <header>
-            <span class="tag">Módulo 01 · Presentación Interactiva</span>
+            <span class="tag">Módulo 01 · Presentación de Contenidos</span>
             <h1>Prospección, Captación y Perfilamiento Humano</h1>
         </header>
 
-        <!-- VISOR DE REVISTA INTERACTIVA -->
+        <!-- VISOR DE REVISTA INTERACTIVA REFORZADO -->
         <div class="revista-wrapper">
             <div class="revista-header">
                 <span id="revista-tema" class="revista-pills">TEMA 1.A · CONCEPTOS BÁSICOS</span>
                 <span id="revista-contador" class="revista-contador">Pág. 1 de 5</span>
             </div>
 
-            <!-- Filmina 1 -->
-            <div id="slide-1" class="slide-content active">
-                <h3 class="slide-titulo">La Intermediación No Es "Enseñar Casas"</h3>
-                <p class="slide-txt">El mercado tiene fricciones reales como costos notariales, impuestos e iliquidez. El intermediario profesional destraba operaciones complejas donde el comprador y el vendedor comúnmente no logran ponerse de acuerdo por cuenta propia.</p>
-                <div class="highlight-box">
-                    <strong>Teoría de George Akerlof — Asimetría de Información:</strong> El intermediario es el agente neutral indispensable que equilibra los datos técnicos y comerciales de la propiedad para que ambas partes operen con absoluta confianza.
-                </div>
-            </div>
+            <!-- Contenedor Dinámico de Filminas -->
+            <div class="revista-cuerpo-dinamico">
 
-            <!-- Filmina 2 -->
-            <div id="slide-2" class="slide-content">
-                <h3 class="slide-titulo">El "Efecto Dotación" y el Sesgo de Precios</h3>
-                <p class="slide-txt">Documentado por Gary Keller: los propietarios fijan el precio de salida basándose en sus necesidades personales u opiniones emocionales ("pido esto porque requiero pagar una deuda"), no bajo un análisis racional de mercado.</p>
-                <div class="highlight-box">
-                    <strong>La Consecuencia Inmobiliaria:</strong> Salir al mercado con un sobreprecio promedio del +18% vuelve al inmueble "invisible" en los portales digitales, transformándolo rápidamente en una propiedad quemada.
-                </div>
-            </div>
-
-            <!-- Filmina 3 -->
-            <div id="slide-3" class="slide-content">
-                <h3 class="slide-titulo">Del Corredor Empírico al Asesor de 3 Dimensiones</h3>
-                <p class="slide-txt">Basado en la metodología Ninja Selling de Larry Kendall. El asesor de maestría no coordina visitas físicas aleatorias; ejerce un control riguroso resguardando la transacción en tres frentes simultáneos.</p>
-                <div class="highlight-box">
-                    <strong>Las 3 Dimensiones Obligatorias:</strong> 1. Comercial (Valuación analítica real), 2. Legal-Fiscal (Auditoría de expedientes y cálculo impositivo), y 3. Mediación (Negociación técnica activa para el cierre).
-                </div>
-            </div>
-
-            <!-- Filmina 4 -->
-            <div id="slide-4" class="slide-content">
-                <h3 class="slide-titulo">La Eficiencia Operativa se Mide en "Días en el Mercado" (DoM)</h3>
-                <p class="slide-txt">Los datos del sector demuestran que una venta por "Trato Directo" carece de filtros de contención, extendiendo el proceso de 9 a 14 meses. Un intermediario profesional reduce los tiempos drásticamente a un rango de 45 a 60 días.</p>
-                <div class="highlight-box">
-                    <strong>Táctica Clave del Sistema:</strong> Alianzas estratégicas con brókers hipotecarios. Exigir la carta de crédito bancario autorizado o precalificación antes de la primera visita física elimina a los turistas inmobiliarios.
-                </div>
-            </div>
-
-            <!-- Filmina 5 -->
-            <div id="slide-5" class="slide-content">
+                <!-- Filmina 1 -->
+                <div id="slide-1" class="slide-content active">
+                    <h3 class="slide-titulo">La Intermediación No Es "Enseñar Casas"</h3>
+                    <p class="slide-txt">El mercado inmobiliario sufre por ineficiencias y fricciones reales: altos costos notariales, impuestos mal planeados e iliquidez del activo. El rol estratégico del intermediario es destrabar operaciones donde comprador y vendedor se encuentran estancados.</p>
+                    
+                    <div class="highlight-box">
