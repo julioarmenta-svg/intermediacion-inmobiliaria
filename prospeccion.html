@@ -51,14 +51,16 @@
             margin-top: 4px;
             letter-spacing: -0.02em;
         }
+        
+        /* RECUADRO DE LA REVISTA */
         .revista-wrapper {
             background-color: #ffffff;
             border: 3px solid #cbd5e1;
             border-radius: 24px;
             padding: 40px;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.02);
-            min-height: 480px;
+            min-height: 440px;
         }
         .revista-header {
             display: flex;
@@ -83,20 +85,14 @@
             border-radius: 20px;
             border: 1px solid #dbeafe;
         }
+
+        /* Bloques de filminas independientes */
         .slide-content { display: none; }
         .slide-content.active { display: block; }
-        .slide-titulo {
-            font-size: 24px;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 16px;
-        }
-        .slide-txt {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #475569;
-            margin-bottom: 24px;
-        }
+        
+        .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
+        .slide-txt { font-size: 16px; line-height: 1.6; color: #475569; margin-bottom: 24px; }
+        
         .highlight-box {
             background-color: #f8fafc;
             border-left: 5px solid #2563eb;
@@ -105,48 +101,13 @@
             font-size: 14px;
             color: #1e293b;
             line-height: 1.5;
-            margin-top: 15px;
         }
-        .dom-chart-box {
-            margin: 20px 0;
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-        }
-        .chart-row { margin-bottom: 15px; }
-        .chart-label { font-size: 12px; font-weight: 700; margin-bottom: 5px; color: #475569; }
-        .chart-bar-container { background: #e2e8f0; border-radius: 6px; width: 100%; height: 24px; }
-        .chart-bar { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; color: white; font-size: 11px; font-weight: 800; }
-        .bar-larga { width: 90%; background-color: #64748b; }
-        .bar-corta { width: 20%; background-color: #3b82f6; }
-        .tech-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            font-size: 13px;
-            margin-bottom: 15px;
-        }
-        .tech-table th { background: #f1f5f9; padding: 10px; text-align: left; font-weight: 700; color: #1e293b; border: 1px solid #cbd5e1; }
-        .tech-table td { padding: 10px; border: 1px solid #e2e8f0; color: #475569; }
-        .diagrama-flujo-mini {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            margin: 20px 0;
-            background: #fffbeb;
-            padding: 15px;
-            border-radius: 12px;
-            border: 1px solid #fde68a;
-        }
-        .flow-step { background: white; border: 1px solid #fcd34d; padding: 10px; border-radius: 8px; text-align: center; font-size: 11px; font-weight: 700; flex: 1; color: #b45309; }
+
+        /* CONTROLES DE CAMBIO DE PÁGINA (FUERA DE LAS FILMINAS) */
         .revista-controles {
             display: flex;
             justify-content: space-between;
             margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #f1f5f9;
             gap: 20px;
         }
         .btn-nav {
@@ -154,9 +115,9 @@
             background-color: #2563eb;
             border: none;
             border-bottom: 5px solid #1d4ed8;
-            padding: 16px;
+            padding: 18px;
             border-radius: 14px;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 800;
             color: #ffffff;
             cursor: pointer;
@@ -166,76 +127,6 @@
         .btn-nav:hover { background-color: #3b82f6; }
         .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
         .btn-nav:disabled { background-color: #cbd5e1; border-bottom: 5px solid #94a3b8; color: #94a3b8; cursor: not-allowed; transform: none; }
-        .menu-inferior {
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-            margin-top: 25px;
-        }
-        .btn-accion {
-            flex: 1;
-            padding: 20px;
-            border-radius: 18px;
-            font-size: 15px;
-            font-weight: 800;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.1s ease;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-        }
-        .btn-accion:active { transform: translateY(3px); }
-        .color-tarea { background-color: #3b82f6; border: none; border-bottom: 5px solid #1d4ed8; }
-        .color-tarea:hover { background-color: #60a5fa; }
-        .color-tarea:active { border-bottom: 2px solid #1d4ed8; }
-        .color-reto { background-color: #f97316; border: none; border-bottom: 5px solid #c2410c; }
-        .color-reto:hover { background-color: #fb923c; }
-        .color-reto:active { border-bottom: 2px solid #c2410c; }
-        .desplegable-info {
-            display: none;
-            margin-top: 25px;
-            padding: 30px;
-            border-radius: 20px;
-            animation: fadeIn 0.2s ease-out;
-        }
-        .bg-tarea { background-color: #f0f5ff; border: 2px solid #dbeafe; color: #1e3a8a; }
-        .bg-reto { background-color: #fff7ed; border: 2px solid #ffedd5; color: #7c2d12; }
-        .desplegable-info h4 { font-size: 20px; font-weight: 800; margin-bottom: 12px; }
-        .desplegable-info p { font-size: 15px; line-height: 1.6; margin-bottom: 14px; }
-        
-        /* Estilos del área de subida de archivos */
-        .upload-container {
-            margin-top: 15px;
-            background: #ffffff;
-            border: 2px dashed #cbd5e1;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-        }
-        .upload-container input[type="file"] { display: none; }
-        .upload-label {
-            background-color: #eff6ff;
-            color: #2563eb;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            border: 1px solid #bfdbfe;
-            display: inline-block;
-            margin-top: 10px;
-        }
-        .upload-label:hover { background-color: #dbeafe; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @media (max-width: 768px) {
-            .menu-inferior { flex-direction: column; }
-            .revista-controles { flex-direction: column; }
-        }
     </style>
 </head>
 <body>
@@ -249,16 +140,82 @@
             <h1>Prospección, Captación y Perfilamiento Humano</h1>
         </header>
 
-        <!-- RECUADRO DE LA REVISTA -->
+        <!-- CONTENEDOR DE LA REVISTA -->
         <div class="revista-wrapper">
             <div class="revista-header">
                 <span id="revista-tema" class="revista-pills">TEMA 1.A · CONCEPTOS BÁSICOS</span>
                 <span id="revista-contador" class="revista-contador">Pág. 1 de 5</span>
             </div>
 
+            <!-- FILMINAS PERFECTAMENTE CERRADAS -->
             <div class="revista-paginas">
+                
                 <!-- Filmina 1 -->
                 <div id="slide-1" class="slide-content active">
                     <h3 class="slide-titulo">La Intermediación No Es "Enseñar Casas"</h3>
-                    <p class="slide-txt">El mercado inmobiliario sufre por ineficiencias y frictionas reales: altos costos notariales, impuestos mal planeados e iliquidez del activo. El rol estratégico del intermediario es destrabar operaciones complejas donde comprador y vendedor se encuentran estancados.</p>
+                    <p class="slide-txt">El mercado inmobiliario sufre por ineficiencias y fricciones reales: altos costos notariales, impuestos mal planeados e iliquidez del activo. El rol estratégico del intermediario es destrabar operaciones complejas donde comprador y vendedor se encuentran estancados.</p>
                     <div class="highlight-box">
+                        <strong>George Akerlof — Premio Nobel (Asimetría de Información):</strong> El intermediario profesional actúa como el agente neutral indispensable que equilibra los datos asimétricos del mercado. Brinda certeza jurídica y financiera para que ambas partes operen con absoluta confianza.
+                    </div>
+                </div>
+
+                <!-- Filmina 2 -->
+                <div id="slide-2" class="slide-content">
+                    <h3 class="slide-titulo">El "Efecto Dotación" y el Sesgo de Precios</h3>
+                    <p class="slide-txt">Como lo documenta Gary Keller, los propietarios tienden a fijar el precio de salida de sus viviendas basándose en necesidades de deudas personales o lazos sentimentales, ignorando el mercado comparativo real.</p>
+                    <div class="highlight-box">
+                        <strong>La Consecuencia Inmobiliaria:</strong> Salir al mercado con un sobreprecio del +18% sobre el valor comercial vuelve al inmueble "invisible" en los portales digitales, transformándolo rápidamente en una propiedad quemada.
+                    </div>
+                </div>
+
+                <!-- Filmina 3 -->
+                <div id="slide-3" class="slide-content">
+                    <h3 class="slide-titulo">Del Corredor Empírico al Asesor de 3 Dimensiones</h3>
+                    <p class="slide-txt">Inspirado en la metodología Ninja Selling de Larry Kendall. El asesor de maestría no coordina visitas físicas aleatorias; ejerce un control riguroso resguardando la transacción en tres frentes simultáneos.</p>
+                    <div class="highlight-box">
+                        <strong>Las 3 Dimensiones Obligatorias:</strong> 1. Comercial (Valuación analítica real), 2. Legal-Fiscal (Auditoría de expedientes y cálculo impositivo), y 3. Mediación (Negociación técnica activa para el cierre).
+                    </div>
+                </div>
+
+                <!-- Filmina 4 -->
+                <div id="slide-4" class="slide-content">
+                    <h3 class="slide-titulo">La Eficiencia Operativa se Mide en "Días en el Mercado" (DoM)</h3>
+                    <p class="slide-txt">Los datos del sector demuestran que una venta por "Trato Directo" carece de filtros de contención, extendiendo el proceso de 9 a 14 meses. Un intermediario profesional calificado reduce los tiempos drásticamente a un rango de 45 a 60 días en promedio.</p>
+                    <div class="highlight-box">
+                        <strong>Táctica Clave del Sistema:</strong> Alianzas estratégicas con brókers hipotecarios. Exigir la carta de crédito bancario autorizado o precalificación antes de la primera visita física elimina a los turistas inmobiliarios.
+                    </div>
+                </div>
+
+                <!-- Filmina 5 -->
+                <div id="slide-5" class="slide-content">
+                    <h3 class="slide-titulo">Técnicas de Captación Avanzada: Las 4 Ds</h3>
+                    <p class="slide-txt">Los líderes de la industria no persiguen listados al azar. Siguen los eventos disparadores de vida que obligan al inventario a cambiar de manos por necesidad real: Divorcio, Deuda, Defunción y Desplazamiento corporativo o industrial (Nearshoring).</p>
+                    <div class="highlight-box">
+                        <strong>Regla de Oro Digital:</strong> El uso de contenidos de valor (Lead Magnets) captura datos reales. Si contactas al prospecto en menos de 5 minutos desde su registro web, la probabilidad de éxito se incrementa un 1,000%.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CONTROLES TOTALMENTE SEPARADOS ABAJO -->
+        <div class="revista-controles">
+            <button id="btn-ant" class="btn-nav" onclick="cambiarPagina(-1)" disabled>◀ Anterior</button>
+            <button id="btn-sig" class="btn-nav" onclick="cambiarPagina(1)">Siguiente ▶</button>
+        </div>
+
+    </div>
+
+    <script>
+        let paginaActual = 1;
+        const totalPaginas = 5;
+        const temas = [
+            "TEMA 1.A · CONCEPTOS BÁSICOS",
+            "TEMA 1.A · EL SESGO DEL PRECIO",
+            "TEMA 1.B · ROLES Y RESPONSABILIDADES",
+            "TEMA 1.C · IMPORTANCIA DE LA INTERMEDIACIÓN",
+            "TEMAS 2.A, B, C · CAPTACIÓN Y HERRAMIENTAS"
+        ];
+
+        function cambiarPagina(direccion) {
+            // Ocultar la filmina actual
