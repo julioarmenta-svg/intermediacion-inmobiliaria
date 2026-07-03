@@ -13,7 +13,7 @@
             color: #334155;
         }
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             background-color: #ffffff;
             border-radius: 28px;
@@ -58,7 +58,7 @@
             padding: 40px;
             margin-bottom: 25px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.02);
-            min-height: 440px;
+            min-height: 460px;
         }
         .revista-header {
             display: flex;
@@ -78,17 +78,77 @@
             border-radius: 20px;
             border: 1px solid #dbeafe;
         }
+
+        /* ESTRUCTURA SPLIT TIPO DIAPOSITIVA PPT (Texto e Imagen separados) */
+        .diapositiva-grid {
+            display: flex;
+            flex-direction: row;
+            gap: 35px;
+            align-items: stretch;
+        }
+        .col-texto {
+            flex: 1.2;
+        }
+        .col-visual {
+            flex: 0.8;
+            background-color: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+        }
+        
+        /* Previsualizador de la imagen subida */
+        .img-preview {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
-        .slide-txt { font-size: 16px; line-height: 1.6; color: #475569; margin-bottom: 24px; }
+        .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
+        
         .highlight-box {
             background-color: #f8fafc;
             border-left: 5px solid #2563eb;
-            padding: 16px 20px;
-            border-radius: 8px;
-            font-size: 14px;
+            padding: 16px;
+            border-radius: 4px;
+            font-size: 13.5px;
             color: #1e293b;
             line-height: 1.5;
         }
+        
+        /* Controles de carga multimedia */
+        .upload-trigger {
+            background-color: #eff6ff;
+            color: #2563eb;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 8px 14px;
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            z-index: 10;
+        }
+        .upload-trigger:hover { background-color: #dbeafe; }
+        .icon-placeholder {
+            font-size: 32px;
+            margin-bottom: 8px;
+            color: #94a3b8;
+            z-index: 10;
+        }
+
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
         .btn-nav {
             flex: 1;
@@ -107,6 +167,11 @@
         .btn-nav:hover { background-color: #3b82f6; }
         .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
         .btn-disabled { background-color: #cbd5e1; border-bottom: 5px solid #94a3b8; color: #94a3b8; cursor: not-allowed; pointer-events: none; }
+
+        @media (max-width: 768px) {
+            .diapositiva-grid { flex-direction: column; }
+            .col-visual { min-height: 200px; }
+        }
     </style>
 </head>
 <body>
@@ -125,22 +190,52 @@
                 <span class="revista-contador">Pág. 1 de 10</span>
             </div>
 
-            <div>
-                <h3 class="slide-titulo">Redefiniendo la Intermediación Inmobiliaria</h3>
-                <p class="slide-txt">El corretaje tradicional se limita a unir la oferta y la demanda a cambio de una comisión. En un entorno directivo y de posgrado, la intermediación se redefine como la dirección de un proyecto patrimonial estratégico que elimina las fricciones del mercado mexicano: altos costos de escrituración, falta de liquidez del activo y riesgos fiscales latentes.</p>
-                <div class="highlight-box">
-                    <strong>George Akerlof — Teoría de Asimetría de Información:</strong> El mercado inmobiliario es asimétrico por naturaleza. El intermediario profesional no es un simple vendedor de casas; es el consultor neutral indispensable que equilibra la información, inyecta racionalidad y brinda certeza jurídica y financiera para consolidar operaciones exitosas.
+            <!-- ESTRUCTURA TIPO SLIDE PPT INTERACTIVO -->
+            <div class="diapositiva-grid">
+                
+                <!-- Columna Izquierda: Texto de Alta Densidad -->
+                <div class="col-texto">
+                    <h3 class="slide-titulo">Redefiniendo la Intermediación Inmobiliaria</h3>
+                    <p class="slide-txt">El corretaje tradicional se limita a unir la oferta y la demanda a cambio de una comisión. En un entorno directivo y de posgrado, la intermediación se redefine como la dirección de un proyecto patrimonial estratégico que elimina las fricciones del mercado mexicano: altos costos de escrituración, falta de liquidez del activo y riesgos fiscales latentes.</p>
+                    <div class="highlight-box">
+                        <strong>George Akerlof — Teoría de Asimetría de Información:</strong> El mercado inmobiliario es asimétrico por naturaleza. El intermediario profesional no es un simple vendedor de casas; es el consultor neutral indispensable que equilibra la información, inyecta racionalidad y brinda certeza jurídica y financiera para consolidar operaciones exitosas.
+                    </div>
                 </div>
+
+                <!-- Columna Derecha: El Contenedor Visual de la Diapositiva -->
+                <div class="col-visual" id="dropzone">
+                    <img id="visual-render" class="img-preview" alt="Sustento gráfico de la clase">
+                    <div class="icon-placeholder" id="icon-media">📊</div>
+                    <p style="font-size: 12px; color: #64748b; font-weight: 500; text-align: center; max-width: 180px; z-index: 10;" id="txt-media">Sube un esquema o imagen para esta diapositiva</p>
+                    <label for="slide-upload" class="upload-trigger">Cargar Imagen</label>
+                    <input type="file" id="slide-upload" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                </div>
+
             </div>
         </div>
 
         <div class="revista-controles">
             <a href="#" class="btn-nav btn-disabled">◀ Anterior</a>
-            <!-- Enlace directo a la página 2 física -->
             <a href="prospeccion-p2.html" class="btn-nav">Siguiente ▶</a>
         </div>
 
     </div>
 
+    <script>
+        // Función nativa para renderizar la imagen cargada dentro de la filmina en tiempo real
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const output = document.getElementById('visual-render');
+                output.src = reader.result;
+                output.style.display = 'block';
+                
+                // Ocultamos los textos informativos tras cargar la imagen
+                document.getElementById('icon-media').style.display = 'none';
+                document.getElementById('txt-media').style.display = 'none';
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
 </body>
 </html>
