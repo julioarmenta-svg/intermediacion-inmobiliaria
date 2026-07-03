@@ -113,12 +113,12 @@
             align-items: flex-start;
         }
         .col-texto {
-            flex: 1.1;
+            flex: 1.05;
         }
         
-        /* CONTENEDOR DE ACTIVIDADES EVALUATIVAS (DERECHA) */
+        /* BLOQUE EVALUATIVO DERECHO REESTRUCTURADO FIJO */
         .col-visual-tareas {
-            flex: 0.9;
+            flex: 0.95;
             background-color: #f8fafc;
             border: 1px solid #cbd5e1;
             border-radius: 16px;
@@ -126,54 +126,42 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 16px;
         }
         
-        /* BOTONES DE TAREAS MAESTRAS */
-        .task-trigger-btn {
-            width: 100%;
-            text-align: left;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 13.5px;
-            font-weight: 800;
-            color: white;
-            cursor: pointer;
-            border: none;
-            transition: all 0.15s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-        }
-        .btn-tarea-preguntas { background-color: #0f766e; border-bottom: 5px solid #115e59; box-shadow: 0 4px 6px rgba(15, 118, 110, 0.15); }
-        .btn-tarea-preguntas:hover { background-color: #0d9488; }
-        
-        .btn-tarea-caso { background-color: #4338ca; border-bottom: 5px solid #3730a3; box-shadow: 0 4px 6px rgba(67, 56, 202, 0.15); }
-        .btn-tarea-caso:hover { background-color: #4f46e5; }
-        
-        .task-trigger-btn:active { transform: translateY(3px); border-bottom-width: 1px; }
-
-        /* PANELES DE DESPLIEGUE DE TAREA INTERNA */
-        .task-display-box {
-            display: none;
-            background: white;
+        /* Tarjetas de Tareas Corporativas Fijas */
+        .card-tarea-item {
+            background: #ffffff;
             border: 1px solid #cbd5e1;
             border-radius: 12px;
-            padding: 18px;
+            padding: 16px;
             font-size: 12.5px;
             line-height: 1.5;
-            color: #1e293b;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-            animation: fadeIn 0.3s ease-out;
+            color: #475569;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
         }
-        .task-display-box strong { color: #0f172a; }
-        .task-display-box ol, .task-display-box ul { padding-left: 20px; margin-top: 8px; }
-        .task-display-box li { margin-bottom: 8px; }
+        .task-title {
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .title-verde { color: #0f766e; }
+        .title-morado { color: #4338ca; }
+        
+        .card-tarea-item ol, .card-tarea-item ul { padding-left: 18px; margin-top: 6px; }
+        .card-tarea-item li { margin-bottom: 6px; }
 
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
         .highlight-box { background-color: #f8fafc; border-left: 5px solid #10b981; padding: 16px; border-radius: 4px; font-size: 13.5px; color: #1e293b; line-height: 1.5; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 768px) { .diapositiva-grid { flex-direction: column; } .revista-header { flex-direction: column; align-items: flex-start; } }
     </style>
 </head>
@@ -213,17 +201,25 @@
                     </div>
                 </div>
 
-                <!-- Columna Derecha: Panel de Asignación de Tareas Independientes (Nueva) -->
+                <!-- Columna Derecha: Bloques de Tareas Fijos (Imposible que se oculten) -->
                 <div class="col-visual-tareas">
-                    <p style="font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px;">📋 Evaluación Independiente de Postgrado</p>
+                    <p style="font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 4px;">📋 Evaluación Independiente de Postgrado</p>
                     
-                    <!-- Botón Enlace 1 -->
-                    <button class="task-trigger-btn btn-tarea-preguntas" onclick="desplegarTarea('preguntas')">📋 1. Cuestionario de Reflexión</button>
-                    
-                    <!-- Panel Desplegable 1 -->
-                    <div id="box-preguntas" class="task-display-box">
-                        <strong>Entregable 1: Cuestionario Crítico (MÁX. 2 CUARTILLAS)</strong><br>
-                        Responda de forma analítica las siguientes 5 preguntas reflexivas basándose en la operación real de campo en México:
+                    <!-- Tarjeta 1 Fija: Cuestionario -->
+                    <div class="card-tarea-item" style="border-left: 4px solid #0f766e;">
+                        <div class="task-title title-verde">📋 1. Cuestionario Crítico Reflexivo</div>
+                        Responda de forma analítica las siguientes preguntas basándose en la operación de campo (MÁX. 2 CUARTILLAS):
                         <ol>
-                            <li>¿Cómo impacta económicamente la Asimetría de Información de Akerlof a un asesor independiente que no utiliza herramientas proptech?</li>
-                            <li>¿Qué métricas de comportamiento demuestran de forma medible que un propietario está sufriendo el "Efecto Dotación" de Richard Thaler?</li>
+                            <li>¿Cómo impacta la Asimetría de Información de Akerlof a un asesor empírico que no usa proptech?</li>
+                            <li>¿Qué métricas demuestran de forma medible que un dueño sufre el "Efecto Dotación" de Thaler?</li>
+                            <li>¿Por qué la regla financiera 3 a 1 protege el ecosistema de originación de créditos y la liquidez familiar?</li>
+                            <li>¿De qué manera los buscadores (Inmuebles24, Lamudi) inyectan racionalidad de precios en zonas emocionales?</li>
+                            <li>¿Qué implicaciones legales y de marca enfrenta un consultor que promueve propiedades sin control de documentos (SLA)?</li>
+                        </ol>
+                    </div>
+
+                    <!-- Tarjeta 2 Fija: Caso de Estudio (Anti-IA) -->
+                    <div class="card-tarea-item" style="border-left: 4px solid #4338ca;">
+                        <div class="task-title title-morado">🔥 2. Practicum de Campo (Anti-IA)</div>
+                        Desarrolle un dictamen técnico-financiero ejecutivo para el escenario estructurado en la lección:
+                        <ul>
