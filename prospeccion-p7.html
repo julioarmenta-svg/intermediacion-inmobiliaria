@@ -79,7 +79,7 @@
             border: 1px solid #dbeafe;
         }
 
-        /* ESTRUCTURA SPLIT PREMIUM 4:3 (Imagen a la Derecha) */
+        /* ESTRUCTURA SPLIT DIAPOSITIVA PREMIUM 4:3 */
         .diapositiva-grid {
             display: flex;
             flex-direction: row;
@@ -89,49 +89,58 @@
         .col-texto {
             flex: 1.1;
         }
+        
+        /* Contenedor de la Tabla en lugar de la imagen */
         .col-visual {
             flex: 0.9;
             background-color: #f8fafc;
             border: 1px solid #cbd5e1;
             border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 4 / 3;
+            padding: 24px;
             width: 100%;
         }
         
-        .img-fixed {
+        /* Tabla Ecosistema Digital */
+        .tech-table {
             width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background-color: #ffffff;
+            border-collapse: collapse;
+            font-size: 13px;
+            background: #ffffff;
         }
-
-        .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
-        .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
+        .tech-table th { background: #f1f5f9; padding: 12px; text-align: left; font-weight: 800; color: #1e293b; border: 1px solid #cbd5e1; text-transform: uppercase; font-size: 11px; letter-spacing: 0.02em; }
+        .tech-table td { padding: 12px; border: 1px solid #e2e8f0; color: #475569; vertical-align: middle; }
         
-        .highlight-box {
+        /* Botones de Enlace de la Tabla */
+        .crm-btn {
+            display: inline-block;
             background-color: #f8fafc;
-            border-left: 5px solid #10b981;
-            padding: 16px;
-            border-radius: 4px;
-            font-size: 13.5px;
-            color: #1e293b;
-            line-height: 1.5;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: all 0.1s ease;
+            width: 100%;
+            text-align: center;
+        }
+        .crm-btn:hover {
+            background-color: #eff6ff;
+            border-color: #2563eb;
+            color: #2563eb;
+            transform: translateY(-1px);
         }
 
-        /* BOTÓN GIGANTE 3D VERDE LANZADOR */
+        /* BOTÓN DE ACCESO AL BUSCADOR */
         .btn-launch-portal {
             display: block;
             text-decoration: none;
             background-color: #ef4444;
             border-bottom: 6px solid #b91c1c;
-            padding: 20px;
+            padding: 18px;
             border-radius: 16px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 800;
             color: #ffffff;
             text-align: center;
@@ -144,26 +153,14 @@
         .btn-launch-portal:hover { background-color: #dc2626; }
         .btn-launch-portal:active { transform: translateY(4px); border-bottom: 2px solid #b91c1c; }
 
+        .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
+        .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
+        .highlight-box { background-color: #f8fafc; border-left: 5px solid #10b981; padding: 16px; border-radius: 4px; font-size: 13.5px; color: #1e293b; line-height: 1.5; }
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
-        .btn-nav {
-            flex: 1;
-            display: block;
-            text-decoration: none;
-            background-color: #2563eb;
-            border-bottom: 5px solid #1d4ed8;
-            padding: 18px;
-            border-radius: 14px;
-            font-size: 16px;
-            font-weight: 800;
-            color: #ffffff;
-            text-align: center;
-            transition: all 0.1s ease;
-        }
+        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; transition: all 0.1s ease; }
         .btn-nav:hover { background-color: #3b82f6; }
 
-        @media (max-width: 768px) {
-            .diapositiva-grid { flex-direction: column; }
-        }
+        @media (max-width: 768px) { .diapositiva-grid { flex-direction: column; } }
     </style>
 </head>
 <body>
@@ -184,7 +181,7 @@
 
             <div class="diapositiva-grid">
                 
-                <!-- Columna Izquierda: Contenido Técnico Recobrado -->
+                <!-- Columna Izquierda: Contenido Técnico -->
                 <div class="col-texto">
                     <h3 class="slide-titulo">La Automatización del Embudo de Captación</h3>
                     <p class="slide-txt">Para que un asesor inmobiliario independiente compita al más alto nivel, no puede depender de libretas o formatos en papel. La prospección moderna requiere una **infraestructura digital centralizada** que administre el inventario, automatice la difusión en portales y mida la velocidad de respuesta (SLA).</p>
@@ -192,29 +189,34 @@
                     
                     <div class="highlight-box">
                         <strong>Métricas Críticas de Prospección Digital:</strong><br>
-                        • <strong>Tiempo de Respuesta (SLA):</strong> Contactar a un lead digital en los primeros 5 minutos incrementa la probabilidad de conversión un 1,000%.<br>
+                        • <strong>Tiempo de Respuesta (SLA):</strong> Contactar a un lead digital en los primeros 5 minutos incrementa la conversión un 1,000%.<br>
                         • <strong>Multidifusión Automatizada:</strong> Publicar con un solo clic en los portales líderes para maximizar la exposición del activo.<br>
-                        • <strong>Mesas de Control Históricas:</strong> Registro centralizado de comentarios y documentos para evitar fugas de información.
+                        • <strong>Mesas de Control Históricas:</strong> Registro centralizado de comentarios para evitar fugas de datos.
                     </div>
 
-                    <!-- Botón de Entrada Inmediata al Buscador -->
-                    <a href="prospeccion-p8.html" class="btn-launch-portal">🔍 Configurar Buscador Digital Local ➔</a>
+                    <a href="prospeccion-p8.html" class="btn-launch-portal">🔍 Lanzar Simulador de Reconocimiento Local ➔</a>
                 </div>
 
-                <!-- Columna Derecha: Imagen Fija Vinculada -->
+                <!-- Columna Derecha: Matriz de Clasificación Proptech México (Nueva) -->
                 <div class="col-visual">
-                    <img src="imagenes/imagen7.png" class="img-fixed" alt="Infraestructura de CRMs Inmobiliarios">
-                </div>
-
-            </div>
-        </div>
-
-        <div class="revista-controles">
-            <a href="prospeccion-p6.html" class="btn-nav">◀ Anterior</a>
-            <a href="prospeccion-p8.html" class="btn-nav">Siguiente ▶</a>
-        </div>
-
-    </div>
-
-</body>
-</html>
+                    <p style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px;">📋 Ecosistema Inmobiliario Digital en México</p>
+                    <table class="tech-table">
+                        <thead>
+                            <tr>
+                                <th>Buscadores y Portales</th>
+                                <th>CRMs e Infraestructura</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://inmuebles24.com" target="_blank" class="crm-btn">Inmuebles24 ➔</a></td>
+                                <td><a href="https://easybroker.com" target="_blank" class="crm-btn">EasyBroker ➔</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://vivanuncios.com.mx" target="_blank" class="crm-btn">Vivanuncios ➔</a></td>
+                                <td><a href="https://tokkobroker.mx" target="_blank" class="crm-btn">Tokko Broker ➔</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://propiedades.com" target="_blank" class="crm-btn">Propiedades.com ➔</a></td>
+                                <td><a href="https://wasi.co" target="_blank" class="crm-btn">Wasi CRM ➔</a></td>
+                            </tr>
