@@ -7,28 +7,27 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f1f5f9; padding: 40px 20px; color: #334155; }
-        .container { max-width: 700px; margin: 0 auto; background-color: #ffffff; border-radius: 28px; padding: 40px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06); border: 1px solid #e2e8f0; }
+        .container { max-width: 750px; margin: 0 auto; background-color: #ffffff; border-radius: 28px; padding: 40px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06); border: 1px solid #e2e8f0; }
         header { margin-bottom: 35px; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px; }
         .tag { font-size: 11px; font-weight: 800; color: #10b981; text-transform: uppercase; letter-spacing: 0.12em; }
         h1 { font-size: 28px; font-weight: 800; color: #0f172a; margin-top: 4px; letter-spacing: -0.02em; }
         .portal-box { background-color: #f8fafc; border: 2px solid #cbd5e1; border-radius: 20px; padding: 30px; display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px; }
-        .form-select { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; background-color: white; color: #334155; }
+        .form-select { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 13px; background-color: white; color: #334155; font-weight: 600; }
         .portal-btn { width: 100%; background-color: #ef4444; color: white; border: none; border-bottom: 4px solid #b91c1c; padding: 14px; border-radius: 8px; font-size: 14px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: all 0.1s; }
         .portal-btn:active { transform: translateY(2px); border-bottom: 2px solid #b91c1c; }
         
         .resultados-list { display: flex; flex-direction: column; gap: 12px; }
-        .propiedad-card { background: white; border: 1px solid #cbd5e1; border-radius: 12px; padding: 14px; display: flex; gap: 14px; align-items: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .prop-foto { width: 50px; height: 50px; background-color: #f0fdf4; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 24px; border: 1px solid #bbf7d0; }
+        .propiedad-card { background: white; border: 1px solid #cbd5e1; border-radius: 12px; padding: 16px; display: flex; gap: 16px; align-items: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .prop-foto { width: 55px; height: 50px; background-color: #f0fdf4; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 24px; border: 1px solid #bbf7d0; }
         .prop-info h5 { font-size: 14px; font-weight: 800; color: #0f172a; }
-        .prop-info p { font-size: 12px; color: #64748b; margin-top: 2px; }
-        .prop-precio { font-size: 14px; font-weight: 800; color: #10b981; margin-left: auto; }
+        .prop-info p { font-size: 11.5px; color: #64748b; margin-top: 3px; line-height: 1.4; }
+        .prop-precio { font-size: 14px; font-weight: 800; color: #10b981; margin-left: auto; text-align: right; min-width: 110px; }
         
         .revista-controles { display: flex; justify-content: space-between; gap: 20px; }
         .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; }
         .btn-nav:hover { background-color: #3b82f6; }
         .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
         .nav-back { display: inline-block; text-decoration: none; color: #2563eb; font-size: 13px; font-weight: 800; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 0.05em; }
-        .nav-back:hover { color: #1d4ed8; }
     </style>
 </head>
 <body>
@@ -39,78 +38,81 @@
             <h1>Introducción a la Intermediación Inmobiliaria</h1>
         </header>
 
-        <!-- PANEL DE CONTROL COMPLETAMENTE LIMPIO -->
+        <!-- PANEL DE CONTROL CON DATOS DE INMUEBLES24 -->
         <div class="portal-box">
-            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔍 DEMO: RECONOCIMIENTO DE PROPIEDADES EN PLATAFORMAS</p>
+            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔍 SIMULADOR DE BUSCADOR: PORTAL INMUEBLES24</p>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%;">
                 <div>
-                    <label style="font-size:12px; font-weight:700; color:#64748b; display:block; margin-bottom:6px;">Ubicación de Búsqueda:</label>
+                    <label style="font-size:12px; font-weight:700; color:#64748b; display:block; margin-bottom:6px;">Ubicación (Zona de Alta Plusvalía):</label>
                     <select id="select-ciudad" class="form-select">
-                        <option value="chihuahua">Chihuahua, Chih.</option>
-                        <option value="juarez">Cd. Juárez, Chih.</option>
+                        <option value="lomas_valle">Residencial Lomas del Valle, Chihuahua</option>
                     </select>
                 </div>
                 <div>
                     <label style="font-size:12px; font-weight:700; color:#64748b; display:block; margin-bottom:6px;">Características del Activo:</label>
                     <select id="select-recamaras" class="form-select">
-                        <option value="2">2 Recámaras</option>
                         <option value="3">3 Recámaras</option>
+                        <option value="4">4 Recámaras o más</option>
                     </select>
                 </div>
             </div>
             
-            <button class="portal-btn" onclick="simularBusqueda()">Buscar Propiedades ➔</button>
+            <button class="portal-btn" onclick="simularBusqueda()">Buscar Propiedades en Zona ➔</button>
             
             <div id="resultados-portal" class="resultados-list">
-                <p style="font-size: 12px; color: #94a3b8; text-align: center; font-style: italic; padding: 10px 0;">Selecciona los filtros y presione Buscar para simular el rastreo operativo...</p>
+                <p style="font-size: 12px; color: #94a3b8; text-align: center; font-style: italic; padding: 10px 0;">Selecciona las recámaras y presiona Buscar para simular el rastreo operativo...</p>
             </div>
         </div>
 
         <div class="revista-controles">
             <a href="prospeccion-p7.html" class="btn-nav">◀ Anterior</a>
-            <!-- Apuntará de forma fija a la página 9 del expediente de captación -->
             <a href="prospeccion-p9.html" class="btn-nav">Siguiente ▶</a>
         </div>
     </div>
 
     <script>
         function simularBusqueda() {
-            var ciudad = document.getElementById('select-ciudad').value;
             var recamaras = document.getElementById('select-recamaras').value;
             var contenedor = document.getElementById('resultados-portal');
             
-            contenedor.innerHTML = '<p style="font-size:12px; color:#2563eb; text-align:center; font-weight:bold; padding: 10px 0;">🔍 Sincronizando API de Portales en tiempo real...</p>';
+            contenedor.innerHTML = '<p style="font-size:12px; color:#2563eb; text-align:center; font-weight:bold; padding: 15px 0;">🔍 Conectando con API de Inmuebles24 Chihuahua...</p>';
             
             setTimeout(function() {
-                if(ciudad === 'chihuahua' && recamaras === '2') {
+                if(recamaras === '3') {
+                    // Carga los testigos reales que investigaste
                     contenedor.innerHTML = `
                         <div class="propiedad-card">
                             <div class="prop-foto">🏡</div>
-                            <div class="prop-info"><h5>Casa en San Felipe</h5><p>2 Rec · 2 Baños · Cuadrante Familiar</p></div>
-                            <div class="prop-precio">$2.4M MXN</div>
-                        </div>`;
-                } else if(ciudad === 'chihuahua' && recamaras === '3') {
-                    contenedor.innerHTML = `
+                            <div class="prop-info"><h5>Valle Alto 6515</h5><p>3 Rec · 2 Baños · 2 Estac · 495 m² Lote</p></div>
+                            <div class="prop-precio">$8,200,000 MXN</div>
+                        </div>
                         <div class="propiedad-card">
                             <div class="prop-foto">🏰</div>
-                            <div class="prop-info"><h5>Residencial Cantera</h5><p>3 Rec · 3.5 Baños · Plusvalía Alta</p></div>
-                            <div class="prop-precio">$4.8M MXN</div>
-                        </div>`;
-                } else if(ciudad === 'juarez' && recamaras === '2') {
-                    contenedor.innerHTML = `
-                        <div class="propiedad-card">
-                            <div class="prop-foto">🏠</div>
-                            <div class="prop-info"><h5>Fracc. El Campanario</h5><p>2 Rec · 1.5 Baños · Acceso Vial Rápido</p></div>
-                            <div class="prop-precio">$1.9M MXN</div>
-                        </div>`;
+                            <div class="prop-info"><h5>Haciendas del Valle</h5><p>3 Rec · 5 Baños · 3 Estac · 390 m² Lote</p></div>
+                            <div class="prop-precio">$16,000,000 MXN</div>
+                        </div>
+                        <p style="font-size:11px; color:#ef4444; font-weight:bold; text-align:center; margin-top:5px;">⚠️ Nota del Asesor: Las propiedades de 3 recámaras en esta zona inician desde $8.2M MXN.</p>
+                    `;
                 } else {
+                    // Carga las opciones de 4 y 5 recámaras reales
                     contenedor.innerHTML = `
                         <div class="propiedad-card">
                             <div class="prop-foto">🏢</div>
-                            <div class="prop-info"><h5>Depa en Campos Elíseos</h5><p>3 Rec · 2.5 Baños · Control de Acceso</p></div>
-                            <div class="prop-precio">$3.6M MXN</div>
-                        </div>`;
+                            <div class="prop-info"><h5>Valle de la Herradura 6536</h5><p>5 Rec · 6 Baños · 4 Estac · 489 m² Lote</p></div>
+                            <div class="prop-precio">$12,950,000 MXN</div>
+                        </div>
+                        <div class="propiedad-card">
+                            <div class="prop-foto">🏰</div>
+                            <div class="prop-info"><h5>Calle Valle de la Herradura</h5><p>4 Rec · 5 Baños · 2 Estac · 541 m² Lote</p></div>
+                            <div class="prop-precio">$13,000,000 MXN</div>
+                        </div>
+                        <div class="propiedad-card">
+                            <div class="prop-foto">🏡</div>
+                            <div class="prop-info"><h5>Residencia de Lujo Premium</h5><p>4 Rec · 5 Baños · Jacuzzi · Cubierta Granito · 488 m² Lote</p></div>
+                            <div class="prop-precio">$15,990,000 MXN</div>
+                        </div>
+                    `;
                 }
             }, 500);
         }
