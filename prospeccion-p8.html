@@ -23,13 +23,12 @@
         .prop-info p { font-size: 12px; color: #64748b; margin-top: 2px; }
         .prop-precio { font-size: 14px; font-weight: 800; color: #10b981; margin-left: auto; }
         
-        .portal-links-container { display: flex; justify-content: space-between; gap: 10px; padding-top: 15px; border-top: 1px solid #e2e8f0; }
-        .crm-btn { flex: 1; background-color: #ffffff; border: 1px solid #cbd5e1; color: #475569; text-decoration: none; font-size: 11px; font-weight: 700; padding: 10px; border-radius: 8px; text-align: center; }
-        .crm-btn:hover { background-color: #eff6ff; border-color: #2563eb; color: #2563eb; }
-        
         .revista-controles { display: flex; justify-content: space-between; gap: 20px; }
         .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; }
+        .btn-nav:hover { background-color: #3b82f6; }
+        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
         .nav-back { display: inline-block; text-decoration: none; color: #2563eb; font-size: 13px; font-weight: 800; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .nav-back:hover { color: #1d4ed8; }
     </style>
 </head>
 <body>
@@ -40,6 +39,7 @@
             <h1>Introducción a la Intermediación Inmobiliaria</h1>
         </header>
 
+        <!-- PANEL DE CONTROL COMPLETAMENTE LIMPIO -->
         <div class="portal-box">
             <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔍 DEMO: RECONOCIMIENTO DE PROPIEDADES EN PLATAFORMAS</p>
             
@@ -64,12 +64,6 @@
             
             <div id="resultados-portal" class="resultados-list">
                 <p style="font-size: 12px; color: #94a3b8; text-align: center; font-style: italic; padding: 10px 0;">Selecciona los filtros y presione Buscar para simular el rastreo operativo...</p>
-            </div>
-
-            <div class="portal-links-container">
-                <a href="https://inmuebles24.com" target="_blank" class="crm-btn">Inmuebles24 ➔</a>
-                <a href="https://easybroker.com" target="_blank" class="crm-btn">EasyBroker ➔</a>
-                <a href="https://tokkobroker.mx" target="_blank" class="crm-btn">Tokko Broker ➔</a>
             </div>
         </div>
 
