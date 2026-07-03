@@ -100,11 +100,12 @@
         }
         .btn-nav-top:hover { background-color: #3b82f6; }
         
-        .btn-finalizar {
-            background-color: #d97706;
-            border-bottom: 3px solid #b45309;
+        /* BOTÓN SUPERIOR DE TAREA INTEGRADORA */
+        .btn-tarea-top {
+            background-color: #4338ca;
+            border-bottom: 3px solid #3730a3;
         }
-        .btn-finalizar:hover { background-color: #f59e0b; }
+        .btn-tarea-top:hover { background-color: #4f46e5; }
 
         .diapositiva-grid {
             display: flex;
@@ -126,7 +127,6 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 16px;
         }
         
         /* Tarjeta Fija Cuestionario */
@@ -155,26 +155,6 @@
         .card-tarea-item ol { padding-left: 18px; margin-top: 6px; }
         .card-tarea-item li { margin-bottom: 6px; }
 
-        /* NUEVO ENLACE BOTÓN MORADO DIRECCIONABLE */
-        .btn-link-integrador {
-            display: block;
-            text-decoration: none;
-            background-color: #4338ca;
-            border-bottom: 5px solid #3730a3;
-            padding: 20px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 800;
-            color: #ffffff;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            transition: all 0.1s ease;
-            box-shadow: 0 4px 6px rgba(67, 56, 202, 0.15);
-        }
-        .btn-link-integrador:hover { background-color: #4f46e5; }
-        .btn-link-integrador:active { transform: translateY(3px); border-bottom-width: 1px; }
-
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
         .highlight-box { background-color: #f8fafc; border-left: 5px solid #10b981; padding: 16px; border-radius: 4px; font-size: 13.5px; color: #1e293b; line-height: 1.5; }
@@ -199,7 +179,8 @@
                 <div class="revista-controles-top">
                     <a href="prospeccion-p9.html" class="btn-nav-top">◀ Anterior</a>
                     <span class="revista-contador">Pág. 10 de 10</span>
-                    <a href="index.html" class="btn-nav-top btn-finalizar">🏁 Finalizar Módulo</a>
+                    <!-- Cambiado de Finalizar Módulo a Tarea Integradora con enlace a p11 -->
+                    <a href="prospeccion-p11.html" class="btn-nav-top btn-tarea-top">🔥 Tarea Integradora</a>
                 </div>
             </div>
 
@@ -218,11 +199,10 @@
                     </div>
                 </div>
 
-                <!-- Columna Derecha: Bloque de Cuestionario Completo y Botón a la Pág 11 -->
+                <!-- Columna Derecha: Bloque de Cuestionario Único Fijo -->
                 <div class="col-visual-tareas">
                     <p style="font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 4px;">📋 Evaluación Independiente de Postgrado</p>
                     
-                    <!-- 1. Cuestionario de Reflexión Completo en Pantalla -->
                     <div class="card-tarea-item">
                         <div class="task-title">📋 1. Cuestionario Crítico Reflexivo</div>
                         Responda de forma analítica las siguientes preguntas basándose en la operación de campo (MÁX. 2 CUARTILLAS):
@@ -233,3 +213,11 @@
                             <li>¿De qué manera los buscadores (Inmuebles24, Lamudi) inyectan racionalidad de precios en zonas emocionales?</li>
                             <li>¿Qué implicaciones legales y de marca enfrenta un consultor que promueve propiedades sin control de documentos (SLA)?</li>
                         </ol>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
