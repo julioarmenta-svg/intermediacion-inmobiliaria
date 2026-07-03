@@ -79,15 +79,12 @@
             border: 1px solid #dbeafe;
         }
 
-        /* AJUSTE DE PROPORCIÓN PARA DIAPOSITIVA PREMIUM 4:3 */
+        /* ESTRUCTURA SPLIT INVERTIDA PARA VARIAR RITMO (Imagen Izquierda, Texto Derecha) */
         .diapositiva-grid {
             display: flex;
             flex-direction: row;
             gap: 35px;
             align-items: center;
-        }
-        .col-texto {
-            flex: 1.1;
         }
         .col-visual {
             flex: 0.9;
@@ -99,8 +96,11 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            aspect-ratio: 4 / 3; /* Fuerza la proporción exacta de PowerPoint estándar */
+            aspect-ratio: 4 / 3;
             width: 100%;
+        }
+        .col-texto {
+            flex: 1.1;
         }
         
         .img-fixed {
@@ -141,7 +141,7 @@
         .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
 
         @media (max-width: 768px) {
-            .diapositiva-grid { flex-direction: column; }
+            .diapositiva-grid { flex-direction: column-reverse; }
         }
     </style>
 </head>
@@ -150,7 +150,6 @@
     <div class="container">
         <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
-        <!-- Encabezado Estandarizado Fijo para Cuidar el Font -->
         <header>
             <span class="tag">Módulo 01 · Presentación de Contenidos</span>
             <h1>Introducción a la Intermediación Inmobiliaria</h1>
@@ -162,12 +161,18 @@
                 <span class="revista-contador">Pág. 2 de 10</span>
             </div>
 
-            <!-- ESTRUCTURA SLIDE PPT CON TAMAÑO ACTUALIZADO -->
+            <!-- ESTRUCTURA INVERTIDA PARA ESTA PÁGINA -->
             <div class="diapositiva-grid">
                 
+                <!-- Columna Izquierda: Imagen Fija -->
+                <div class="col-visual">
+                    <img src="imagenes/imagen2.png" class="img-fixed" alt="Diagrama de Roles e Impacto de Mercado">
+                </div>
+                
+                <!-- Columna Derecha: Roles + Efecto Dotación Integrado -->
                 <div class="col-texto">
-                    <h3 class="slide-titulo">El Sesgo Operativo en la Fijación de Precios</h3>
-                    <p class="slide-txt">Uno de los mayores dolores de cabeza en la calle es la distorsión del valor real. El economista Gary Keller documenta el <strong>"Efecto Dotación"</strong>: los propietarios le asignan un sobreprecio emocional a su inmueble basándose en sus lazos sentimentales o en la cantidad de dinero que necesitan para saldar deudas personales.</p>
+                    <h3 class="slide-titulo">Roles Directivos frente al Sesgo de Precios</h3>
+                    <p class="slide-txt">La principal <strong>responsabilidad operativa</strong> del consultor patrimonial independiente no consiste en coordinar recorridos comerciales, sino en realizar una auditoría técnica inicial del activo. El mayor obstáculo en esta etapa es desactivar el **"Efecto Dotación"** teorizado por Gary Keller: la tendencia de los propietarios a inflar el valor de salida debido a sus lazos emocionales o necesidades de deuda personal [1].</p>
                     
                     <table class="tech-table">
                         <thead>
@@ -187,11 +192,6 @@
                     </table>
 
                     <p class="slide-txt">El consultor patrimonial inyecta racionalidad al mercado. A diferencia del asesor novato que acepta la propiedad sobrevaluada con tal de "captar algo"; un consultor patrimonial audita el entorno y defiende el precio real para proteger el tiempo de comercialización.</p>
-                </div>
-
-                <div class="col-visual">
-                    <!-- Jala la nueva imagen cuadrada fija desde tu servidor -->
-                    <img src="imagenes/imagen2.png" class="img-fixed" alt="Diagrama de Roles e Impacto de Mercado">
                 </div>
 
             </div>
