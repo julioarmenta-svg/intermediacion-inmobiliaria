@@ -103,7 +103,7 @@
             line-height: 1.5;
         }
 
-        /* CONTROLES DE CAMBIO DE PÁGINA (FUERA DE LAS FILMINAS) */
+        /* CONTROLES DE CAMBIO DE PÁGINA */
         .revista-controles {
             display: flex;
             justify-content: space-between;
@@ -125,7 +125,7 @@
             transition: all 0.1s ease;
         }
         .btn-nav:hover { background-color: #3b82f6; }
-        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
+        .btn-nav:transparent { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
         .btn-nav:disabled { background-color: #cbd5e1; border-bottom: 5px solid #94a3b8; color: #94a3b8; cursor: not-allowed; transform: none; }
     </style>
 </head>
@@ -147,13 +147,13 @@
                 <span id="revista-contador" class="revista-contador">Pág. 1 de 5</span>
             </div>
 
-            <!-- FILMINAS PERFECTAMENTE CERRADAS -->
+            <!-- FILMINAS INDEPENDIENTES -->
             <div class="revista-paginas">
                 
                 <!-- Filmina 1 -->
                 <div id="slide-1" class="slide-content active">
                     <h3 class="slide-titulo">La Intermediación No Es "Enseñar Casas"</h3>
-                    <p class="slide-txt">El mercado inmobiliario sufre por ineficiencias y fricciones reales: altos costos notariales, impuestos mal planeados e iliquidez del activo. El rol estratégico del intermediario es destrabar operaciones complejas donde comprador y vendedor se encuentran estancados.</p>
+                    <p class="slide-txt">El mercado inmobiliario sufre por ineficiencias y frictions reales: altos costos notariales, impuestos mal planeados e iliquidez del activo. El rol estratégico del intermediario es destrabar operaciones complejas donde comprador y vendedor se encuentran estancados.</p>
                     <div class="highlight-box">
                         <strong>George Akerlof — Premio Nobel (Asimetría de Información):</strong> El intermediario profesional actúa como el agente neutral indispensable que equilibra los datos asimétricos del mercado. Brinda certeza jurídica y financiera para que ambas partes operen con absoluta confianza.
                     </div>
@@ -198,7 +198,7 @@
             </div>
         </div>
 
-        <!-- CONTROLES TOTALMENTE SEPARADOS ABAJO -->
+        <!-- CONTROLES DE CAMBIO DE PÁGINA -->
         <div class="revista-controles">
             <button id="btn-ant" class="btn-nav" onclick="cambiarPagina(-1)" disabled>◀ Anterior</button>
             <button id="btn-sig" class="btn-nav" onclick="cambiarPagina(1)">Siguiente ▶</button>
@@ -207,8 +207,10 @@
     </div>
 
     <script>
+        // Forzamos números puros para evitar errores de lectura del navegador
         let paginaActual = 1;
         const totalPaginas = 5;
+        
         const temas = [
             "TEMA 1.A · CONCEPTOS BÁSICOS",
             "TEMA 1.A · EL SESGO DEL PRECIO",
@@ -218,4 +220,3 @@
         ];
 
         function cambiarPagina(direccion) {
-            // Ocultar la filmina actual
