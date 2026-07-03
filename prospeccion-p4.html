@@ -14,21 +14,18 @@
         .col-visual { flex: 1; background-color: #f8fafc; border: 2px solid #cbd5e1; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 20px; }
         .col-texto { flex: 1; }
         .sim-group { display: flex; flex-direction: column; gap: 8px; }
-        .sim-label { font-size: 13px; font-weight: 750; color: #475569; }
+        .sim-label { font-size: 13px; font-weight: bold; color: #475569; }
         .sim-input-row { display: flex; align-items: center; gap: 15px; }
-        
-        /* Forzamos que las barras tengan un tamaño masivo y respondan al tacto */
-        .sim-range { 
-            flex: 1; 
-            cursor: pointer; 
-            height: 12px; 
-            accent-color: #2563eb;
-        }
+        .sim-range { flex: 1; cursor: pointer; height: 12px; accent-color: #2563eb; }
         .sim-value { font-size: 14px; font-weight: bold; color: #2563eb; min-width: 110px; text-align: right; }
         
-        .checkbox-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; }
-        .checkbox-container input { width: 18px; height: 16px; cursor: pointer; }
-        .resultado-box { padding: 16px; border-radius: 12px; text-align: center; font-weight: bold; font-size: 14px; background-color: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; margin-top: auto; }
+        .checkbox-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; opacity: 0.6; }
+        .checkbox-container input { width: 18px; height: 16px; cursor: not-allowed; }
+        
+        /* Estilos base del recuadro de resultado */
+        .resultado-box { padding: 16px; border-radius: 12px; text-align: center; font-weight: bold; font-size: 14px; margin-top: auto; border: 1px solid transparent; transition: all 0.1s ease; }
+        .status-verde { background-color: #d1fae5; color: #065f46; border-color: #a7f3d0; }
+        .status-rojo { background-color: #fee2e2; color: #991b1b; border-color: #fca5a5; }
         
         .slide-titulo { font-size: 24px; font-weight: bold; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
@@ -40,7 +37,7 @@
 <body>
     <div class="container">
         <header>
-            <p style="font-size: 11px; font-weight: bold; color: #10b981; uppercase">Módulo 01 · Presentación de Contenidos</p>
+            <p style="font-size: 11px; font-weight: bold; color: #10b981;">Módulo 01 · Presentación de Contenidos</p>
             <h1>Introducción a la Intermediación Inmobiliaria</h1>
         </header>
         <div class="revista-wrapper">
@@ -68,18 +65,21 @@
                         </div>
                     </div>
 
+                    <!-- Casillas Omitidas Temporalmente (Bloqueadas Visualmente) -->
                     <div class="sim-group" style="gap: 12px;">
+                        <label class="sim-label" style="opacity: 0.5;">Variables de Entorno (Omitidas en Paso 2):</label>
                         <label class="checkbox-container">
-                            <input type="checkbox" id="check-escuela" checked>
+                            <input type="checkbox" id="check-escuela" checked disabled>
                             <span>Infraestructura Escolar / Guarderías Cercanas</span>
                         </label>
                         <label class="checkbox-container">
-                            <input type="checkbox" id="check-buro" checked>
+                            <input type="checkbox" id="check-buro" checked disabled>
                             <span>Buró de Crédito Sano (Sin Claves de Alerta)</span>
                         </label>
                     </div>
 
-                    <div id="status-render" class="resultado-box">PROSPECTO COMPATIBLE (Lead Calificado)</div>
+                    <!-- Recuadro Dinámico de Resultados -->
+                    <div id="status-render" class="resultado-box status-verde">PROSPECTO COMPATIBLE (Lead Calificado)</div>
                 </div>
 
                 <!-- COLUMNA TEXTO DERECHO -->
@@ -89,7 +89,7 @@
                     <p class="slide-txt">Imaginen el caso típico: una pareja de recién casados que busca su primer hogar. Su toma de decisiones abarca la gestión compleja de su plan de vida. Como asesores estratégicos patrimoniales, se deben auditar activamente variables críticas como:</p>
                     <div class="highlight-box">
                         <strong>Variables de Diagnóstico Obligatorio:</strong><br>
-                        • <strong>Logística Urbana:</strong> Selección de zonas que optimicen los traslados diarios a sus respectivos trabajos, midiendo el impacto del tráfico real.<br>
+                        • <strong>Logística Urbana:</strong> Selección de zonas que optimicen los traslados diarios a sus respectivos trabajos, miendo el impacto del tráfico real.<br>
                         • <strong>Entorno Familiar:</strong> Planificación de espacios a futuro (hijos/mascotas) y disponibilidad de guarderías, escuelas seguras y vecinos estables en el cuadrante.<br>
                         • <strong>Equilibrio Financiero:</strong> Calcular la capacidad de pago real sin asfixiar el flujo de efectivo ni la liquidez diaria de la nueva familia.
                     </div>
@@ -103,23 +103,39 @@
         </div>
     </div>
 
-    <!-- SCRIPT DE LECTURA DIRECTA POR EVENT LISTENER -->
+    <!-- LÓGICA DE CONEXIÓN DE LAS BARRAS CON EL CUADRO INFERIOR -->
     <script>
         const inputIngresos = document.getElementById('range-ingresos');
         const inputTrafico = document.getElementById('range-trafico');
         const txtIngresos = document.getElementById('val-ingresos');
         const txtTrafico = document.getElementById('val-trafico');
+        const statusBox = document.getElementById('status-render');
 
-        // Escucha directa de movimiento para forzar que cambien los números
-        inputIngresos.addEventListener('input', function() {
-            let valor = parseInt(inputIngresos.value);
-            txtIngresos.innerText = '$' + valor.toLocaleString() + ' MXN';
-        });
+        function actualizarEvaluacion() {
+            // 1. Leer los valores enteros de las dos barras
+            let ingresos = parseInt(inputIngresos.value);
+            let trafico = parseInt(inputTrafico.value);
 
-        inputTrafico.addEventListener('input', function() {
-            let mins = parseInt(inputTrafico.value);
-            txtTrafico.innerText = mins + ' Mins';
-        });
+            // 2. Pintar los textos numéricos a un lado
+            txtIngresos.innerText = '$' + ingresos.toLocaleString() + ' MXN';
+            txtTrafico.innerText = trafico + ' Mins';
+
+            // 3. Reglas de Negocio en tiempo real para cambiar el color
+            if (ingresos < 35000) {
+                statusBox.className = "resultado-box status-rojo";
+                statusBox.innerText = "❌ DESCARTADO: Ingresos menores a $35,000 MXN";
+            } else if (trafico > 75) {
+                statusBox.className = "resultado-box status-rojo";
+                statusBox.innerText = "❌ RIESGO LOGÍSTICO: Tráfico mayor a 75 Minutos";
+            } else {
+                statusBox.className = "resultado-box status-verde";
+                statusBox.innerText = "✅ PROSPECTO COMPATIBLE (Lead Calificado)";
+            }
+        }
+
+        // Registrar los escuchadores para ejecutar la lógica en cada movimiento
+        inputIngresos.addEventListener('input', actualizarEvaluacion);
+        inputTrafico.addEventListener('input', actualizarEvaluacion);
     </script>
 </body>
 </html>
