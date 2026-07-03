@@ -56,10 +56,11 @@
             border: 3px solid #cbd5e1;
             border-radius: 24px;
             padding: 40px;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.02);
-            /* Eliminamos el min-height fijo para evitar que esconda elementos */
         }
+        
+        /* CABECERA DE LA REVISTA CON BOTONES INTEGRADOS (IMPOSIBLE DE OCULTAR) */
         .revista-header {
             display: flex;
             justify-content: space-between;
@@ -67,29 +68,51 @@
             border-bottom: 2px solid #f1f5f9;
             padding-bottom: 16px;
             margin-bottom: 24px;
+            gap: 15px;
         }
-        .revista-pills { font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+        .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        .revista-controles-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
         .revista-contador {
             font-size: 12px;
             font-weight: 800;
             color: #2563eb;
             background-color: #eff6ff;
-            padding: 6px 14px;
+            padding: 8px 14px;
             border-radius: 20px;
             border: 1px solid #dbeafe;
         }
+        
+        /* BOTONES SUPERIORES ESTILIZADOS */
+        .btn-nav-top {
+            background-color: #2563eb;
+            border: none;
+            border-bottom: 3px solid #1d4ed8;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.1s ease;
+        }
+        .btn-nav-top:hover { background-color: #3b82f6; }
+        .btn-nav-top:active { transform: translateY(2px); border-bottom: 1px solid #1d4ed8; }
 
         /* ESTRUCTURA SPLIT DIAPOSITIVA PREMIUM 4:3 */
         .diapositiva-grid {
             display: flex;
             flex-direction: row;
             gap: 35px;
-            align-items: center;
+            align-items: flex-start;
         }
         .col-texto {
             flex: 1.1;
         }
-        
         .col-visual {
             flex: 0.9;
             background-color: #f8fafc;
@@ -99,14 +122,15 @@
             width: 100%;
         }
         
+        /* TABLA DEL ECOSISTEMA TOTALMENTE COMPLETA */
         .tech-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 13px;
             background: #ffffff;
         }
-        .tech-table th { background: #f1f5f9; padding: 12px; text-align: left; font-weight: 800; color: #1e293b; border: 1px solid #cbd5e1; text-transform: uppercase; font-size: 11px; letter-spacing: 0.02em; }
-        .tech-table td { padding: 12px; border: 1px solid #e2e8f0; color: #475569; vertical-align: middle; }
+        .tech-table th { background: #f1f5f9; padding: 10px; text-align: left; font-weight: 800; color: #1e293b; border: 1px solid #cbd5e1; text-transform: uppercase; font-size: 11px; }
+        .tech-table td { padding: 8px; border: 1px solid #e2e8f0; color: #475569; vertical-align: middle; }
         
         .crm-btn {
             display: inline-block;
@@ -116,7 +140,7 @@
             text-decoration: none;
             font-size: 11px;
             font-weight: 700;
-            padding: 6px 10px;
+            padding: 6px 8px;
             border-radius: 6px;
             transition: all 0.1s ease;
             width: 100%;
@@ -126,7 +150,6 @@
             background-color: #eff6ff;
             border-color: #2563eb;
             color: #2563eb;
-            transform: translateY(-1px);
         }
 
         /* BOTÓN DE ACCESO AL BUSCADOR */
@@ -153,34 +176,8 @@
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
         .highlight-box { background-color: #f8fafc; border-left: 5px solid #10b981; padding: 16px; border-radius: 4px; font-size: 13.5px; color: #1e293b; line-height: 1.5; }
-        
-        /* CONTROLES TOTALMENTE AISLADOS AL FINAL DE LA RAÍZ */
-        .revista-controles { 
-            display: flex; 
-            justify-content: space-between; 
-            margin-top: 40px; 
-            padding-top: 20px;
-            border-top: 2px solid #f1f5f9;
-            gap: 20px; 
-        }
-        .btn-nav { 
-            flex: 1; 
-            display: block; 
-            text-decoration: none; 
-            background-color: #2563eb; 
-            border-bottom: 5px solid #1d4ed8; 
-            padding: 18px; 
-            border-radius: 14px; 
-            font-size: 16px; 
-            font-weight: 800; 
-            color: #ffffff; 
-            text-align: center; 
-            transition: all 0.1s ease; 
-        }
-        .btn-nav:hover { background-color: #3b82f6; }
-        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
 
-        @media (max-width: 768px) { .diapositiva-grid { flex-direction: column; } }
+        @media (max-width: 768px) { .diapositiva-grid { flex-direction: column; } .revista-header { flex-direction: column; align-items: flex-start; } }
     </style>
 </head>
 <body>
@@ -193,11 +190,16 @@
             <h1>Introducción a la Intermediación Inmobiliaria</h1>
         </header>
 
-        <!-- CONTENEDOR DE LA REVISTA BLINDADO -->
         <div class="revista-wrapper">
+            <!-- CABECERA CONTROLADORA REFORZADA -->
             <div class="revista-header">
                 <span class="revista-pills">PÁGINA 7 · INFRAESTRUCTURA Y HERRAMIENTAS DIGITALES</span>
-                <span class="revista-contador">Pág. 7 de 10</span>
+                
+                <div class="revista-controles-top">
+                    <a href="prospeccion-p6.html" class="btn-nav-top">◀ Anterior</a>
+                    <span class="revista-contador">Pág. 7 de 10</span>
+                    <a href="prospeccion-p8.html" class="btn-nav-top">Siguiente ▶</a>
+                </div>
             </div>
 
             <div class="diapositiva-grid">
@@ -206,7 +208,7 @@
                 <div class="col-texto">
                     <h3 class="slide-titulo">La Automatización del Embudo de Captación</h3>
                     <p class="slide-txt">Para que un asesor inmobiliario independiente compita al más alto nivel, no puede depender de libretas o formatos en papel. La prospección moderna requiere una **infraestructura digital centralizada** que administre el inventario, automatice la difusión en portales y mida la velocidad de respuesta (SLA).</p>
-                    <p class="slide-txt">El motor de esta operation es el **CRM Inmobiliario** (Customer Relationship Management). Esta herramienta permite cruzar las demandas de compradores calificados (como la pareja bajo análisis logístico) con las propiedades captadas a precio correcto, reduciendo radicalmente los días en el mercado.</p>
+                    <p class="slide-txt">El motor de esta operación es el **CRM Inmobiliario** (Customer Relationship Management). Esta herramienta permite cruzar las demandas de compradores calificados (como la pareja bajo análisis logístico) con las propiedades captadas a precio correcto, reduciendo radicalmente los días en el mercado.</p>
                     
                     <div class="highlight-box">
                         <strong>Métricas Críticas de Prospección Digital:</strong><br>
@@ -218,7 +220,7 @@
                     <a href="prospeccion-p8.html" class="btn-launch-portal">🔍 Lanzar Simulador de Reconocimiento Local ➔</a>
                 </div>
 
-                <!-- Columna Derecha: Matriz de Clasificación Proptech México -->
+                <!-- Columna Derecha: Tabla Completa Recuperada -->
                 <div class="col-visual">
                     <p style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px;">📋 Ecosistema Inmobiliario Digital en México</p>
                     <table class="tech-table">
@@ -234,4 +236,3 @@
                                 <td><a href="https://easybroker.com" target="_blank" class="crm-btn">EasyBroker ➔</a></td>
                             </tr>
                             <tr>
-                                <td><a href="https://vivanuncios.com.mx" target="_blank" class="crm-btn">Vivanuncios ➔</a></td>
