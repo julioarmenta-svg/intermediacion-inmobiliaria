@@ -116,7 +116,7 @@
             flex: 1.05;
         }
         
-        /* BLOQUE EVALUATIVO DERECHO REESTRUCTURADO FIJO */
+        /* BLOQUE EVALUATIVO DERECHO */
         .col-visual-tareas {
             flex: 0.95;
             background-color: #f8fafc;
@@ -129,7 +129,7 @@
             gap: 16px;
         }
         
-        /* Tarjetas de Tareas Corporativas Fijas */
+        /* Tarjeta Fija Cuestionario */
         .card-tarea-item {
             background: #ffffff;
             border: 1px solid #cbd5e1;
@@ -139,6 +139,7 @@
             line-height: 1.5;
             color: #475569;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            border-left: 4px solid #0f766e;
         }
         .task-title {
             font-size: 12px;
@@ -148,15 +149,31 @@
             margin-bottom: 8px;
             padding-bottom: 4px;
             border-bottom: 1px solid #e2e8f0;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            color: #0f766e;
         }
-        .title-verde { color: #0f766e; }
-        .title-morado { color: #4338ca; }
         
-        .card-tarea-item ol, .card-tarea-item ul { padding-left: 18px; margin-top: 6px; }
+        .card-tarea-item ol { padding-left: 18px; margin-top: 6px; }
         .card-tarea-item li { margin-bottom: 6px; }
+
+        /* NUEVO ENLACE BOTÓN MORADO DIRECCIONABLE */
+        .btn-link-integrador {
+            display: block;
+            text-decoration: none;
+            background-color: #4338ca;
+            border-bottom: 5px solid #3730a3;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 800;
+            color: #ffffff;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            transition: all 0.1s ease;
+            box-shadow: 0 4px 6px rgba(67, 56, 202, 0.15);
+        }
+        .btn-link-integrador:hover { background-color: #4f46e5; }
+        .btn-link-integrador:active { transform: translateY(3px); border-bottom-width: 1px; }
 
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
@@ -201,13 +218,13 @@
                     </div>
                 </div>
 
-                <!-- Columna Derecha: Bloques de Tareas Fijos (Imposible que se oculten) -->
+                <!-- Columna Derecha: Bloque de Cuestionario Completo y Botón a la Pág 11 -->
                 <div class="col-visual-tareas">
                     <p style="font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 4px;">📋 Evaluación Independiente de Postgrado</p>
                     
-                    <!-- Tarjeta 1 Fija: Cuestionario -->
-                    <div class="card-tarea-item" style="border-left: 4px solid #0f766e;">
-                        <div class="task-title title-verde">📋 1. Cuestionario Crítico Reflexivo</div>
+                    <!-- 1. Cuestionario de Reflexión Completo en Pantalla -->
+                    <div class="card-tarea-item">
+                        <div class="task-title">📋 1. Cuestionario Crítico Reflexivo</div>
                         Responda de forma analítica las siguientes preguntas basándose en la operación de campo (MÁX. 2 CUARTILLAS):
                         <ol>
                             <li>¿Cómo impacta la Asimetría de Información de Akerlof a un asesor empírico que no usa proptech?</li>
@@ -216,10 +233,3 @@
                             <li>¿De qué manera los buscadores (Inmuebles24, Lamudi) inyectan racionalidad de precios en zonas emocionales?</li>
                             <li>¿Qué implicaciones legales y de marca enfrenta un consultor que promueve propiedades sin control de documentos (SLA)?</li>
                         </ol>
-                    </div>
-
-                    <!-- Tarjeta 2 Fija: Caso de Estudio (Anti-IA) -->
-                    <div class="card-tarea-item" style="border-left: 4px solid #4338ca;">
-                        <div class="task-title title-morado">🔥 2. Practicum de Campo (Anti-IA)</div>
-                        Desarrolle un dictamen técnico-financiero ejecutivo para el escenario estructurado en la lección:
-                        <ul>
