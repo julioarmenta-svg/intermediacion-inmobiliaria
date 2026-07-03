@@ -1,125 +1,102 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Intermediación - URN</title>
-    <!-- Importamos Tailwind clásico por CDN para asegurar renderizado de colores y botones -->
+    <title>Curso de Intermediación - URN</title>
+    <!-- Cargamos Tailwind CSS robusto para asegurar estilos visuales inmediatos -->
     <script src="https://tailwindcss.com"></script>
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen antialiased p-4 md:p-8">
+<body class="bg-slate-100 text-slate-800 min-h-screen p-6 md:p-12">
 
-    <!-- Contenedor Principal Estilo Dashboard Claro & Tech -->
-    <div class="max-w-7xl mx-auto">
+    <!-- CONTENEDOR PRINCIPAL TECH -->
+    <div class="max-w-7xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-200">
         
-        <!-- Encabezado de la Plataforma (Mismos tamaños y fuentes, solo cambios de texto requeridos) -->
-        <header class="mb-10 text-center md:text-left border-b border-slate-200 pb-6">
+        <!-- ENCABEZADO DE LA PLATAFORMA (Textos exactos requeridos, fuentes y tamaños intactos) -->
+        <header class="mb-12 border-b border-slate-200 pb-8 text-left">
             <span class="text-xs font-bold tracking-widest text-blue-600 uppercase">URN VIRTUAL</span>
             <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-1 text-slate-900">Curso de Intermediación Inmobiliaria</h1>
             <p class="text-slate-500 font-light text-sm mt-1">Estructura operativa dirigida por Julio Armenta</p>
         </header>
 
-        <!-- INDICADOR VISUAL DE FLUJO (BOTONES GIGANTES DE COLORES CON FLECHAS) -->
-        <div class="mb-12">
-            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 px-2">Diagrama de Flujo del Proceso de Intermediación Inmobiliaria (Seleccione una Etapa)</h2>
+        <!-- SECCIÓN DEL DIAGRAMA DE FLUJO -->
+        <div class="mb-6">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-6 px-2">Diagrama de Flujo del Proceso de Intermediación Inmobiliaria (Seleccione una Etapa)</h2>
             
-            <!-- Grid de Botones Interactivos de Alto Contraste (Intactos en funcionalidad y estilo interno) -->
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <!-- FLUJO HORIZONTAL CON BOTONES GIGANTES 3D Y FLECHAS AFUERA -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 bg-slate-50 p-6 rounded-2xl border border-slate-200">
                 
-                <!-- Botón 1: Verde (Diagnóstico) -->
-                <button onclick="mostrarSeccion('sec-paso1')" id="btn-sec-paso1" class="group relative flex items-center justify-between p-6 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg border-2 border-emerald-400 transition-all duration-300 scale-102">
-                    <div class="text-left">
-                        <span class="block text-[10px] font-black uppercase tracking-widest text-emerald-200">PASO 01</span>
-                        <span class="text-lg font-black tracking-tight">Prospección & Diagnóstico</span>
-                    </div>
-                    <span class="text-2xl font-bold ml-2 group-hover:translate-x-2 transition-transform duration-300">➔</span>
+                <!-- BOTÓN 01: VERDE (PROSPECCIÓN) -->
+                <button onclick="cambiarSeccion('paso1')" class="w-full md:w-auto flex-1 bg-emerald-500 hover:bg-emerald-400 text-white font-extrabold p-6 rounded-2xl border-b-8 border-r-2 border-emerald-700 active:border-b-2 active:border-r-0 active:translate-y-1 shadow-lg transition-all text-center">
+                    <span class="block text-[10px] text-emerald-100 tracking-widest uppercase mb-1">PASO 01</span>
+                    <span class="text-base md:text-lg block tracking-tight">Prospección & Diagnóstico</span>
                 </button>
 
-                <!-- Botón 2: Azul (Operación) -->
-                <button onclick="mostrarSeccion('sec-paso2')" id="btn-sec-paso2" class="group relative flex items-center justify-between p-6 rounded-2xl bg-slate-800 hover:bg-blue-600 text-slate-300 hover:text-white shadow-md border-2 border-slate-700 hover:border-blue-400 transition-all duration-300">
-                    <div class="text-left">
-                        <span class="block text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-blue-200">PASO 02</span>
-                        <span class="text-lg font-black tracking-tight">Operación Comercial</span>
-                    </div>
-                    <span class="text-2xl font-bold ml-2 group-hover:translate-x-2 transition-transform duration-300">➔</span>
+                <!-- Flecha Flujo 1 -->
+                <span class="text-slate-300 text-3xl font-black hidden md:block select-none">➔</span>
+
+                <!-- BOTÓN 02: AZUL (OPERACIÓN) -->
+                <button onclick="cambiarSeccion('paso2')" class="w-full md:w-auto flex-1 bg-blue-500 hover:bg-blue-400 text-white font-extrabold p-6 rounded-2xl border-b-8 border-r-2 border-blue-700 active:border-b-2 active:border-r-0 active:translate-y-1 shadow-lg transition-all text-center">
+                    <span class="block text-[10px] text-blue-100 tracking-widest uppercase mb-1">PASO 02</span>
+                    <span class="text-base md:text-lg block tracking-tight">Operación Comercial</span>
                 </button>
 
-                <!-- Botón 3: Morado (Valuación) -->
-                <button onclick="mostrarSeccion('sec-paso3')" id="btn-sec-paso3" class="group relative flex items-center justify-between p-6 rounded-2xl bg-slate-800 hover:bg-purple-600 text-slate-300 hover:text-white shadow-md border-2 border-slate-700 hover:border-purple-400 transition-all duration-300">
-                    <div class="text-left">
-                        <span class="block text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-purple-200">PASO 03</span>
-                        <span class="text-lg font-black tracking-tight">Análisis & Valuación</span>
-                    </div>
-                    <span class="text-2xl font-bold ml-2 group-hover:translate-x-2 transition-transform duration-300">➔</span>
+                <!-- Flecha Flujo 2 -->
+                <span class="text-slate-300 text-3xl font-black hidden md:block select-none">➔</span>
+
+                <!-- BOTÓN 03: MORADO (VALUACIÓN) -->
+                <button onclick="cambiarSeccion('paso3')" class="w-full md:w-auto flex-1 bg-purple-500 hover:bg-purple-400 text-white font-extrabold p-6 rounded-2xl border-b-8 border-r-2 border-purple-700 active:border-b-2 active:border-r-0 active:translate-y-1 shadow-lg transition-all text-center">
+                    <span class="block text-[10px] text-purple-100 tracking-widest uppercase mb-1">PASO 03</span>
+                    <span class="text-base md:text-lg block tracking-tight">Análisis & Valuación</span>
                 </button>
 
-                <!-- Botón 4: Naranja (Crédito) -->
-                <button onclick="mostrarSeccion('sec-paso4')" id="btn-sec-paso4" class="group relative flex items-center justify-between p-6 rounded-2xl bg-slate-800 hover:bg-orange-600 text-slate-300 hover:text-white shadow-md border-2 border-slate-700 hover:border-orange-400 transition-all duration-300">
-                    <div class="text-left">
-                        <span class="block text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-orange-200">PASO 04</span>
-                        <span class="text-lg font-black tracking-tight">Arquitectura de Crédito</span>
-                    </div>
-                    <span class="text-2xl font-bold ml-2 group-hover:translate-x-2 transition-transform duration-300">➔</span>
+                <!-- Flecha Flujo 3 -->
+                <span class="text-slate-300 text-3xl font-black hidden md:block select-none">➔</span>
+
+                <!-- BOTÓN 04: NARANJA (CRÉDITO) -->
+                <button onclick="cambiarSeccion('paso4')" class="w-full md:w-auto flex-1 bg-orange-500 hover:bg-orange-400 text-white font-extrabold p-6 rounded-2xl border-b-8 border-r-2 border-orange-700 active:border-b-2 active:border-r-0 active:translate-y-1 shadow-lg transition-all text-center">
+                    <span class="block text-[10px] text-orange-100 tracking-widest uppercase mb-1">PASO 04</span>
+                    <span class="text-base md:text-lg block tracking-tight">Arquitectura de Crédito</span>
                 </button>
 
-                <!-- Botón 5: Rojo (Cierre Legal) -->
-                <button onclick="mostrarSeccion('sec-paso5')" id="btn-sec-paso5" class="group relative flex items-center justify-between p-6 rounded-2xl bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white shadow-md border-2 border-slate-700 hover:border-rose-400 transition-all duration-300">
-                    <div class="text-left">
-                        <span class="block text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-rose-200">PASO 05</span>
-                        <span class="text-lg font-black tracking-tight">Control & Cierre Legal</span>
-                    </div>
-                    <span class="text-2xl font-bold ml-2 group-hover:translate-x-2 transition-transform duration-300">➔</span>
+                <!-- Flecha Flujo 4 -->
+                <span class="text-slate-300 text-3xl font-black hidden md:block select-none">➔</span>
+
+                <!-- BOTÓN 05: ROJO (CIERRE LEGAL) -->
+                <button onclick="cambiarSeccion('paso5')" class="w-full md:w-auto flex-1 bg-rose-500 hover:bg-rose-400 text-white font-extrabold p-6 rounded-2xl border-b-8 border-r-2 border-rose-700 active:border-b-2 active:border-r-0 active:translate-y-1 shadow-lg transition-all text-center">
+                    <span class="block text-[10px] text-rose-100 tracking-widest uppercase mb-1">PASO 05</span>
+                    <span class="text-base md:text-lg block tracking-tight">Control & Cierre Legal</span>
                 </button>
 
             </div>
         </div>
 
-        <!-- CONTENEDORES DE INFORMACIÓN ESPECÍFICA (Fondo Claro, Alegre, Elegante y Moderno) -->
-        <div class="bg-white rounded-3xl p-6 md:p-10 border border-slate-200 shadow-lg min-h-[350px]">
+        <!-- CONTENEDOR DE PÁGINAS DINÁMICAS (Vacío por ahora, esperando instrucciones de contenido) -->
+        <div id="panel-contenido" class="mt-8 p-6 bg-slate-50 rounded-2xl border border-slate-200 min-h-[150px] flex items-center justify-center text-slate-400 font-medium text-sm">
+            Haga clic en cualquiera de los botones superiores para desplegar la página de información específica de cada módulo.
+        </div>
+
+    </div>
+
+    <script>
+        function cambiarSeccion(moduloId) {
+            const panel = document.getElementById('panel-contenido');
+            panel.className = "mt-8 p-8 bg-white rounded-2xl border-2 border-slate-200 shadow-md animate-[fadeIn_0.2s_ease-out] text-slate-800";
             
-            <!-- NUEVA PÁGINA ESPECÍFICA PASO 1 (Muestra información detallada al picar el botón) -->
-            <div id="sec-paso1" class="seccion-contenido block animate-[fadeIn_0.3s_ease-out]">
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full"></span>
-                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Módulo de Clase Activo</span>
+            // Simulación inicial de enlaces a páginas dinámicas independientes
+            panel.innerHTML = `
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-2.5 h-2.5 bg-blue-500 rounded-full animate-ping"></span>
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Página del Módulo Vinculada</span>
                 </div>
-                <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">Módulo 1: Prospección, Captación y Perfilamiento Humano</h3>
-                <p class="text-slate-600 font-light max-w-3xl leading-relaxed mb-8">Estructuración del embudo digital inicial. Reemplazamos las visitas improvisadas por un diagnóstico completo de los tiempos de traslado, entorno familiar y viabilidad económica de la pareja.</p>
-                
-                <!-- Tarjeta Tech de Evaluación -->
-                <div class="bg-emerald-50 border-2 border-emerald-100 rounded-2xl p-6 shadow-sm">
-                    <h4 class="text-emerald-700 font-bold text-lg mb-2 flex items-center gap-2">
-                        <span>🛡️</span> Entregable Evaluatorio Anti-IA
-                    </h4>
-                    <p class="text-slate-700 text-sm leading-relaxed mb-4"><strong>Caso Carlos y Ana:</strong> Investiga y define una colonia real en tu ciudad que optimice su logística laboral a las 8:00 AM. Ubica 2 guarderías del sector y adjunta captura completa con enlace vivo de una propiedad en el mercado esta semana que se ajuste a su presupuesto familiar.</p>
-                    <div class="bg-white border border-amber-200 text-amber-800 text-xs px-4 py-2.5 rounded-xl font-medium flex items-start gap-2">
-                        <span>⚠️</span>
-                        <span>La IA no tiene acceso al inventario vivo de propiedades de esta semana; el uso de datos genéricos anula la entrega.</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- NUEVA PÁGINA ESPECÍFICA PASO 2 -->
-            <div id="sec-paso2" class="seccion-contenido hidden">
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="w-2.5 h-2.5 bg-blue-500 rounded-full"></span>
-                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Enlace Vinculado Operativo</span>
-                </div>
-                <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">Módulo 2: Operación Comercial de Inmuebles</h3>
-                <p class="text-slate-600 font-light max-w-3xl leading-relaxed mb-6">Administración analítica de los procesos de venta tradicional, arrendamiento preventivo corporativo y traspasos formales de derechos hipotecarios.</p>
-                <div class="p-8 bg-blue-50/50 rounded-2xl border-2 border-dashed border-blue-100 text-center text-blue-600/70 text-sm font-medium">
-                    Recursos del Módulo 2 listos para la sesión remota sincrónica.
-                </div>
-            </div>
-
-            <!-- NUEVA PÁGINA ESPECÍFICA PASO 3 -->
-            <div id="sec-paso3" class="seccion-contenido hidden">
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="w-2.5 h-2.5 bg-purple-500 rounded-full"></span>
-                    <span class="text-xs font-bold text-purple-600 uppercase tracking-wider">Enlace Vinculado Operativo</span>
-                </div>
-                <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">Módulo 3: Análisis de Viabilidad y Valuación</h3>
+                <h3 class="text-xl font-bold uppercase tracking-tight text-slate-900">Sección en desarrollo para el ${moduloId.toUpperCase()}</h3>
+                <p class="text-sm text-slate-500 font-light mt-1">Aquí se renderizarán de forma limpia y exclusiva los recursos interactivos de esta etapa operativa.</p>
+            `;
+        }
+    </script>
+</body>
+</html>
