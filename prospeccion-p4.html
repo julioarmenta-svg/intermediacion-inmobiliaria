@@ -79,94 +79,58 @@
             border: 1px solid #dbeafe;
         }
 
-        /* ESTRUCTURA SPLIT CON HERRAMIENTA INTERACTIVA (Izquierda) */
+        /* ESTRUCTURA SPLIT CON MATRIZ VISUAL */
         .diapositiva-grid {
             display: flex;
             flex-direction: row;
             gap: 35px;
-            align-items: stretch;
+            align-items: center;
         }
         
-        /* MINI-APP DE PERFILAMIENTO DIDÁCTICO ALEGRE Y TECH */
+        /* CONTENEDOR DIDÁCTICO IZQUIERDO */
         .col-visual {
             flex: 0.95;
             background-color: #f8fafc;
-            border: 2px solid #cbd5e1;
+            border: 1px solid #cbd5e1;
             border-radius: 20px;
             padding: 24px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            gap: 12px;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            justify-content: center;
         }
         .col-texto {
             flex: 1.05;
         }
         
-        .simulador-titulo {
-            font-size: 14px;
-            font-weight: 800;
-            color: #1e293b;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 8px;
-        }
-        .sim-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .sim-label {
-            font-size: 12px;
-            font-weight: 700;
-            color: #64748b;
-        }
-        .sim-input-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .sim-range {
-            flex: 1;
-            cursor: pointer;
-        }
-        .sim-value {
-            font-size: 13px;
-            font-weight: 800;
-            color: #2563eb;
-            min-width: 90px;
-            text-align: right;
-        }
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            color: #475569;
-            cursor: pointer;
-            padding: 8px 12px;
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-        }
-        .checkbox-container input {
-            cursor: pointer;
-        }
-        
-        /* CUADRO DE RESULTADO EN TIEMPO REAL */
-        .resultado-box {
-            margin-top: auto;
-            padding: 16px;
+        /* Tarjetas de Estados de Perfilamiento */
+        .card-status {
+            padding: 14px 18px;
             border-radius: 12px;
-            text-align: center;
-            font-weight: 800;
-            font-size: 14px;
-            transition: all 0.2s ease;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid transparent;
         }
-        .status-success { background-color: #d1fae5; border: 1px solid #a7f3d0; color: #065f46; }
-        .status-alert { background-color: #fee2e2; border: 1px solid #fca5a5; color: #991b1b; }
+        .card-verde { background-color: #e6f4ea; border-color: #a7f3d0; color: #137333; }
+        .card-amarilla { background-color: #fef7e0; border-color: #fde68a; color: #b06000; }
+        .card-roja { background-color: #fce8e6; border-color: #fca5a5; color: #c5221f; }
+        
+        .status-badge {
+            font-size: 10px;
+            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            color: white;
+        }
+        .badge-verde { background-color: #10b981; }
+        .badge-amarillo { background-color: #f59e0b; }
+        .badge-rojo { background-color: #ef4444; }
 
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
@@ -220,50 +184,57 @@
                 <span class="revista-contador">Pág. 4 de 10</span>
             </div>
 
-            <!-- ENTORNO SPLIT CON APLICACIÓN DINÁMICA CORREGIDO -->
+            <!-- ENTORNO SPLIT CON MATRIZ VISUAL DE CONTROL -->
             <div class="diapositiva-grid">
                 
-                <!-- Columna Izquierda: Panel de Control Interactivo -->
+                <!-- Columna Izquierda: Matriz Visual Fija de Pre-Calificación -->
                 <div class="col-visual">
-                    <h4 class="simulador-titulo">🔧 SIMULADOR DE PRE-CALIFICACIÓN DE LEADS</h4>
+                    <p style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; tracking-spacing: 0.05em; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 4px;">🔧 Matriz de Calificación de Leads</p>
                     
-                    <!-- Control 1: Ingresos -->
-                    <div class="sim-group">
-                        <label class="sim-label" for="range-ingresos">Ingreso Familiar Mensual:</label>
-                        <div class="sim-input-row">
-                            <input type="range" id="range-ingresos" class="sim-range" min="20000" max="150000" step="5000" value="45000" oninput="calcularCalificacion()">
-                            <span id="val-ingresos" class="sim-value">$45,000 MXN</span>
+                    <!-- Tarjeta 1: Aprobado -->
+                    <div class="card-status card-verde">
+                        <span class="status-badge badge-verde">Calificado</span>
+                        <div>
+                            <p style="font-weight: 700;">Ingresos > $35k + Buró Limpio + Logística Ok</p>
+                            <p style="font-size: 11px; opacity: 0.8; font-weight: 400; mt-0.5">Avanza directo a la agenda de visitas.</p>
                         </div>
                     </div>
 
-                    <!-- Control 2: Tráfico logístico -->
-                    <div class="sim-group">
-                        <label class="sim-label" for="range-trafico">Tiempo de Traslado Máximo (Trabajo):</label>
-                        <div class="sim-input-row">
-                            <input type="range" id="range-trafico" class="sim-range" min="15" max="120" step="5" value="45" oninput="calcularCalificacion()">
-                            <span id="val-trafico" class="sim-value">45 Mins</span>
+                    <!-- Tarjeta 2: Alerta Logística -->
+                    <div class="card-status card-amarilla">
+                        <span class="status-badge badge-yellow" style="background-color: #f59e0b;">Condicionado</span>
+                        <div>
+                            <p style="font-weight: 700;">Traslado > 75 Mins o Falta Infraestructura familiar</p>
+                            <p style="font-size: 11px; opacity: 0.8; font-weight: 400; mt-0.5">Requiere revisión del cuadrante de búsqueda.</p>
                         </div>
                     </div>
 
-                    <!-- Control 3: Filtro de Entorno Familiar (Checkboxes) -->
-                    <div class="sim-group" style="gap: 8px;">
-                        <label class="sim-label">Variables de Entorno Indispensables:</label>
-                        <label class="checkbox-container">
-                            <input type="checkbox" id="check-escuela" checked onchange="calcularCalificacion()">
-                            <span>Infraestructura Escolar / Guarderías Cercanas</span>
-                        </label>
-                        <label class="checkbox-container">
-                            <input type="checkbox" id="check-buro" checked onchange="calcularCalificacion()">
-                            <span>Buró de Crédito Sano (Sin Claves de Alerta)</span>
-                        </label>
-                    </div>
-
-                    <!-- Cuadro Dinámico de Diagnóstico Automático -->
-                    <div id="status-render" class="resultado-box status-success">
-                        PROSPECTO COMPATIBLE (Lead Calificado)
+                    <!-- Tarjeta 3: Rechazado -->
+                    <div class="card-status card-roja">
+                        <span class="status-badge badge-rojo">Descartado</span>
+                        <div>
+                            <p style="font-weight: 700;">Ingresos Bajos o Mal Historial Crediticio</p>
+                            <p style="font-size: 11px; opacity: 0.8; font-weight: 400; mt-0.5">Operación bloqueada temporalmente.</p>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Columna Derecha: Contenido Técnico Completo -->
+                <!-- Columna Derecha: Contenido Técnico Completo e Inalterable -->
                 <div class="col-texto">
                     <h3 class="slide-titulo">El Perfilamiento</h3>
+                    <p class="slide-txt">La identificación de un cliente potencial a través de una buena intermediación inmobiliaria va mucho más allá de validar si el prospecto 'tiene dinero' o si le atrae la fachada de una casa. El verdadero perfilamiento exige entender y mapear el conjunto completo de la realidad del cliente antes de agendar visitas.</p>
+                    
+                    <p class="slide-txt">Imaginen el caso típico: una pareja de recién casados que busca su primer hogar. Su toma de decisiones abarca la gestión compleja de su plan de vida. Como asesores estratégicos patrimoniales, se deben auditar activamente variables críticas como:</p>
+                    
+                    <div class="highlight-box">
+                        <strong>Variables de Diagnóstico Obligatorio:</strong><br>
+                        • <strong>Logística Urbana:</strong> Selección de zonas que optimicen los traslados diarios a sus respectivos trabajos, midiendo el impacto del tráfico real.<br>
+                        • <strong>Entorno Familiar:</strong> Planificación de espacios a futuro (hijos/mascotas) y disponibilidad de guarderías, escuelas seguras y vecinos estables en el cuadrante.<br>
+                        • <strong>Equilibrio Financiero:</strong> Calcular la capacidad de pago real sin asfixiar el flujo de efectivo ni la liquidez diaria de la nueva familia.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="revista-controles">
