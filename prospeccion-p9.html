@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 1: Caso de Estudio - URN</title>
+    <title>Módulo 1: Taller de Homologación - URN</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f1f5f9; padding: 40px 20px; color: #334155; }
@@ -17,28 +17,32 @@
         .revista-pills { font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
         .revista-contador { font-size: 12px; font-weight: 800; color: #2563eb; background-color: #eff6ff; padding: 6px 14px; border-radius: 20px; border: 1px solid #dbeafe; }
         
-        /* GRID DE CASO DE ESTUDIO MULTI-COLUMNA */
+        /* ESTRUCTURA SPLIT TIPO DIAPOSITIVA */
         .diapositiva-grid { display: flex; flex-direction: row; gap: 35px; align-items: stretch; }
-        .col-texto { flex: 1.1; }
-        .col-visual-interactiva { flex: 0.9; background-color: #f8fafc; border: 1px solid #cbd5e1; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+        .col-texto { flex: 1; }
+        .col-visual-interactiva { flex: 1; background-color: #f8fafc; border: 1px solid #cbd5e1; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
         
-        .slide-titulo { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 14px; }
-        .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 16px; }
-        .case-box { background-color: #eff6ff; border-left: 5px solid #2563eb; padding: 16px; border-radius: 4px; font-size: 14px; color: #1e293b; line-height: 1.5; margin-bottom: 15px; }
+        .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
+        .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
+        .highlight-box { background-color: #f8fafc; border-left: 5px solid #2563eb; padding: 16px; border-radius: 4px; font-size: 14px; color: #1e293b; line-height: 1.5; }
         
-        /* BOTONES DE DECISIÓN DEL CASO */
-        .opcion-btn { width: 100%; text-align: left; padding: 14px; background: white; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 13px; font-weight: 600; color: #334155; cursor: pointer; transition: all 0.15s ease; display: flex; gap: 10px; align-items: flex-start; }
-        .opcion-btn:hover { border-color: #2563eb; background-color: #f0f6ff; transform: translateX(4px); }
+        /* INPUTS Y COMPONENTES DEL TALLER */
+        .input-m2 { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; font-weight: bold; background-color: white; color: #0f172a; margin-bottom: 10px; }
+        .calc-btn { width: 100%; background-color: #10b981; color: white; border: none; border-bottom: 4px solid #047857; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: all 0.1s; }
+        .calc-btn:active { transform: translateY(2px); border-bottom: 2px solid #047857; }
         
-        /* PANELES DE RETROALIMENTACIÓN */
-        .feedback-panel { display: none; padding: 16px; border-radius: 12px; font-size: 13.5px; font-weight: 700; line-height: 1.5; border: 1px solid transparent; margin-top: auto; }
-        .fb-success { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
-        .fb-warning { background-color: #fef7e0; border-color: #fde68a; color: #b06000; }
-        .fb-danger { background-color: #fee2e2; border-color: #fca5a5; color: #991b1b; }
-
+        /* TABLA DE HOMOLOGACIÓN */
+        .tabla-homologar { width: 100%; border-collapse: collapse; font-size: 11.5px; background: white; margin-top: 10px; }
+        .tabla-homologar th { background: #f1f5f9; padding: 8px; text-align: left; font-weight: 800; color: #1e293b; border: 1px solid #cbd5e1; text-transform: uppercase; }
+        .tabla-homologar td { padding: 8px; border: 1px solid #e2e8f0; color: #475569; font-weight: 600; }
+        
+        /* CUADRO DE CIERRE PATRIMONIAL */
+        .argumento-box { display: none; padding: 16px; border-radius: 12px; font-size: 13px; font-weight: 700; line-height: 1.5; background-color: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; margin-top: auto; animation: fadeIn 0.4s ease-out; }
+        
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
         .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; transition: all 0.1s ease; }
         .btn-nav:hover { background-color: #3b82f6; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 768px) { .diapositiva-grid { flex-direction: column; } }
     </style>
 </head>
@@ -48,85 +52,92 @@
         <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
         <header>
-            <span class="tag">Módulo 01 · Taller Práctico Basado en Casos</span>
+            <span class="tag">Módulo 01 · Ejercicio Práctico de Campo</span>
             <h1>Introducción a la Intermediación Inmobiliaria</h1>
         </header>
 
         <div class="revista-wrapper">
             <div class="revista-header">
-                <span class="revista-pills">PÁGINA 9 · CASO DE ESTUDIO: EL DILEMA DE LA CAPTACIÓN</span>
+                <span class="revista-pills">PÁGINA 9 · TALLER DE HOMOLOGACIÓN CON BUSCADORES DIGITALES</span>
                 <span class="revista-contador">Pág. 9 de 10</span>
             </div>
 
             <div class="diapositiva-grid">
                 
-                <!-- Columna Izquierda: Planteamiento Teórico del Caso -->
+                <!-- Columna Izquierda: Planteamiento Humano de Negociación -->
                 <div class="col-texto">
-                    <h3 class="slide-titulo">Caso Práctico: Valuación Sentimental vs. Cierre Real</h3>
-                    <p class="slide-txt">Para aplicar las metodologías analizadas en este módulo (la Asimetría de Información de Akerlof y el Efecto Dotación de Richard Thaler), analizaremos un escenario real de consultoría patrimonial independiente en el mercado local mexicano.</p>
+                    <h3 class="slide-titulo">Desactivando el Sobreprecio con Datos de Mercado</h3>
+                    <p class="slide-txt">En el servicio de intermediación moderno, el precio no se negocia imponiendo contratos o cláusulas rígidas. El consultor patrimonial independiente convence al dueño **platicando, empatizando y mostrándole realidades del mercado** que él mismo puede comprobar abriendo cualquier buscador.</p>
                     
-                    <div class="case-box">
-                        <strong>El Escenario de Campo:</strong><br>
-                        Don Manuel desea promover su residencia familiar. Al realizar el ACM (Análisis Comparativo de Mercado) basado en cierres notariales de la zona, determinas que el valor real de salida competitivo es de <strong>$3.2M MXN</strong>. Sin embargo, Don Manuel sufre un marcado "Efecto Dotación" e insiste firmemente en salir al mercado en <strong>$4.0M MXN</strong> (+25% de sobreprecio) porque necesita ese capital específico para financiar un proyecto de su hijo.
+                    <p class="slide-txt">Imaginen este escenario: Don Manuel insiste en que su residencia familiar vale <strong>$4.0M MXN</strong> por la carga emocional y sus lazos afectivos. En lugar de debatir con él, abren juntos portales inmobiliarios y extraen 5 testigos de casas idénticas en la misma colonia, pero que tienen superficies de construcción distintas.</p>
+                    
+                    <div class="highlight-box">
+                        <strong>La Estrategia de la Homologación:</strong><br>
+                        Para darle certeza a Don Manuel, calcularemos el precio promedio por metro cuadrado de la zona usando los testigos de los buscadores. Luego, multiplicaremos ese valor unitario promedio por los metros reales de construcción de su casa. Los datos matan cualquier sentimiento.
                     </div>
-                    
-                    <p class="slide-txt">Como líder y asesor inmobiliario estratégico, sabes perfectamente que aceptar la propiedad sobrevaluada quemará el activo y te hará perder recursos de marketing. Debes tomar una decisión crítica de servicio.</p>
                 </div>
 
-                <!-- Columna Derecha: Panel de Toma de Decisiones Interactivo -->
+                <!-- Columna Derecha: El Simulador de Homologación de m2 -->
                 <div class="col-visual-interactiva">
-                    <p style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 4px;">🎯 TOMA DE DECISIONES DIRECTIVAS</p>
-                    <p style="font-size: 12.5px; font-weight: bold; color: #475569; margin-bottom: 6px;">Selecciona tu estrategia como Consultor Patrimonial:</p>
+                    <p style="font-size: 11px; font-weight: 800; color: #94a3b8; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 4px;">🔧 CALCULADORA DE VALOR ESTIMADO POR METRO CUADRADO</p>
                     
-                    <!-- Opción A -->
-                    <button class="opcion-btn" onclick="resolverCaso('A')">
-                        <span>A)</span>
-                        <div><strong>Aceptar la captación en $4.0M MXN</strong> para asegurar al cliente, confiando en que el mercado lo "ajustará" con el tiempo tras ver la falta de llamadas.</div>
-                    </button>
+                    <div>
+                        <label style="font-size: 12px; font-weight: 700; color: #64748b; display: block; margin-bottom: 4px;">Ingresa los M² de Construcción de Don Manuel:</label>
+                        <input type="number" id="metros-propietario" class="input-m2" value="200" min="50" max="1000" placeholder="Ej. 200">
+                    </div>
+                    
+                    <button class="calc-btn" onclick="ejecutarHomologacion()">Homologar Testigos de Portales ➔</button>
 
-                    <!-- Opción B -->
-                    <button class="opcion-btn" onclick="resolverCaso('B')">
-                        <span>B)</span>
-                        <div><strong>Rechazar éticamente la propiedad</strong> de inmediato si no acepta tu precio, argumentando que no trabajas con inmuebles fuera de valor técnico.</div>
-                    </button>
+                    <!-- Tabla de Testigos Extraídos de Buscadores -->
+                    <table class="tabla-homologar">
+                        <thead>
+                            <tr>
+                                <th>Testigo Portal</th>
+                                <th>Precio Lista</th>
+                                <th>M² Construcción</th>
+                                <th>Precio por M²</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Propiedad 1 (Buscador)</td>
+                                <td>$3,150,000</td>
+                                <td>190 m²</td>
+                                <td style="color:#2563eb;">$16,578</td>
+                            </tr>
+                            <tr>
+                                <td>Propiedad 2 (Buscador)</td>
+                                <td>$3,400,000</td>
+                                <td>210 m²</td>
+                                <td style="color:#2563eb;">$16,190</td>
+                            </tr>
+                            <tr>
+                                <td>Propiedad 3 (Buscador)</td>
+                                <td>$3,250,000</td>
+                                <td>200 m²</td>
+                                <td style="color:#2563eb;">$16,250</td>
+                            </tr>
+                            <tr>
+                                <td>Propiedad 4 (Buscador)</td>
+                                <td>$2,980,000</td>
+                                <td>185 m²</td>
+                                <td style="color:#2563eb;">$16,108</td>
+                            </tr>
+                            <tr>
+                                <td>Propiedad 5 (Buscador)</td>
+                                <td>$3,600,000</td>
+                                <td>220 m²</td>
+                                <td style="color:#2563eb;">$16,363</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                    <!-- Opción C -->
-                    <button class="opcion-btn" onclick="resolverCaso('C')">
-                        <span>C)</span>
-                        <div><strong>Estructurar un Contrato con Cláusula de Ajuste Automatizado:</strong> Salir en un precio intermedio condicionado a bajar al valor del ACM si en 30 días no hay ofertas.</div>
-                    </button>
-
-                    <!-- Paneles Dinámicos de Respuesta (Inyectados por JS) -->
-                    <div id="fb-panel" class="feedback-panel"></div>
+                    <!-- Caja de Argumentación Dinámica Inteligente -->
+                    <div id="argumento-render" class="argumento-box"></div>
                 </div>
 
             </div>
         </div>
 
         <div class="revista-controles">
-            <!-- El botón regresa limpiamente al buscador de la página 8 física -->
             <a href="prospeccion-p8.html" class="btn-nav">◀ Anterior</a>
-            <!-- Lanza el flujo al cierre del módulo (Página 10) -->
-            <a href="prospeccion-p10.html" class="btn-nav">Siguiente ▶</a>
-        </div>
-    </div>
-
-    <script>
-        function resolverCaso(opcion) {
-            var panel = document.getElementById('fb-panel');
-            panel.style.display = "block";
-            
-            if (opcion === 'A') {
-                panel.className = "feedback-panel fb-danger";
-                panel.innerHTML = "❌ ESTRATEGIA RECHAZADA: Caer en el corretaje empírico quemará la propiedad, perderás presupuesto en portales inmobiliarios y el activo promediará más de 180 Días en el Mercado (DoM). No inyectas racionalidad.";
-            } else if (opcion === 'B') {
-                panel.className = "feedback-panel fb-warning";
-                panel.innerHTML = "⚠️ SOLUCIÓN RIGIDA: Aunque proteges tu inventario, estás rompiendo el rol de mediación familiar y dejas ir un lead que podría ser educado mediante datos notariales duros.";
-            } else if (opcion === 'C') {
-                panel.className = "feedback-panel fb-success";
-                panel.innerHTML = "✅ ¡ESTRATEGIA EXCELENTE! Actúas como un verdadero Consultor Patrimonial. Utilizas la psicología inmobiliaria para respetar el sentimiento del dueño, pero proteges el tiempo de comercialización respaldándote en métricas tecnológicas auditables.";
-            }
-        }
-    </script>
-</body>
-</html>
