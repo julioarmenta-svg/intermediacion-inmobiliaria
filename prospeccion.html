@@ -21,7 +21,6 @@
             box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
             border: 1px solid #e2e8f0;
         }
-        
         .nav-back {
             display: inline-block;
             text-decoration: none;
@@ -33,7 +32,6 @@
             letter-spacing: 0.05em;
         }
         .nav-back:hover { color: #1d4ed8; }
-
         header {
             margin-bottom: 35px;
             border-bottom: 2px solid #f1f5f9;
@@ -53,8 +51,6 @@
             margin-top: 4px;
             letter-spacing: -0.02em;
         }
-
-        /* RECUADRO DE LA REVISTA DIDÁCTICA */
         .revista-wrapper {
             background-color: #ffffff;
             border: 3px solid #cbd5e1;
@@ -87,17 +83,13 @@
             border-radius: 20px;
             border: 1px solid #dbeafe;
         }
-
-        /* Contenidos de las Filminas */
         .slide-content { display: none; }
-        .slide-content.active { display: block; animation: slideIn 0.2s ease-out; }
-        
+        .slide-content.active { display: block; }
         .slide-titulo {
             font-size: 24px;
             font-weight: 800;
             color: #0f172a;
             margin-bottom: 16px;
-            letter-spacing: -0.01em;
         }
         .slide-txt {
             font-size: 16px;
@@ -105,8 +97,6 @@
             color: #475569;
             margin-bottom: 24px;
         }
-
-        /* Elementos Didácticos */
         .highlight-box {
             background-color: #f8fafc;
             border-left: 5px solid #2563eb;
@@ -117,8 +107,6 @@
             line-height: 1.5;
             margin-top: 15px;
         }
-        
-        /* Gráfica Didáctica */
         .dom-chart-box {
             margin: 20px 0;
             background: #f8fafc;
@@ -128,12 +116,10 @@
         }
         .chart-row { margin-bottom: 15px; }
         .chart-label { font-size: 12px; font-weight: 700; margin-bottom: 5px; color: #475569; }
-        .chart-bar-container { background: #e2e8f0; border-radius: 6px; width: 100%; height: 24px; position: relative; }
+        .chart-bar-container { background: #e2e8f0; border-radius: 6px; width: 100%; height: 24px; }
         .chart-bar { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px; color: white; font-size: 11px; font-weight: 800; }
         .bar-larga { width: 90%; background-color: #64748b; }
         .bar-corta { width: 20%; background-color: #3b82f6; }
-
-        /* Tabla Didáctica */
         .tech-table {
             width: 100%;
             border-collapse: collapse;
@@ -143,8 +129,6 @@
         }
         .tech-table th { background: #f1f5f9; padding: 10px; text-align: left; font-weight: 700; color: #1e293b; border: 1px solid #cbd5e1; }
         .tech-table td { padding: 10px; border: 1px solid #e2e8f0; color: #475569; }
-
-        /* Diagrama de Flujo Mini */
         .diagrama-flujo-mini {
             display: flex;
             align-items: center;
@@ -157,8 +141,6 @@
             border: 1px solid #fde68a;
         }
         .flow-step { background: white; border: 1px solid #fcd34d; padding: 10px; border-radius: 8px; text-align: center; font-size: 11px; font-weight: 700; flex: 1; color: #b45309; }
-
-        /* DOS BOTONES GRANDES PARA AVANZAR Y RETROCEDER (NUEVOS) */
         .revista-controles {
             display: flex;
             justify-content: space-between;
@@ -184,8 +166,6 @@
         .btn-nav:hover { background-color: #3b82f6; }
         .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
         .btn-nav:disabled { background-color: #cbd5e1; border-bottom: 5px solid #94a3b8; color: #94a3b8; cursor: not-allowed; transform: none; }
-
-        /* MENÚ DE ACCIÓN INFERIOR */
         .menu-inferior {
             display: flex;
             flex-direction: row;
@@ -206,16 +186,12 @@
             letter-spacing: 0.02em;
         }
         .btn-accion:active { transform: translateY(3px); }
-        
         .color-tarea { background-color: #3b82f6; border: none; border-bottom: 5px solid #1d4ed8; }
         .color-tarea:hover { background-color: #60a5fa; }
         .color-tarea:active { border-bottom: 2px solid #1d4ed8; }
-
         .color-reto { background-color: #f97316; border: none; border-bottom: 5px solid #c2410c; }
         .color-reto:hover { background-color: #fb923c; }
         .color-reto:active { border-bottom: 2px solid #c2410c; }
-
-        /* Desplegables */
         .desplegable-info {
             display: none;
             margin-top: 25px;
@@ -225,15 +201,37 @@
         }
         .bg-tarea { background-color: #f0f5ff; border: 2px solid #dbeafe; color: #1e3a8a; }
         .bg-reto { background-color: #fff7ed; border: 2px solid #ffedd5; color: #7c2d12; }
-        
         .desplegable-info h4 { font-size: 20px; font-weight: 800; margin-bottom: 12px; }
         .desplegable-info p { font-size: 15px; line-height: 1.6; margin-bottom: 14px; }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(10px); }
-            to { opacity: 1; transform: translateX(0); }
+        
+        /* Estilos del área de subida de archivos */
+        .upload-container {
+            margin-top: 15px;
+            background: #ffffff;
+            border: 2px dashed #cbd5e1;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
         }
+        .upload-container input[type="file"] { display: none; }
+        .upload-label {
+            background-color: #eff6ff;
+            color: #2563eb;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid #bfdbfe;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .upload-label:hover { background-color: #dbeafe; }
 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         @media (max-width: 768px) {
             .menu-inferior { flex-direction: column; }
             .revista-controles { flex-direction: column; }
@@ -258,16 +256,9 @@
                 <span id="revista-contador" class="revista-contador">Pág. 1 de 5</span>
             </div>
 
-            <!-- FILMINAS CORREGIDAS UNA POR UNA -->
             <div class="revista-paginas">
-
                 <!-- Filmina 1 -->
                 <div id="slide-1" class="slide-content active">
                     <h3 class="slide-titulo">La Intermediación No Es "Enseñar Casas"</h3>
-                    <p class="slide-txt">El mercado inmobiliario sufre por ineficiencias y fricciones reales: altos costos notariales, impuestos mal planeados e iliquidez del activo. El rol estratégico del intermediario es destrabar operaciones complejas donde comprador y vendedor se encuentran estancados.</p>
+                    <p class="slide-txt">El mercado inmobiliario sufre por ineficiencias y frictionas reales: altos costos notariales, impuestos mal planeados e iliquidez del activo. El rol estratégico del intermediario es destrabar operaciones complejas donde comprador y vendedor se encuentran estancados.</p>
                     <div class="highlight-box">
-                        <strong>George Akerlof — Premio Nobel (Asimetría de Información):</strong> El intermediario profesional actúa como el agente neutral indispensable que equilibra los datos asimétricos del mercado. Brinda certeza jurídica y financiera para que ambas partes operen con absoluta confianza.
-                    </div>
-                </div>
-
-                <!-- Filmina 2 -->
