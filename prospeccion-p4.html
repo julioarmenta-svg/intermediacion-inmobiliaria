@@ -108,7 +108,7 @@
         .sim-label { font-size: 12px; font-weight: 700; color: #64748b; }
         .sim-input-row { display: flex; align-items: center; gap: 10px; }
         .sim-range { flex: 1; cursor: pointer; height: 12px; accent-color: #2563eb; }
-        .sim-value { font-size: 13px; font-weight: 800; color: #2563eb; min-width: 95px; text-align: right; }
+        .sim-value { font-size: 13px; font-weight: 800; color: #2563eb; min-width: 110px; text-align: right; }
         
         .checkbox-container { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; color: #475569; cursor: pointer; padding: 10px 14px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; width: 100%; }
         .checkbox-container input { width: 16px; height: 16px; cursor: pointer; }
@@ -121,7 +121,7 @@
         .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
         .highlight-box { background-color: #f8fafc; border-left: 5px solid #10b981; padding: 16px; border-radius: 4px; font-size: 13.5px; color: #1e293b; line-height: 1.5; margin-top: 15px; }
 
-        /* CONTROLES ESTANDARIZADOS IGUALES A LAS DEMÁS PÁGINAS */
+        /* CONTROLES ESTANDARIZADOS */
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
         .btn-nav {
             flex: 1;
@@ -167,7 +167,7 @@
                     <h4 class="simulador-titulo">🔧 SIMULADOR DE PRE-CALIFICACIÓN DE LEADS</h4>
                     
                     <div class="sim-group">
-                        <label class="sim-label" for="range-ingresos">Ingreso Familiar Mensual:</label>
+                        <label class="sim-label">Ingreso Familiar Mensual:</label>
                         <div class="sim-input-row">
                             <input type="range" id="range-ingresos" class="sim-range" min="20000" max="150000" step="5000" value="45000">
                             <span id="val-ingresos" class="sim-value">$45,000 MXN</span>
@@ -175,7 +175,7 @@
                     </div>
 
                     <div class="sim-group">
-                        <label class="sim-label" for="range-trafico">Tiempo de Traslado Máximo (Trabajo):</label>
+                        <label class="sim-label">Tiempo de Traslado Máximo (Trabajo):</label>
                         <div class="sim-input-row">
                             <input type="range" id="range-trafico" class="sim-range" min="15" max="120" step="5" value="45">
                             <span id="val-trafico" class="sim-value">45 Mins</span>
@@ -200,7 +200,7 @@
                 <!-- Columna Derecha: Texto Técnico -->
                 <div class="col-texto">
                     <h3 class="slide-titulo">El Perfilamiento</h3>
-                    <p class="slide-txt">La identificación de un cliente potencial a través de una buena intermediación inmobiliaria va mucho más allá de validar si el prospecto 'tiene dinero' o si le atrae la fachada de una casa. El verdadero perfilamiento exige entender y mapear el conjunto completo de la realidad del cliente antes de agendar visitas.</p>
+                    <p class="slide-txt">La identificación de un cliente potencial a través de una buena intermediación inmobiliaria va mucho más allá de validar si el prospecto 'tiene dinero' o si le atrare la fachada de una casa. El verdadero perfilamiento exige entender y mapear el conjunto completo de la realidad del cliente antes de agendar visitas.</p>
                     
                     <p class="slide-txt">Imaginen el caso típico: una pareja de recién casados que busca su primer hogar. Su toma de decisiones abarca la gestión compleja de su plan de vida. Como asesores estratégicos patrimoniales, se deben auditar activamente variables críticas como:</p>
                     
@@ -208,3 +208,4 @@
                         <strong>Variables de Diagnóstico Obligatorio:</strong><br>
                         • <strong>Logística Urbana:</strong> Selección de zonas que optimicen los traslados diarios a sus respectivos trabajos, midiendo el impacto del tráfico real.<br>
                         • <strong>Entorno Familiar:</strong> Planificación de espacios a futuro (hijos/mascotas) y disponibilidad de guarderías, escuelas seguras y vecinos estables en el cuadrante.<br>
+                        • <strong>Equilibrio Financiero:</strong> Calcular la capacidad de pago real sin asfixiar el flujo de efectivo ni la liquidez diaria de la nueva familia.
