@@ -81,11 +81,11 @@
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 25px; }
 
-        /* ENLACES CREATIVOS EN LUGAR DE BOTONES NATIVOS */
+        /* ENLACES CON DISEÑO DE BOTÓN RECTIFICADOS */
         .hub-respuestas-nav {
             display: flex;
             gap: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 5px;
         }
         .enlace-bloque {
             flex: 1;
@@ -99,7 +99,8 @@
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             transition: transform 0.1s ease, border-bottom 0.1s ease;
-            cursor: pointer;
+            display: inline-block;
+            cursor: pointer !important;
             user-select: none;
         }
         
@@ -119,9 +120,16 @@
         
         .enlace-bloque:active { transform: translateY(3px); border-bottom-width: 2px; }
 
-        /* BLOQUES DINÁMICOS DE RESPUESTAS */
+        /* CONTENEDORES CON SCROLL INTERNO PARA PROTEGER EL BOTÓN SIGUIENTE */
         .panel-contenido {
             display: none;
+            max-height: 380px;
+            overflow-y: auto;
+            padding-right: 12px;
+            margin-top: 25px;
+            border: 2px solid #cbd5e1;
+            border-radius: 16px;
+            background-color: #f8fafc;
             animation: fadeIn 0.3s ease-in-out forwards;
         }
         @keyframes fadeIn {
@@ -129,11 +137,16 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .feedback-list { display: flex; flex-direction: column; gap: 16px; }
-        .feedback-item {
-            background-color: #f8fafc;
+        .feedback-list { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 16px; 
             padding: 16px;
-            border-radius: 6px;
+        }
+        .feedback-item {
+            background-color: #ffffff;
+            padding: 16px;
+            border-radius: 8px;
             font-size: 13.5px;
             line-height: 1.5;
             color: #334155;
@@ -146,7 +159,7 @@
         .pregunta-num-azul { color: #2563eb; font-weight: 900; }
         .pregunta-num-verde { color: #10b981; font-weight: 900; text-transform: uppercase; font-size: 12px; }
 
-        /* RECTIFICACIÓN DE CONTROLES INFERIORES */
+        /* CONTROLES DE NAVEGACIÓN INFERIOR TOTALMENTE SEGUROS */
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
@@ -194,13 +207,13 @@
                 <h3 class="slide-titulo">Cierre Analítico: Evaluación de Criterios</h3>
                 <p class="slide-txt">Bienvenidos a la Unidad II. Antes de iniciar con el tema de Operación Comercial - Ventas, Rentas y Traspasos, revisaremos las respuestas correspondientes a la sesión anterior. Selecciona cualquiera de las dos secciones para desplegar las respuestas a los ejercicios de la primera tarea:</p>
                 
-                <!-- ACCESOS ENLACE CON CSS TIPO BOTÓN -->
+                <!-- BOTONERA DE CONTROL RECONSTRUIDA MEDIANTE ENLACES -->
                 <div class="hub-respuestas-nav">
-                    <a class="enlace-bloque enlace-cuestionario" onclick="abrirSolucion('cuestionario')">📋 1. Cuestionario Crítico</a>
-                    <a class="enlace-bloque enlace-integradora" onclick="abrirSolucion('integradora')">🔥 2. Tarea Integradora</a>
+                    <a href="javascript:void(0);" class="enlace-bloque enlace-cuestionario" onclick="abrirSolucion('cuestionario')">📋 1. Cuestionario Crítico</a>
+                    <a href="javascript:void(0);" class="enlace-bloque enlace-integradora" onclick="abrirSolucion('integradora')">🔥 2. Tarea Integradora</a>
                 </div>
 
-                <!-- RESPUESTAS DEL CUESTIONARIO CRÍTICO -->
+                <!-- RESPUESTAS DEL CUESTIONARIO CRÍTICO (CAJA CON SCROLL) -->
                 <div id="panel-cuestionario" class="panel-contenido">
                     <div class="feedback-list">
                         <div class="feedback-item azul-border">
@@ -213,6 +226,3 @@
                         </div>
                         <div class="feedback-item azul-border">
                             <span class="pregunta-titulo"><span class="pregunta-num-azul">3.</span> ¿Por qué la regla financiera 3 a 1 protege el ecosistema de originación de créditos y la liquidez familiar?</span>
-                            Porque actúa como un dique macroeconómico contra el sobreendeudamiento. Al exigir que la mensualidad hipotecaria estimada no exceda el 30% o 33% de los ingresos netos comprobables, se blinda el flujo de efectivo libre de la familia para cubrir sus necesidades básicas y de salud, impidiendo colapsos en las carteras vencidas bancarias.
-                        </div>
-                        <div class="feedback-item azul-border">
