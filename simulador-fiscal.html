@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dictamen: Impacto Fiscal del Caso - URN</title>
+    <title>Dictamen: Simulador de Impacto Fiscal - URN</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -13,7 +13,7 @@
             color: #334155;
         }
         .container {
-            max-width: 950px;
+            max-width: 1000px;
             margin: 0 auto;
             background-color: #ffffff;
             border-radius: 24px;
@@ -69,54 +69,103 @@
         }
         .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
 
-        .slide-txt { font-size: 13.5px; line-height: 1.5; color: #475569; margin-bottom: 15px; }
+        /* ARQUITECTURA EN DOS COLUMNAS DE BAJA ALTURA */
+        .split-dashboard {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 10px;
+        }
+        .panel-izquierdo {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .panel-derecho {
+            flex: 1.1;
+        }
 
-        /* TABLA COMPARATIVA PARALELA ULTRA-SEBURA */
-        .table-responsive {
-            width: 100%;
-            overflow-x: auto;
-            margin: 15px 0;
-            border: 1px solid #cbd5e1;
+        /* SELECTOR DESPLEGABLE */
+        .selector-escenarios-grid {
+            border: 2px solid #cbd5e1;
+            padding: 16px;
             border-radius: 12px;
             background: #ffffff;
         }
+        .selector-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .select-premium {
+            width: 100%;
+            padding: 12px;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #1e293b;
+            background-color: #ffffff;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* FILTRO CASILLA EXENCIÓN */
+        .caja-exencion-control {
+            border: 2px solid #cbd5e1;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .checkbox-custom {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #2563eb;
+        }
+        .label-checkbox {
+            font-size: 13px;
+            font-weight: 800;
+            color: #1e293b;
+            cursor: pointer;
+        }
+
+        /* ESTRUCTURA DE LA TABLA DE RESULTADOS */
         .tech-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 11.5px;
-            min-width: 800px;
+            font-size: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #ffffff;
         }
-        .tech-table th { background: #f8fafc; padding: 12px 10px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 9px; letter-spacing: 0.03em; }
-        .tech-table td { padding: 12px 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.4; }
+        .tech-table th { background: #f8fafc; padding: 10px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 9.5px; letter-spacing: 0.03em; }
+        .tech-table td { padding: 12px 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: middle; line-height: 1.4; }
         .tech-table tr:last-child td { border-bottom: none; }
         
-        /* Celdas de Alerta Visuales */
-        .row-danger { background-color: #fef2f2; font-weight: 600; }
-        .row-danger td { color: #991b1b !important; }
-        .row-success { background-color: #f0fdf4; font-weight: 600; }
-        .row-success td { color: #166534 !important; }
-        .row-info { background-color: #eff6ff; font-weight: 600; }
-        .row-info td { color: #1e40af !important; }
+        /* Reglas de visibilidad de las filas controladas por el script */
+        .fila-dinamica { display: none; }
+        .fila-dinamica.visible { display: table-row !important; }
 
-        .badge-table {
-            font-weight: 800;
-            padding: 3px 6px;
-            border-radius: 4px;
-            font-size: 10px;
-            text-transform: uppercase;
-            display: inline-block;
-        }
-        .bg-red { background-color: #fca5a5; color: #991b1b; }
-        .bg-green { background-color: #bbf7d0; color: #166534; }
-        .bg-blue { background-color: #bfdbfe; color: #1e40af; }
+        .badge-optimo { color: #16a34a !important; background-color: #dcfce7 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #bbf7d0; display: inline-block; font-size: 11px; font-weight: 800; }
+        .badge-peligro { color: #dc2626 !important; background-color: #fee2e2 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #fca5a5; display: inline-block; font-size: 11px; font-weight: 800; }
+        .badge-alerta { color: #d97706 !important; background-color: #fef3c7 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #fde68a; display: inline-block; font-size: 11px; font-weight: 800; }
 
-        /* NAVEGACIÓN ÚNICA DE REGRESO COMPLETAMENTE FIJA */
+        /* REGRESO INTEGRADO SEGURO */
         .revista-controles { 
             display: flex; 
             justify-content: center; 
             margin-top: 25px; 
             border-top: 2px solid #f1f5f9;
-            padding-top: 25px;
+            padding-top: 15px;
         }
         .btn-nav {
             width: 100%;
@@ -124,9 +173,9 @@
             display: block;
             text-decoration: none;
             background-color: #2563eb;
-            border-bottom: 5px solid #1d4ed8;
-            padding: 16px;
-            border-radius: 14px;
+            border-bottom: 4px solid #1d4ed8;
+            padding: 14px;
+            border-radius: 10px;
             font-size: 15px;
             font-weight: 800;
             color: #ffffff !important;
@@ -134,7 +183,9 @@
             transition: all 0.1s ease;
         }
         .btn-nav:hover { background-color: #3b82f6; }
-        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
+        .btn-nav:active { transform: translateY(2px); border-bottom-width: 2px; }
+
+        @media (max-width: 768px) { .split-dashboard { flex-direction: column; gap: 15px; } }
     </style>
 </head>
 <body>
@@ -144,70 +195,56 @@
 
         <header>
             <span class="tag">Documento de Consulta Académica Independiente</span>
-            <h1>Análisis de Escenarios de Impacto Fiscal (Avalúo Fijo: $13.2M)</h1>
+            <h1>Simulador de Impacto Fiscal e Inviabilidad Transaccional</h1>
         </header>
 
         <div class="revista-wrapper">
             <div class="revista-header">
-                <span class="revista-pills">Matriz de Control Notarial y Exenciones · Ley del ISR</span>
+                <span class="revista-pills">Análisis de Ajustes y Rangos Legales (Avalúo: $13.2M)</span>
             </div>
 
             <div style="padding: 0 10px;">
-                <p class="slide-txt">Compare de forma paralela los tres escenarios comerciales para la residencia de Chihuahua y analice el impacto del ISAI municipal, el castigo por subvaluación y el beneficio definitivo de exentar mediante la acreditación de residencia:</p>
+                
+                <div class="split-dashboard">
+                    
+                    <!-- PANEL IZQUIERDO: COMBOBOX Y CHECKBOX DE EXENCIÓN -->
+                    <div class="panel-izquierdo">
+                        <div class="selector-escenarios-grid">
+                            <label class="selector-label" for="combo-escenarios">Seleccione el Escenario Comercial:</label>
+                            <select id="combo-escenarios" class="select-premium" onchange="ejecutarCambio()">
+                                <option value="raul">🚨 Escenario Don Raúl ($8,150,000 MXN)</option>
+                                <option value="piso">🟢 Rango Mínimo Legal (-10%: $11,880,000 MXN)</option>
+                                <option value="avaluo">🔵 Precio de Avalúo Justo ($13,200,000 MXN)</option>
+                            </select>
+                        </div>
 
-                <!-- TABLA COMPARATIVA ESTÁTICA PARALELA COMPLETA -->
-                <div class="table-responsive">
-                    <table class="tech-table">
-                        <thead>
-                            <tr>
-                                <th>Escenario Comercial Pactado</th>
-                                <th>ISAI (2% Comprador)</th>
-                                <th>ISR Enajenación (Vendedor)</th>
-                                <th>Efecto si Acredita Residencia (INE / Luz)</th>
-                                <th>ISR Adquisición (Art. 125 Comprador)</th>
-                                <th>Dictamen y Estatus Notarial</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Escenario 1: Don Raúl -->
-                            <tr class="row-danger">
-                                <td><strong>🚨 Caso Don Raúl<br>($8,150,000 MXN)</strong></td>
-                                <td>$264,000 MXN<br><small>(Calculado sobre avalúo)</small></td>
-                                <td>$0 MXN<br><small>(Genera pérdida fiscal)</small></td>
-                                <td><strong>Sin Cambios:</strong><br>El vendedor no paga impuesto por la pérdida, pero no borra el castigo del comprador.</td>
-                                <td><strong>$1,010,000 MXN</strong><br><small>(20% sobre la diferencia)</small></td>
-                                <td><span class="badge-table bg-red">SUBVALUADO<br>(CASTIGO COMPRADOR)</span></td>
-                            </tr>
-                            <!-- Escenario 2: Rango Mínimo -->
-                            <tr class="row-success">
-                                <td><strong>🟢 Rango Mínimo Legal<br>(-10%: $11,880,000 MXN)</strong></td>
-                                <td>$264,000 MXN<br><small>(Calculado sobre avalúo)</small></td>
-                                <td>$1,076,000 MXN<br><small>(Calculado sobre utilidad)</small></td>
-                                <td><strong style="color:#166534;">💥 EL IMPUESTO CAE A $0:</strong><br>La entrega de INE/Luz exenta al vendedor al 100%.</td>
-                                <td>$0 MXN<br><small>(Dentro del rango permitido)</small></td>
-                                <td><span class="badge-table bg-green">RANGO ÓPTIMO<br>(OPERACIÓN BIEN)</span></td>
-                            </tr>
-                            <!-- Escenario 3: Avalúo Justo -->
-                            <tr class="row-info">
-                                <td><strong>🔵 Precio de Avalúo Justo<br>($13,200,000 MXN)</strong></td>
-                                <td>$264,000 MXN<br><small>(Calculado sobre avalúo)</small></td>
-                                <td>$1,340,000 MXN<br><small>(Calculado sobre utilidad)</small></td>
-                                <td><strong style="color:#1e40af;">💥 EL IMPUESTO CAE A $0:</strong><br>La entrega de INE/Luz exenta al vendedor al 100%.</td>
-                                <td>$0 MXN<br><small>(Alineado al 100% con avalúo)</small></td>
-                                <td><span class="badge-table bg-blue">PRECIO JUSTO<br>(OPERACIÓN BIEN)</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                        <div class="caja-exencion-control">
+                            <input type="checkbox" id="chk-exencion" class="checkbox-custom" onchange="ejecutarCambio()">
+                            <label class="label-checkbox" for="chk-exencion">Acredita residencia (INE / Luz CFDI) para exentar</label>
+                        </div>
+                    </div>
 
-                <!-- BOTÓN DE REGRESO SÓLIDO, INDESTRUCTIBLE Y VISIBLE ABAJO -->
-                <div class="revista-controles">
-                    <a href="operacion.html" class="btn-nav">◀ Regresar a la Mesa de Control</a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-</body>
-</html>
+                    <!-- PANEL DERECHO: LAS 4 FILAS TOTALMENTE SELLADAS -->
+                    <div class="panel-derecho">
+                        <table class="tech-table">
+                            <thead>
+                                <tr>
+                                    <th>Concepto Tributario</th>
+                                    <th>Sujeto</th>
+                                    <th style="text-align: right;">Monto Proyectado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>ISAI Municipal (2%)</strong></td>
+                                    <td>Comprador</td>
+                                    <td style="text-align: right; font-weight: 700;">$264,000</td>
+                                </tr>
+                                
+                                <!-- FILAS DE ISR VENDEDOR (CAMBIAN SEGÚN LA CASILLA) -->
+                                <tr id="vendedor-raul" class="fila-dinamica">
+                                    <td><strong>ISR Enajenación (Est. 20%)</strong></td>
+                                    <td>Vendedor</td>
+                                    <td style="text-align: right; font-weight: 700; color:#16a34a;">$0 MXN <small>(Genera pérdida)</small></td>
+                                </tr>
+                                <tr id="vendedor-piso-con" class="fila-dinamica">
