@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictamen: Extracción de Testigos - URN</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background-color: #f1f5f9; 
+            padding: 40px 20px;
+            color: #334155;
+        }
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+        .nav-back {
+            display: inline-block;
+            text-decoration: none;
+            color: #10b981;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .nav-back:hover { color: #059669; }
+        header {
+            margin-bottom: 35px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 20px;
+        }
+        .tag {
+            font-size: 11px;
+            font-weight: 800;
+            color: #10b981;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 4px;
+            letter-spacing: -0.02em;
+        }
+        .revista-wrapper {
+            background-color: #ffffff;
+            border: 3px solid #cbd5e1;
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+        }
+        .revista-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        .revista-pills { font-size: 12px; font-weight: 800; color: #10b981; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        .slide-titulo { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 14px; }
+        .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
+        
+        .sub-seccion-pills {
+            font-size: 11px;
+            font-weight: 800;
+            color: #10b981;
+            background-color: #f0fdf4;
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* COMPONENTE DE TABLA CON SCROLL HORIZONTAL DE SEGURIDAD */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 15px 0 25px 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            background: #ffffff;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            min-width: 750px;
+        }
+        .tech-table th { background: #f8fafc; padding: 12px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.03em; }
+        .tech-table td { padding: 12px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.5; }
+        .tech-table tr:last-child td { border-bottom: none; }
+        
+        /* Fila de Cálculo Resaltada */
+        .total-row { background-color: #eff6ff; font-weight: 800; }
+        .total-row td { color: #1e40af !important; border-top: 2px solid #bfdbfe; border-bottom: none; }
+
+        .highlight-box {
+            background-color: #f8fafc;
+            border-left: 5px solid #2563eb;
+            padding: 16px;
+            border-radius: 4px;
+            font-size: 13.5px;
+            color: #1e293b;
+            line-height: 1.5;
+            margin-top: 15px;
+        }
+
+        /* BARRA DE CONTROLES INFERIOR FIJA */
+        .revista-controles { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-top: 35px; 
+            gap: 20px; 
+            border-top: 2px solid #f1f5f9;
+            padding-top: 25px;
+        }
+        .btn-nav {
+            flex: 1;
+            display: block;
+            text-decoration: none;
+            background-color: #10b981;
+            border-bottom: 5px solid #059669;
+            padding: 18px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 800;
+            color: #ffffff !important;
+            text-align: center;
+            transition: all 0.1s ease;
+        }
+        .btn-nav:hover { background-color: #34d399; }
+        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #059669; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="operacion.html" class="nav-back">◀ Volver a la Mesa de Control</a>
+
+        <header>
+            <span class="tag">Documento de Consulta Académica Independiente</span>
+            <h1>Dictamen de Respuestas: Proyecto de Tarea Integradora</h1>
+        </header>
+
+        <div class="revista-wrapper">
+            <div class="revista-header">
+                <span class="revista-pills">Paso 2 (Parte A): Desactivación del Sesgo de Precios</span>
+            </div>
+
+            <div style="padding: 0 40px 20px 40px;">
+                
+                <span class="sub-seccion-pills">Análisis Proptech Homologado</span>
+                <h3 class="slide-titulo">Extracción de Testigos de Mercado Real</h3>
+                <p class="slide-txt">Para contrarrestar las expectativas emocionales de los propietarios con datos duros y verificables, se realiza una auditoría digital en portales comerciales. Tomando como zona de estudio **Residencial Lomas del Valle en Chihuahua**, se extrae una muestra rigurosa de 5 propiedades activas homologables para calcular el valor aritmético promedio del entorno:</p>
+                
+                <div class="table-responsive">
+                    <table class="tech-table">
+                        <thead>
+                            <tr>
+                                <th>Testigo Extraído</th>
+                                <th>Ubicación Específica</th>
+                                <th>Precio de Lista (MXN)</th>
+                                <th>M² Construcción</th>
+                                <th>Valor Calculado por M²</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Propiedad 1 (Muestra Base)</strong></td>
+                                <td>Valle Alto 6515</td>
+                                <td>$8,200,000 MXN</td>
+                                <td>310 m²</td>
+                                <td>$26,451.61 MXN</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Propiedad 2 (Mansión Premium)</strong></td>
+                                <td>Haciendas del Valle</td>
+                                <td>$16,000,000 MXN</td>
+                                <td>580 m²</td>
+                                <td>$27,586.20 MXN</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Propiedad 3 (Residencia Lujo)</strong></td>
+                                <td>Valle de la Herradura 6536</td>
+                                <td>$12,950,000 MXN</td>
+                                <td>470 m²</td>
+                                <td>$27,553.19 MXN</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Propiedad 4 (Testigo de Zona)</strong></td>
+                                <td>Calle Valle de la Herradura</td>
+                                <td>$13,000,000 MXN</td>
+                                <td>480 m²</td>
+                                <td>$27,083.33 MXN</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Propiedad 5 (Muestra Alta Scale)</strong></td>
+                                <td>Residencia de Lujo Premium</td>
+                                <td>$15,990,000 MXN</td>
+                                <td>575 m²</td>
+                                <td>$27,808.69 MXN</td>
+                            </tr>
+                            <!-- Fila Aritmética de Control Directivo -->
+                            <tr class="total-row">
+                                <td><strong>PROMEDIO HOMOLOGADO</strong></td>
+                                <td>Residencial Lomas del Valle</td>
+                                <td>$13,228,000 MXN</td>
+                                <td>483 m²</td>
+                                <td><strong>$27,296.60 MXN</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="highlight-box">
+                    📉 <strong>Evidencia Operativa:</strong> Al procesar los datos matemáticos, el precio promedio por metro cuadrado de construcción cerrado en la colonia se sitúa en <strong>$27,296.60 MXN</strong>. Este indicador representa el estándar técnico neutro indispensable para inyectar racionalidad en la mesa de negociación.
+                </div>
+
+                <div class="revista-controles">
+                    <a href="4ds.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
