@@ -69,7 +69,7 @@
         }
         .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
 
-        /* ARQUITECTURA EN DOS COLUMNAS DE BAJA ALTURA */
+        /* ARQUITECTURA DE DOS COLUMNAS EN UNA SOLA LÍNEA HORIZONTAL */
         .split-dashboard {
             display: flex;
             gap: 25px;
@@ -77,18 +77,15 @@
         }
         .panel-izquierdo {
             flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
         }
         .panel-derecho {
             flex: 1.1;
         }
 
-        /* SELECTOR DESPLEGABLE */
+        /* CONFIGURACIÓN DEL MENÚ DESPLEGABLE ÚNICO */
         .selector-escenarios-grid {
             border: 2px solid #cbd5e1;
-            padding: 16px;
+            padding: 20px;
             border-radius: 12px;
             background: #ffffff;
         }
@@ -96,7 +93,7 @@
             display: block;
             font-size: 11px;
             font-weight: 800;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             color: #64748b;
             text-transform: uppercase;
             letter-spacing: 0.02em;
@@ -114,30 +111,7 @@
             cursor: pointer;
         }
 
-        /* FILTRO CASILLA EXENCIÓN */
-        .caja-exencion-control {
-            border: 2px solid #cbd5e1;
-            padding: 14px 16px;
-            border-radius: 12px;
-            background: #f8fafc;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .checkbox-custom {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            accent-color: #2563eb;
-        }
-        .label-checkbox {
-            font-size: 13px;
-            font-weight: 800;
-            color: #1e293b;
-            cursor: pointer;
-        }
-
-        /* ESTRUCTURA DE LA TABLA DE RESULTADOS */
+        /* TABLA DE RESULTADOS INVARIABLE */
         .tech-table {
             width: 100%;
             border-collapse: collapse;
@@ -151,7 +125,7 @@
         .tech-table td { padding: 12px 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: middle; line-height: 1.4; }
         .tech-table tr:last-child td { border-bottom: none; }
         
-        /* Reglas de visibilidad de las filas controladas por el script */
+        /* Controladores puros de visibilidad CSS */
         .fila-dinamica { display: none; }
         .fila-dinamica.visible { display: table-row !important; }
 
@@ -159,7 +133,7 @@
         .badge-peligro { color: #dc2626 !important; background-color: #fee2e2 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #fca5a5; display: inline-block; font-size: 11px; font-weight: 800; }
         .badge-alerta { color: #d97706 !important; background-color: #fef3c7 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #fde68a; display: inline-block; font-size: 11px; font-weight: 800; }
 
-        /* REGRESO INTEGRADO SEGURO */
+        /* PIE DE PÁGINA CON REGRESO SÓLIDO */
         .revista-controles { 
             display: flex; 
             justify-content: center; 
@@ -200,31 +174,28 @@
 
         <div class="revista-wrapper">
             <div class="revista-header">
-                <span class="revista-pills">Análisis de Ajustes y Rangos Legales (Avalúo: $13.2M)</span>
+                <span class="revista-pills">Análisis de Ajustes y Rangos Legales (Avalúo Fijo: $13.2M)</span>
             </div>
 
             <div style="padding: 0 10px;">
                 
                 <div class="split-dashboard">
                     
-                    <!-- PANEL IZQUIERDO: COMBOBOX Y CHECKBOX DE EXENCIÓN -->
+                    <!-- PANEL IZQUIERDO: CAJA UNIFICADA CON LAS 4 OPCIONES DIRECTAS -->
                     <div class="panel-izquierdo">
                         <div class="selector-escenarios-grid">
                             <label class="selector-label" for="combo-escenarios">Seleccione el Escenario Comercial:</label>
                             <select id="combo-escenarios" class="select-premium" onchange="ejecutarCambio()">
-                                <option value="raul">🚨 Escenario Don Raúl ($8,150,000 MXN)</option>
-                                <option value="piso">🟢 Rango Mínimo Legal (-10%: $11,880,000 MXN)</option>
-                                <option value="avaluo">🔵 Precio de Avalúo Justo ($13,200,000 MXN)</option>
+                                <option value="raul">🚨 Escenario Don Raúl ($8,150,000 MXN / Sin Acreditar)</option>
+                                <option value="piso-sin">🟢 Rango Mínimo Legal ($11,880,000 MXN / Sin Acreditar)</option>
+                                <option value="piso-con">🟢 Rango Mínimo Legal ($11,880,000 MXN / Exento con INE)</option>
+                                <option value="avaluo-sin">🔵 Precio de Avalúo Justo ($13,200,000 MXN / Sin Acreditar)</option>
+                                <option value="avaluo-con">🔵 Precio de Avalúo Justo ($13,200,000 MXN / Exento con INE)</option>
                             </select>
-                        </div>
-
-                        <div class="caja-exencion-control">
-                            <input type="checkbox" id="chk-exencion" class="checkbox-custom" onchange="ejecutarCambio()">
-                            <label class="label-checkbox" for="chk-exencion">Acredita residencia (INE / Luz CFDI) para exentar</label>
                         </div>
                     </div>
 
-                    <!-- PANEL DERECHO: LAS 4 FILAS TOTALMENTE SELLADAS -->
+                    <!-- PANEL DERECHO: RENDIMIENTO INMUNE A CHOQUES DE CÁLCULO -->
                     <div class="panel-derecho">
                         <table class="tech-table">
                             <thead>
@@ -241,10 +212,21 @@
                                     <td style="text-align: right; font-weight: 700;">$264,000</td>
                                 </tr>
                                 
-                                <!-- FILAS DE ISR VENDEDOR (CAMBIAN SEGÚN LA CASILLA) -->
-                                <tr id="vendedor-raul" class="fila-dinamica">
+                                <!-- BLOQUE DE FILAS DE ISR VENDEDOR PRECALCULADAS -->
+                                <tr id="vendedor-exento" class="fila-dinamica">
                                     <td><strong>ISR Enajenación (Est. 20%)</strong></td>
                                     <td>Vendedor</td>
-                                    <td style="text-align: right; font-weight: 700; color:#16a34a;">$0 MXN <small>(Genera pérdida)</small></td>
+                                    <td style="text-align: right; font-weight: 700; color:#16a34a;">💥 $0 MXN <small>(Exento / Pérdida)</small></td>
                                 </tr>
-                                <tr id="vendedor-piso-con" class="fila-dinamica">
+                                <tr id="vendedor-piso" class="fila-dinamica">
+                                    <td><strong>ISR Enajenación (Est. 20%)</strong></td>
+                                    <td>Vendedor</td>
+                                    <td style="text-align: right; font-weight: 700;">$1,076,000</td>
+                                </tr>
+                                <tr id="vendedor-avaluo" class="fila-dinamica">
+                                    <td><strong>ISR Enajenación (Est. 20%)</strong></td>
+                                    <td>Vendedor</td>
+                                    <td style="text-align: right; font-weight: 700;">$1,340,000</td>
+                                endrow
+                                
+                                <!-- BLOQUE DE FILAS DE ISR COMPRADOR -->
