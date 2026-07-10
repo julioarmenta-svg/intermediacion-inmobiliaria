@@ -68,15 +68,6 @@
             margin-bottom: 24px;
         }
         .revista-pills { font-size: 12px; font-weight: 800; color: #10b981; text-transform: uppercase; letter-spacing: 0.05em; }
-        .revista-contador {
-            font-size: 12px;
-            font-weight: 800;
-            color: #10b981;
-            background-color: #f0fdf4;
-            padding: 6px 14px;
-            border-radius: 20px;
-            border: 1px solid #bbf7d0;
-        }
 
         .slide-titulo { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 14px; margin-top: 25px; }
         .slide-titulo:first-of-type { margin-top: 0; }
@@ -95,7 +86,7 @@
             letter-spacing: 0.03em;
         }
 
-        /* CONTENEDOR CON SCROLL HORIZONTAL PROTECTOR PARA EVITAR DESBORDAMIENTO VERTICAL */
+        /* CONTENEDOR CON SCROLL HORIZONTAL PROTECTOR */
         .table-responsive {
             width: 100%;
             overflow-x: auto;
@@ -110,7 +101,7 @@
             width: 100%;
             border-collapse: collapse;
             font-size: 13px;
-            min-width: 650px; /* Asegura legibilidad en móviles sin deformar celdas */
+            min-width: 650px;
         }
         .tech-table th { background: #f8fafc; padding: 12px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.03em; }
         .tech-table td { padding: 12px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.5; }
@@ -156,14 +147,14 @@
         <div class="revista-wrapper">
             <div class="revista-header">
                 <span class="revista-pills">Paso 1 (Parte A): Infraestructura Inmobiliaria</span>
-                <span class="revista-contador">Parte 1 de 3</span>
+                <!-- Eliminada la etiqueta de la esquina superior derecha -->
             </div>
 
             <div style="padding: 0 40px 20px 40px;">
                 
                 <span class="sub-seccion-pills">Definición y Matriz</span>
-                <h3 class="slide-titulo">Matriz de Portales y Sistemas CRM</h3>
-                <p class="slide-txt">Para estructurar una firma inmobiliaria independiente competitiva en el mercado mexicano, los alumnos deben segmentar las herramientas por su objetivo de negocio: el <strong>Portal Inmobiliario</strong> opera como una plataforma B2C orientada a la atracción masiva de demanda externa, mientras que el <strong>CRM</strong> funciona como el software B2B encargado del control interno de inventarios, colaboración y seguimiento de prospectos.</p>
+                <h3 class="slide-titulo">Matriz de Sistemas CRM</h3>
+                <p class="slide-txt">Para estructurar una firma inmobiliaria independiente competitiva en el mercado mexicano, los alumnos deben segmentar las herramientas por su objetivo de negocio: el CRM funciona como el software B2B encargado del control interno de inventarios, colaboración inter-inmobiliaria y seguimiento estricto de prospectos, mitigando fugas de leads y optimizando el SLA a menos de 5 minutos.</p>
                 
                 <p class="slide-txt"><strong>Comparativa de Sistemas CRM Líderes en México:</strong></p>
                 <div class="table-responsive">
@@ -205,28 +196,15 @@
                     </table>
                 </div>
 
-                <p class="slide-txt"><strong>Comparativa de Portales Inmobiliarios Líderes en México:</strong></p>
-                <div class="table-responsive">
-                    <table class="tech-table">
-                        <thead>
-                            <tr>
-                                <th>Variable Comercial</th>
-                                <th>Inmuebles24 🌐</th>
-                                <th>Propiedades.com 🏠</th>
-                                <th>Mercado Libre Inmuebles 🚗</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Naturaleza y Costo</strong></td>
-                                <td>De Pago Premium (Packs desde $3,549/mes)</td>
-                                <td>Gratuito / Híbrido (Esquemas base sin costo)</td>
-                                <td>Híbrido (Packs desde $400 a $900/mes)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Modelo de Exposición</strong></td>
-                                <td>Simple, Destacado y Superdestacado</td>
-                                <td>Destaques individuales bajo demanda</td>
-                                <td>Clasificación Plata, Oro y Oro Premium</td>
-                            </tr>
-                            <tr>
+                <!-- Modificada la barra inferior: se quitó el botón Siguiente y apunta a las páginas correctas -->
+                <div class="revista-controles">
+                    <a href="operacion.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Mesa de Control</a>
+                    <a href="portales.html" class="btn-nav">Siguiente ▶</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
