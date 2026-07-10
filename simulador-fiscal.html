@@ -69,10 +69,11 @@
         }
         .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
 
+        /* ARQUITECTURA EN DOS COLUMNAS INDESTRUCTIBLE */
         .split-dashboard {
             display: flex;
             gap: 25px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         .panel-izquierdo {
             flex: 1;
@@ -129,6 +130,7 @@
             border-color: #94a3b8;
         }
         
+        /* Clases de activación forzadas mediante inyección de estilos */
         .btn-escenario.activo-azul { border-color: #2563eb !important; background-color: #eff6ff !important; color: #1e40af !important; }
         .btn-escenario.activo-verde { border-color: #10b981 !important; background-color: #f0fdf4 !important; color: #166534 !important; }
         .btn-escenario.activo-rojo { border-color: #ef4444 !important; background-color: #fef2f2 !important; color: #991b1b !important; }
@@ -146,10 +148,10 @@
         .tech-table td { padding: 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: middle; line-height: 1.4; }
         .tech-table tr:last-child td { border-bottom: none; }
         
-        .status-badge { font-weight: 800; text-align: right; }
-        .badge-optimo { color: #16a34a !important; background-color: #dcfce7 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #bbf7d0; display: inline-block; font-size: 11px; }
-        .badge-peligro { color: #dc2626 !important; background-color: #fee2e2 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #fca5a5; display: inline-block; font-size: 11px; }
+        .badge-optimo { color: #16a34a !important; background-color: #dcfce7 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #bbf7d0; display: inline-block; font-size: 11px; font-weight: 800; }
+        .badge-peligro { color: #dc2626 !important; background-color: #fee2e2 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #fca5a5; display: inline-block; font-size: 11px; font-weight: 800; }
 
+        /* SECCIÓN DE CONTROLES INFERIORES RESTAURADA POR COMPLETO */
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
@@ -188,6 +190,7 @@
             <h1>Simulador de Impacto Fiscal e Inviabilidad Transaccional</h1>
         </header>
 
+        <!-- BLOQUE 1: CONTENEDOR BLANCO DE LA REVISTA -->
         <div class="revista-wrapper">
             <div class="revista-header">
                 <span class="revista-pills">Análisis de Ajustes y Rangos Legales</span>
@@ -195,9 +198,10 @@
 
             <div style="padding: 0 10px;">
                 
+                <!-- BLOQUE 2: ESTRUCTURA SPLIT DASHBOARD -->
                 <div class="split-dashboard">
                     
-                    <!-- PANEL IZQUIERDO -->
+                    <!-- COLUMNA IZQUIERDA: PARÁMETROS Y BOTONES SELECTORES -->
                     <div class="panel-izquierdo">
                         <div class="caja-parametros-texto">
                             📍 <strong>Criterios de Escrituración:</strong><br>
@@ -220,7 +224,7 @@
                         </div>
                     </div>
 
-                    <!-- PANEL DERECHO -->
+                    <!-- COLUMNA DERECHA: TABLA DE IMPUESTOS Y DICTAMEN NOTARIAL -->
                     <div class="panel-derecho">
                         <table class="tech-table">
                             <thead>
@@ -240,10 +244,5 @@
                                     <td><strong>ISR Enajenación (Est. 20%)</strong></td>
                                     <td>Vendedor</td>
                                     <td id="monto-isr-vendedor" style="text-align: right; font-weight: 700; color: #0f172a;">$0</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ISR Adquisición (Art. 125)</strong></td>
-                                    <td>Comprador</td>
-                                    <td id="monto-isr-comprador" style="text-align: right; font-weight: 700; color: #dc2626;">$0</td>
                                 </tr>
                                 <tr>
