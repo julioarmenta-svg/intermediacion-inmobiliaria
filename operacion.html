@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 2: Introducción y Retroalimentación - URN</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background-color: #f1f5f9; 
+            padding: 40px 20px;
+            color: #334155;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+        .nav-back {
+            display: inline-block;
+            text-decoration: none;
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .nav-back:hover { color: #1d4ed8; }
+        header {
+            margin-bottom: 35px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 20px;
+        }
+        .tag {
+            font-size: 11px;
+            font-weight: 800;
+            color: #2563eb; /* Identidad Azul para Módulo 2 */
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 4px;
+            letter-spacing: -0.02em;
+        }
+        .revista-wrapper {
+            background-color: #ffffff;
+            border: 3px solid #cbd5e1;
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+        }
+        .revista-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        .revista-pills { font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+        .revista-contador {
+            font-size: 12px;
+            font-weight: 800;
+            color: #2563eb;
+            background-color: #eff6ff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #dbeafe;
+        }
+
+        .diapositiva-grid {
+            display: flex;
+            flex-direction: row;
+            gap: 35px;
+            align-items: flex-start;
+        }
+        .col-texto {
+            flex: 1.1;
+        }
+        .col-visual-feedback {
+            flex: 0.9;
+            background-color: #f0fdf4;
+            border: 2px solid #bbf7d0;
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+        }
+        
+        .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
+        .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
+        
+        .highlight-box {
+            background-color: #f8fafc;
+            border-left: 5px solid #2563eb;
+            padding: 16px;
+            border-radius: 4px;
+            font-size: 13.5px;
+            color: #1e293b;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .solucion-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 14px;
+            font-size: 12.5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.01);
+            border-left: 4px solid #16a34a;
+        }
+        .solucion-title {
+            font-weight: 800;
+            color: #14532d;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.03em;
+        }
+
+        .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
+        .btn-nav {
+            flex: 1;
+            display: block;
+            text-decoration: none;
+            background-color: #2563eb;
+            border-bottom: 5px solid #1d4ed8;
+            padding: 18px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 800;
+            color: #ffffff;
+            text-align: center;
+            transition: all 0.1s ease;
+        }
+        .btn-nav:hover { background-color: #3b82f6; }
+        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
+        .btn-disabled { background-color: #cbd5e1; border-bottom: 5px solid #94a3b8; color: #94a3b8; cursor: not-allowed; pointer-events: none; }
+
+        @media (max-width: 768px) {
+            .diapositiva-grid { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
+
+        <header>
+            <span class="tag">Módulo 02 · Apertura de Clase e Introducción</span>
+            <h1>Unidad II: Operación Comercial - Ventas, Rentas y Traspasos</h1>
+        </header>
+
+        <div class="revista-wrapper">
+            <div class="revista-header">
+                <span class="revista-pills">PÁGINA 1 · Cierre Analítico y Respuestas del Módulo 1</span>
+                <span class="revista-contador">Pág. 1 de 11</span>
+            </div>
+
+            <div class="diapositiva-grid">
+                
+                <!-- Columna Izquierda: Introducción Académica -->
+                <div class="col-texto">
+                    <h3 class="slide-titulo">Cierre del Expediente: Don Raúl, Jorge y su Esposa</h3>
+                    <p class="slide-txt">Antes de adentrarnos en las técnicas del mercado transaccional, es indispensable inyectar rigor científico evaluando las respuestas del taller de campo anterior. Como **Consultores Patrimoniales**, el análisis de los incentivos económicos ocultos y las limitantes financieras de los prospectos guían de forma exacta nuestras decisiones del día a día.</p>
+                    
+                    <div class="highlight-box">
+                        <strong>Ecuación de Diagnóstico Patrimonial Cruzado:</strong><br>
+                        • <strong>Asimetría de Akerlof:</strong> Al no usar herramientas PropTech (como bases históricas o simuladores), el asesor tradicional cae en la ceguera operativa y acepta valuaciones emocionales del dueño, perdiendo credibilidad institucional [3].<br>
+                        • <strong>Efecto Dotación (Thaler):</strong> Medible a través de los Días en Mercado (DOM). Si un activo supera los 90 días inmóvil frente a un inventario homologado dinámico, el sobreprecio emocional está destruyendo el valor real de salida de la propiedad.
+                    </div>
+                    
+                    <p class="slide-txt">El gran dilema ético se resuelve entendiendo las limitantes: Jorge y su esposa son una **demanda descalificada para la compra** de este activo específico, obligándonos a reubicarlos de forma estratégica para cuidar los intereses patrimoniales de ambas partes.</p>
+                </div>
+
+                <!-- Columna Derecha: El Panel de Respuestas Maestras del Consultor -->
+                <div class="col-visual-feedback">
+                    <p style="font-size: 11px; font-weight: 800; color: #15803d; text-transform: uppercase; border-bottom: 1px solid #bbf7d0; padding-bottom: 6px; margin-bottom: 4px;">🎯 Dictamen Directivo del Caso Práctico</p>
+                    
+                    <div class="solucion-card">
+                        <div class="solucion-title">1. Estrategia con el Vendedor (Don Raúl)</div>
+                        Su precio está un 38% por debajo del mercado en Lomas del Valle ($8.15M vs $13.2M promedio). Eticamente se le debe auditar si el origen de su precio bajo es una urgencia por **Defunción o Deuda** (4 Ds). Si no hay urgencia, se debe ajustar al alza racionalmente para no dañar su patrimonio.
+                    </div>
+
+                    <div class="solucion-card">
+                        <div class="solucion-title">2. Desactivación del Sesgo de Regateo</div>
+                        A los compradores se les frena el regateo mostrando de forma empática los testigos reales extraídos de portales. Se les demuestra matemáticamente que la propiedad ya es una ganga y que comprar por debajo del valor por m² de la zona es una ganancia inmediata de plusvalía líquida.
+                    </div>
+
+                    <div class="solucion-card">
+                        <div class="solucion-title">3. El Filtro Financiero Excluyente</div>
+                        Jorge y su esposa ganan $60,000 MXN mensuales y la propiedad cuesta $8.15M MXN. Aplicando la **Regla Bancaria Estricta 3 a 1**, para un crédito de ese valor requerirían ingresos mínimos comprobables de **$81,500 MXN mensuales** (asumiendo una mensualidad típica de $10 por cada $1,000 otorgados). Están formalmente descalificados para la compra.
+                    </div>
+
+                    <div class="solucion-card">
+                        <div class="solucion-title">4. El Pivot Directivo Ético</div>
+                        Como Consultor Profesional, la acción inmediata es **no hacerles perder el tiempo**. Se protege el activo de Don Raúl y se redirige a Jorge y su esposa hacia la **Unidad II: El Mercado de Arrendamiento Premium**, localizándoles una propiedad en renta de $20,000 MXN mensuales (que se adapta perfectamente a su regla 3 a 1 de ingresos).
+                    </div>
+                </div>
+
+            </div>
+        </div>
