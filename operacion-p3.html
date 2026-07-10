@@ -94,33 +94,29 @@
             letter-spacing: 0.03em;
         }
 
-        /* ESTRUCTURA DE MATRIZ DE FACTORES */
-        .factores-container {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin: 20px 0 25px 0;
-        }
-        .factor-card {
-            background-color: #f8fafc;
-            border: 1px solid #e2e8f0;
+        /* TABLA COMPACTA OPTIMIZADA */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 15px 0 20px 0;
+            border: 1px solid #cbd5e1;
             border-radius: 12px;
-            padding: 18px 20px;
-            border-left: 5px solid #2563eb;
+            background: #ffffff;
         }
-        .factor-card h4 {
-            font-size: 15px;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.01em;
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            min-width: 650px;
         }
-        .factor-card p {
-            font-size: 13.5px;
-            line-height: 1.5;
-            color: #475569;
-        }
+        .tech-table th { background: #f8fafc; padding: 12px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.03em; }
+        .tech-table td { padding: 12px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.5; }
+        .tech-table tr:last-child td { border-bottom: none; }
+        
+        .alert-row { background-color: #fff7ed; font-weight: 600; }
+        .alert-row td { color: #c2410c !important; }
+        .success-row { background-color: #f0fdf4; font-weight: 600; }
+        .success-row td { color: #166534 !important; }
 
         .highlight-box {
             background-color: #f8fafc;
@@ -179,31 +175,42 @@
             <div style="padding: 0 10px;">
                 
                 <span class="sub-seccion-pills">Variables de Tasación</span>
-                <h3 class="slide-titulo">Fuerzas del Entorno y Depreciación Física</h3>
-                <p class="slide-txt">El valor de una propiedad nunca permanece estático. Es un ecosistema vivo impactado simultáneamente por fuerzas internas del activo y presiones externas de la economía urbana. El Consultor Patrimonial categoriza estos factores en tres dimensiones críticas de análisis:</p>
+                <h3 class="slide-titulo">Fuerzas del Entorno: Plusvalía vs. Depreciación Física</h3>
+                <p class="slide-txt">El valor de un bien raíz se determina mediante un juego constante de fuerzas encontradas. Mientras que los factores urbanos externos impulsan el valor del suelo al alza, el envejecimiento natural degrada el valor de la obra civil. El Consultor Patrimonial analiza este balance económico:</p>
                 
-                <!-- CONTENEDOR DE FACTORES CRÍTICOS -->
-                <div class="factores-container">
-                    
-                    <div class="factor-card">
-                        <h4>1. Factores Intrínsecos o Endógenos</h4>
-                        <p>Son los atributos físicos y espaciales que pertenecen exclusivamente a la propiedad. Incluyen la superficie total del terreno y metros cuadrados construidos, la calidad de la cimentación y acabados, la distribución arquitectónica funcional, la edad cronológica del inmueble y su estado físico real de mantenimiento.</p>
-                    </div>
-
-                    <div class="factor-card">
-                        <h4>2. Factores Extrínsecos o Exógenos</h4>
-                        <p>Son las fuerzas del entorno urbano y social que el propietario no puede controlar pero que dictan la deseabilidad del activo. Abarcan la ubicación geográfica y la plusvalía histórica de la colonia, el acceso a vialidades principales y transporte, la infraestructura de servicios públicos y la cercanía a centros comerciales o educativos.</p>
-                    </div>
-
-                    <div class="factor-card">
-                        <h4>3. Factores Ambientales y Económicos macro</h4>
-                        <p>Corresponden a la salud del mercado financiero y el entorno natural. Involucran las tasas de interés hipotecarias vigentes, los niveles de inflación que encarecen los materiales de construcción, las leyes locales de zonificación o uso de suelo y la exposición del terreno a riesgos de inundación o fallas geológicas.</p>
-                    </div>
-
+                <div class="table-responsive">
+                    <table class="tech-table">
+                        <thead>
+                            <tr>
+                                <th>Fuerza Económica</th>
+                                <th>Variables Críticas de Análisis</th>
+                                <th>Efecto Real en la Tasación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Fila de Plusvalía Añadida para equilibrar -->
+                            <tr class="success-row">
+                                <td><strong>1. Plusvalía Comercial (Suelo)</strong></td>
+                                <td>Desarrollo de infraestructura urbana, crecimiento comercial de la zona, seguridad del vecindario, plusvalía histórica y escasez de terrenos libres.</td>
+                                <td>Incrementa el valor del suelo y la deseabilidad general del activo a medible plazo.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. Atributos Intrínsecos (Obra)</strong></td>
+                                <td>Superficie de terreno, m² de construcción, distribución funcional de plantas, calidad de materiales fijos y equipamiento instalado.</td>
+                                <td>Establece el costo físico base de reproducción de la infraestructura civil.</td>
+                            </tr>
+                            <!-- Fila de Depreciación -->
+                            <tr class="alert-row">
+                                <td><strong>3. Depreciación Física (Ross-Heidecke)</strong></td>
+                                <td>Edad cronológica de las estructuras frente a su vida útil estimada, aplicando un factor correctivo riguroso según el estado de conservación.</td>
+                                <td>Castiga y demerita el valor de la construcción por desgaste técnico y falta de mantenimiento.</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="highlight-box">
-                    📈 <strong>Principio de Sustitución:</strong> El mercado inmobiliario se rige bajo la premisa de que un comprador informado no pagará por un inmueble más que el costo de adquirir otra propiedad sustituta con características y utilidades similares en la misma zona. Los sobreprecios basados en el apego emocional rompen este principio fundamental y congelan la absorción comercial del activo.
+                    📈 <strong>Principio de Sustitución:</strong> El mercado inmobiliario establece que un comprador informado jamás pagará por un inmueble usado más que el costo de adquirir un terreno equivalente y construir una propiedad sustituta similar. El balance entre la plusvalía del suelo y la depreciación física de Ross-Heidecke permite al asesor justificar con matemáticas exactas el precio de salida.
                 </div>
 
                 <div class="revista-controles">
