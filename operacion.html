@@ -13,7 +13,7 @@
             color: #334155;
         }
         .container {
-            max-width: 1240px;
+            max-width: 900px; /* Ancho optimizado para una sola columna legible */
             margin: 0 auto;
             background-color: #ffffff;
             border-radius: 28px;
@@ -58,7 +58,6 @@
             padding: 40px;
             margin-bottom: 25px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.02);
-            min-height: 500px;
         }
         .revista-header {
             display: flex;
@@ -77,36 +76,6 @@
             padding: 6px 14px;
             border-radius: 20px;
             border: 1px solid #dbeafe;
-        }
-
-        .diapositiva-grid {
-            display: flex;
-            flex-direction: row;
-            gap: 35px;
-            align-items: flex-start;
-        }
-        .col-texto {
-            flex: 1.1;
-        }
-        .col-visual {
-            flex: 0.9;
-            background-color: #f8fafc;
-            border: 1px solid #cbd5e1;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 4 / 3;
-            width: 100%;
-        }
-        
-        .img-fixed {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background-color: #ffffff;
         }
 
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
@@ -136,7 +105,7 @@
             font-weight: 900;
         }
 
-        /* BARRA DE CONTROLES FIJA FUERA DEL GRID */
+        /* CONTROLES ESTANDARIZADOS ABAJO */
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
@@ -160,10 +129,6 @@
         .btn-nav:hover { background-color: #3b82f6; }
         .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
         .btn-disabled { background-color: #cbd5e1; border-bottom: 5px solid #94a3b8; color: #94a3b8; cursor: not-allowed; pointer-events: none; }
-
-        @media (max-width: 768px) {
-            .diapositiva-grid { flex-direction: column; }
-        }
     </style>
 </head>
 <body>
@@ -182,50 +147,48 @@
                 <span class="revista-contador">Pág. 1 de 11</span>
             </div>
 
-            <div class="diapositiva-grid">
+            <!-- CUERPO EN UNA SOLA COLUMNA LIMPIA SIN ENTRAR EN CONFLICTO CON BOTONES -->
+            <div>
+                <h3 class="slide-titulo">Resolución Oficial de Criterios Teóricos</h3>
                 
-                <!-- Columna Izquierda: Respuestas Exclusivas -->
-                <div class="col-texto">
-                    <h3 class="slide-titulo">Resolución Oficial de Criterios Teóricos</h3>
+                <div class="feedback-list">
                     
-                    <div class="feedback-list">
-                        
-                        <div class="feedback-item">
-                            <span class="pregunta-titulo"><span class="pregunta-num">1.</span> ¿Cómo impacta la Asimetría de Información de Akerlof a un asesor empírico que no usa proptech?</span>
-                            Genera ceguera de mercado. El asesor empírico depende únicamente del testimonio sesgado del vendedor. Al carecer de datos PropTech validados, es incapaz de neutralizar la asimetría informativa, perdiendo credibilidad frente al comprador institucional y forzando el fracaso operativo debido a la desconfianza del entorno legal y comercial.
-                        </div>
-
-                        <div class="feedback-item">
-                            <span class="pregunta-titulo"><span class="pregunta-num">2.</span> ¿Qué métricas demuestran de forma medible que un dueño sufre el "Efecto Dotación" de Thaler?</span>
-                            Principalmente los <strong>Días en el Mercado (DOM)</strong> superiores a la media de la zona y la tasa de rebote o nula conversión de leads en portales inmobiliarios. Si un inventario homologado dinámico se desplaza en 45 días y el activo del dueño lleva inmóvil más de 90 días con cero ofertas formales, el sobreprecio emocional es matemáticamente demostrable.
-                        </div>
-
-                        <div class="feedback-item">
-                            <span class="pregunta-titulo"><span class="pregunta-num">3.</span> ¿Por qué la regla financiera 3 a 1 protege el ecosistema de originación de créditos y la liquidez familiar?</span>
-                            Porque actúa como un dique macroeconómico contra el sobreendeudamiento. Al exigir que la mensualidad hipotecaria estimada no exceda el 30% o 33% de los ingresos netos comprobables, se blinda el flujo de efectivo libre de la familia para cubrir sus necesidades básicas y de salud, impidiendo colapsos en las carteras vencidas bancarias.
-                        </div>
-
-                        <div class="feedback-item">
-                            <span class="pregunta-titulo"><span class="pregunta-num">4.</span> ¿De qué manera los buscadores (Inmuebles24, Lamudi) inyectan racionalidad de precios en zonas emocionales?</span>
-                            Operan como reguladores transparentes de la oferta. Al concentrar masivamente el inventario disponible y calcular el precio de lista promedio por metro cuadrado en tiempo real, transforman un mercado opaco y emocional en un entorno de competencia perfecta donde el comprador compara de inmediato y castiga los sobreprecios ficticios.
-                        </div>
-
-                        <div class="feedback-item">
-                            <span class="pregunta-titulo"><span class="pregunta-num">5.</span> ¿Qué implicaciones legales y de marca enfrenta un consultor que promueve propiedades sin control de documentos (SLA)?</span>
-                            A nivel legal, enfrenta riesgos críticos de demandas civiles o penales por fraude indirecto, responsabilidad solidaria en operaciones con vicios ocultos y contingencias fiscales. A nivel de marca, destruye su reputación institucional, perdiendo la confianza de notarios, brókers bancarios y la recomendación orgánica del mercado.
-                        </div>
-
+                    <div class="feedback-item">
+                        <span class="pregunta-titulo"><span class="pregunta-num">1.</span> ¿Cómo impacta la Asimetría de Información de Akerlof a un asesor empírico que no usa proptech?</span>
+                        Genera ceguera de mercado. El asesor empírico depende únicamente del testimonio sesgado del vendedor. Al carecer de datos PropTech validados, es incapaz de neutralizar la asimetría informativa, perdiendo credibilidad frente al comprador institucional y forzando el fracaso operativo debido a la desconfianza del entorno legal y comercial.
                     </div>
-                </div>
 
-                <!-- Columna Derecha: Gráfico Técnico -->
-                <div class="col-visual">
-                    <img src="imagenes/imagen10.png" class="img-fixed" alt="Cierre de Evaluación - Módulo 1">
-                </div>
+                    <div class="feedback-item">
+                        <span class="pregunta-titulo"><span class="pregunta-num">2.</span> ¿Qué métricas demuestran de forma medible que un dueño sufre el "Efecto Dotación" de Thaler?</span>
+                        Principalmente los <strong>Días en el Mercado (DOM)</strong> superiores a la media de la zona y la tasa de rebote o nula conversión de leads en portales inmobiliarios. Si un inventario homologado dinámico se desplaza en 45 días y el activo del dueño lleva inmóvil más de 90 días con cero ofertas formales, el sobreprecio emocional es matemáticamente demostrable.
+                    </div>
 
+                    <div class="feedback-item">
+                        <span class="pregunta-titulo"><span class="pregunta-num">3.</span> ¿Por qué la regla financiera 3 a 1 protege el ecosistema de originación de créditos y la liquidez familiar?</span>
+                        Porque actúa como un dique macroeconómico contra el sobreendeudamiento. Al exigir que la mensualidad hipotecaria estimada no exceda el 30% o 33% de los ingresos netos comprobables, se blinda el flujo de efectivo libre de la familia para cubrir sus necesidades básicas y de salud, impidiendo colapsos en las carteras vencidas bancarias.
+                    </div>
+
+                    <div class="feedback-item">
+                        <span class="pregunta-titulo"><span class="pregunta-num">4.</span> ¿De qué manera los buscadores (Inmuebles24, Lamudi) inyectan racionalidad de precios en zonas emocionales?</span>
+                        Operan como reguladores transparentes de la oferta. Al concentrar masivamente el inventario disponible y calcular el precio de lista promedio por metro cuadrado en tiempo real, transforman un mercado opaco y emocional en un entorno de competencia perfecta donde el comprador compara de inmediato y castiga los sobreprecios ficticios.
+                    </div>
+
+                    <div class="feedback-item">
+                        <span class="pregunta-titulo"><span class="pregunta-num">5.</span> ¿Qué implicaciones legales y de marca enfrenta un consultor que promueve propiedades sin control de documentos (SLA)?</span>
+                        A nivel legal, enfrenta riesgos críticos de demandas civiles o penales por fraude indirecto, responsabilidad solidaria en operaciones con vicios ocultos y contingencias fiscales. A nivel de marca, destruye su reputación institucional, perdiendo la confianza de notarios, brókers bancarios y la recomendación orgánica del mercado.
+                    </div>
+
+                </div>
             </div>
         </div>
 
-        <!-- CONTROLES COMPLETAMENTE OPERATIVOS ABAJO -->
+        <!-- CONTROLES SIEMPRE VISIBLES Y SEGUROS -->
         <div class="revista-controles">
             <a href="#" class="btn-nav btn-disabled">◀ Anterior</a>
+            <a href="operacion-p2.html" class="btn-nav">Siguiente (Paso 2: Tarea Integradora del Caso) ▶</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
