@@ -83,35 +83,39 @@
             line-height: 1.5;
             margin-bottom: 15px;
         }
+
+        /* DISEÑO DE CAJA DESPLEGABLE PREMIUM E INDESTRUCTIBLE */
         .selector-escenarios-grid {
             border: 2px solid #cbd5e1;
             padding: 16px;
             border-radius: 12px;
             background: #ffffff;
         }
-        .btn-static {
+        .selector-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .select-premium {
             width: 100%;
             padding: 12px;
-            font-size: 13.5px;
-            font-weight: 800;
-            text-align: left;
+            font-size: 14px;
+            font-weight: 700;
+            color: #1e293b;
+            background-color: #ffffff;
             border: 2px solid #cbd5e1;
             border-radius: 8px;
-            background-color: #f8fafc;
-            margin-bottom: 10px;
+            outline: none;
             cursor: pointer;
-            transition: all 0.1s ease;
+            transition: border-color 0.1s ease;
         }
-        .btn-static:hover {
-            background-color: #f1f5f9;
-            border-color: #94a3b8;
+        .select-premium:focus {
+            border-color: #2563eb;
         }
-        .btn-static:last-child { margin-bottom: 0; }
-        
-        /* Estilos de botones activos con alta prioridad */
-        .btn-static.activo-rojo { border-color: #ef4444 !important; background-color: #fef2f2 !important; color: #991b1b !important; }
-        .btn-static.activo-verde { border-color: #10b981 !important; background-color: #f0fdf4 !important; color: #166534 !important; }
-        .btn-static.activo-azul { border-color: #2563eb !important; background-color: #eff6ff !important; color: #1e40af !important; }
 
         .tech-table {
             width: 100%;
@@ -166,7 +170,7 @@
                 
                 <div class="split-dashboard">
                     
-                    <!-- PANEL IZQUIERDO -->
+                    <!-- PANEL IZQUIERDO CON CAJA DESPLEGABLE NATAL VERCEL -->
                     <div class="panel-izquierdo">
                         <div class="caja-parametros-texto">
                             📍 <strong>Criterios de Escrituración:</strong><br>
@@ -176,10 +180,13 @@
                         </div>
 
                         <div class="selector-escenarios-grid">
-                            <span class="selector-label" style="display:block; font-size:11px; font-weight:800; margin-bottom:8px; color:#64748b;">Seleccione el Escenario Comercial:</span>
-                            <button id="btn-raul" class="btn-static">🚨 Escenario Don Raúl ($8,150,000 MXN)</button>
-                            <button id="btn-piso" class="btn-static">🟢 Rango Mínimo Legal (-10%)</button>
-                            <button id="btn-avaluo" class="btn-static">🔵 Precio de Avalúo Justo</button>
+                            <label class="selector-label" for="combo-escenarios">Seleccione el Escenario Comercial:</label>
+                            <!-- La etiqueta select nativa es inmune a los bloqueos de scripts en Vercel -->
+                            <select id="combo-escenarios" class="select-premium" onchange="ejecutarCambio(this.value)">
+                                <option value="raul">🚨 Escenario Don Raúl ($8,150,000 MXN)</option>
+                                <option value="piso">🟢 Rango Mínimo Legal (-10%)</option>
+                                <option value="avaluo">🔵 Precio de Avalúo Justo</option>
+                            </select>
                         </div>
                     </div>
 
@@ -230,22 +237,23 @@
     </div>
 
     <script>
-        // Los datos se inyectan mediante eventos aislados inline asignados directamente a las variables del DOM
-        const bRaul = document.getElementById('btn-raul');
-        const bPiso = document.getElementById('btn-piso');
-        const bAvaluo = document.getElementById('btn-avaluo');
+        // Cambiar a una función directa "onchange" nativa e indestructible vinculada al select
+        function ejecutarCambio(valorSeleccionado) {
+            const mIsai = document.getElementById('monto-isai');
+            const mVendedor = document.getElementById('monto-isr-vendedor');
+            const mComprador = document.getElementById('monto-isr-comprador');
+            const mDictamen = document.getElementById('monto-dictamen');
 
-        const mIsai = document.getElementById('monto-isai');
-        const mVendedor = document.getElementById('monto-isr-vendedor');
-        const mComprador = document.getElementById('monto-isr-comprador');
-        const mDictamen = document.getElementById('monto-dictamen');
-
-        // Inicializar el botón de Don Raúl como activo en el arranque de la página
-        bRaul.className = "btn-static activo-rojo";
-
-        // Evento Bloque 1: Clic en Don Raúl
-        bRaul.addEventListener('click', function() {
-            mIsai.innerText = "$264,000";
-            mVendedor.innerText = "$0";
-            mComprador.innerText = "$1,010,000";
-            mDictamen.innerText = "SUBVALUADO (RECHAZADO)";
+            if (valorSeleccionado === 'raul') {
+                mIsai.innerText = "$264,000";
+                mVendedor.innerText = "$0";
+                mComprador.innerText = "$1,010,000";
+                mDictamen.innerText = "SUBVALUADO (RECHAZADO)";
+                mDictamen.style.color = "#dc2626";
+            } 
+            else if (valorSeleccionado === 'piso') {
+                mIsai.innerText = "$264,000";
+                mVendedor.innerText = "$1,076,000";
+                mComprador.innerText = "$0";
+                mDictamen.innerText = "RANGO ÓPTIMO (ACEPTADO)";
+                mDictamen.style.color = "#16a34a";
