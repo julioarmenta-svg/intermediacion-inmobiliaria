@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 2: Simulador de Impacto Fiscal - URN</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background-color: #f1f5f9; 
+            padding: 20px;
+            color: #334155;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+        .nav-back {
+            display: inline-block;
+            text-decoration: none;
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .nav-back:hover { color: #1d4ed8; }
+        header {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 12px;
+        }
+        .tag {
+            font-size: 11px;
+            font-weight: 800;
+            color: #2563eb;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+        h1 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 4px;
+            letter-spacing: -0.02em;
+        }
+        .revista-wrapper {
+            background-color: #ffffff;
+            border: 3px solid #cbd5e1;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+        }
+        .revista-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+        .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+        .revista-contador {
+            font-size: 11px;
+            font-weight: 800;
+            color: #2563eb;
+            background-color: #eff6ff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid #dbeafe;
+        }
+
+        .slide-titulo { font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 12px; }
+        .slide-txt { font-size: 13.5px; line-height: 1.5; color: #475569; margin-bottom: 14px; }
+
+        /* INTERFAZ DEL SIMULADOR */
+        .simulador-card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        .valores-fijos-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .fijo-box {
+            flex: 1;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .fijo-box span { font-size: 10px; font-weight: 800; color: #64748b; text-transform: uppercase; }
+        .fijo-box h4 { font-size: 16px; font-weight: 800; color: #0f172a; margin-top: 4px; }
+
+        .control-slider-box {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .slider-label-flex {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+        .input-slider {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+            accent-color: #2563eb;
+        }
+
+        /* SEMÁFORO DE DIAGNÓSTICO NOTARIAL */
+        .diagnostico-banner {
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .status-optimo { background-color: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+        .status-peligro { background-color: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+
+        .btn-escenario-critico {
+            display: block;
+            width: 100%;
+            background-color: #7c2d12;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            transition: background 0.1s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-escenario-critico:hover { background-color: #9a3412; }
+
+        /* TABLA DE RESULTADOS DE IMPUESTOS */
+        .tabla-resultados {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .tabla-resultados th { background: #f1f5f9; padding: 10px; font-weight: 800; text-align: left; border-bottom: 1px solid #cbd5e1; text-transform: uppercase; font-size: 10px; }
+        .tabla-resultados td { padding: 10px; border-bottom: 1px solid #e2e8f0; }
+        .tabla-resultados tr:last-child td { border-bottom: none; }
+
+        /* CONTROLES INFERIORES */
+        .revista-controles { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-top: 20px; 
+            gap: 15px; 
+            border-top: 2px solid #f1f5f9;
+            padding-top: 15px;
+        }
+        .btn-nav {
+            flex: 1;
+            display: block;
+            text-decoration: none;
+            background-color: #2563eb;
+            border-bottom: 4px solid #1d4ed8;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 800;
+            color: #ffffff !important;
+            text-align: center;
+            transition: all 0.1s ease;
+        }
+        .btn-nav:hover { background-color: #3b82f6; }
+        .btn-nav:active { transform: translateY(2px); border-bottom-width: 2px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
+
+        <header>
+            <span class="tag">Unidad III · Gestión y Legalidad de Inmuebles</span>
+            <h1>2. Aspectos Legales y Fiscales en Operaciones</h1>
+        </header>
+
+        <div class="revista-wrapper">
+            <div class="revista-header">
+                <span class="revista-pills">Simulador de Rangos y Ajustes Fiscales</span>
+                <span class="revista-contador">Pág. 5 de 11</span>
+            </div>
+
+            <div style="padding: 0 10px;">
+                <h3 class="slide-titulo">Simulador de Impacto Fiscal e Inviabilidad por Subvaluación</h3>
+                <p class="slide-txt">Mueva el control deslizable para modificar el precio de venta y observe cómo reacciona la matriz de control notarial de la Ley del ISR en base al avalúo comercial fijado para la residencia de Chihuahua:</p>
+
+                <div class="simulador-card">
+                    <!-- Valores Fijos del Caso -->
+                    <div class="valores-fijos-grid">
+                        <div class="fijo-box" style="border-left: 4px solid #64748b;">
+                            <span>Avalúo Comercial Fijo</span>
+                            <h4>$13,200,000</h4>
+                        </div>
+                        <div class="fijo-box" style="border-left: 4px solid #10b981;">
+                            <span>Piso Mínimo Legal (90%)</span>
+                            <h4>$11,880,000</h4>
+                        </div>
+                        <div class="fijo-box" style="border-left: 4px solid #ef4444;">
+                            <span>Techo Máximo Legal (110%)</span>
+                            <h4>$14,520,000</h4>
+                        </div>
+                    </div>
+
+                    <!-- Botón para forzar el escenario original de Don Raúl -->
+                    <button class="btn-escenario-critico" onclick="forzarEscenarioRaul()">⚠️ Simular Escenario Crítico Don Raúl ($8,150,000)</button>
+
+                    <!-- Slider de Control Desplazable -->
+                    <div class="control-slider-box">
+                        <div class="slider-label-flex">
+                            <span>Simular Precio de Venta Pactado:</span>
+                            <span id="txt-precio-actual" style="color: #2563eb; font-size: 15px;">$11,220,000</span>
+                        </div>
+                        <!-- Rango del 85% ($11,220,000) al 115% ($15,180,000) -->
+                        <input type="range" min="11220000" max="15180000" step="50000" value="11220000" class="input-slider" id="slider-precio" oninput="calcularImpuestos(this.value)">
+                    </div>
+
+                    <!-- Semáforo Dinámico Notarial -->
+                    <div id="banner-status" class="diagnostico-banner status-peligro">
+                        Cargando diagnóstico...
+                    </div>
+
+                    <!-- Tabla de Resultados de Impuestos -->
+                    <table class="tabla-resultados">
+                        <thead>
+                            <tr>
