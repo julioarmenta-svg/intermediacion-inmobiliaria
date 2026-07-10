@@ -31,7 +31,6 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
-        .nav-back:hover { color: #1d4ed8; }
         header {
             margin-bottom: 20px;
             border-bottom: 2px solid #f1f5f9;
@@ -49,7 +48,6 @@
             font-weight: 800;
             color: #0f172a;
             margin-top: 4px;
-            letter-spacing: -0.02em;
         }
         .revista-wrapper {
             background-color: #ffffff;
@@ -57,19 +55,14 @@
             border-radius: 20px;
             padding: 25px;
             margin-bottom: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
         }
         .revista-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             border-bottom: 2px solid #f1f5f9;
             padding-bottom: 12px;
             margin-bottom: 20px;
         }
-        .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+        .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; }
 
-        /* ARQUITECTURA EN DOS COLUMNAS INDESTRUCTIBLE */
         .split-dashboard {
             display: flex;
             gap: 25px;
@@ -77,14 +70,10 @@
         }
         .panel-izquierdo {
             flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
         }
         .panel-derecho {
             flex: 1.1;
         }
-
         .caja-parametros-texto {
             background-color: #f8fafc;
             border: 1px solid #cbd5e1;
@@ -92,27 +81,14 @@
             padding: 14px 16px;
             font-size: 13px;
             line-height: 1.5;
-            color: #334155;
+            margin-bottom: 15px;
         }
-
         .selector-escenarios-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            background: #ffffff;
             border: 2px solid #cbd5e1;
             padding: 16px;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.01);
         }
-        .selector-label {
-            font-size: 12px;
-            font-weight: 800;
-            color: #0f172a;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-        }
-        .btn-escenario {
+        .btn-static {
             width: 100%;
             padding: 12px;
             font-size: 13.5px;
@@ -121,20 +97,8 @@
             border: 2px solid #cbd5e1;
             border-radius: 8px;
             background-color: #f8fafc;
-            color: #334155;
-            cursor: pointer;
-            transition: all 0.1s ease;
+            margin-bottom: 10px;
         }
-        .btn-escenario:hover {
-            background-color: #f1f5f9;
-            border-color: #94a3b8;
-        }
-        
-        /* Clases de activación forzadas mediante inyección de estilos */
-        .btn-escenario.activo-azul { border-color: #2563eb !important; background-color: #eff6ff !important; color: #1e40af !important; }
-        .btn-escenario.activo-verde { border-color: #10b981 !important; background-color: #f0fdf4 !important; color: #166534 !important; }
-        .btn-escenario.activo-rojo { border-color: #ef4444 !important; background-color: #fef2f2 !important; color: #991b1b !important; }
-
         .tech-table {
             width: 100%;
             border-collapse: collapse;
@@ -142,16 +106,10 @@
             border: 1px solid #cbd5e1;
             border-radius: 10px;
             overflow: hidden;
-            background: #ffffff;
         }
-        .tech-table th { background: #f8fafc; padding: 10px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 9.5px; letter-spacing: 0.03em; }
-        .tech-table td { padding: 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: middle; line-height: 1.4; }
-        .tech-table tr:last-child td { border-bottom: none; }
+        .tech-table th { background: #f8fafc; padding: 10px; text-align: left; font-weight: 800; border-bottom: 2px solid #cbd5e1; }
+        .tech-table td { padding: 10px; border-bottom: 1px solid #e2e8f0; }
         
-        .badge-optimo { color: #16a34a !important; background-color: #dcfce7 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #bbf7d0; display: inline-block; font-size: 11px; font-weight: 800; }
-        .badge-peligro { color: #dc2626 !important; background-color: #fee2e2 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #fca5a5; display: inline-block; font-size: 11px; font-weight: 800; }
-
-        /* SECCIÓN DE CONTROLES INFERIORES RESTAURADA POR COMPLETO */
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
@@ -172,12 +130,7 @@
             font-weight: 800;
             color: #ffffff !important;
             text-align: center;
-            transition: all 0.1s ease;
         }
-        .btn-nav:hover { background-color: #3b82f6; }
-        .btn-nav:active { transform: translateY(2px); border-bottom-width: 2px; }
-
-        @media (max-width: 768px) { .split-dashboard { flex-direction: column; gap: 15px; } }
     </style>
 </head>
 <body>
@@ -190,7 +143,6 @@
             <h1>Simulador de Impacto Fiscal e Inviabilidad Transaccional</h1>
         </header>
 
-        <!-- BLOQUE 1: CONTENEDOR BLANCO DE LA REVISTA -->
         <div class="revista-wrapper">
             <div class="revista-header">
                 <span class="revista-pills">Análisis de Ajustes y Rangos Legales</span>
@@ -198,10 +150,9 @@
 
             <div style="padding: 0 10px;">
                 
-                <!-- BLOQUE 2: ESTRUCTURA SPLIT DASHBOARD -->
                 <div class="split-dashboard">
                     
-                    <!-- COLUMNA IZQUIERDA: PARÁMETROS Y BOTONES SELECTORES -->
+                    <!-- PANEL IZQUIERDO ESTÁTICO -->
                     <div class="panel-izquierdo">
                         <div class="caja-parametros-texto">
                             📍 <strong>Criterios de Escrituración:</strong><br>
@@ -211,20 +162,13 @@
                         </div>
 
                         <div class="selector-escenarios-grid">
-                            <span class="selector-label">Seleccione el Escenario Comercial:</span>
-                            <button id="btn-raul" class="btn-escenario" onclick="cambiarEscenario('raul')">
-                                🚨 Escenario Don Raúl ($8,150,000 MXN)
-                            </button>
-                            <button id="btn-piso" class="btn-escenario" onclick="cambiarEscenario('piso')">
-                                🟢 Rango Mínimo Legal (-10%: $11,880,000 MXN)
-                            </button>
-                            <button id="btn-avaluo" class="btn-escenario" onclick="cambiarEscenario('avaluo')">
-                                🔵 Precio de Avalúo Justo ($13,200,000 MXN)
-                            </button>
+                            <button class="btn-static">🚨 Escenario Don Raúl ($8,150,000 MXN)</button>
+                            <button class="btn-static">🟢 Rango Mínimo Legal (-10%)</button>
+                            <button class="btn-static">🔵 Precio de Avalúo Justo</button>
                         </div>
                     </div>
 
-                    <!-- COLUMNA DERECHA: TABLA DE IMPUESTOS Y DICTAMEN NOTARIAL -->
+                    <!-- PANEL DERECHO ESTÁTICO -->
                     <div class="panel-derecho">
                         <table class="tech-table">
                             <thead>
@@ -238,11 +182,37 @@
                                 <tr>
                                     <td><strong>ISAI Municipal (2%)</strong></td>
                                     <td>Comprador</td>
-                                    <td id="monto-isai" style="text-align: right; font-weight: 700; color: #0f172a;">$0</td>
+                                    <td style="text-align: right; font-weight: 700;">$264,000</td>
                                 </tr>
                                 <tr>
                                     <td><strong>ISR Enajenación (Est. 20%)</strong></td>
                                     <td>Vendedor</td>
-                                    <td id="monto-isr-vendedor" style="text-align: right; font-weight: 700; color: #0f172a;">$0</td>
+                                    <td style="text-align: right; font-weight: 700;">$0</td>
                                 </tr>
                                 <tr>
+                                    <td><strong>ISR Adquisición (Art. 125)</strong></td>
+                                    <td>Comprador</td>
+                                    <td style="text-align: right; font-weight: 700; color: #dc2626;">$1,010,000</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Dictamen ante Notario</strong></td>
+                                    <td>Estatus</td>
+                                    <td style="text-align: right; font-weight: 800; color: #dc2626;">SUBVALUADO (RECHAZADO)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="revista-controles">
+                    <a href="operacion-p4.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
+                    <a href="operacion-p5.html" class="btn-nav">Siguiente ▶</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
