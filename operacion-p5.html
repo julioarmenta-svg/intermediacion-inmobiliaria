@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 2: Simulador de Impacto Fiscal - URN</title>
+    <title>Módulo 2: Contratos y Documentos Legales - URN</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -80,83 +80,60 @@
 
         .slide-titulo { font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 12px; }
         .slide-txt { font-size: 13.5px; line-height: 1.5; color: #475569; margin-bottom: 14px; }
-
-        /* INTERFAZ COMPACTA */
-        .simulador-card {
-            background-color: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 20px;
-            margin-bottom: 15px;
-        }
-        .valores-fijos-grid {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        .fijo-box {
-            flex: 1;
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            padding: 10px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .fijo-box span { font-size: 10px; font-weight: 800; color: #64748b; text-transform: uppercase; }
-        .fijo-box h4 { font-size: 15px; font-weight: 800; color: #0f172a; margin-top: 4px; }
-
-        .control-slider-box {
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            padding: 14px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-        .slider-label-flex {
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
+        
+        .sub-seccion-pills {
+            font-size: 10px;
             font-weight: 800;
-            color: #1e293b;
-            margin-bottom: 6px;
-        }
-        .input-slider {
-            width: 100%;
-            height: 6px;
-            background: #e2e8f0;
+            color: #2563eb;
+            background-color: #eff6ff;
+            padding: 3px 8px;
             border-radius: 5px;
-            outline: none;
-            cursor: pointer;
-            accent-color: #2563eb;
+            display: inline-block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
 
-        /* TABLA DE RESULTADOS INTEGRADA CON SEMÁFORO */
-        .tabla-resultados {
+        /* TABLA COMPACTA DE CONTRATOS */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 10px 0 15px 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            background: #ffffff;
+        }
+        .tech-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 12.5px;
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
-            overflow: hidden;
+            font-size: 12px;
+            min-width: 650px;
         }
-        .tabla-resultados th { background: #f1f5f9; padding: 10px; font-weight: 800; text-align: left; border-bottom: 1px solid #cbd5e1; text-transform: uppercase; font-size: 10px; }
-        .tabla-resultados td { padding: 10px; border-bottom: 1px solid #e2e8f0; }
-        
-        /* Estados del Semáforo dentro de la tabla */
-        .status-cell { font-weight: 800; text-align: right; font-size: 13px; }
-        .optimo-alert { background-color: #dcfce7 !important; color: #15803d !important; }
-        .peligro-alert { background-color: #fee2e2 !important; color: #b91c1c !important; }
+        .tech-table th { background: #f8fafc; padding: 10px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 10px; letter-spacing: 0.03em; }
+        .tech-table td { padding: 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.4; }
+        .tech-table tr:last-child td { border-bottom: none; }
 
-        /* CONTROLES INFERIORES */
+        /* DISEÑO DE PANEL DE DEBATE EJECUTIVO */
+        .debate-box {
+            background-color: #fff7ed;
+            border: 2px solid #fed7aa;
+            border-left: 5px solid #ea580c;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 15px 0;
+        }
+        .debate-title { font-size: 11px; font-weight: 900; color: #c2410c; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; display: block; }
+        .debate-scenerio { font-size: 13px; line-height: 1.5; color: #1e293b; margin-bottom: 10px; background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #ffedd5; }
+        .debate-pregunta { font-size: 12.5px; font-weight: 700; color: #7c2d12; line-height: 1.4; }
+
+        /* BARRA DE CONTROLES INFERIOR FIJA */
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
             margin-top: 20px; 
             gap: 15px; 
             border-top: 2px solid #f1f5f9;
-            padding-top: 25px;
+            padding-top: 15px;
         }
         .btn-nav {
             flex: 1;
@@ -183,68 +160,56 @@
 
         <header>
             <span class="tag">Unidad III · Gestión y Legalidad de Inmuebles</span>
-            <h1>2. Aspectos Legales y Fiscales en Operaciones</h1>
+            <h1>3. Contratos y Documentos Legales Obligatorios</h1>
         </header>
 
         <div class="revista-wrapper">
             <div class="revista-header">
-                <span class="revista-pills">Simulador de Rangos y Ajustes Fiscales</span>
+                <span class="revista-pills">Normativa Contractual Nacional</span>
                 <span class="revista-contador">Pág. 5 de 11</span>
             </div>
 
             <div style="padding: 0 10px;">
-                <h3 class="slide-titulo">Simulador de Impacto Fiscal e Inviabilidad por Subvaluación</h3>
-                <p class="slide-txt">Mueva la barra para modificar el precio pactado de venta y observe en tiempo real el cálculo exacto de impuestos y el diagnóstico automático del rango legal del ±10%:</p>
-
-                <div class="simulador-card">
-                    <!-- Valores Fijos del Caso Simplificados -->
-                    <div class="valores-fijos-grid">
-                        <div class="fijo-box" style="border-left: 4px solid #64748b;">
-                            <span>Avalúo Comercial</span>
-                            <h4>$13,200,000</h4>
-                        </div>
-                        <div class="fijo-box" style="border-left: 4px solid #10b981;">
-                            <span>Piso (90%)</span>
-                            <h4>$11,880,000</h4>
-                        </div>
-                        <div class="fijo-box" style="border-left: 4px solid #ef4444;">
-                            <span>Techo (110%)</span>
-                            <h4>$14,520,000</h4>
-                        </div>
-                    </div>
-
-                    <!-- Slider de Control Desplazable Sincronizado Inicialmente con el mínimo de la barra ($10,560,000) -->
-                    <div class="control-slider-box">
-                        <div class="slider-label-flex">
-                            <span>Precio de Venta Pactado:</span>
-                            <span id="txt-precio-actual" style="color: #2563eb; font-size: 15px; font-weight: 800;">$10,560,000</span>
-                        </div>
-                        <input type="range" min="10560000" max="15840000" step="50000" value="10560000" class="input-slider" id="slider-precio" oninput="calcularImpuestos(this.value)">
-                    </div>
-
-                    <!-- Tabla de Resultados de Impuestos con Diagnóstico Integrado -->
-                    <table class="tabla-resultados">
+                
+                <span class="sub-seccion-pills">Blindaje Jurídico</span>
+                <h3 class="slide-titulo">El Contrato de Intermediación y Cláusulas de Arras</h3>
+                <p class="slide-txt">El contrato de prestación de servicios de intermediación inmobiliaria es el único instrumento legal que legitima los honorarios de la firma. Un Consultor Patrimonial debe estructurar cláusulas blindadas bajo la normativa civil y comercial para mitigar riesgos transaccionales:</p>
+                
+                <!-- TABLA DE CLÁUSULAS DE BLINDAJE JURÍDICO -->
+                <div class="table-responsive">
+                    <table class="tech-table">
                         <thead>
                             <tr>
-                                <th>Concepto Fiscal</th>
-                                <th>Sujeto Obligado</th>
-                                <th style="text-align: right;">Monto Calculado Proyectado</th>
+                                <th>Cláusula Crítica</th>
+                                <th>Sustento y Mecánica Normativa</th>
+                                <th>Propósito de Protección de la Firma</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>ISAI Municipal (2%)</strong></td>
-                                <td>Comprador (Demanda)</td>
-                                <td id="res-isai" style="text-align: right; font-weight: 700;">$0</td>
+                                <td><strong>Derecho de Exclusividad</strong></td>
+                                <td>Garantiza que únicamente la firma comercialice el activo. Cualquier lead atraído por portales o trato directo se canaliza obligatoriamente al asesor.</td>
+                                <td>Protege la inversión en pautas de Meta/Google Ads y asegura la comisión sin importar quién traiga el cierre.</td>
                             </tr>
                             <tr>
-                                <td><strong>ISR por Enajenación (Estimado 20%)</strong></td>
-                                <td>Vendedor (Dueño)</td>
-                                <td id="res-isr-vendedor" style="text-align: right; font-weight: 700;">$0</td>
+                                <td><strong>Depósito de Arras Penitenciales</strong></td>
+                                <td>Monto líquido de garantía entregado al firmar la oferta de compraventa. Si el comprador se raja, las pierde; si el vendedor se echa atrás, las devuelve al doble.</td>
+                                <td>Amarra jurídicamente la intención de compra e inyecta penalizaciones inmediatas ante incumplimientos.</td>
                             </tr>
                             <tr>
-                                <td><strong>ISR por Adquisición (Castigo Art. 125 LISR)</strong></td>
-                                <td>Comprador (Jorge)</td>
-                                <td id="res-isr-comprador" style="text-align: right; font-weight: 700;">$0</td>
+                                <td><strong>Cláusula de Prórroga Posterior</strong></td>
+                                <td>Establece que si el contrato vence, el dueño no puede venderle a prospectos registrados/notificados por el asesor hasta por 6 o 12 meses después.</td>
+                                <td>Evita de forma contundente que el propietario y el comprador "congelen" la negociación para saltarse al asesor y evadir honorarios.</td>
                             </tr>
-                            <tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- EXPERIENCIA DINÁMICA DE CLASE: DILEMA LEGAL -->
+                <div class="debate-box">
+                    <span class="debate-title">🗣️ Dilema en el Aula: La Evasión de Honorarios Post-Vigencia</span>
+                    <div class="debate-scenerio">
+                        <strong>Escenario de Análisis:</strong> Promocionaste la casa de Don Raúl en Lomas del Valle durante los 6 meses que duró tu contrato de exclusiva. Registraste y le diste recorrido a un inversionista llamado Jorge, quien mostró alto interés pero nunca lanzó oferta formal. El contrato de exclusiva venció ayer. Hoy por la mañana, descubres que Don Raúl y Jorge se citaron directamente en una Notaría para firmar la compraventa a tus espaldas, argumentando que como tu contrato ya venció, ya no te deben honorarios.
+                    </div>
+                    <div class="debate-pregunta">
+                        <strong>Pregunta de Debate Directivo:</strong><br>
