@@ -79,91 +79,68 @@
         }
 
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
-        .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 25px; }
+        .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 30px; }
 
-        /* ENLACES CON DISEÑO DE BOTÓN RECTIFICADOS */
-        .hub-respuestas-nav {
+        /* NUEVO ENFOQUE: ÍNDICE DE EXPEDIENTES FIJOS (RECUADROS CON ENLACES) */
+        .grid-expedientes {
             display: flex;
-            gap: 15px;
-            margin-bottom: 5px;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 35px;
         }
-        .enlace-bloque {
-            flex: 1;
-            padding: 16px;
-            text-decoration: none;
-            border-radius: 14px;
-            font-size: 13.5px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.1s ease, border-bottom 0.1s ease;
-            display: inline-block;
-            cursor: pointer !important;
-            user-select: none;
-        }
-        
-        .enlace-cuestionario {
-            background-color: #2563eb;
-            color: #ffffff !important;
-            border-bottom: 5px solid #1d4ed8;
-        }
-        .enlace-cuestionario:hover { background-color: #3b82f6; }
-        
-        .enlace-integradora {
-            background-color: #10b981;
-            color: #ffffff !important;
-            border-bottom: 5px solid #059669;
-        }
-        .enlace-integradora:hover { background-color: #34d399; }
-        
-        .enlace-bloque:active { transform: translateY(3px); border-bottom-width: 2px; }
-
-        /* CONTENEDORES CON SCROLL INTERNO PARA PROTEGER EL BOTÓN SIGUIENTE */
-        .panel-contenido {
-            display: none;
-            max-height: 380px;
-            overflow-y: auto;
-            padding-right: 12px;
-            margin-top: 25px;
-            border: 2px solid #cbd5e1;
+        .tarjeta-enlace {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px;
             border-radius: 16px;
-            background-color: #f8fafc;
-            animation: fadeIn 0.3s ease-in-out forwards;
+            text-decoration: none;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+        .tarjeta-enlace:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
         }
         
-        .feedback-list { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 16px; 
-            padding: 16px;
+        .bg-azul {
+            background-color: #eff6ff;
+            border: 2px solid #bfdbfe;
+            border-left: 8px solid #2563eb;
         }
-        .feedback-item {
-            background-color: #ffffff;
-            padding: 16px;
-            border-radius: 8px;
-            font-size: 13.5px;
-            line-height: 1.5;
-            color: #334155;
-            border: 1px solid #e2e8f0;
+        .bg-verde {
+            background-color: #f0fdf4;
+            border: 2px solid #bbf7d0;
+            border-left: 8px solid #10b981;
         }
-        .azul-border { border-left: 5px solid #2563eb; }
-        .verde-border { border-left: 5px solid #10b981; }
-        
-        .pregunta-titulo { font-weight: 800; color: #0f172a; display: block; margin-bottom: 6px; }
-        .pregunta-num-azul { color: #2563eb; font-weight: 900; }
-        .pregunta-num-verde { color: #10b981; font-weight: 900; text-transform: uppercase; font-size: 12px; }
 
-        /* CONTROLES DE NAVEGACIÓN INFERIOR TOTALMENTE SEGUROS */
+        .info-meta h4 {
+            font-size: 15px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .bg-azul h4 { color: #1e40af; }
+        .bg-verde h4 { color: #166534; }
+
+        .info-meta p {
+            font-size: 12.5px;
+            font-weight: 500;
+        }
+        .bg-azul p { color: #60a5fa; }
+        .bg-verde p { color: #34d399; }
+
+        .icono-flecha {
+            font-size: 18px;
+            font-weight: 900;
+        }
+        .bg-azul .icono-flecha { color: #2563eb; }
+        .bg-verde .icono-flecha { color: #10b981; }
+
+        /* NAVEGACIÓN COMPLETAMENTE FIJA ABAJO */
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
-            margin-top: 35px; 
+            margin-top: 30px; 
             gap: 20px; 
             border-top: 2px solid #f1f5f9;
             padding-top: 25px;
@@ -203,26 +180,42 @@
                 <span class="revista-contador">Pág. 1 de 11</span>
             </div>
 
-            <div style="padding: 0 40px 40px 40px;">
+            <div style="padding: 0 10px;">
                 <h3 class="slide-titulo">Cierre Analítico: Evaluación de Criterios</h3>
                 <p class="slide-txt">Bienvenidos a la Unidad II. Antes de iniciar con el tema de Operación Comercial - Ventas, Rentas y Traspasos, revisaremos las respuestas correspondientes a la sesión anterior. Selecciona cualquiera de las dos secciones para desplegar las respuestas a los ejercicios de la primera tarea:</p>
                 
-                <!-- BOTONERA DE CONTROL RECONSTRUIDA MEDIANTE ENLACES -->
-                <div class="hub-respuestas-nav">
-                    <a href="javascript:void(0);" class="enlace-bloque enlace-cuestionario" onclick="abrirSolucion('cuestionario')">📋 1. Cuestionario Crítico</a>
-                    <a href="javascript:void(0);" class="enlace-bloque enlace-integradora" onclick="abrirSolucion('integradora')">🔥 2. Tarea Integradora</a>
+                <!-- SECCIÓN FIJA: TABLERO DE ENLACES EXTERNOS SEGUROS -->
+                <div class="grid-expedientes">
+                    
+                    <!-- ENLACE 1: ABRE EL CUESTIONARIO CRÍTICO EN OTRA PESTAÑA -->
+                    <a href="https://githubusercontent.com" target="_blank" class="tarjeta-enlace bg-azul">
+                        <div class="info-meta">
+                            <h4>📋 Descargar Dictamen: 1. Cuestionario Crítico Reflexivo</h4>
+                            <p>Resolución oficial de criterios teóricos: Asimetría de Akerlof, Efecto Dotación y Regla 3 a 1.</p>
+                        </div>
+                        <span class="icono-flecha">🗗</span>
+                    </a>
+
+                    <!-- ENLACE 2: ABRE LA TAREA INTEGRADORA EN OTRA PESTAÑA -->
+                    <a href="https://githubusercontent.com" target="_blank" class="tarjeta-enlace bg-verde">
+                        <div class="info-meta">
+                            <h4>🔥 Descargar Dictamen: 2. Proyecto de Tarea Integradora</h4>
+                            <p>Estrategia práctica de campo: Matriz Proptech, Protocolo de las 4 Ds y Precalificación de Jorge.</p>
+                        </div>
+                        <span class="icono-flecha">🗗</span>
+                    </a>
+
                 </div>
 
-                <!-- RESPUESTAS DEL CUESTIONARIO CRÍTICO (CAJA CON SCROLL) -->
-                <div id="panel-cuestionario" class="panel-contenido">
-                    <div class="feedback-list">
-                        <div class="feedback-item azul-border">
-                            <span class="pregunta-titulo"><span class="pregunta-num-azul">1.</span> ¿Cómo impacta la Asimetría de Información de Akerlof a un asesor empírico que no usa proptech?</span>
-                            Genera ceguera de mercado. El asesor empírico depende únicamente del testimonio sesgado del vendedor. Al carecer de datos PropTech validados, es incapaz de neutralizar la asimetría informativa, perdiendo credibilidad frente al comprador institucional y forzando el fracaso operativo debido a la desconfianza del entorno legal y comercial.
-                        </div>
-                        <div class="feedback-item azul-border">
-                            <span class="pregunta-titulo"><span class="pregunta-num-azul">2.</span> ¿Qué métricas demuestran de forma medible que un dueño sufre el "Efecto Dotación" de Thaler?</span>
-                            Principalmente los <strong>Días en el Mercado (DOM)</strong> superiores a la media de la zona y la tasa de rebote o nula conversión de leads en portales inmobiliarios. Si un inventario homologado dinámico se desplaza en 45 días y el activo del dueño lleva inmóvil más de 90 días con cero ofertas formales, el sobreprecio emocional es matemáticamente demostrable.
-                        </div>
-                        <div class="feedback-item azul-border">
-                            <span class="pregunta-titulo"><span class="pregunta-num-azul">3.</span> ¿Por qué la regla financiera 3 a 1 protege el ecosistema de originación de créditos y la liquidez familiar?</span>
+                <!-- CONTROLES ESTÁTICOS OBLIGATORIOS (NUNCA SE MOVERÁN) -->
+                <div class="revista-controles">
+                    <a href="javascript:void(0);" class="btn-nav btn-disabled">◀ Anterior</a>
+                    <a href="operacion-p2.html" class="btn-nav">Siguiente ▶</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
