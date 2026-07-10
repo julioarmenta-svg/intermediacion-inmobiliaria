@@ -29,8 +29,40 @@
         .table-responsive { width: 100%; overflow-x: auto; margin: 8px 0 12px 0; border: 1px solid #cbd5e1; border-radius: 8px; }
         .tech-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 600px; }
         .tech-table th { background: #f8fafc; padding: 8px 10px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 9.5px; }
-        .tech-table td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.4; }
+        .tech-table td { padding: 12px 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: middle; line-height: 1.4; }
         .tech-table tr:last-child td { border-bottom: none; }
+
+        /* ESTILO PARA LA VENTANA FLOTANTE (HOVER POPOVER) */
+        .celda-hover {
+            position: relative;
+            color: #2563eb;
+            cursor: help;
+            text-decoration: underline dotted #2563eb;
+            font-weight: 800;
+        }
+        .popover-tabla {
+            display: none;
+            position: absolute;
+            left: 105%;
+            top: -20px;
+            width: 280px;
+            background: #0f172a;
+            color: #ffffff;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+            z-index: 999;
+            font-size: 11px;
+        }
+        .popover-tabla table { width: 100%; border-collapse: collapse; }
+        .popover-tabla th { color: #94a3b8; text-align: left; border-bottom: 1px solid #334155; padding-bottom: 4px; font-size: 10px; }
+        .popover-tabla td { padding: 4px 0; border-bottom: 1px solid #1e293b; color: #e2e8f0; }
+        .popover-tabla tr:last-child td { border-bottom: none; }
+        
+        /* Disparador del cursor */
+        .celda-hover:hover .popover-tabla {
+            display: block;
+        }
 
         .debate-box { background-color: #fff7ed; border: 1px solid #fed7aa; border-left: 5px solid #ea580c; border-radius: 10px; padding: 12px 16px; margin: 10px 0; }
         .debate-title { font-size: 10.5px; font-weight: 900; color: #c2410c; text-transform: uppercase; margin-bottom: 4px; display: block; }
@@ -63,24 +95,58 @@
                 
                 <span class="sub-seccion-pills">Operación Física</span>
                 <h3 class="slide-titulo">Mantenimiento Preventivo vs. Correctivo</h3>
-                <p class="slide-txt">Preservar el valor físico del activo mitiga la depreciación acelerada de la obra civil y define las responsabilidades económicas en el contrato de arrendamiento:</p>
+                <p class="slide-txt">Pasa el cursor sobre los conceptos subrayados para desplegar la ventana flotante con el desglose exacto de obligaciones pactadas en México:</p>
                 
                 <div class="table-responsive">
                     <table class="tech-table">
                         <thead>
                             <tr>
-                                <th>Tipo de Mantenimiento</th>
-                                <th>Mecánica Operativa Inmobiliaria y Obligaciones</th>
+                                <th>Tipo de Clasificación</th>
+                                <th>Criterio y Mecánica de Asignación en Portafolios</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>Mantenimiento Preventivo</strong></td>
-                                <td>Revisiones programadas (impermeabilización, servicio de climas, pintura). <strong>Es cubierto al 100% por el propietario</strong> para cuidar su plusvalía.</td>
+                                <!-- VENTANA FLOTANTE PREVENTIVO -->
+                                <td>
+                                    <span class="celda-hover">Mantenimiento Preventivo 🔍
+                                        <div class="popover-tabla">
+                                            <table>
+                                                <thead>
+                                                    <tr><th>Acción Preventiva</th><th>Quién Paga</th></tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr><td>Impermeabilización</td><td>Dueño (Plusvalía)</td></tr>
+                                                    <tr><td>Pintura Fachada</td><td>Dueño (Estructura)</td></tr>
+                                                    <tr><td>Servicio de Climas</td><td>Inquilino (Por Uso)</td></tr>
+                                                    <tr><td>Limpieza Cisterna</td><td>Inquilino (Higiene)</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </span>
+                                </td>
+                                <td>Rutinas programadas para mitigar la depreciación de la obra civil. Financiado mayormente por el dueño para salvaguardar el valor de capital del activo.</td>
                             </tr>
                             <tr>
-                                <td><strong>Mantenimiento Correctivo</strong></td>
-                                <td>Reparaciones de emergencia (fugas, cortos circuitos). Su costo se evalúa según el desgaste natural o el mal uso por parte de la ocupación.</td>
+                                <!-- VENTANA FLOTANTE CORRECTIVO -->
+                                <td>
+                                    <span class="celda-hover">Mantenimiento Correctivo 🔍
+                                        <div class="popover-tabla">
+                                            <table>
+                                                <thead>
+                                                    <tr><th>Falla de Emergencia</th><th>Quién Paga</th></tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr><td>Tubería Interna Rota</td><td>Dueño (Uso/Edad)</td></tr>
+                                                    <tr><td>Cortocircuito Interno</td><td>Dueño (Vicio Oculto)</td></tr>
+                                                    <tr><td>Vidrio Quebrado</td><td>Inquilino (Descuido)</td></tr>
+                                                    <tr><td>Chapa Puerta Azotada</td><td>Inquilino (Mal Uso)</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </span>
+                                </td>
+                                <td>Reparaciones de emergencia ante imprevistos. El origen o causa raíz (desgaste frente a negligencia) determina legalmente quién asume la factura líquida.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -89,22 +155,3 @@
                 <div class="debate-box">
                     <span class="debate-title">🗣️ Dilema en el Aula: La Bomba de Agua Quemada</span>
                     <div class="debate-scenerio">
-                        <strong>Escenario:</strong> El inquilino de una casa reporta que la bomba de agua se quemó y exige reemplazo inmediato. El propietario se niega; argumenta que la bomba falló porque el inquilino dejó una llave abierta, forzando al motor a trabajar en seco durante tres días seguidos.
-                    </div>
-                    <div class="debate-pregunta">
-                        <strong>Pregunta de Debate Directivo:</strong><br>
-                        Como administrador patrimonial, ¿bajo qué criterios deslindarías responsabilidades financieras entre desgaste natural (dueño) y negligencia operativa (inquilino)?
-                    </div>
-                </div>
-
-                <div class="revista-controles">
-                    <a href="operacion-p6.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
-                    <a href="operacion-p8.html" class="btn-nav">Siguiente ▶</a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-</body>
-</html>
