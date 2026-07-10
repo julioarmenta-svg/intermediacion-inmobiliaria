@@ -61,7 +61,7 @@
  display: flex;
  gap: 25px;
  margin-bottom: 15px;
- align-items: center; /* Alinea verticalmente al centro la caja y la tabla */
+ align-items: center;
  }
  .panel-izquierdo {
  flex: 1;
@@ -92,7 +92,7 @@
  font-weight: 700;
  color: #1e293b;
  background-color: #ffffff;
- border: 2px solid #2563eb; /* Resaltado en azul para invitar a la acción */
+ border: 2px solid #2563eb;
  border-radius: 8px;
  outline: none;
  cursor: pointer;
@@ -130,7 +130,6 @@
  text-align: center;
  }
  </style>
- <!-- INYECTAMOS EL MOTOR DE CONEXIÓN EN LA CABECERA PARA CONTROL TOTAL -->
  <script>
  function ejecutarCambio(valorSeleccionado) {
  var mIsai = document.getElementById('monto-isai');
@@ -141,8 +140,8 @@
  mIsai.innerText = "$264,000";
  mVendedor.innerText = "$0";
  mComprador.innerText = "$1,010,000";
- mDictamen.innerText = "SUBVALUADO (RECHAZADO)";
- mDictamen.style.color = "#dc2626";
+ mDictamen.innerText = "VIABLE CON AJUSTE (CASTIGO FISCAL COMPRADOR)";
+ mDictamen.style.color = "#d97706";
  }
  else if (valorSeleccionado === 'piso') {
  mIsai.innerText = "$264,000";
@@ -163,7 +162,7 @@
 </head>
 <body>
  <div class="container">
- <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
+ <a href="operacion.html" class="nav-back">◀ Volver a la Mesa de Control</a>
  <header>
  <span class="tag">Documento de Consulta Académica Independiente</span>
  <h1>Simulador de Impacto Fiscal e Inviabilidad Transaccional</h1>
@@ -173,7 +172,7 @@
  
  <div class="split-dashboard">
  
- <!-- PANEL IZQUIERDO: UNIFICADO Y SIN REDUNDANCIAS -->
+ <!-- PANEL IZQUIERDO -->
  <div class="panel-izquierdo">
  <div class="selector-escenarios-grid">
  <label class="selector-label" for="combo-escenarios">Auditoría Notarial (Avalúo Fijo: $13.2M):</label>
@@ -185,7 +184,7 @@
  </div>
  </div>
  
- <!-- PANEL DERECHO: MATRIZ DE RESULTADOS -->
+ <!-- PANEL DERECHO -->
  <div class="panel-derecho">
  <table class="tech-table">
  <thead>
@@ -214,7 +213,7 @@
  <tr>
  <td><strong>Dictamen ante Notario</strong></td>
  <td>Estatus Legal</td>
- <td id="monto-dictamen" style="text-align: right; font-weight: 800; color: #dc2626;">SUBVALUADO (RECHAZADO)</td>
+ <td id="monto-dictamen" style="text-align: right; font-weight: 800; color: #d97706;">VIABLE CON AJUSTE (CASTIGO FISCAL COMPRADOR)</td>
  </tr>
  </tbody>
  </table>
