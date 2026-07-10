@@ -81,7 +81,7 @@
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 30px; }
 
-        /* NUEVO ENFOQUE: ÍNDICE DE EXPEDIENTES FIJOS (RECUADROS CON ENLACES) */
+        /* TABLERO DE EXPEDIENTES FIJOS */
         .grid-expedientes {
             display: flex;
             flex-direction: column;
@@ -136,7 +136,7 @@
         .bg-azul .icono-flecha { color: #2563eb; }
         .bg-verde .icono-flecha { color: #10b981; }
 
-        /* NAVEGACIÓN COMPLETAMENTE FIJA ABAJO */
+        /* NAVEGACIÓN CON COLOR AZUL CORPORATIVO ORIGINAL */
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
@@ -149,8 +149,8 @@
             flex: 1;
             display: block;
             text-decoration: none;
-            background-color: #1e293b;
-            border-bottom: 5px solid #0f172a;
+            background-color: #2563eb;
+            border-bottom: 5px solid #1d4ed8;
             padding: 18px;
             border-radius: 14px;
             font-size: 16px;
@@ -159,8 +159,8 @@
             text-align: center;
             transition: all 0.1s ease;
         }
-        .btn-nav:hover { background-color: #334155; }
-        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #0f172a; }
+        .btn-nav:hover { background-color: #3b82f6; }
+        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
         .btn-disabled { background-color: #cbd5e1; border-bottom: 5px solid #94a3b8; color: #94a3b8 !important; cursor: not-allowed; pointer-events: none; }
     </style>
 </head>
@@ -184,22 +184,22 @@
                 <h3 class="slide-titulo">Cierre Analítico: Evaluación de Criterios</h3>
                 <p class="slide-txt">Bienvenidos a la Unidad II. Antes de iniciar con el tema de Operación Comercial - Ventas, Rentas y Traspasos, revisaremos las respuestas correspondientes a la sesión anterior. Selecciona cualquiera de las dos secciones para desplegar las respuestas a los ejercicios de la primera tarea:</p>
                 
-                <!-- SECCIÓN FIJA: TABLERO DE ENLACES EXTERNOS SEGUROS -->
+                <!-- TABLERO DE ENLACES EXTERNOS PULIDO -->
                 <div class="grid-expedientes">
                     
-                    <!-- ENLACE 1: ABRE EL CUESTIONARIO CRÍTICO EN OTRA PESTAÑA -->
+                    <!-- ENLACE 1: CUESTIONARIO CRÍTICO REFLEXIVO -->
                     <a href="https://githubusercontent.com" target="_blank" class="tarjeta-enlace bg-azul">
                         <div class="info-meta">
-                            <h4>📋 Descargar Dictamen: 1. Cuestionario Crítico Reflexivo</h4>
+                            <h4>📋 1. Cuestionario Crítico Reflexivo</h4>
                             <p>Resolución oficial de criterios teóricos: Asimetría de Akerlof, Efecto Dotación y Regla 3 a 1.</p>
                         </div>
                         <span class="icono-flecha">🗗</span>
                     </a>
 
-                    <!-- ENLACE 2: ABRE LA TAREA INTEGRADORA EN OTRA PESTAÑA -->
+                    <!-- ENLACE 2: PROYECTO DE TAREA INTEGRADORA -->
                     <a href="https://githubusercontent.com" target="_blank" class="tarjeta-enlace bg-verde">
                         <div class="info-meta">
-                            <h4>🔥 Descargar Dictamen: 2. Proyecto de Tarea Integradora</h4>
+                            <h4>🔥 2. Proyecto de Tarea Integradora</h4>
                             <p>Estrategia práctica de campo: Matriz Proptech, Protocolo de las 4 Ds y Precalificación de Jorge.</p>
                         </div>
                         <span class="icono-flecha">🗗</span>
@@ -207,7 +207,7 @@
 
                 </div>
 
-                <!-- CONTROLES ESTÁTICOS OBLIGATORIOS (NUNCA SE MOVERÁN) -->
+                <!-- CONTROLES ESTÁTICOS CON EL COLOR AZUL RESTAURADO -->
                 <div class="revista-controles">
                     <a href="javascript:void(0);" class="btn-nav btn-disabled">◀ Anterior</a>
                     <a href="operacion-p2.html" class="btn-nav">Siguiente ▶</a>
@@ -215,7 +215,3 @@
 
             </div>
         </div>
-    </div>
-
-</body>
-</html>
