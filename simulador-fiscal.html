@@ -31,7 +31,6 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
-        .nav-back:hover { color: #1d4ed8; }
         header {
             margin-bottom: 20px;
             border-bottom: 2px solid #f1f5f9;
@@ -49,7 +48,6 @@
             font-weight: 800;
             color: #0f172a;
             margin-top: 4px;
-            letter-spacing: -0.02em;
         }
         .revista-wrapper {
             background-color: #ffffff;
@@ -57,23 +55,18 @@
             border-radius: 20px;
             padding: 25px;
             margin-bottom: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
         }
         .revista-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             border-bottom: 2px solid #f1f5f9;
             padding-bottom: 12px;
             margin-bottom: 20px;
         }
-        .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+        .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; }
 
-        /* ARQUITECTURA DE DOS COLUMNAS EN UNA SOLA LÍNEA HORIZONTAL */
         .split-dashboard {
             display: flex;
             gap: 25px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         .panel-izquierdo {
             flex: 1;
@@ -81,37 +74,45 @@
         .panel-derecho {
             flex: 1.1;
         }
-
-        /* CONFIGURACIÓN DEL MENÚ DESPLEGABLE ÚNICO */
+        .caja-parametros-texto {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 14px 16px;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
         .selector-escenarios-grid {
             border: 2px solid #cbd5e1;
-            padding: 20px;
+            padding: 16px;
             border-radius: 12px;
             background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
-        .selector-label {
-            display: block;
-            font-size: 11px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-        }
-        .select-premium {
+        .btn-static {
             width: 100%;
             padding: 12px;
             font-size: 13.5px;
-            font-weight: 700;
-            color: #1e293b;
-            background-color: #ffffff;
+            font-weight: 800;
+            text-align: left;
             border: 2px solid #cbd5e1;
             border-radius: 8px;
-            outline: none;
+            background-color: #f8fafc;
             cursor: pointer;
+            transition: all 0.1s ease;
         }
+        .btn-static:hover {
+            background-color: #f1f5f9;
+            border-color: #94a3b8;
+        }
+        
+        .btn-static.activo-rojo { border-color: #ef4444 !important; background-color: #fef2f2 !important; color: #991b1b !important; }
+        .btn-static.activo-verde { border-color: #10b981 !important; background-color: #f0fdf4 !important; color: #166534 !important; }
+        .btn-static.activo-azul { border-color: #2563eb !important; background-color: #eff6ff !important; color: #1e40af !important; }
 
-        /* TABLA DE RESULTADOS INVARIABLE */
         .tech-table {
             width: 100%;
             border-collapse: collapse;
@@ -119,21 +120,10 @@
             border: 1px solid #cbd5e1;
             border-radius: 10px;
             overflow: hidden;
-            background: #ffffff;
         }
-        .tech-table th { background: #f8fafc; padding: 10px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 9.5px; letter-spacing: 0.03em; }
-        .tech-table td { padding: 12px 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: middle; line-height: 1.4; }
-        .tech-table tr:last-child td { border-bottom: none; }
+        .tech-table th { background: #f8fafc; padding: 10px; text-align: left; font-weight: 800; border-bottom: 2px solid #cbd5e1; }
+        .tech-table td { padding: 10px; border-bottom: 1px solid #e2e8f0; }
         
-        /* Controladores puros de visibilidad CSS */
-        .fila-dinamica { display: none; }
-        .fila-dinamica.visible { display: table-row !important; }
-
-        .badge-optimo { color: #16a34a !important; background-color: #dcfce7 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #bbf7d0; display: inline-block; font-size: 11px; font-weight: 800; }
-        .badge-peligro { color: #dc2626 !important; background-color: #fee2e2 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #fca5a5; display: inline-block; font-size: 11px; font-weight: 800; }
-        .badge-alerta { color: #d97706 !important; background-color: #fef3c7 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #fde68a; display: inline-block; font-size: 11px; font-weight: 800; }
-
-        /* PIE DE PÁGINA CON REGRESO SÓLIDO */
         .revista-controles { 
             display: flex; 
             justify-content: center; 
@@ -154,12 +144,7 @@
             font-weight: 800;
             color: #ffffff !important;
             text-align: center;
-            transition: all 0.1s ease;
         }
-        .btn-nav:hover { background-color: #3b82f6; }
-        .btn-nav:active { transform: translateY(2px); border-bottom-width: 2px; }
-
-        @media (max-width: 768px) { .split-dashboard { flex-direction: column; gap: 15px; } }
     </style>
 </head>
 <body>
@@ -181,21 +166,23 @@
                 
                 <div class="split-dashboard">
                     
-                    <!-- PANEL IZQUIERDO: CAJA UNIFICADA CON LAS 5 OPCIONES DIRECTAS -->
+                    <!-- PANEL IZQUIERDO -->
                     <div class="panel-izquierdo">
+                        <div class="caja-parametros-texto">
+                            📍 <strong>Criterios de Escrituración:</strong><br>
+                            • Rango Mínimo (90%): $11,880,000 MXN<br>
+                            • Rango Máximo (110%): $14,520,000 MXN
+                        </div>
+
                         <div class="selector-escenarios-grid">
-                            <label class="selector-label" for="combo-escenarios">Seleccione el Escenario Comercial:</label>
-                            <select id="combo-escenarios" class="select-premium" onchange="ejecutarCambio()">
-                                <option value="raul">🚨 Escenario Don Raúl ($8,150,000 MXN / Sin Acreditar)</option>
-                                <option value="piso-sin">🟢 Rango Mínimo Legal ($11,880,000 MXN / Sin Acreditar)</option>
-                                <option value="piso-con">🟢 Rango Mínimo Legal ($11,880,000 MXN / Exento con INE)</option>
-                                <option value="avaluo-sin">🔵 Precio de Avalúo Justo ($13,200,000 MXN / Sin Acreditar)</option>
-                                <option value="avaluo-con">🔵 Precio de Avalúo Justo ($13,200,000 MXN / Exento con INE)</option>
-                            </select>
+                            <span style="font-size:11px; font-weight:800; color:#64748b; text-transform:uppercase;">Seleccione el Escenario Comercial:</span>
+                            <button id="btn-raul" class="btn-static">🚨 Escenario Don Raúl ($8,150,000 MXN)</button>
+                            <button id="btn-piso" class="btn-static">🟢 Rango Mínimo Legal (-10%)</button>
+                            <button id="btn-avaluo" class="btn-static">🔵 Precio de Avalúo Justo</button>
                         </div>
                     </div>
 
-                    <!-- PANEL DERECHO: RENDIMIENTO INMUNE A CHOQUES DE CÁLCULO -->
+                    <!-- PANEL DERECHO -->
                     <div class="panel-derecho">
                         <table class="tech-table">
                             <thead>
@@ -209,24 +196,62 @@
                                 <tr>
                                     <td><strong>ISAI Municipal (2%)</strong></td>
                                     <td>Comprador</td>
-                                    <td style="text-align: right; font-weight: 700;">$264,000</td>
+                                    <td id="monto-isai" style="text-align: right; font-weight: 700;">$0</td>
                                 </tr>
-                                
-                                <!-- BLOQUE DE FILAS DE ISR VENDEDOR PRECALCULADAS CORREGIDO -->
-                                <tr id="vendedor-exento" class="fila-dinamica">
+                                <tr>
                                     <td><strong>ISR Enajenación (Est. 20%)</strong></td>
                                     <td>Vendedor</td>
-                                    <td style="text-align: right; font-weight: 700; color:#16a34a;">💥 $0 MXN <small>(Exento / Pérdida)</small></td>
+                                    <td id="monto-isr-vendedor" style="text-align: right; font-weight: 700;">$0</td>
                                 </tr>
-                                <tr id="vendedor-piso" class="fila-dinamica">
-                                    <td><strong>ISR Enajenación (Est. 20%)</strong></td>
-                                    <td>Vendedor</td>
-                                    <td style="text-align: right; font-weight: 700;">$1,076,000</td>
+                                <tr>
+                                    <td><strong>ISR Adquisición (Art. 125)</strong></td>
+                                    <td>Comprador</td>
+                                    <td id="monto-isr-comprador" style="text-align: right; font-weight: 700; color: #dc2626;">$0</td>
                                 </tr>
-                                <tr id="vendedor-avaluo" class="fila-dinamica">
-                                    <td><strong>ISR Enajenación (Est. 20%)</strong></td>
-                                    <td>Vendedor</td>
-                                    <td style="text-align: right; font-weight: 700;">$1,340,000</td>
+                                <tr>
+                                    <td><strong>Dictamen ante Notario</strong></td>
+                                    <td>Estatus</td>
+                                    <td id="monto-dictamen" style="text-align: right; font-weight: 800;">Cargando...</td>
                                 </tr>
-                                
-                                <!-- BLOQUE DE FILAS DE ISR COMPRADOR -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div class="revista-controles">
+                    <a href="operacion.html" class="btn-nav">◀ Regresar a la Mesa de Control</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const bRaul = document.getElementById('btn-raul');
+        const bPiso = document.getElementById('btn-piso');
+        const bAvaluo = document.getElementById('btn-avaluo');
+
+        const mIsai = document.getElementById('monto-isai');
+        const mVendedor = document.getElementById('monto-isr-vendedor');
+        const mComprador = document.getElementById('monto-isr-comprador');
+        const mDictamen = document.getElementById('monto-dictamen');
+
+        function cambiarEscenario(idEscenario) {
+            if (idEscenario === 'raul') {
+                mIsai.innerText = "$264,000";
+                mVendedor.innerText = "$0";
+                mComprador.innerText = "$1,010,000";
+                mDictamen.innerText = "VIABLE CON AJUSTE (CASTIGO FISCAL)";
+                mDictamen.style.color = "#d97706"; // Ámbar de advertencia correcto
+
+                bRaul.className = "btn-static activo-rojo";
+                bPiso.className = "btn-static";
+                bAvaluo.className = "btn-static";
+            } 
+            else if (idEscenario === 'piso') {
+                mIsai.innerText = "$264,000";
+                mVendedor.innerText = "$1,076,000";
+                mComprador.innerText = "$0";
+                mDictamen.innerText = "RANGO ÓPTIMO (ACEPTADO)";
+                mDictamen.style.color = "#16a34a";
