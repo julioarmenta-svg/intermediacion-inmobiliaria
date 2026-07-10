@@ -1,220 +1,217 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 2: Aspectos Legales y Fiscales - URN</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            background-color: #f1f5f9; 
-            padding: 20px;
-            color: #334155;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            border-radius: 24px;
-            padding: 30px;
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
-            border: 1px solid #e2e8f0;
-        }
-        .nav-back {
-            display: inline-block;
-            text-decoration: none;
-            color: #2563eb;
-            font-size: 13px;
-            font-weight: 800;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .nav-back:hover { color: #1d4ed8; }
-        header {
-            margin-bottom: 20px;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 12px;
-        }
-        .tag {
-            font-size: 11px;
-            font-weight: 800;
-            color: #2563eb;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-        }
-        h1 {
-            font-size: 26px;
-            font-weight: 800;
-            color: #0f172a;
-            margin-top: 4px;
-            letter-spacing: -0.02em;
-        }
-        .revista-wrapper {
-            background-color: #ffffff;
-            border: 3px solid #cbd5e1;
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
-        }
-        .revista-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 12px;
-            margin-bottom: 16px;
-        }
-        .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
-        .revista-contador {
-            font-size: 11px;
-            font-weight: 800;
-            color: #2563eb;
-            background-color: #eff6ff;
-            padding: 4px 12px;
-            border-radius: 20px;
-            border: 1px solid #dbeafe;
-        }
-
-        .slide-titulo { font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 12px; }
-        .slide-txt { font-size: 13.5px; line-height: 1.5; color: #475569; margin-bottom: 14px; }
-        
-        .sub-seccion-pills {
-            font-size: 10px;
-            font-weight: 800;
-            color: #2563eb;
-            background-color: #eff6ff;
-            padding: 3px 8px;
-            border-radius: 5px;
-            display: inline-block;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-        }
-
-        /* TABLA MÁS COMPACTA Y DE MENOR ALTURA */
-        .table-responsive {
-            width: 100%;
-            overflow-x: auto;
-            margin: 10px 0 15px 0;
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
-            background: #ffffff;
-        }
-        .tech-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12px;
-            min-width: 650px;
-        }
-        .tech-table th { background: #f8fafc; padding: 10px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 10px; letter-spacing: 0.03em; }
-        .tech-table td { padding: 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.4; }
-        .tech-table tr:last-child td { border-bottom: none; }
-
-        .highlight-box {
-            background-color: #f8fafc;
-            border-left: 5px solid #2563eb;
-            padding: 14px 18px;
-            border-radius: 4px;
-            font-size: 13px;
-            color: #1e293b;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        /* BARRA DE CONTROLES INFERIOR FIJA */
-        .revista-controles { 
-            display: flex; 
-            justify-content: space-between; 
-            margin-top: 20px; 
-            gap: 15px; 
-            border-top: 2px solid #f1f5f9;
-            padding-top: 15px;
-        }
-        .btn-nav {
-            flex: 1;
-            display: block;
-            text-decoration: none;
-            background-color: #2563eb;
-            border-bottom: 4px solid #1d4ed8;
-            padding: 14px;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: 800;
-            color: #ffffff !important;
-            text-align: center;
-            transition: all 0.1s ease;
-        }
-        .btn-nav:hover { background-color: #3b82f6; }
-        .btn-nav:active { transform: translateY(2px); border-bottom-width: 2px; }
-    </style>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Módulo 2: Aspectos Legales y Fiscales - URN</title>
+ <style>
+ * { box-sizing: border-box; margin: 0; padding: 0; }
+ body { 
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+ background-color: #f1f5f9; 
+ padding: 20px;
+ color: #334155;
+ }
+ .container {
+ max-width: 900px;
+ margin: 0 auto;
+ background-color: #ffffff;
+ border-radius: 24px;
+ padding: 30px;
+ box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+ border: 1px solid #e2e8f0;
+ }
+ .nav-back {
+ display: inline-block;
+ text-decoration: none;
+ color: #2563eb;
+ font-size: 13px;
+ font-weight: 800;
+ margin-bottom: 15px;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+ }
+ .nav-back:hover { color: #1d4ed8; }
+ header {
+ margin-bottom: 20px;
+ border-bottom: 2px solid #f1f5f9;
+ padding-bottom: 12px;
+ }
+ .tag {
+ font-size: 11px;
+ font-weight: 800;
+ color: #2563eb;
+ text-transform: uppercase;
+ letter-spacing: 0.12em;
+ }
+ h1 {
+ font-size: 26px;
+ font-weight: 800;
+ color: #0f172a;
+ margin-top: 4px;
+ letter-spacing: -0.02em;
+ }
+ .revista-wrapper {
+ background-color: #ffffff;
+ border: 3px solid #cbd5e1;
+ border-radius: 20px;
+ padding: 25px;
+ margin-bottom: 15px;
+ box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+ }
+ .revista-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ border-bottom: 2px solid #f1f5f9;
+ padding-bottom: 12px;
+ margin-bottom: 16px;
+ }
+ .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+ .revista-contador {
+ font-size: 11px;
+ font-weight: 800;
+ color: #2563eb;
+ background-color: #eff6ff;
+ padding: 4px 12px;
+ border-radius: 20px;
+ border: 1px solid #dbeafe;
+ }
+ .slide-titulo { font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 12px; }
+ .slide-txt { font-size: 13.5px; line-height: 1.5; color: #475569; margin-bottom: 14px; }
+ 
+ .sub-seccion-pills {
+ font-size: 10px;
+ font-weight: 800;
+ color: #2563eb;
+ background-color: #eff6ff;
+ padding: 3px 8px;
+ border-radius: 5px;
+ display: inline-block;
+ margin-bottom: 8px;
+ text-transform: uppercase;
+ letter-spacing: 0.03em;
+ }
+ /* TABLA MÁS COMPACTA Y DE MENOR ALTURA */
+ .table-responsive {
+ width: 100%;
+ overflow-x: auto;
+ margin: 10px 0 15px 0;
+ border: 1px solid #cbd5e1;
+ border-radius: 10px;
+ background: #ffffff;
+ }
+ .tech-table {
+ width: 100%;
+ border-collapse: collapse;
+ font-size: 12px;
+ min-width: 650px;
+ }
+ .tech-table th { background: #f8fafc; padding: 10px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 10px; letter-spacing: 0.03em; }
+ .tech-table td { padding: 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.4; }
+ .tech-table tr:last-child td { border-bottom: none; }
+ 
+ .highlight-box {
+ background-color: #f8fafc;
+ border-left: 5px solid #2563eb;
+ padding: 14px 18px;
+ border-radius: 4px;
+ font-size: 13px;
+ color: #1e293b;
+ line-height: 1.5;
+ margin-bottom: 15px;
+ }
+ /* BARRA DE CONTROLES INFERIOR FIJA */
+ .revista-controles { 
+ display: flex; 
+ justify-content: space-between; 
+ margin-top: 20px; 
+ gap: 15px; 
+ border-top: 2px solid #f1f5f9;
+ padding-top: 15px;
+ }
+ .btn-nav {
+ flex: 1;
+ display: block;
+ text-decoration: none;
+ background-color: #2563eb;
+ border-bottom: 4px solid #1d4ed8;
+ padding: 14px;
+ border-radius: 10px;
+ font-size: 15px;
+ font-weight: 800;
+ color: #ffffff !important;
+ text-align: center;
+ transition: all 0.1s ease;
+ }
+ .btn-nav:hover { background-color: #3b82f6; }
+ .btn-nav:active { transform: translateY(2px); border-bottom-width: 2px; }
+ </style>
 </head>
 <body>
+ <div class="container">
+ <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
+ <header>
+ <span class="tag">Unidad III · Gestión y Legalidad de Inmuebles</span>
+ <h1>2. Aspectos Legales y Fiscales en Operaciones</h1>
+ </header>
+ <div class="revista-wrapper">
+ <div class="revista-header">
+ <span class="revista-pills">Implicaciones Fiscales Transaccionales</span>
+ <span class="revista-contador">Pág. 4 de 11</span>
+ </div>
+ <div style="padding: 0 10px;">
+ 
+ <span class="sub-seccion-pills">Marco Tributario</span>
+ <h3 class="slide-titulo">Carga Impositiva: Compra, Renta y Traspaso</h3>
+ <p class="slide-txt">La viabilidad financiera de cualquier transacción inmobiliaria en México está sujeta a la demostración de rentabilidad. El Consultor Patrimonial debe dominar la carga impositiva y las obligaciones específicas que gravan a las tres operaciones base:</p>
+ 
+ <!-- TABLA DE CONTROL CORTA (SÓLO IMPUESTOS BASE) -->
+ <div class="table-responsive">
+ <table class="tech-table">
+ <thead>
+ <tr>
+ <th>Tipo de Operación</th>
+ <th>Impuestos Aplicables (Marco Legal)</th>
+ <th>Obligación y Criterio Práctico Obligatorio</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><strong>Compra / Venta</strong></td>
+ <td>El vendedor genera <strong>ISR por Enajenación</strong> sobre la utilidad neta. El comprador absorbe el <strong>ISAI (Impuesto Sobre Adquisición de Inmuebles)</strong> local variable.</td>
+ <td>El ISAI es obligatorio para escriturar. El ISR del vendedor grava la ganancia real del negocio y es retenido solidariamente por el Notario Público.</td>
+ </tr>
+ <tr>
+ <td><strong>Arrendamiento (Renta)</strong></td>
+ <td>El arrendador acumula ingresos para el pago de <strong>ISR mensual</strong>. Si el destino del inmueble es comercial, se traslada obligatoriamente el <strong>16% de IVA</strong>.</td>
+ <td>El dueño puede optar por aplicar la <strong>Deducción Ciega (35% directo sin facturas)</strong> para mitigar su base de ISR. Emitir CFDI de arrendamiento es mandatorio.</td>
+ </tr>
+ <tr>
+ <td><strong>Traspaso Comercial</strong></td>
+ <td>La cesión de un contrato de renta o una unidad económica genera una ganancia de capital sujeta al cálculo de <strong>ISR por enajenación de bienes intangibles</strong>.</td>
+ <td>Aplica sobre el cobro de guantes comerciales o derechos de llave. Al demostrarse un flujo de efectivo e ingresos de negocio, el impuesto se retiene de forma obligatoria.</td>
+ </tr>
+ </tbody>
+ </table>
+ </div>
+ <div class="highlight-box">
+ 💡 <strong>Matriz Tributaria Base:</strong> Cada una de estas transacciones económicas genera un hecho imponible independiente bajo la normativa mexicana. El Consultor Patrimonial analiza estos gravámenes básicos para estructurar la viabilidad comercial inicial de la oferta antes de formalizar cierres.
+ </div>
 
-    <div class="container">
-        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
+ <!-- ENLACE INDEPENDIENTE TIPO BOTÓN HACIA EL SIMULADOR FISCAL EN PESTAÑA NUEVA -->
+ <div style="margin: 20px 0; text-align: center;">
+ <a href="simulador-fiscal.html" target="_blank" class="btn-nav" style="background-color: #475569; border-color: #334155; display: inline-block; max-width: 450px; width: 100%;">
+ 🧮 Abrir Laboratorio Opcional: Simulador Fiscal del Caso
+ </a>
+ </div>
 
-        <header>
-            <span class="tag">Unidad III · Gestión y Legalidad de Inmuebles</span>
-            <h1>2. Aspectos Legales y Fiscales en Operaciones</h1>
-        </header>
-
-        <div class="revista-wrapper">
-            <div class="revista-header">
-                <span class="revista-pills">Implicaciones Fiscales Transaccionales</span>
-                <span class="revista-contador">Pág. 4 de 11</span>
-            </div>
-
-            <div style="padding: 0 10px;">
-                
-                <span class="sub-seccion-pills">Marco Tributario</span>
-                <h3 class="slide-titulo">Carga Impositiva: Compra, Renta y Traspaso</h3>
-                <p class="slide-txt">La viabilidad financiera de cualquier transacción inmobiliaria en México está sujeta a la demostración de rentabilidad. El Consultor Patrimonial debe dominar la carga impositiva y las obligaciones específicas que gravan a las tres operaciones base:</p>
-                
-                <!-- TABLA DE CONTROL CORTA (SÓLO IMPUESTOS BASE) -->
-                <div class="table-responsive">
-                    <table class="tech-table">
-                        <thead>
-                            <tr>
-                                <th>Tipo de Operación</th>
-                                <th>Impuestos Aplicables (Marco Legal)</th>
-                                <th>Obligación y Criterio Práctico Obligatorio</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Compra / Venta</strong></td>
-                                <td>El vendedor genera <strong>ISR por Enajenación</strong> sobre la utilidad neta. El comprador absorbe el <strong>ISAI (Impuesto Sobre Adquisición de Inmuebles)</strong> local variable.</td>
-                                <td>El ISAI es obligatorio para escriturar. El ISR del vendedor grava la ganancia real del negocio y es retenido solidariamente por el Notario Público.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Arrendamiento (Renta)</strong></td>
-                                <td>El arrendador acumula ingresos para el pago de <strong>ISR mensual</strong>. Si el destino del inmueble es comercial, se traslada obligatoriamente el <strong>16% de IVA</strong>.</td>
-                                <td>El dueño puede optar por aplicar la <strong>Deducción Ciega (35% directo sin facturas)</strong> para mitigar su base de ISR. Emitir CFDI de arrendamiento es mandatorio.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Traspaso Comercial</strong></td>
-                                <td>La cesión de un contrato de renta o una unidad económica genera una ganancia de capital sujeta al cálculo de <strong>ISR por enajenación de bienes intangibles</strong>.</td>
-                                <td>Aplica sobre el cobro de guantes comerciales o derechos de llave. Al demostrarse un flujo de efectivo e ingresos de negocio, el impuesto se retiene de forma obligatoria.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="highlight-box">
-                    💡 <strong>Matriz Tributaria Base:</strong> Cada una de estas transacciones económicas genera un hecho imponible independiente bajo la normativa mexicana. El Consultor Patrimonial analiza estos gravámenes básicos para estructurar la viabilidad comercial inicial de la oferta antes de formalizar cierres.
-                </div>
-
-                <div class="revista-controles">
-                    <a href="operacion-p3.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
-                    <a href="operacion-p5.html" class="btn-nav">Siguiente ▶</a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
+ <div class="revista-controles">
+ <a href="operacion-p3.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
+ <a href="operacion-p5.html" class="btn-nav">Siguiente ▶</a>
+ </div>
+ </div>
+ </div>
+ </div>
 </body>
 </html>
