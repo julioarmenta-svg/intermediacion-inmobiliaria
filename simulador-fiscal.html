@@ -69,11 +69,11 @@
         }
         .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
 
-        /* ARQUITECTURA HORIZONTAL DE COLUMNAS CORTAS */
+        /* FORMATO EN DOS COLUMNAS */
         .split-dashboard {
             display: flex;
             gap: 25px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         .panel-izquierdo {
             flex: 1;
@@ -85,7 +85,6 @@
             flex: 1.1;
         }
 
-        /* SELECTOR DESPLEGABLE */
         .selector-escenarios-grid {
             border: 2px solid #cbd5e1;
             padding: 16px;
@@ -114,7 +113,6 @@
             cursor: pointer;
         }
 
-        /* CONTENEDOR CASILLA EXENCIÓN */
         .caja-exencion-control {
             border: 2px solid #cbd5e1;
             padding: 14px 16px;
@@ -137,7 +135,7 @@
             cursor: pointer;
         }
 
-        /* TABLA DE RESULTADOS INDESTRUCTIBLE */
+        /* TABLA DE RESULTADOS RECONSTRUIDA */
         .tech-table {
             width: 100%;
             border-collapse: collapse;
@@ -151,11 +149,12 @@
         .tech-table td { padding: 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: middle; line-height: 1.4; }
         .tech-table tr:last-child td { border-bottom: none; }
         
+        /* Semáforos directos integrados */
         .badge-optimo { color: #16a34a !important; background-color: #dcfce7 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #bbf7d0; display: inline-block; font-size: 11px; font-weight: 800; }
         .badge-peligro { color: #dc2626 !important; background-color: #fee2e2 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #fca5a5; display: inline-block; font-size: 11px; font-weight: 800; }
         .badge-alerta { color: #d97706 !important; background-color: #fef3c7 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #fde68a; display: inline-block; font-size: 11px; font-weight: 800; }
 
-        /* NAVEGACIÓN ÚNICA DE REGRESO CENTRADA */
+        /* REGRESO ÚNICO CENTRADO */
         .revista-controles { 
             display: flex; 
             justify-content: center; 
@@ -203,7 +202,7 @@
                 
                 <div class="split-dashboard">
                     
-                    <!-- PANEL IZQUIERDO LIMPIO -->
+                    <!-- PANEL IZQUIERDO -->
                     <div class="panel-izquierdo">
                         <div class="selector-escenarios-grid">
                             <label class="selector-label" for="combo-escenarios">Seleccione el Escenario Comercial:</label>
@@ -220,7 +219,7 @@
                         </div>
                     </div>
 
-                    <!-- PANEL DERECHO -->
+                    <!-- PANEL DERECHO CON TABLA TOTALMENTE CORREGIDA -->
                     <div class="panel-derecho">
                         <table class="tech-table">
                             <thead>
@@ -234,7 +233,7 @@
                                 <tr>
                                     <td><strong>ISAI Municipal (2%)</strong></td>
                                     <td>Comprador</td>
-                                    <td id="monto-isai" style="text-align: right; font-weight: 700;">$264,000</td>
+                                    <td id="monto-isai" style="text-align: right; font-weight: 700;">$0</td>
                                 </tr>
                                 <tr>
                                     <td><strong>ISR Enajenación (Est. 20%)</strong></td>
@@ -244,7 +243,8 @@
                                 <tr>
                                     <td><strong>ISR Adquisición (Art. 125)</strong></td>
                                     <td>Comprador</td>
-                                    <td id="monto-isr-comprador" style="text-align: right; font-weight: 700; color: #dc2626;">$1,010,000</td>
+                                    <td id="monto-isr-comprador" style="text-align: right; font-weight: 700; color: #dc2626;">$0</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Dictamen ante Notario</strong></td>
+                                    <td>Estatus</td>
