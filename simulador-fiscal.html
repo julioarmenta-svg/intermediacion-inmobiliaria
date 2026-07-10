@@ -69,7 +69,6 @@
         }
         .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
 
-        /* DISEÑO SPLIT DE ALTO RENDIMIENTO */
         .split-dashboard {
             display: flex;
             gap: 25px;
@@ -95,7 +94,6 @@
             color: #334155;
         }
 
-        /* DISEÑO DE BOTONES DE SELECCIÓN COMPACTOS Y SEGUROS */
         .selector-escenarios-grid {
             display: flex;
             flex-direction: column;
@@ -130,12 +128,11 @@
             background-color: #f1f5f9;
             border-color: #94a3b8;
         }
-        /* Clase activa para el botón seleccionado */
-        .btn-escenario.activo-azul { border-color: #2563eb; background-color: #eff6ff; color: #1e40af; }
-        .btn-escenario.activo-verde { border-color: #10b981; background-color: #f0fdf4; color: #166534; }
-        .btn-escenario.activo-rojo { border-color: #ef4444; background-color: #fef2f2; color: #991b1b; }
+        
+        .btn-escenario.activo-azul { border-color: #2563eb !important; background-color: #eff6ff !important; color: #1e40af !important; }
+        .btn-escenario.activo-verde { border-color: #10b981 !important; background-color: #f0fdf4 !important; color: #166534 !important; }
+        .btn-escenario.activo-rojo { border-color: #ef4444 !important; background-color: #fef2f2 !important; color: #991b1b !important; }
 
-        /* TABLA DE RESULTADOS INDESTRUCTIBLE */
         .tech-table {
             width: 100%;
             border-collapse: collapse;
@@ -150,34 +147,33 @@
         .tech-table tr:last-child td { border-bottom: none; }
         
         .status-badge { font-weight: 800; text-align: right; }
-        .badge-optimo { color: #16a34a !important; background-color: #dcfce7; padding: 3px 8px; border-radius: 5px; border: 1px solid #bbf7d0; display: inline-block; font-size: 11px; }
-        .badge-peligro { color: #dc2626 !important; background-color: #fee2e2; padding: 3px 8px; border-radius: 5px; border: 1px solid #fca5a5; display: inline-block; font-size: 11px; }
+        .badge-optimo { color: #16a34a !important; background-color: #dcfce7 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #bbf7d0; display: inline-block; font-size: 11px; }
+        .badge-peligro { color: #dc2626 !important; background-color: #fee2e2 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #fca5a5; display: inline-block; font-size: 11px; }
 
-        /* CONTROLES INFERIORES */
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
             margin-top: 25px; 
             gap: 15px; 
             border-top: 2px solid #f1f5f9;
-            padding-top: 25px;
+            padding-top: 15px;
         }
         .btn-nav {
             flex: 1;
             display: block;
             text-decoration: none;
             background-color: #2563eb;
-            border-bottom: 5px solid #1d4ed8;
-            padding: 18px;
-            border-radius: 14px;
-            font-size: 16px;
+            border-bottom: 4px solid #1d4ed8;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 15px;
             font-weight: 800;
             color: #ffffff !important;
             text-align: center;
             transition: all 0.1s ease;
         }
         .btn-nav:hover { background-color: #3b82f6; }
-        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
+        .btn-nav:active { transform: translateY(2px); border-bottom-width: 2px; }
 
         @media (max-width: 768px) { .split-dashboard { flex-direction: column; gap: 15px; } }
     </style>
@@ -201,7 +197,7 @@
                 
                 <div class="split-dashboard">
                     
-                    <!-- PANEL IZQUIERDO: PARÁMETROS Y SELECTORES PREDETERMINADOS -->
+                    <!-- PANEL IZQUIERDO -->
                     <div class="panel-izquierdo">
                         <div class="caja-parametros-texto">
                             📍 <strong>Criterios de Escrituración:</strong><br>
@@ -211,23 +207,20 @@
                         </div>
 
                         <div class="selector-escenarios-grid">
-                            <span class="selector-label">Seleccione el Escenario Comercial Comercial:</span>
-                            <!-- Botón Escenario Don Raúl -->
+                            <span class="selector-label">Seleccione el Escenario Comercial:</span>
                             <button id="btn-raul" class="btn-escenario" onclick="cambiarEscenario('raul')">
                                 🚨 Escenario Don Raúl ($8,150,000 MXN)
                             </button>
-                            <!-- Botón Escenario Mínimo Real -->
                             <button id="btn-piso" class="btn-escenario" onclick="cambiarEscenario('piso')">
                                 🟢 Rango Mínimo Legal (-10%: $11,880,000 MXN)
                             </button>
-                            <!-- Botón Escenario Avalúo Justo -->
                             <button id="btn-avaluo" class="btn-escenario" onclick="cambiarEscenario('avaluo')">
                                 🔵 Precio de Avalúo Justo ($13,200,000 MXN)
                             </button>
                         </div>
                     </div>
 
-                    <!-- PANEL DERECHO: TABLA DE IMPUESTOS FIJOS E INDESTRUCTIBLES -->
+                    <!-- PANEL DERECHO -->
                     <div class="panel-derecho">
                         <table class="tech-table">
                             <thead>
@@ -247,3 +240,10 @@
                                     <td><strong>ISR Enajenación (Est. 20%)</strong></td>
                                     <td>Vendedor</td>
                                     <td id="monto-isr-vendedor" style="text-align: right; font-weight: 700; color: #0f172a;">$0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ISR Adquisición (Art. 125)</strong></td>
+                                    <td>Comprador</td>
+                                    <td id="monto-isr-comprador" style="text-align: right; font-weight: 700; color: #dc2626;">$1,010,000</td>
+                                </tr>
+                                <tr>
