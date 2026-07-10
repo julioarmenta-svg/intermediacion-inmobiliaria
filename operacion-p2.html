@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 2: Proceso y Marketing de Venta - URN</title>
+    <title>Módulo 2: Cierre del Caso de Campo - URN</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -79,27 +79,34 @@
         }
 
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
-        .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
         
-        .highlight-box {
+        .feedback-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .feedback-item {
             background-color: #f8fafc;
-            border-left: 5px solid #2563eb;
+            border-left: 5px solid #10b981; /* Borde verde para diferenciar la sección práctica */
             padding: 16px;
             border-radius: 4px;
             font-size: 13.5px;
-            color: #1e293b;
             line-height: 1.5;
-            margin-bottom: 20px;
+            color: #334155;
         }
-
-        .tech-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 13px;
+        .pregunta-titulo {
+            font-weight: 800;
+            color: #0f172a;
+            display: block;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.02em;
         }
-        .tech-table th { background: #f1f5f9; padding: 12px; text-align: left; font-weight: 700; color: #1e293b; border: 1px solid #cbd5e1; text-transform: uppercase; font-size: 11px; letter-spacing: 0.03em; }
-        .tech-table td { padding: 12px; border: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.5; }
+        .pregunta-num {
+            color: #10b981;
+            font-weight: 900;
+        }
 
         .revista-controles { 
             display: flex; 
@@ -131,57 +138,43 @@
         <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
         <header>
-            <span class="tag">Módulo 02 · Venta de Inmuebles</span>
-            <h1>El Embudo de Comercialización y Marketing de Precisión</h1>
+            <span class="tag">Módulo 02 · Apertura de Clase</span>
+            <h1>Retroalimentación del Módulo 1: Tarea Integradora del Caso</h1>
         </header>
 
         <div class="revista-wrapper">
             <div class="revista-header">
-                <span class="revista-pills">1. Proceso de Venta, Técnicas y Posicionamiento</span>
-                <span class="revista-contador">Pág. 3 de 11</span>
+                <span class="revista-pills">Proyecto de Infraestructura y Operación Proptech</span>
+                <span class="revista-contador">Pág. 2 de 11</span>
             </div>
 
             <div>
-                <h3 class="slide-titulo">La Estructura Científica del Plan de Comercialización</h3>
-                <p class="slide-txt">La venta inmobiliaria de alto nivel no es una labor de carisma empírico; es una secuencia regulada de pasos diseñada para acortar los <strong>Días en el Mercado (DOM)</strong> de un activo. Siguiendo las tesis de <em>Philip Kotler</em> sobre los mercados de alta implicación (donde el comprador arriesga su liquidez a largo plazo), el Consultor Patrimonial divide la venta en tres macroetapas estrictas:</p>
+                <h3 class="slide-titulo">Dictamen Operativo: Caso Cruzado Completo</h3>
                 
-                <table class="tech-table">
-                    <thead>
-                        <tr>
-                            <th>Etapa Operativa</th>
-                            <th>Acciones Críticas PropTech</th>
-                            <th>Métrica Clave de Control</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>1. Atracción Psicológica (Top of Funnel)</strong></td>
-                            <td>Segmentación psicográfica avanzada en Meta Ads e Inmuebles24, usando fotografía arquitectónica con base en iluminación natural y recorridos en video 4K.</td>
-                            <td><strong>CTR (Click-Through Rate):</strong> Mide el atractivo visual y digital inicial del anuncio del inmueble.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>2. Nutrición y Maduración (Middle of Funnel)</strong></td>
-                            <td>Filtro de precalificación financiera estricto (Regla 3 a 1) antes de la cita. Recorridos presenciales consultivos enfocados en la logística de vida del prospecto.</td>
-                            <td><strong>SLA de Lead a Cita:</strong> Velocidad de contacto institucional (óptimo menor a 5 minutos) y porcentaje de conversión.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>3. Cierre Específico (Bottom of Funnel)</strong></td>
-                            <td>Manejo técnico de objeciones estructurales. Presentación formal de la propuesta de compra respaldada por un análisis de mercado homologado por m².</td>
-                            <td><strong>Días en el Mercado (DOM):</strong> Tiempo total transcurrido entre la captación y la firma de la reserva.</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="feedback-list">
+                    
+                    <div class="feedback-item">
+                        <span class="pregunta-titulo"><span class="pregunta-num">PASO 1.</span> Arquitectura de Prospección y Captación Digital</span>
+                        Para operar profesionalmente en Chihuahua, la firma debe implementar un CRM centralizado (ej. EasyBroker) que conecte automatizadamente mediante multidifusión a portales líderes. Esto reduce las fugas de información y asegura responder en menos de 5 minutos (SLA óptimo). La prospección se enfoca en las <strong>4 Ds</strong>: identificando inmuebles por eventos de vida disparadores (Divorcio, Deuda, Defunción, Desplazamiento) a través de convenios con despachos jurídicos locales y escaneo automatizado en juzgados, adelantándose a la competencia.
+                    </div>
 
-                <div class="highlight-box">
-                    <strong>Hito de Continuidad: El Caso de Don Raúl</strong><br>
-                    Para vender aceleradamente la residencia de Don Raúl (valuada en $8.15M pero con valor comercial real de $13.2M), el marketing de precisión prohíbe los anuncios masivos genéricos. Al ser una ganga neta, el plan comercial se enfoca en inversionistas patrimoniales líquidos de Chihuahua o compradores corporativos de alta escala, promocionándola como una "Oportunidad de Captación con Plusvalía Líquida Inmediata", lo cual destruye el tiempo de comercialización en portales.
+                    <div class="feedback-item">
+                        <span class="pregunta-titulo"><span class="pregunta-num">PASO 2.</span> Desactivación del Sesgo y Negociación de Precio (Efecto Dotación)</span>
+                        El análisis de mercado dinámico en Residencial Lomas del Valle arroja un promedio real en portales de <strong>$13,200,000 MXN</strong> (con base en 5 testigos analizados). Al detectar que Don Raúl la ofrece en <strong>$8,150,000 MXN</strong>, descubrimos que está un 38% por debajo del mercado, lo cual indica que él no tiene un efecto dotación al alza, sino una urgencia crítica de salida por las 4 Ds. El verdadero sesgo emocional lo tienen Jorge y su esposa, quienes intentan regatear irracionalmente por costumbre. Se les frena el sesgo mostrándoles la métrica dura del valor por m² de la zona para evidenciar que la propiedad ya representa una ganancia patrimonial neta inmediata.
+                    </div>
+
+                    <div class="feedback-item">
+                        <span class="pregunta-titulo"><span class="pregunta-num">PASO 3.</span> Protocolo Blindado de Perfilamiento Humano y Financiero</span>
+                        Antes de pisar la propiedad, el protocolo exige auditar ingresos. Jorge y su esposa reportan ingresos conjuntos de <strong>$60,000 MXN mensuales</strong> y su tope de presupuesto de compra son $5,000,000 MXN. Para adquirir la residencia de Don Raúl ($8.15M), un banco les exigiría ingresos mínimos comprobables de <strong>$81,500 MXN netos</strong> (aplicando la regla estricta de precalificación 3 a 1 para cubrir una mensualidad promedio de $24,500 MXN). El prospecto está formalmente descalificado para la compra. La acción ética inmediata es no quemar tiempo en visitas y reubicarlos en el mercado de arrendamiento premium de la zona.
+                    </div>
+
                 </div>
             </div>
         </div>
 
         <div class="revista-controles">
-            <a href="operacion-p2.html" class="btn-nav">◀ Anterior</a>
-            <a href="operacion-p4.html" class="btn-nav">Siguiente ▶</a>
+            <a href="operacion.html" class="btn-nav">◀ Anterior</a>
+            <a href="operacion-p3.html" class="btn-nav">Siguiente ▶</a>
         </div>
 
     </div>
