@@ -32,11 +32,22 @@
         .tech-table td { padding: 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.4; }
         .tech-table tr:last-child td { border-bottom: none; }
 
-        /* NUEVO CONTENEDOR DE ESTRATEGIAS REEMPLAZANDO EL DILEMA */
-        .estrategias-box { background-color: #f8fafc; border: 1px solid #cbd5e1; border-left: 5px solid #2563eb; border-radius: 10px; padding: 14px; margin: 12px 0; }
-        .estrategias-title { font-size: 11px; font-weight: 900; color: #1e293b; text-transform: uppercase; margin-bottom: 6px; display: block; }
-        .lista-estrategias { font-size: 12.5px; line-height: 1.5; color: #475569; padding-left: 20px; }
-        .lista-estrategias li { margin-bottom: 4px; }
+        /* CONTENEDOR OPTIMIZADO PARA LA IMAGEN ACADÉMICA */
+        .imagen-recurso-box {
+            width: 100%;
+            margin: 12px 0;
+            padding: 8px;
+            border: 1px dashed #cbd5e1;
+            border-radius: 12px;
+            background-color: #f8fafc;
+            text-align: center;
+        }
+        .img-fluida {
+            max-width: 100%;
+            height: 160px; /* Altura controlada para evitar desbordamiento de botones */
+            object-fit: contain;
+            border-radius: 6px;
+        }
 
         .revista-controles { display: flex; justify-content: space-between; margin-top: 15px; gap: 15px; border-top: 2px solid #f1f5f9; padding-top: 12px; }
         .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 12px; border-radius: 8px; font-size: 14.5px; font-weight: 800; color: #ffffff !important; text-align: center; transition: all 0.1s ease; }
@@ -91,14 +102,9 @@
                     </table>
                 </div>
 
-                <!-- BLOQUE DE CONTENIDO CORPORATIVO SUSTITUTO SIN DILEMA -->
-                <div class="estrategias-box">
-                    <span class="estrategias-title">🛠️ Buenas Prácticas en Mediación de Arrendamientos</span>
-                    <ul class="lista-estrategias">
-                        <li><strong>Convenios de Reconocimiento de Adeudo:</strong> Formalizar parcialidades por escrito ante Notario para evitar juicios prolongados.</li>
-                        <li><strong>Garantías Líquidas:</strong> Validar la solvencia del obligado solidario mediante reportes de Buró de Crédito y gravámenes inmobiliarios.</li>
-                        <li><strong>Justificación Documental:</strong> Registrar bitácoras y acuses de recibo de cada notificación como prueba procesal.</li>
-                    </ul>
+                <!-- CONTENEDOR INTEGRADO CON TU IMAGEN DE REPOSITORIO -->
+                <div class="imagen-recurso-box">
+                    <img src="imagenes/cobranza.png" alt="Protocolo Legal de Cobranza" class="img-fluida">
                 </div>
 
                 <div class="revista-controles">
