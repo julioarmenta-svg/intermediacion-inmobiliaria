@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 2: Introducción y Retroalimentación - URN</title>
+    <title>Módulo 2: Cierre Analítico - URN</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -13,7 +13,7 @@
             color: #334155;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto;
             background-color: #ffffff;
             border-radius: 28px;
@@ -40,7 +40,7 @@
         .tag {
             font-size: 11px;
             font-weight: 800;
-            color: #2563eb; /* Identidad Azul para Módulo 2 */
+            color: #2563eb; /* Identidad Azul Módulo 2 */
             text-transform: uppercase;
             letter-spacing: 0.12em;
         }
@@ -58,6 +58,7 @@
             padding: 40px;
             margin-bottom: 25px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+            min-height: 500px;
         }
         .revista-header {
             display: flex;
@@ -78,6 +79,7 @@
             border: 1px solid #dbeafe;
         }
 
+        /* DISEÑO DE DIAPOSITIVA PREMIUM EN RECTA ACADÉMICA */
         .diapositiva-grid {
             display: flex;
             flex-direction: row;
@@ -87,48 +89,53 @@
         .col-texto {
             flex: 1.1;
         }
-        .col-visual-feedback {
+        .col-visual {
             flex: 0.9;
-            background-color: #f0fdf4;
-            border: 2px solid #bbf7d0;
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
             border-radius: 16px;
-            padding: 24px;
             display: flex;
-            flex-direction: column;
-            gap: 14px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4 / 3; /* Proporción PowerPoint Estándar */
+            width: 100%;
         }
         
+        .img-fixed {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #ffffff;
+        }
+
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
-        .slide-txt { font-size: 15px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
         
-        .highlight-box {
+        /* BLOQUES DE RESPUESTAS MAESTRAS ENNUMERADAS */
+        .feedback-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .feedback-item {
             background-color: #f8fafc;
             border-left: 5px solid #2563eb;
             padding: 16px;
             border-radius: 4px;
             font-size: 13.5px;
-            color: #1e293b;
             line-height: 1.5;
-            margin-bottom: 15px;
+            color: #334155;
         }
-
-        .solucion-card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 14px;
-            font-size: 12.5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.01);
-            border-left: 4px solid #16a34a;
-        }
-        .solucion-title {
+        .pregunta-titulo {
             font-weight: 800;
-            color: #14532d;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 0.03em;
+            color: #0f172a;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .pregunta-num {
+            color: #2563eb;
+            font-weight: 900;
         }
 
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
@@ -161,56 +168,60 @@
         <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
         <header>
-            <span class="tag">Módulo 02 · Apertura de Clase e Introducción</span>
-            <h1>Unidad II: Operación Comercial - Ventas, Rentas y Traspasos</h1>
+            <span class="tag">Módulo 02 · Apertura e Inicio de Clase</span>
+            <h1>Retroalimentación del Módulo 1: Cuestionario Crítico Reflexivo</h1>
         </header>
 
         <div class="revista-wrapper">
             <div class="revista-header">
-                <span class="revista-pills">PÁGINA 1 · Cierre Analítico y Respuestas del Módulo 1</span>
+                <span class="revista-pills">Evaluación Académica Independiente de Postgrado</span>
                 <span class="revista-contador">Pág. 1 de 11</span>
             </div>
 
             <div class="diapositiva-grid">
                 
-                <!-- Columna Izquierda: Introducción Académica -->
+                <!-- Columna Izquierda: Bloque Desglosado de Respuestas Exclusivas -->
                 <div class="col-texto">
-                    <h3 class="slide-titulo">Cierre del Expediente: Don Raúl, Jorge y su Esposa</h3>
-                    <p class="slide-txt">Antes de adentrarnos en las técnicas del mercado transaccional, es indispensable inyectar rigor científico evaluando las respuestas del taller de campo anterior. Como **Consultores Patrimoniales**, el análisis de los incentivos económicos ocultos y las limitantes financieras de los prospectos guían de forma exacta nuestras decisiones del día a día.</p>
+                    <h3 class="slide-titulo">Resolución Oficial de Criterios Teóricos</h3>
                     
-                    <div class="highlight-box">
-                        <strong>Ecuación de Diagnóstico Patrimonial Cruzado:</strong><br>
-                        • <strong>Asimetría de Akerlof:</strong> Al no usar herramientas PropTech (como bases históricas o simuladores), el asesor tradicional cae en la ceguera operativa y acepta valuaciones emocionales del dueño, perdiendo credibilidad institucional [3].<br>
-                        • <strong>Efecto Dotación (Thaler):</strong> Medible a través de los Días en Mercado (DOM). Si un activo supera los 90 días inmóvil frente a un inventario homologado dinámico, el sobreprecio emocional está destruyendo el valor real de salida de la propiedad.
+                    <div class="feedback-list">
+                        
+                        <div class="feedback-item">
+                            <span class="pregunta-titulo"><span class="pregunta-num">1.</span> ¿Cómo impacta la Asimetría de Información de Akerlof a un asesor empírico que no usa proptech?</span>
+                            Genera ceguera de mercado. El asesor empírico depende únicamente del testimonio sesgado del vendedor. Al carecer de datos PropTech validados, es incapaz de neutralizar la asimetría informativa, perdiendo credibilidad frente al comprador institucional y forzando el fracaso operativo debido a la desconfianza del entorno legal y comercial.
+                        </div>
+
+                        <div class="feedback-item">
+                            <span class="pregunta-titulo"><span class="pregunta-num">2.</span> ¿Qué métricas demuestran de forma medible que un dueño sufre el "Efecto Dotación" de Thaler?</span>
+                            Principalmente los <strong>Días en el Mercado (DOM)</strong> superiores a la media de la zona y la tasa de rebote o nula conversión de leads en portales inmobiliarios. Si un inventario homologado dinámico se desplaza en 45 días y el activo del dueño lleva inmóvil más de 90 días con cero ofertas formales, el sobreprecio emocional es matemáticamente demostrable.
+                        </div>
+
+                        <div class="feedback-item">
+                            <span class="pregunta-titulo"><span class="pregunta-num">3.</span> ¿Por qué la regla financiera 3 a 1 protege el ecosistema de originación de créditos y la liquidez familiar?</span>
+                            Porque actúa como un dique macroeconómico contra el sobreendeudamiento. Al exigir que la mensualidad hipotecaria estimada no exceda el 30% o 33% de los ingresos netos comprobables, se blinda el flujo de efectivo libre de la familia para cubrir sus necesidades básicas y de salud, impidiendo colapsos en las carteras vencidas bancarias.
+                        </div>
+
+                        <div class="feedback-item">
+                            <span class="pregunta-titulo"><span class="pregunta-num">4.</span> ¿De qué manera los buscadores (Inmuebles24, Lamudi) inyectan racionalidad de precios en zonas emocionales?</span>
+                            Operan como reguladores transparentes de la oferta. Al concentrar masivamente el inventario disponible y calcular el precio de lista promedio por metro cuadrado en tiempo real, transforman un mercado opaco y emocional en un entorno de competencia perfecta donde el comprador compara de inmediato y castiga los sobreprecios ficticios.
+                        </div>
+
+                        <div class="feedback-item">
+                            <span class="pregunta-titulo"><span class="pregunta-num">5.</span> ¿Qué implicaciones legales y de marca enfrenta un consultor que promueve propiedades sin control de documentos (SLA)?</span>
+                            A nivel legal, enfrenta riesgos críticos de demandas civiles o penales por fraude indirecto, responsabilidad solidaria en operaciones con vicios ocultos y contingencias fiscales. A nivel de marca, destruye su reputación institucional, perdiendo la confianza de notarios, brókers bancarios y la recomendación orgánica del mercado.
+                        </div>
+
                     </div>
-                    
-                    <p class="slide-txt">El gran dilema ético se resuelve entendiendo las limitantes: Jorge y su esposa son una **demanda descalificada para la compra** de este activo específico, obligándonos a reubicarlos de forma estratégica para cuidar los intereses patrimoniales de ambas partes.</p>
                 </div>
 
-                <!-- Columna Derecha: El Panel de Respuestas Maestras del Consultor -->
-                <div class="col-visual-feedback">
-                    <p style="font-size: 11px; font-weight: 800; color: #15803d; text-transform: uppercase; border-bottom: 1px solid #bbf7d0; padding-bottom: 6px; margin-bottom: 4px;">🎯 Dictamen Directivo del Caso Práctico</p>
-                    
-                    <div class="solucion-card">
-                        <div class="solucion-title">1. Estrategia con el Vendedor (Don Raúl)</div>
-                        Su precio está un 38% por debajo del mercado en Lomas del Valle ($8.15M vs $13.2M promedio). Eticamente se le debe auditar si el origen de su precio bajo es una urgencia por **Defunción o Deuda** (4 Ds). Si no hay urgencia, se debe ajustar al alza racionalmente para no dañar su patrimonio.
-                    </div>
-
-                    <div class="solucion-card">
-                        <div class="solucion-title">2. Desactivación del Sesgo de Regateo</div>
-                        A los compradores se les frena el regateo mostrando de forma empática los testigos reales extraídos de portales. Se les demuestra matemáticamente que la propiedad ya es una ganga y que comprar por debajo del valor por m² de la zona es una ganancia inmediata de plusvalía líquida.
-                    </div>
-
-                    <div class="solucion-card">
-                        <div class="solucion-title">3. El Filtro Financiero Excluyente</div>
-                        Jorge y su esposa ganan $60,000 MXN mensuales y la propiedad cuesta $8.15M MXN. Aplicando la **Regla Bancaria Estricta 3 a 1**, para un crédito de ese valor requerirían ingresos mínimos comprobables de **$81,500 MXN mensuales** (asumiendo una mensualidad típica de $10 por cada $1,000 otorgados). Están formalmente descalificados para la compra.
-                    </div>
-
-                    <div class="solucion-card">
-                        <div class="solucion-title">4. El Pivot Directivo Ético</div>
-                        Como Consultor Profesional, la acción inmediata es **no hacerles perder el tiempo**. Se protege el activo de Don Raúl y se redirige a Jorge y su esposa hacia la **Unidad II: El Mercado de Arrendamiento Premium**, localizándoles una propiedad en renta de $20,000 MXN mensuales (que se adapta perfectamente a su regla 3 a 1 de ingresos).
-                    </div>
+                <!-- Columna Derecha: El Gráfico Técnico Heredado de Tu Repositorio de GitHub -->
+                <div class="col-visual">
+                    <img src="imagenes/imagen10.png" class="img-fixed" alt="Cierre de Evaluación - Módulo 1">
                 </div>
 
             </div>
         </div>
+
+        <div class="revista-controles">
+            <a href="#" class="btn-nav btn-disabled">◀ Anterior</a>
+            <!-- Lanza el flujo limpio hacia el paso 2 de la tarea (Don Raúl y Jorge) -->
