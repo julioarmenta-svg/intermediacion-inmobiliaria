@@ -108,7 +108,7 @@
         }
         .btn-static:last-child { margin-bottom: 0; }
         
-        /* Estilos de botones activos */
+        /* Estilos de botones activos con alta prioridad */
         .btn-static.activo-rojo { border-color: #ef4444 !important; background-color: #fef2f2 !important; color: #991b1b !important; }
         .btn-static.activo-verde { border-color: #10b981 !important; background-color: #f0fdf4 !important; color: #166534 !important; }
         .btn-static.activo-azul { border-color: #2563eb !important; background-color: #eff6ff !important; color: #1e40af !important; }
@@ -166,7 +166,7 @@
                 
                 <div class="split-dashboard">
                     
-                    <!-- PANEL IZQUIERDO INTERACTIVO -->
+                    <!-- PANEL IZQUIERDO -->
                     <div class="panel-izquierdo">
                         <div class="caja-parametros-texto">
                             📍 <strong>Criterios de Escrituración:</strong><br>
@@ -176,13 +176,14 @@
                         </div>
 
                         <div class="selector-escenarios-grid">
-                            <button id="btn-raul" class="btn-static" onclick="cambiarEscenario('raul')">🚨 Escenario Don Raúl ($8,150,000 MXN)</button>
-                            <button id="btn-piso" class="btn-static" onclick="cambiarEscenario('piso')">🟢 Rango Mínimo Legal (-10%)</button>
-                            <button id="btn-avaluo" class="btn-static" onclick="cambiarEscenario('avaluo')">🔵 Precio de Avalúo Justo</button>
+                            <span class="selector-label" style="display:block; font-size:11px; font-weight:800; margin-bottom:8px; color:#64748b;">Seleccione el Escenario Comercial:</span>
+                            <button id="btn-raul" class="btn-static">🚨 Escenario Don Raúl ($8,150,000 MXN)</button>
+                            <button id="btn-piso" class="btn-static">🟢 Rango Mínimo Legal (-10%)</button>
+                            <button id="btn-avaluo" class="btn-static">🔵 Precio de Avalúo Justo</button>
                         </div>
                     </div>
 
-                    <!-- PANEL DERECHO CON IDENTIFICADORES DE RESPUESTA -->
+                    <!-- PANEL DERECHO -->
                     <div class="panel-derecho">
                         <table class="tech-table">
                             <thead>
@@ -229,33 +230,22 @@
     </div>
 
     <script>
-        // Diccionario de datos estáticos precargados para evitar errores lógicos de cálculo
-        const escenarios = {
-            raul: {
-                isai: "$264,000",
-                vendedor: "$0",
-                comprador: "$1,010,000",
-                dictamen: "SUBVALUADO (RECHAZADO)",
-                color: "#dc2626",
-                btnId: "btn-raul",
-                btnClass: "activo-rojo"
-            },
-            piso: {
-                isai: "$264,000",
-                vendedor: "$1,076,000",
-                comprador: "$0",
-                dictamen: "RANGO ÓPTIMO (ACEPTADO)",
-                color: "#16a34a",
-                btnId: "btn-piso",
-                btnClass: "activo-verde"
-            },
-            avaluo: {
-                isai: "$264,000",
-                vendedor: "$1,340,000",
-                comprador: "$0",
-                dictamen: "PRECIO ÓPTIMO (ACEPTADO)",
-                color: "#2563eb",
-                btnId: "btn-avaluo",
-                btnClass: "activo-azul"
-            }
-        };
+        // Los datos se inyectan mediante eventos aislados inline asignados directamente a las variables del DOM
+        const bRaul = document.getElementById('btn-raul');
+        const bPiso = document.getElementById('btn-piso');
+        const bAvaluo = document.getElementById('btn-avaluo');
+
+        const mIsai = document.getElementById('monto-isai');
+        const mVendedor = document.getElementById('monto-isr-vendedor');
+        const mComprador = document.getElementById('monto-isr-comprador');
+        const mDictamen = document.getElementById('monto-dictamen');
+
+        // Inicializar el botón de Don Raúl como activo en el arranque de la página
+        bRaul.className = "btn-static activo-rojo";
+
+        // Evento Bloque 1: Clic en Don Raúl
+        bRaul.addEventListener('click', function() {
+            mIsai.innerText = "$264,000";
+            mVendedor.innerText = "$0";
+            mComprador.innerText = "$1,010,000";
+            mDictamen.innerText = "SUBVALUADO (RECHAZADO)";
