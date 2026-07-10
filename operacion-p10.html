@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 2: Conclusiones - URN</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background-color: #f1f5f9; padding: 15px; color: #334155;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background-color: #ffffff;
+            border-radius: 20px; padding: 20px 25px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06); border: 1px solid #e2e8f0;
+        }
+        .nav-back { display: inline-block; text-decoration: none; color: #2563eb; font-size: 12px; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
+        header { margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+        .tag { font-size: 10px; font-weight: 800; color: #2563eb; text-transform: uppercase; letter-spacing: 0.1em; }
+        h1 { font-size: 22px; font-weight: 800; color: #0f172a; margin-top: 2px; }
+        .revista-wrapper { background-color: #ffffff; border: 3px solid #cbd5e1; border-radius: 16px; padding: 20px; margin-bottom: 10px; }
+        .revista-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; margin-bottom: 12px; }
+        .revista-pills { font-size: 10.5px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+        .revista-contador { font-size: 10.5px; font-weight: 800; color: #2563eb; background-color: #eff6ff; padding: 3px 10px; border-radius: 20px; }
+        
+        .slide-titulo { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+        .slide-txt { font-size: 13px; line-height: 1.4; color: #475569; margin-bottom: 12px; }
+        .sub-seccion-pills { font-size: 9.5px; font-weight: 800; color: #2563eb; background-color: #eff6ff; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 6px; text-transform: uppercase; }
+        
+        /* BLOQUE DE CONCLUSIONES DIRECTIVAS EN DOS COLUMNAS */
+        .conclusiones-grid {
+            display: flex;
+            gap: 20px;
+            margin: 10px 0 15px 0;
+        }
+        .columna-conclusión {
+            flex: 1;
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 14px;
+        }
+        .columna-conclusión h4 {
+            font-size: 12px;
+            font-weight: 900;
+            color: #0f172a;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 4px;
+        }
+        .lista-puntos {
+            list-style: none;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #475569;
+        }
+        .lista-puntos li {
+            margin-bottom: 8px;
+            padding-left: 14px;
+            position: relative;
+        }
+        .lista-puntos li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        .revista-controles { display: flex; justify-content: space-between; margin-top: 15px; gap: 15px; border-top: 2px solid #f1f5f9; padding-top: 12px; }
+        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 12px; border-radius: 8px; font-size: 14.5px; font-weight: 800; color: #ffffff !important; text-align: center; transition: all 0.1s ease; }
+        .btn-nav:hover { background-color: #3b82f6; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
+
+        <header>
+            <span class="tag">Unidad III · Gestión y Legalidad de Inmuebles</span>
+            <h1>Cierre Directivo del Módulo</h1>
+        </header>
+
+        <div class="revista-wrapper">
+            <div class="revista-header">
+                <span class="revista-pills">Conclusiones Corporativas</span>
+                <span class="revista-contador">Pág. 10 de 11</span>
+            </div>
+
+            <div style="padding: 0 5px;">
+                <span class="sub-seccion-pills">Resumen Ejecutivo</span>
+                <h3 class="slide-titulo">Criterios de Blindaje Fiscal y Contractual</h3>
+                <p class="slide-txt">La correcta gestión patrimonial exige un equilibrio riguroso entre la optimización tributaria y el estricto cumplimiento normativo local y federal para proteger la rentabilidad del negocio:</p>
+                
+                <!-- GRID DE CONCLUSIONES PARALELAS -->
+                <div class="conclusiones-grid">
+                    
+                    <!-- COLUMNA FISCAL -->
+                    <div class="columna-conclusión" style="border-left: 5px solid #2563eb;">
+                        <h4>⚖️ Estrategia Fiscal y Notarial</h4>
+                        <ul class="lista-puntos">
+                            <li><strong>Exenciones Topadas:</strong> El beneficio de casa habitación de 700,000 UDIS se limita al excedente de la ganancia real, obligando al pago del remanente.</li>
+                            <li><strong>Candado del 10%:</strong> El desfase de precios frente al avalúo comercial gatilla penalizaciones de ISR por adquisición inmediatas para el comprador.</li>
+                            <li><strong>Sustento Territorial:</strong> Las bases gravables locales como el ISAI se blindan adoptando estrictamente el valor máximo cruzado del activo.</li>
+                        </ul>
+                    </div>
+
+                    <!-- COLUMNA OPERATIVA -->
+                    <div class="columna-conclusión" style="border-left: 5px solid #ea580c;">
+                        <h4>📝 Blindaje Inmobiliario Contractual</h4>
+                        <ul class="lista-puntos">
+                            <li><strong>Protección de Comisión:</strong> Las cláusulas de prórroga posterior evitan de forma contundente la evasión de honorarios tras el vencimiento.</li>
+                            <li><strong>Causa Raíz Operativa:</strong> El deslinde del mantenimiento correctivo se sujeta a la procedencia técnica entre desgaste natural y negligencia.</li>
+                            <li><strong>Seguridad del Flujo:</strong> Los inventarios documentados y las pólizas jurídicas mitigan el riesgo en portafolios de arrendamiento comercial.</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="revista-controles">
+                    <a href="operacion-p9.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
+                    <a href="operacion-p11.html" class="btn-nav">Siguiente (Pág. 11) ▶</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
