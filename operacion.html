@@ -81,41 +81,43 @@
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 25px; }
 
-        /* CONTENEDOR DE ENLACES INTERACTIVOS MAESTROS */
+        /* DISEÑO DE BOTÓN DE CONTROL REMEDIADO: ENLACES ESTILIZADOS EN LUGAR DE ETIQUETAS BUTTON */
         .hub-respuestas-nav {
             display: flex;
             gap: 15px;
             margin-bottom: 30px;
         }
-        .btn-consulta {
+        .enlace-bloque {
             flex: 1;
             padding: 16px;
-            border: none;
+            text-decoration: none;
             border-radius: 14px;
             font-size: 13.5px;
             font-weight: 800;
-            cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 0.02em;
-            transition: all 0.15s ease;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.1s ease, border-bottom 0.1s ease;
+            cursor: pointer;
+            user-select: none;
         }
-        .btn-cuestionario {
+        
+        .enlace-cuestionario {
             background-color: #2563eb;
-            color: white;
-            border-bottom: 4px solid #1d4ed8;
+            color: #ffffff !important;
+            border-bottom: 5px solid #1d4ed8;
         }
-        .btn-cuestionario:hover { background-color: #3b82f6; }
+        .enlace-cuestionario:hover { background-color: #3b82f6; }
         
-        .btn-integradora {
+        .enlace-integradora {
             background-color: #10b981;
-            color: white;
-            border-bottom: 4px solid #059669;
+            color: #ffffff !important;
+            border-bottom: 5px solid #059669;
         }
-        .btn-integradora:hover { background-color: #34d399; }
+        .enlace-integradora:hover { background-color: #34d399; }
         
-        .btn-consulta:active { transform: translateY(2px); border-bottom-width: 1px; }
+        .enlace-bloque:active { transform: translateY(3px); border-bottom-width: 2px; }
 
         /* BLOQUES DINÁMICOS DE RESPUESTAS */
         .panel-contenido {
@@ -144,12 +146,14 @@
         .pregunta-num-azul { color: #2563eb; font-weight: 900; }
         .pregunta-num-verde { color: #10b981; font-weight: 900; text-transform: uppercase; font-size: 12px; }
 
-        /* CONTROLES DE DIRECCIÓN DE DIAPOSITIVAS */
+        /* CONTROLES DE DIRECCIÓN DEL COMPONENTE REVISTA */
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
             margin-top: 35px; 
             gap: 20px; 
+            border-top: 2px solid #f1f5f9;
+            padding-top: 25px;
         }
         .btn-nav {
             flex: 1;
@@ -161,13 +165,13 @@
             border-radius: 14px;
             font-size: 16px;
             font-weight: 800;
-            color: #ffffff;
+            color: #ffffff !important;
             text-align: center;
             transition: all 0.1s ease;
         }
         .btn-nav:hover { background-color: #334155; }
         .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #0f172a; }
-        .btn-disabled { background-color: #cbd5e1; border-bottom: 5px solid #94a3b8; color: #94a3b8; cursor: not-allowed; pointer-events: none; }
+        .btn-disabled { background-color: #cbd5e1; border-bottom: 5px solid #94a3b8; color: #94a3b8 !important; cursor: not-allowed; pointer-events: none; }
     </style>
 </head>
 <body>
@@ -190,10 +194,10 @@
                 <h3 class="slide-titulo">Cierre Analítico: Evaluación de Criterios</h3>
                 <p class="slide-txt">Bienvenidos a la Unidad II. Antes de iniciar con el tema de Operación Comercial - Ventas, Rentas y Traspasos, revisaremos las respuestas correspondientes a la sesión anterior. Selecciona cualquiera de las dos secciones para desplegar las respuestas a los ejercicios de la primera tarea:</p>
                 
-                <!-- BOTONES DE ENLACE DE CONSULTA -->
+                <!-- ENLACES CREATIVOS REESTRUCTURADOS CON FORMA DE BOTÓN EN LUGAR DE ETIQUETAS BUTTON DE FORMULARIO -->
                 <div class="hub-respuestas-nav">
-                    <button class="btn-consulta btn-cuestionario" onclick="abrirSolucion('cuestionario')">📋 1. Cuestionario Crítico</button>
-                    <button class="btn-consulta btn-integradora" onclick="abrirSolucion('integradora')">🔥 2. Tarea Integradora</button>
+                    <a class="enlace-bloque enlace-cuestionario" onclick="abrirSolucion('cuestionario')">📋 1. Cuestionario Crítico</a>
+                    <a class="enlace-bloque enlace-integradora" onclick="abrirSolucion('integradora')">🔥 2. Tarea Integradora</a>
                 </div>
 
                 <!-- BLOQUE 1: RESPUESTAS DEL CUESTIONARIO CRÍTICO (AZUL) -->
@@ -212,5 +216,3 @@
                             Porque actúa como un dique macroeconómico contra el sobreendeudamiento. Al exigir que la mensualidad hipotecaria estimada no exceda el 30% o 33% de los ingresos netos comprobables, se blinda el flujo de efectivo libre de la familia para cubrir sus necesidades básicas y de salud, impidiendo colapsos en las carteras vencidas bancarias.
                         </div>
                         <div class="feedback-item azul-border">
-                            <span class="pregunta-titulo"><span class="pregunta-num-azul">4.</span> ¿De qué manera los buscadores (Inmuebles24, Lamudi) inyectan racionalidad de precios en zonas emocionales?</span>
-Usa el código con precaución.
