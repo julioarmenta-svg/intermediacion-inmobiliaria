@@ -56,7 +56,7 @@
         .opciones-list button.incorrecto { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #b91c1c !important; }
 
         .revista-controles { display: flex; justify-content: space-between; margin-top: 15px; gap: 15px; border-top: 2px solid #f1f5f9; padding-top: 12px; }
-        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 12px; border-radius: 8px; font-size: 14.5px; font-weight: 800; color: #ffffff !important; text-align: center; }
+        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 12px; border-radius: 8px; font-size: 14.5px; font-weight: 800; color: #ffffff !important; text-align: center; transition: all 0.1s ease; }
         .btn-nav:hover { background-color: #3b82f6; }
     </style>
 </head>
@@ -81,36 +81,36 @@
                 <h3 class="slide-titulo">Validación de Criterios Fiscales, Valuación y Contratos</h3>
                 <p class="slide-txt">Dé clic sobre la opción que considere correcta para recibir retroalimentación notarial inmediata:</p>
 
-                <!-- AREA INTERACTIVA AUTOMÁTICA -->
+                <!-- AREA INTERACTIVA AUTOMÁTICA CON TUS PREGUNTAS SELECCIONADAS -->
                 <div class="quiz-container">
                     
-                    <!-- PREGUNTA 1 -->
+                    <!-- PREGUNTA 1 (ORIGINAL 1) -->
                     <div class="pregunta-item">
-                        <p>1. Según la Ley del ISR, ¿cada cuántos años puede una persona física exentar la venta de su casa habitación?</p>
+                        <p>1. Según la Ley del ISR, ¿cada cuántos años puede una persona física exentar la ganancia por la venta de su casa habitación en México?</p>
                         <div class="opciones-list">
-                            <button onclick="verificar(this, false, 'La ley exige un lapso mayor para evitar la especulación.')">A) Cada 1 año</button>
-                            <button onclick="verificar(this, true, '¡Correcto! El Artículo 93 estipula una temporalidad mínima de 3 años.')">B) Cada 3 años</button>
+                            <button onclick="verificar(this, false, 'La ley exige un lapso mayor para evitar la especulación inmobiliaria.')">A) Cada 1 año</button>
+                            <button onclick="verificar(this, true, '¡Correcto! El Artículo 93 estipula una temporalidad mínima de 3 años inmediatos anteriores.')">B) Cada 3 años</button>
                             <button onclick="verificar(this, false, 'El límite legal es menor a 5 años.')">C) Cada 5 años</button>
                         </div>
                     </div>
 
-                    <!-- PREGUNTA 2 -->
+                    <!-- PREGUNTA 2 (ORIGINAL 2) -->
                     <div class="pregunta-item">
-                        <p>2. ¿Cuál es el porcentaje máximo anual autorizado de depreciación aplicable a las construcciones en enajenación?</p>
+                        <p>2. ¿Cuál es el monto máximo que la Ley del ISR permite exentar a un vendedor por la enajenación de su casa habitación, medido en Unidades de Inversión (UDIS)?</p>
                         <div class="opciones-list">
-                            <button onclick="verificar(this, false, 'Tasa incorrecta para el Título IV.')">A) 3% anual</button>
-                            <button onclick="verificar(this, true, '¡Correcto! El Artículo 125 estipula el 5% de demerito anual sobre la obra civil.')">B) 5% anual</button>
-                            <button onclick="verificar(this, false, '10% excede el límite permitido para inmuebles.')">C) 10% anual</button>
+                            <button onclick="verificar(this, true, '¡Correcto! El Artículo 93 establece el tope en 700,000 UDIS (aprox. $5.7M a $6M MXN). Por el excedente se paga ISR.')">A) Hasta 700,000 UDIS</button>
+                            <button onclick="verificar(this, false, 'Este límite se encuentra castigado respecto al tope oficial actual.')">B) Hasta 500,000 UDIS</button>
+                            <button onclick="verificar(this, false, 'Criterio erróneo. Sí existe un tope máximo para proteger la recaudación.')">C) Sin límite de monto</button>
                         </div>
                     </div>
 
-                    <!-- PREGUNTA 3 -->
+                    <!-- PREGUNTA 3 (ORIGINAL 10) -->
                     <div class="pregunta-item">
-                        <p>3. Para el cobro de la tasa del ISAI local, ¿qué valor se toma como base gravable obligatoria?</p>
+                        <p>3. Si una tubería interna de agua se fractura por el desgaste del tiempo y la antigüedad del inmueble, ¿quién tiene la obligación jurídica de pagar la reparación correctiva?</p>
                         <div class="opciones-list">
-                            <button onclick="verificar(this, false, 'No se limita al contrato para evitar subvaluaciones.')">A) El precio del contrato de compraventa</button>
-                            <button onclick="verificar(this, true, '¡Correcto! Se toma obligatoriamente el valor más alto entre precio, catastro y avalúo.')">B) El valor más alto entre precio, catastro o avalúo</button>
-                            <button onclick="verificar(this, false, 'El catastro suele estar castigado, por lo que se cruza con avalúo.')">C) Únicamente el valor catastral del municipio</button>
+                            <button onclick="verificar(this, false, 'Incorrecto. El inquilino no asume el desgaste estructural de la obra civil.')">A) El Inquilino, por tener la posesión física actual</button>
+                            <button onclick="verificar(this, true, '¡Correcto! El Propietario, por ser un desgaste natural de la obra civil y conservación del activo bajo el Código Civil.')">B) El Propietario, por ser un desgaste natural de la infraestructura</button>
+                            <button onclick="verificar(this, false, 'Criterio incorrecto. Las leyes delimitan claramente la responsabilidad por causa raíz.')">C) Se divide el costo al 50% de forma obligatoria</button>
                         </div>
                     </div>
 
@@ -127,7 +127,6 @@
 
     <script>
         function verificar(boton, esCorrecto, retroalimentacion) {
-            // Limpia opciones hermanas
             var lista = boton.parentElement;
             var botones = lista.getElementsByTagName('button');
             for(var i=0; i<botones.length; i++) {
@@ -135,7 +134,6 @@
                 botones[i].disabled = true;
             }
             
-            // Pinta resultado
             if(esCorrecto) {
                 boton.className = 'correcto';
                 alert("✅ " + retroalimentacion);
