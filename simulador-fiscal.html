@@ -1,0 +1,250 @@
+html<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictamen: Simulador de Impacto Fiscal - URN</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background-color: #f1f5f9; 
+            padding: 40px 20px;
+            color: #334155;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+        .nav-back {
+            display: inline-block;
+            text-decoration: none;
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .nav-back:hover { color: #1d4ed8; }
+        header {
+            margin-bottom: 35px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 20px;
+        }
+        .tag {
+            font-size: 11px;
+            font-weight: 800;
+            color: #2563eb;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 4px;
+            letter-spacing: -0.02em;
+        }
+        .revista-wrapper {
+            background-color: #ffffff;
+            border: 3px solid #cbd5e1;
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+        }
+        .revista-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        .revista-pills { font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
+        .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
+        
+        .sub-seccion-pills {
+            font-size: 11px;
+            font-weight: 800;
+            color: #2563eb;
+            background-color: #eff6ff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* RECUADRO DE PARÁMETROS COMO TEXTO ELEGANTE */
+        .caja-parametros-texto {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #334155;
+            margin-bottom: 25px;
+        }
+
+        /* BLOQUE DE ENTRADA NUMÉRICA DIRECTA */
+        .cuadro-input-grupo {
+            background: #ffffff;
+            border: 2px solid #cbd5e1;
+            padding: 20px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        .input-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .input-monto {
+            width: 100%;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: 800;
+            color: #2563eb;
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+            outline: none;
+            background-color: #f8fafc;
+            transition: border-color 0.1s ease;
+        }
+        .input-monto:focus {
+            border-color: #2563eb;
+            background-color: #ffffff;
+        }
+
+        /* TABLA DE RESULTADOS INDESTRUCTIBLE */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 15px 0 25px 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            background: #ffffff;
+        }
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            min-width: 600px;
+        }
+        .tech-table th { background: #f8fafc; padding: 12px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.03em; }
+        .tech-table td { padding: 12px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.5; }
+        .tech-table tr:last-child td { border-bottom: none; }
+        
+        /* Semáforo en celdas */
+        .status-badge {
+            font-weight: 800;
+            text-align: right;
+            font-size: 13px;
+        }
+        .badge-optimo { color: #16a34a !important; background-color: #dcfce7; padding: 4px 10px; border-radius: 6px; border: 1px solid #bbf7d0; display: inline-block; }
+        .badge-peligro { color: #dc2626 !important; background-color: #fee2e2; padding: 4px 10px; border-radius: 6px; border: 1px solid #fca5a5; display: inline-block; }
+
+        /* CONTROLES DE FLUJO INTEGRADOS */
+        .revista-controles { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-top: 30px; 
+            gap: 20px; 
+            border-top: 2px solid #f1f5f9;
+            padding-top: 25px;
+        }
+        .btn-nav {
+            flex: 1;
+            display: block;
+            text-decoration: none;
+            background-color: #2563eb;
+            border-bottom: 5px solid #1d4ed8;
+            padding: 18px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 800;
+            color: #ffffff !important;
+            text-align: center;
+            transition: all 0.1s ease;
+        }
+        .btn-nav:hover { background-color: #3b82f6; }
+        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="operacion.html" class="nav-back">◀ Volver a la Mesa de Control</a>
+
+        <header>
+            <span class="tag">Documento de Consulta Académica Independiente</span>
+            <h1>Simulador de Impacto Fiscal e Inviabilidad Transaccional</h1>
+        </header>
+
+        <div class="revista-wrapper">
+            <div class="revista-header">
+                <span class="revista-pills">Análisis de Ajustes y Rangos Legales</span>
+            </div>
+
+            <div style="padding: 0 40px 20px 40px;">
+                
+                <span class="sub-seccion-pills">Parámetros del Caso Chihuahua</span>
+                <h3 class="slide-titulo">Monitoreo Notarial del Rango Legal del ±10%</h3>
+                <p class="slide-txt">Para auditar la viabilidad fiscal de la oferta frente a los criterios de la Ley del ISR, evaluamos la operación tomando como eje el avalúo de la zona Residencial Lomas del Valle:</p>
+                
+                <!-- 1. PARÁMETROS SOLO COMO TEXTO ELEGANTE -->
+                <div class="caja-parametros-texto">
+                    📍 <strong>Criterios de Escrituración Obligatorios:</strong><br>
+                    • <strong>Avalúo Comercial de Referencia:</strong> $13,200,000 MXN<br>
+                    • <strong>Piso Mínimo Autorizado (90%):</strong> $11,880,000 MXN<br>
+                    • <strong>Techo Máximo Autorizado (110%):</strong> $14,520,000 MXN
+                </div>
+
+                <!-- 2. RECUADRO PARA ENTRADA DIRECTA DE MONTO DE PRECIO -->
+                <div class="cuadro-input-grupo">
+                    <label class="input-label" for="monto-venta">Escribe o modifica el Precio de Venta Pactado (MXN):</label>
+                    <!-- Inicia automáticamente en el precio original de Don Raúl para abrir el debate -->
+                    <input type="number" id="monto-venta" value="8150000" class="input-monto" oninput="calcularMatrizFiscal(this.value)">
+                </div>
+
+                <p class="slide-txt"><strong>Matriz de Resultados de Impuestos:</strong></p>
+                
+                <!-- 3. TABLA DE RESULTADOS CON IMPUESTOS REALES Y VISIBLES -->
+                <div class="table-responsive">
+                    <table class="tech-table">
+                        <thead>
+                            <tr>
+                                <th>Concepto Tributario</th>
+                                <th>Sujeto Obligado</th>
+                                <th style="text-align: right;">Monto Proyectado a Pagar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>ISAI Municipal (2%)</strong></td>
+                                <td>Comprador (Demanda)</td>
+                                <td id="monto-isai" style="text-align: right; font-weight: 700; color: #0f172a;">$264,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ISR por Enajenación (Estimado 20%)</strong></td>
+                                <td>Vendedor (Dueño)</td>
+                                <td id="monto-isr-vendedor" style="text-align: right; font-weight: 700; color: #0f172a;">$0</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ISR por Adquisición (Castigo Art. 125 LISR)</strong></td>
