@@ -56,61 +56,100 @@
             padding: 25px;
             margin-bottom: 15px;
         }
+        .revista-header {
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+        .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; }
 
-        /* DISEÑO SPLIT REBALANCEADO */
         .split-dashboard {
             display: flex;
             gap: 25px;
-            margin-bottom: 15px;
-            align-items: center; /* Alinea verticalmente al centro la caja y la tabla */
+            margin-bottom: 10px;
         }
         .panel-izquierdo {
             flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
         .panel-derecho {
-            flex: 1.2;
+            flex: 1.1;
         }
 
+        /* SELECTOR DESPLEGABLE */
         .selector-escenarios-grid {
             border: 2px solid #cbd5e1;
-            padding: 24px;
+            padding: 16px;
             border-radius: 12px;
-            background: #f8fafc;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.01);
+            background: #ffffff;
         }
         .selector-label {
             display: block;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 800;
-            margin-bottom: 10px;
-            color: #0f172a;
+            margin-bottom: 8px;
+            color: #64748b;
             text-transform: uppercase;
             letter-spacing: 0.02em;
         }
         .select-premium {
             width: 100%;
-            padding: 14px;
-            font-size: 14px;
+            padding: 12px;
+            font-size: 13.5px;
             font-weight: 700;
             color: #1e293b;
             background-color: #ffffff;
-            border: 2px solid #2563eb; /* Resaltado en azul para invitar a la acción */
+            border: 2px solid #cbd5e1;
             border-radius: 8px;
             outline: none;
             cursor: pointer;
         }
 
+        /* RECUADRO DE CONTROL PARA CASILLA DE EXENCIÓN */
+        .caja-exencion-control {
+            border: 2px solid #cbd5e1;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .checkbox-custom {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #2563eb;
+        }
+        .label-checkbox {
+            font-size: 13px;
+            font-weight: 800;
+            color: #1e293b;
+            cursor: pointer;
+        }
+
+        /* TABLA DE RESULTADOS */
         .tech-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 12.5px;
+            font-size: 12px;
             border: 1px solid #cbd5e1;
             border-radius: 10px;
             overflow: hidden;
+            background: #ffffff;
         }
-        .tech-table th { background: #f8fafc; padding: 12px; text-align: left; font-weight: 800; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 10px; }
-        .tech-table td { padding: 12px; border-bottom: 1px solid #e2e8f0; }
+        .tech-table th { background: #f8fafc; padding: 10px; text-align: left; font-weight: 800; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 9.5px; }
+        .tech-table td { padding: 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: middle; line-height: 1.4; }
+        .tech-table tr:last-child td { border-bottom: none; }
         
+        .badge-optimo { color: #16a34a !important; background-color: #dcfce7 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #bbf7d0; display: inline-block; font-size: 11px; font-weight: 800; }
+        .badge-peligro { color: #dc2626 !important; background-color: #fee2e2 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #fca5a5; display: inline-block; font-size: 11px; font-weight: 800; }
+        .badge-alerta { color: #d97706 !important; background-color: #fef3c7 !important; padding: 3px 8px; border-radius: 5px; border: 1px solid #fde68a; display: inline-block; font-size: 11px; font-weight: 800; }
+
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
@@ -133,38 +172,6 @@
             text-align: center;
         }
     </style>
-
-    <!-- INYECTAMOS EL MOTOR DE CONEXIÓN EN LA CABECERA PARA CONTROL TOTAL -->
-    <script>
-        function ejecutarCambio(valorSeleccionado) {
-            var mIsai = document.getElementById('monto-isai');
-            var mVendedor = document.getElementById('monto-isr-vendedor');
-            var mComprador = document.getElementById('monto-isr-comprador');
-            var mDictamen = document.getElementById('monto-dictamen');
-
-            if (valorSeleccionado === 'raul') {
-                mIsai.innerText = "$264,000";
-                mVendedor.innerText = "$0";
-                mComprador.innerText = "$1,010,000";
-                mDictamen.innerText = "SUBVALUADO (RECHAZADO)";
-                mDictamen.style.color = "#dc2626";
-            } 
-            else if (valorSeleccionado === 'piso') {
-                mIsai.innerText = "$264,000";
-                mVendedor.innerText = "$1,076,000";
-                mComprador.innerText = "$0";
-                mDictamen.innerText = "RANGO ÓPTIMO (ACEPTADO)";
-                mDictamen.style.color = "#16a34a";
-            } 
-            else if (valorSeleccionado === 'avaluo') {
-                mIsai.innerText = "$264,000";
-                mVendedor.innerText = "$1,340,000";
-                mComprador.innerText = "$0";
-                mDictamen.innerText = "PRECIO ÓPTIMO (ACEPTADO)";
-                mDictamen.style.color = "#2563eb";
-            }
-        }
-    </script>
 </head>
 <body>
 
@@ -177,53 +184,62 @@
         </header>
 
         <div class="revista-wrapper">
-            <div style="padding: 10px 10px 0 10px;">
+            <div class="revista-header">
+                <span class="revista-pills">Análisis de Ajustes y Rangos Legales</span>
+            </div>
+
+            <div style="padding: 0 10px;">
                 
                 <div class="split-dashboard">
                     
-                    <!-- PANEL IZQUIERDO: UNIFICADO Y SIN REDUNDANCIAS -->
+                    <!-- PANEL IZQUIERDO: COMBOBOX Y CASILLA DE VERIFICACIÓN -->
                     <div class="panel-izquierdo">
                         <div class="selector-escenarios-grid">
-                            <label class="selector-label" for="combo-escenarios">Auditoría Notarial (Avalúo Fijo: $13.2M):</label>
-                            <!-- Opciones homologadas con los datos de criterios eliminados -->
-                            <select id="combo-escenarios" class="select-premium" onchange="ejecutarCambio(this.value)">
-                                <option value="raul">🚨 Escenario Don Raúl ($8,150,000 MXN / -38%)</option>
-                                <option value="piso">🟢 Rango Mínimo Legal ($11,880,000 MXN / -10%)</option>
-                                <option value="avaluo">🔵 Precio de Avalúo Justo ($13,200,000 MXN / 100%)</option>
+                            <label class="selector-label" for="combo-escenarios">Seleccione el Escenario Comercial:</label>
+                            <select id="combo-escenarios" class="select-premium" onchange="ejecutarCambio()">
+                                <option value="raul">🚨 Escenario Don Raúl ($8,150,000 MXN / Avalúo: $13.2M)</option>
+                                <option value="piso">🟢 Rango Mínimo Legal (-10%: $11,880,000 MXN / Avalúo: $13.2M)</option>
+                                <option value="avaluo">🔵 Precio de Avalúo Justo ($13,200,000 MXN / Avalúo: $13.2M)</option>
                             </select>
+                        </div>
+
+                        <!-- NUEVA CASILLA INTERACTIVA DE EXENCIÓN -->
+                        <div class="caja-exencion-control" onclick="toggleCheckbox()">
+                            <input type="checkbox" id="chk-exencion" class="checkbox-custom" onchange="ejecutarCambio()">
+                            <label class="label-checkbox" for="chk-exencion">Acredita residencia (INE / Luz CFDI) para exentar</label>
                         </div>
                     </div>
 
-                    <!-- PANEL DERECHO: MATRIZ DE RESULTADOS -->
+                    <!-- PANEL DERECHO: RESULTADOS TRIBUTARIOS -->
                     <div class="panel-derecho">
                         <table class="tech-table">
                             <thead>
                                 <tr>
                                     <th>Concepto Tributario</th>
-                                    <th>Sujeto Obligado</th>
+                                    <th>Sujeto</th>
                                     <th style="text-align: right;">Monto Proyectado</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td><strong>ISAI Municipal (2%)</strong></td>
-                                    <td>Comprador (Demanda)</td>
+                                    <td>Comprador</td>
                                     <td id="monto-isai" style="text-align: right; font-weight: 700;">$264,000</td>
                                 </tr>
                                 <tr>
                                     <td><strong>ISR Enajenación (Est. 20%)</strong></td>
-                                    <td>Vendedor (Propietario)</td>
+                                    <td>Vendedor</td>
                                     <td id="monto-isr-vendedor" style="text-align: right; font-weight: 700;">$0</td>
                                 </tr>
                                 <tr>
                                     <td><strong>ISR Adquisición (Art. 125)</strong></td>
-                                    <td>Comprador (Jorge)</td>
+                                    <td>Comprador</td>
                                     <td id="monto-isr-comprador" style="text-align: right; font-weight: 700; color: #dc2626;">$1,010,000</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Dictamen ante Notario</strong></td>
-                                    <td>Estatus Legal</td>
-                                    <td id="monto-dictamen" style="text-align: right; font-weight: 800; color: #dc2626;">SUBVALUADO (RECHAZADO)</td>
+                                    <td>Estatus</td>
+                                    <td style="text-align: right;"><span id="badge-diagnostico" class="badge-peligro">Cargando...</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -232,13 +248,3 @@
                 </div>
 
                 <div class="revista-controles">
-                    <a href="operacion-p4.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
-                    <a href="operacion-p5.html" class="btn-nav">Siguiente ▶</a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-</body>
-</html>
