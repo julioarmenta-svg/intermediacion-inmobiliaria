@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 2: Factores de Valor - URN</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background-color: #f1f5f9; 
+            padding: 40px 20px;
+            color: #334155;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+        .nav-back {
+            display: inline-block;
+            text-decoration: none;
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .nav-back:hover { color: #1d4ed8; }
+        header {
+            margin-bottom: 35px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 20px;
+        }
+        .tag {
+            font-size: 11px;
+            font-weight: 800;
+            color: #2563eb;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 4px;
+            letter-spacing: -0.02em;
+        }
+        .revista-wrapper {
+            background-color: #ffffff;
+            border: 3px solid #cbd5e1;
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+        }
+        .revista-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        .revista-pills { font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+        .revista-contador {
+            font-size: 12px;
+            font-weight: 800;
+            color: #2563eb;
+            background-color: #eff6ff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #dbeafe;
+        }
+
+        .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
+        .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
+        
+        .sub-seccion-pills {
+            font-size: 11px;
+            font-weight: 800;
+            color: #2563eb;
+            background-color: #eff6ff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* ESTRUCTURA DE MATRIZ DE FACTORES */
+        .factores-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 20px 0 25px 0;
+        }
+        .factor-card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px 20px;
+            border-left: 5px solid #2563eb;
+        }
+        .factor-card h4 {
+            font-size: 15px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+        }
+        .factor-card p {
+            font-size: 13.5px;
+            line-height: 1.5;
+            color: #475569;
+        }
+
+        .highlight-box {
+            background-color: #f8fafc;
+            border-left: 5px solid #10b981;
+            padding: 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #1e293b;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* BARRA DE CONTROLES INFERIOR FIJA */
+        .revista-controles { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-top: 30px; 
+            gap: 20px; 
+            border-top: 2px solid #f1f5f9;
+            padding-top: 25px;
+        }
+        .btn-nav {
+            flex: 1;
+            display: block;
+            text-decoration: none;
+            background-color: #2563eb;
+            border-bottom: 5px solid #1d4ed8;
+            padding: 18px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 800;
+            color: #ffffff !important;
+            text-align: center;
+            transition: all 0.1s ease;
+        }
+        .btn-nav:hover { background-color: #3b82f6; }
+        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
+
+        <header>
+            <span class="tag">Unidad III · Gestión y Legalidad de Inmuebles</span>
+            <h1>1. Valoración y Tasación de Inmuebles</h1>
+        </header>
+
+        <div class="revista-wrapper">
+            <div class="revista-header">
+                <span class="revista-pills">Factores que Afectan el Valor</span>
+                <span class="revista-contador">Pág. 3 de 11</span>
+            </div>
+
+            <div style="padding: 0 10px;">
+                
+                <span class="sub-seccion-pills">Variables de Tasación</span>
+                <h3 class="slide-titulo">Fuerzas del Entorno y Depreciación Física</h3>
+                <p class="slide-txt">El valor de una propiedad nunca permanece estático. Es un ecosistema vivo impactado simultáneamente por fuerzas internas del activo y presiones externas de la economía urbana. El Consultor Patrimonial categoriza estos factores en tres dimensiones críticas de análisis:</p>
+                
+                <!-- CONTENEDOR DE FACTORES CRÍTICOS -->
+                <div class="factores-container">
+                    
+                    <div class="factor-card">
+                        <h4>1. Factores Intrínsecos o Endógenos</h4>
+                        <p>Son los atributos físicos y espaciales que pertenecen exclusivamente a la propiedad. Incluyen la superficie total del terreno y metros cuadrados construidos, la calidad de la cimentación y acabados, la distribución arquitectónica funcional, la edad cronológica del inmueble y su estado físico real de mantenimiento.</p>
+                    </div>
+
+                    <div class="factor-card">
+                        <h4>2. Factores Extrínsecos o Exógenos</h4>
+                        <p>Son las fuerzas del entorno urbano y social que el propietario no puede controlar pero que dictan la deseabilidad del activo. Abarcan la ubicación geográfica y la plusvalía histórica de la colonia, el acceso a vialidades principales y transporte, la infraestructura de servicios públicos y la cercanía a centros comerciales o educativos.</p>
+                    </div>
+
+                    <div class="factor-card">
+                        <h4>3. Factores Ambientales y Económicos macro</h4>
+                        <p>Corresponden a la salud del mercado financiero y el entorno natural. Involucran las tasas de interés hipotecarias vigentes, los niveles de inflación que encarecen los materiales de construcción, las leyes locales de zonificación o uso de suelo y la exposición del terreno a riesgos de inundación o fallas geológicas.</p>
+                    </div>
+
+                </div>
+
+                <div class="highlight-box">
+                    📈 <strong>Principio de Sustitución:</strong> El mercado inmobiliario se rige bajo la premisa de que un comprador informado no pagará por un inmueble más que el costo de adquirir otra propiedad sustituta con características y utilidades similares en la misma zona. Los sobreprecios basados en el apego emocional rompen este principio fundamental y congelan la absorción comercial del activo.
+                </div>
+
+                <div class="revista-controles">
+                    <a href="operacion-p2.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
+                    <a href="operacion-p4.html" class="btn-nav">Siguiente ▶</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
