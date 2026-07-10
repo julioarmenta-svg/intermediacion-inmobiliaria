@@ -13,7 +13,7 @@
             color: #334155;
         }
         .container {
-            max-width: 900px;
+            max-width: 950px; /* Ancho optimizado para lectura y tablas en una sola columna */
             margin: 0 auto;
             background-color: #ffffff;
             border-radius: 28px;
@@ -78,36 +78,45 @@
             border: 1px solid #dbeafe;
         }
 
-        .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
+        .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; margin-top: 20px; }
+        .slide-titulo:first-of-type { margin-top: 0; }
+        .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
         
-        .feedback-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        .feedback-item {
-            background-color: #f8fafc;
-            border-left: 5px solid #10b981; /* Borde verde para diferenciar la sección práctica */
-            padding: 16px;
-            border-radius: 4px;
-            font-size: 13.5px;
-            line-height: 1.5;
-            color: #334155;
-        }
-        .pregunta-titulo {
+        .sub-seccion-pills {
+            font-size: 11px;
             font-weight: 800;
-            color: #0f172a;
-            display: block;
-            margin-bottom: 6px;
+            color: #2563eb;
+            background-color: #eff6ff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 10px;
             text-transform: uppercase;
-            font-size: 12px;
-            letter-spacing: 0.02em;
-        }
-        .pregunta-num {
-            color: #10b981;
-            font-weight: 900;
+            letter-spacing: 0.03em;
         }
 
+        /* TABLAS COMPARATIVAS AVANZADAS */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0 30px 0;
+            font-size: 13px;
+        }
+        .tech-table th { background: #f8fafc; padding: 12px; text-align: left; font-weight: 800; color: #1e293b; border: 1px solid #cbd5e1; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.03em; }
+        .tech-table td { padding: 12px; border: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.5; }
+
+        .highlight-box {
+            background-color: #f8fafc;
+            border-left: 5px solid #10b981; /* Identidad verde para protocolos prácticos */
+            padding: 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #1e293b;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* CONTROLES DE FLUJO INTEGRADOS */
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
@@ -138,46 +147,89 @@
         <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
         <header>
-            <span class="tag">Módulo 02 · Apertura de Clase</span>
-            <h1>Retroalimentación del Módulo 1: Tarea Integradora del Caso</h1>
+            <span class="tag">Módulo 02 · Arquitectura Operativa</span>
+            <h1>Estructura de Captación Digital e Infraestructura Inmobiliaria</h1>
         </header>
 
         <div class="revista-wrapper">
             <div class="revista-header">
-                <span class="revista-pills">Proyecto de Infraestructura y Operación Proptech</span>
+                <span class="revista-pills">Unidad II · Tarea Integradora: Criterios Prácticos</span>
                 <span class="revista-contador">Pág. 2 de 11</span>
             </div>
 
+            <!-- CUERPO DE CONTENIDO DIRECTO EN UNA SOLA COLUMNA -->
             <div>
-                <h3 class="slide-titulo">Dictamen Operativo: Caso Cruzado Completo</h3>
                 
-                <div class="feedback-list">
-                    
-                    <div class="feedback-item">
-                        <span class="pregunta-titulo"><span class="pregunta-num">PASO 1.</span> Arquitectura de Prospección y Captación Digital</span>
-                        Para operar profesionalmente en Chihuahua, la firma debe implementar un CRM centralizado (ej. EasyBroker) que conecte automatizadamente mediante multidifusión a portales líderes. Esto reduce las fugas de información y asegura responder en menos de 5 minutos (SLA óptimo). La prospección se enfoca en las <strong>4 Ds</strong>: identificando inmuebles por eventos de vida disparadores (Divorcio, Deuda, Defunción, Desplazamiento) a través de convenios con despachos jurídicos locales y escaneo automatizado en juzgados, adelantándose a la competencia.
-                    </div>
+                <!-- BLOQUE 1: DEFINICIONES Y MATRIZ TECNOLÓGICA -->
+                <span class="sub-seccion-pills">Infraestructura Proptech</span>
+                <h3 class="slide-titulo">1. Matriz de Portales y Sistemas CRM</h3>
+                <p class="slide-txt">Para estructurar una firma inmobiliaria competitiva en México, es indispensable segmentar las tecnologías por su objetivo de negocio: el <strong>Portal Inmobiliario</strong> opera como una plataforma B2C orientada a la atracción masiva de demanda, mientras que el <strong>CRM</strong> funciona como un software B2B encargado de la administración de inventarios, colaboración y control interno de asesores.</p>
+                
+                <p class="slide-txt"><strong>Comparativa de Sistemas CRM Líderes en México:</strong></p>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Variable Operativa</th>
+                            <th>EasyBroker 💻</th>
+                            <th>Nocnok ⚙️</th>
+                            <th>Tokko Broker 📊</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Costo Inicial (Base)</strong></td>
+                            <td>$490 MXN / mes (Hasta 10 anuncios)</td>
+                            <td>$440 MXN / mes (Anuncios en bolsa)</td>
+                            <td>$499 MXN / mes (Plan Inicial)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Costo Profesional</strong></td>
+                            <td>$990 MXN / mes (Hasta 25 anuncios)</td>
+                            <td>$695 a $880 MXN / mes (Plan Pro)</td>
+                            <td>$999 a $1,999 MXN / mes (Escala)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Licencia Gratuita</strong></td>
+                            <td>Sí (Solo acceso a bolsa inter-inmobiliaria)</td>
+                            <td>Sí (Propiedades limitadas en red interna)</td>
+                            <td>No (Solo periodos cortos de prueba)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Módulo Web / Usuarios</strong></td>
+                            <td>+$500 MXN al mes / Usuarios Ilimitados</td>
+                            <td>Sitio Incluido / Usuarios limitados por plan</td>
+                            <td>Sitio Incluido / Usuarios limitados por plan</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                    <div class="feedback-item">
-                        <span class="pregunta-titulo"><span class="pregunta-num">PASO 2.</span> Desactivación del Sesgo y Negociación de Precio (Efecto Dotación)</span>
-                        El análisis de mercado dinámico en Residencial Lomas del Valle arroja un promedio real en portales de <strong>$13,200,000 MXN</strong> (con base en 5 testigos analizados). Al detectar que Don Raúl la ofrece en <strong>$8,150,000 MXN</strong>, descubrimos que está un 38% por debajo del mercado, lo cual indica que él no tiene un efecto dotación al alza, sino una urgencia crítica de salida por las 4 Ds. El verdadero sesgo emocional lo tienen Jorge y su esposa, quienes intentan regatear irracionalmente por costumbre. Se les frena el sesgo mostrándoles la métrica dura del valor por m² de la zona para evidenciar que la propiedad ya representa una ganancia patrimonial neta inmediata.
-                    </div>
-
-                    <div class="feedback-item">
-                        <span class="pregunta-titulo"><span class="pregunta-num">PASO 3.</span> Protocolo Blindado de Perfilamiento Humano y Financiero</span>
-                        Antes de pisar la propiedad, el protocolo exige auditar ingresos. Jorge y su esposa reportan ingresos conjuntos de <strong>$60,000 MXN mensuales</strong> y su tope de presupuesto de compra son $5,000,000 MXN. Para adquirir la residencia de Don Raúl ($8.15M), un banco les exigiría ingresos mínimos comprobables de <strong>$81,500 MXN netos</strong> (aplicando la regla estricta de precalificación 3 a 1 para cubrir una mensualidad promedio de $24,500 MXN). El prospecto está formalmente descalificado para la compra. La acción ética inmediata es no quemar tiempo en visitas y reubicarlos en el mercado de arrendamiento premium de la zona.
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="revista-controles">
-            <a href="operacion.html" class="btn-nav">◀ Anterior</a>
-            <a href="operacion-p3.html" class="btn-nav">Siguiente ▶</a>
-        </div>
-
-    </div>
-
-</body>
-</html>
+                <p class="slide-txt"><strong>Comparativa de Portales Inmobiliarios Líderes en México:</strong></p>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Variable Comercial</th>
+                            <th>Inmuebles24 🌐</th>
+                            <th>Propiedades.com 🏠</th>
+                            <th>Mercado Libre Inmuebles 🚗</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Naturaleza y Costo</strong></td>
+                            <td>De Pago Premium (Packs desde $3,549/mes)</td>
+                            <td>Gratuito / Híbrido (Esquemas base sin costo)</td>
+                            <td>Híbrido (Packs desde $400 a $900/mes)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Modelo de Exposición</strong></td>
+                            <td>Simple, Destacado y Superdestacado</td>
+                            <td>Destaques individuales bajo demanda</td>
+                            <td>Clasificación Plata, Oro y Oro Premium</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Impacto de Tracción</strong></td>
+                            <td>Máximo tráfico residencial medio y residencial premium</td>
+                            <td>Excelente posicionamiento orgánico e histórico</td>
+                            <td>Alta rotación en terrenos y reventas rápidas</td>
+                        </tr>
+                        <tr>
