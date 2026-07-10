@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -94,27 +94,7 @@
             letter-spacing: 0.03em;
         }
 
-        /* TABLA DE ALERTAS DE CONTROL */
-        .table-responsive {
-            width: 100%;
-            overflow-x: auto;
-            margin: 15px 0 25px 0;
-            border: 1px solid #cbd5e1;
-            border-radius: 12px;
-            background: #ffffff;
-        }
-        .tech-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-            min-width: 650px;
-        }
-        .tech-table th { background: #f8fafc; padding: 12px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.03em; }
-        .tech-table td { padding: 12px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.5; }
-        .tech-table tr:last-child td { border-bottom: none; }
-        .alert-row { background-color: #fee2e2; font-weight: 600; }
-        .alert-row td { color: #991b1b !important; }
-
+        /* DISEÑO DE PANEL DE DEBATE EJECUTIVO */
         .debate-box {
             background-color: #fff7ed;
             border: 2px solid #fed7aa;
@@ -123,10 +103,44 @@
             padding: 24px;
             margin: 20px 0 25px 0;
         }
-        .debate-title { font-size: 12px; font-weight: 900; color: #c2410c; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; display: block; }
-        .debate-scenerio { font-size: 14px; line-height: 1.6; color: #1e293b; margin-bottom: 16px; background: #ffffff; padding: 14px; border-radius: 8px; border: 1px solid #ffedd5; }
-        .debate-pregunta { font-size: 13.5px; font-weight: 700; color: #7c2d12; line-height: 1.5; }
+        .debate-title {
+            font-size: 12px;
+            font-weight: 900;
+            color: #c2410c;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .debate-scenerio {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #1e293b;
+            margin-bottom: 16px;
+            background: #ffffff;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #ffedd5;
+        }
+        .debate-pregunta {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #7c2d12;
+            line-height: 1.5;
+        }
 
+        .highlight-box {
+            background-color: #f8fafc;
+            border-left: 5px solid #2563eb;
+            padding: 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #1e293b;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* BARRA DE CONTROLES INFERIOR FIJA */
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
@@ -165,51 +179,43 @@
 
         <div class="revista-wrapper">
             <div class="revista-header">
-                <span class="revista-pills">Implicaciones Fiscales de la Operación</span>
+                <span class="revista-pills">Implicaciones Fiscales Básicas</span>
                 <span class="revista-contador">Pág. 4 de 11</span>
             </div>
 
             <div style="padding: 0 10px;">
                 
                 <span class="sub-seccion-pills">Marco Tributario</span>
-                <h3 class="slide-titulo">Carga Impositiva y Candados de Control Notarial</h3>
-                <p class="slide-txt">La viabilidad financiera de cualquier transacción inmobiliaria en México está sujeta a la demostración real de rentabilidad o ganancia patrimonial. El Consultor Patrimonial debe dominar las limitantes y las reglas de rango que aplican los Notarios como retenedores solidarios:</p>
+                <h3 class="slide-titulo">Carga Impositiva: Compra, Renta y Traspaso</h3>
+                <p class="slide-txt">La viabilidad financiera de cualquier transacción inmobiliaria en México está sujeta a su impacto fiscal. Un Consultor Patrimoninal debe dominar los impuestos base que gravan cada operación para evitar contingencias legales o minusvalías patrimoniales imprevistas a sus representados:</p>
                 
-                <!-- TABLA DE CONTROL DE REGLAS FISCALES -->
-                <div class="table-responsive">
-                    <table class="tech-table">
-                        <thead>
-                            <tr>
-                                <th>Mecanismo / Candado Fiscal</th>
-                                <th>Criterio Técnico (Ley del ISR)</th>
-                                <th>Implicación Práctica en Operaciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Rango del 10% en Avalúos (Art. 125)</strong></td>
-                                <td>El precio pactado de venta debe mantenerse dentro de un rango máximo del 10% por arriba o por debajo del avalúo comercial formal de escrituración.</td>
-                                <td>Si el precio está muy por debajo del avalúo, el comprador incurre en un ingreso por adquisición y paga 20% de ISR directo. Un precio inflado artificialmente dispara el ISR del vendedor.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Exención por Casa Habitación (Art. 93)</strong></td>
-                                <td>Permite exentar la ganancia de la venta de la vivienda demostrando residencia (INE o luz CFDI) hasta por un tope máximo de 700,000 UDIs.</td>
-                                <td>Cubre un aproximado de $5.7M a $6M MXN. Si el inmueble vale más (como el caso de Don Raúl de $8.15M), **el excedente genera ISR obligatorio** sobre la rentabilidad real de la operación.</td>
-                            </tr>
-                            <tr class="alert-row">
-                                <td><strong>Candado de Temporalidad y Destino</strong></td>
-                                <td>El enajenante (vendedor) no debe haber ejercido ningún derecho de exención por casa habitación en los 3 años inmediatos anteriores.</td>
-                                <td>Los Notarios cruzan la base de datos central del SAT en tiempo real; si existe una venta previa en ese periodo, la exención se bloquea y el ISR se calcula al 100%.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="highlight-box">
+                    <strong>Impuestos Esenciales por Tipo de Transacción:</strong><br><br>
+                    • <strong>Venta / Compraventa:</strong> El enajenante (vendedor) está sujeto al cálculo del <strong>ISR (Impuesto Sobre la Renta)</strong> por enajenación de bienes, gravando la utilidad neta de la venta. Por su parte, el adquiriente (comprador) absorbe el <strong>ISAI (Impuesto Sobre Adquisición de Inmuebles)</strong>, una tasa local variable cobrada por el municipio.<br><br>
+                    • <strong>Arrendamiento (Renta):</strong> El arrendador está obligado a acumular sus ingresos y pagar ISR bajo el régimen fiscal correspondiente, teniendo el derecho de aplicar la <strong>Deducción Ciega (35% directo)</strong> o deducciones comprobables, además de trasladar el 16% de IVA si el uso del inmueble es comercial.<br><br>
+                    • <strong>Traspaso de Derechos:</strong> Al ceder un contrato de arrendamiento o una unidad de negocio, se genera una ganancia de capital sujeta a la retención de ISR por concepto de ingresos por la cesión de derechos de bienes intangibles.
                 </div>
 
-                <!-- COMPONENTE DE CLASE: MESA DE DEBATE EN EL AULA -->
+                <!-- COMPONENTE DINÁMICO DE CLASE: MESA DE DEBATE EN EL AULA -->
                 <div class="debate-box">
-                    <span class="debate-title">🗣️ Dilema en el Aula: El Riesgo de los Precios Desfasados</span>
+                    <span class="debate-title">🗣️ Dilema en el Aula: Caso Práctico Fiscal Cruzado</span>
                     <div class="debate-scenerio">
-                        <strong>Escenario de Análisis:</strong> Don Raúl formaliza la venta de su casa en Lomas del Valle por un precio pactado de $8,150,000 MXN (visto como ganga), pero al realizarse el avalúo comercial obligatorio para escriturar, el perito tasa la propiedad en su valor real de zona de $13,200,000 MXN. Como la brecha excede drásticamente el rango permitido del 10%, el Notario advierte un desfase fiscal crítico.
+                        <strong>Escenario de Análisis:</strong> Don Raúl decide formalizar la venta de su propiedad por $8,150,000 MXN. Sin embargo, al revisar la documentación notarial previa, descubres que la adquirió hace 30 años en un valor nominal histórico muy bajo y no cuenta con facturas que amparen las remodelaciones estructurales que le hizo al inmueble. El cálculo preliminar arroja un ISR sumamente alto debido a la enorme brecha entre el costo comprobable de adquisición ajustado y el precio de venta actual.
                     </div>
                     <div class="debate-pregunta">
                         <strong>Pregunta de Debate Directivo:</strong><br>
+                        Como Consultor Estratégico, ¿qué mecanismos legales y fiscales vigentes en la normativa mexicana investigarías o aplicarías para ayudar a Don Raúl a mitigar legítimamente el impacto del ISR antes de firmar la escritura pública ante Notario?
+                    </div>
+                </div>
+
+                <div class="revista-controles">
+                    <a href="operacion-p3.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
+                    <a href="operacion-p5.html" class="btn-nav">Siguiente ▶</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
