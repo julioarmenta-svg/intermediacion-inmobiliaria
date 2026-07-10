@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 2: Cierre del Caso de Campo - URN</title>
+    <title>Dictamen: Cuestionario Crítico Reflexivo - URN</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -13,7 +13,7 @@
             color: #334155;
         }
         .container {
-            max-width: 950px; /* Ancho optimizado para lectura y tablas en una sola columna */
+            max-width: 900px;
             margin: 0 auto;
             background-color: #ffffff;
             border-radius: 28px;
@@ -45,7 +45,7 @@
             letter-spacing: 0.12em;
         }
         h1 {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 800;
             color: #0f172a;
             margin-top: 4px;
@@ -67,61 +67,44 @@
             padding-bottom: 16px;
             margin-bottom: 24px;
         }
-        .revista-pills { font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
-        .revista-contador {
-            font-size: 12px;
-            font-weight: 800;
-            color: #2563eb;
-            background-color: #eff6ff;
-            padding: 6px 14px;
-            border-radius: 20px;
-            border: 1px solid #dbeafe;
-        }
-
-        .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; margin-top: 20px; }
-        .slide-titulo:first-of-type { margin-top: 0; }
-        .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
+        .revista-pills { font-size: 12px; font-weight: 800; color: #2563eb; text-transform: uppercase; letter-spacing: 0.05em; }
         
-        .sub-seccion-pills {
-            font-size: 11px;
-            font-weight: 800;
-            color: #2563eb;
-            background-color: #eff6ff;
-            padding: 4px 10px;
-            border-radius: 6px;
-            display: inline-block;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
+        .feedback-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
-
-        /* TABLAS COMPARATIVAS AVANZADAS */
-        .tech-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0 30px 0;
-            font-size: 13px;
-        }
-        .tech-table th { background: #f8fafc; padding: 12px; text-align: left; font-weight: 800; color: #1e293b; border: 1px solid #cbd5e1; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.03em; }
-        .tech-table td { padding: 12px; border: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.5; }
-
-        .highlight-box {
+        .feedback-item {
             background-color: #f8fafc;
-            border-left: 5px solid #10b981; /* Identidad verde para protocolos prácticos */
+            border-left: 5px solid #2563eb;
             padding: 20px;
             border-radius: 4px;
             font-size: 14px;
-            color: #1e293b;
             line-height: 1.6;
-            margin-bottom: 25px;
+            color: #334155;
+            border-top: 1px solid #e2e8f0;
+            border-right: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .pregunta-titulo {
+            font-weight: 800;
+            color: #0f172a;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14.5px;
+        }
+        .pregunta-num {
+            color: #2563eb;
+            font-weight: 900;
         }
 
-        /* CONTROLES DE FLUJO INTEGRADOS */
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
-            margin-top: 30px; 
+            margin-top: 35px; 
             gap: 20px; 
+            border-top: 2px solid #f1f5f9;
+            padding-top: 25px;
         }
         .btn-nav {
             flex: 1;
@@ -133,7 +116,7 @@
             border-radius: 14px;
             font-size: 16px;
             font-weight: 800;
-            color: #ffffff;
+            color: #ffffff !important;
             text-align: center;
             transition: all 0.1s ease;
         }
@@ -144,92 +127,58 @@
 <body>
 
     <div class="container">
-        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
+        <a href="operacion.html" class="nav-back">◀ Volver a la Mesa de Control</a>
 
         <header>
-            <span class="tag">Módulo 02 · Arquitectura Operativa</span>
-            <h1>Estructura de Captación Digital e Infraestructura Inmobiliaria</h1>
+            <span class="tag">Documento de Consulta Académica Independiente</span>
+            <h1>Dictamen de Respuestas: Cuestionario Crítico Reflexivo</h1>
         </header>
 
         <div class="revista-wrapper">
             <div class="revista-header">
-                <span class="revista-pills">Unidad II · Tarea Integradora: Criterios Prácticos</span>
-                <span class="revista-contador">Pág. 2 de 11</span>
+                <span class="revista-pills">Análisis Teórico de Postgrado · Unidad I</span>
+                <!-- No incluye contador de páginas formal para no interferir con las 11 filminas del curso -->
             </div>
 
-            <!-- CUERPO DE CONTENIDO DIRECTO EN UNA SOLA COLUMNA -->
-            <div>
+            <div style="padding: 0 10px 20px 10px;">
                 
-                <!-- BLOQUE 1: DEFINICIONES Y MATRIZ TECNOLÓGICA -->
-                <span class="sub-seccion-pills">Infraestructura Proptech</span>
-                <h3 class="slide-titulo">1. Matriz de Portales y Sistemas CRM</h3>
-                <p class="slide-txt">Para estructurar una firma inmobiliaria competitiva en México, es indispensable segmentar las tecnologías por su objetivo de negocio: el <strong>Portal Inmobiliario</strong> opera como una plataforma B2C orientada a la atracción masiva de demanda, mientras que el <strong>CRM</strong> funciona como un software B2B encargado de la administración de inventarios, colaboración y control interno de asesores.</p>
-                
-                <p class="slide-txt"><strong>Comparativa de Sistemas CRM Líderes en México:</strong></p>
-                <table class="tech-table">
-                    <thead>
-                        <tr>
-                            <th>Variable Operativa</th>
-                            <th>EasyBroker 💻</th>
-                            <th>Nocnok ⚙️</th>
-                            <th>Tokko Broker 📊</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Costo Inicial (Base)</strong></td>
-                            <td>$490 MXN / mes (Hasta 10 anuncios)</td>
-                            <td>$440 MXN / mes (Anuncios en bolsa)</td>
-                            <td>$499 MXN / mes (Plan Inicial)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Costo Profesional</strong></td>
-                            <td>$990 MXN / mes (Hasta 25 anuncios)</td>
-                            <td>$695 a $880 MXN / mes (Plan Pro)</td>
-                            <td>$999 a $1,999 MXN / mes (Escala)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Licencia Gratuita</strong></td>
-                            <td>Sí (Solo acceso a bolsa inter-inmobiliaria)</td>
-                            <td>Sí (Propiedades limitadas en red interna)</td>
-                            <td>No (Solo periodos cortos de prueba)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Módulo Web / Usuarios</strong></td>
-                            <td>+$500 MXN al mes / Usuarios Ilimitados</td>
-                            <td>Sitio Incluido / Usuarios limitados por plan</td>
-                            <td>Sitio Incluido / Usuarios limitados por plan</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="feedback-list">
+                    
+                    <div class="feedback-item">
+                        <span class="pregunta-titulo"><span class="pregunta-num">1.</span> ¿Cómo impacta la Asimetría de Información de Akerlof a un asesor empírico que no usa proptech?</span>
+                        Genera ceguera de mercado. El asesor empírico depende únicamente del testimonio sesgado del vendedor. Al carecer de datos PropTech validados, es incapaz de neutralizar la asimetría informativa, perdiendo credibilidad frente al comprador institucional y forzando el fracaso operativo debido a la desconfianza del entorno legal y comercial.
+                    </div>
 
-                <p class="slide-txt"><strong>Comparativa de Portales Inmobiliarios Líderes en México:</strong></p>
-                <table class="tech-table">
-                    <thead>
-                        <tr>
-                            <th>Variable Comercial</th>
-                            <th>Inmuebles24 🌐</th>
-                            <th>Propiedades.com 🏠</th>
-                            <th>Mercado Libre Inmuebles 🚗</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Naturaleza y Costo</strong></td>
-                            <td>De Pago Premium (Packs desde $3,549/mes)</td>
-                            <td>Gratuito / Híbrido (Esquemas base sin costo)</td>
-                            <td>Híbrido (Packs desde $400 a $900/mes)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Modelo de Exposición</strong></td>
-                            <td>Simple, Destacado y Superdestacado</td>
-                            <td>Destaques individuales bajo demanda</td>
-                            <td>Clasificación Plata, Oro y Oro Premium</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Impacto de Tracción</strong></td>
-                            <td>Máximo tráfico residencial medio y residencial premium</td>
-                            <td>Excelente posicionamiento orgánico e histórico</td>
-                            <td>Alta rotación en terrenos y reventas rápidas</td>
-                        </tr>
-                        <tr>
+                    <div class="feedback-item">
+                        <span class="pregunta-titulo"><span class="pregunta-num">2.</span> ¿Qué métricas demuestran de forma medible que un dueño sufre el "Efecto Dotación" de Thaler?</span>
+                        Principalmente los <strong>Días en el Mercado (DOM)</strong> superiores a la media de la zona y la tasa de rebote o nula conversión de leads en portales inmobiliarios. Si un inventario homologado dinámico se desplaza en 45 días y el activo del dueño lleva inmóvil más de 90 días con cero ofertas formales, el sobreprecio emocional es matemáticamente demostrable.
+                    </div>
+
+                    <div class="feedback-item">
+                        <span class="pregunta-titulo"><span class="pregunta-num">3.</span> ¿Por qué la regla financiera 3 a 1 protege el ecosistema de originación de créditos y la liquidez familiar?</span>
+                        Porque actúa como un dique macroeconómico contra el sobreendeudamiento. Al exigir que la mensualidad hipotecaria estimada no exceda el 30% o 33% de los ingresos netos comprobables, se blinda el flujo de efectivo libre de la familia para cubrir sus necesidades básicas y de salud, impidiendo colapsos en las carteras vencidas bancarias.
+                    </div>
+
+                    <div class="feedback-item">
+                        <span class="pregunta-titulo"><span class="pregunta-num">4.</span> ¿De qué manera los buscadores (Inmuebles24, Lamudi) inyectan racionalidad de precios en zonas emocionales?</span>
+                        Operan como reguladores transparentes de la oferta. Al concentrar masivamente el inventario disponible y calcular el precio de lista promedio por metro cuadrado en tiempo real, transforman un mercado opaco y emocional en un entorno de competencia perfecta donde el comprador compara de inmediato y castiga los sobreprecios ficticios.
+                    </div>
+
+                    <div class="feedback-item">
+                        <span class="pregunta-titulo"><span class="pregunta-num">5.</span> ¿Qué implicaciones legales y de marca enfrenta un consultor que promueve propiedades sin control de documentos (SLA)?</span>
+                        A nivel legal, enfrenta riesgos críticos de demandas civiles o penales por fraude indirecto, responsabilidad solidaria en operaciones con vicios ocultos y contingencias fiscales. A nivel de marca, destruye su reputación institucional, perdiendo la confianza de notarios, brókers bancarios y la recomendación orgánica del mercado.
+                    </div>
+
+                </div>
+
+                <!-- Único botón operativo para regresar de forma limpia a la mesa de control -->
+                <div class="revista-controles">
+                    <a href="operacion.html" class="btn-nav">◀ Regresar a la Mesa de Control</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
