@@ -1,4 +1,4 @@
-html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -56,13 +56,12 @@ html<!DOCTYPE html>
             padding: 25px;
             margin-bottom: 15px;
         }
-
-        /* DISEÑO SPLIT REBALANCEADO */
+        /* DISEÑO SPLIT REBALANCEADO ORIGINAL */
         .split-dashboard {
             display: flex;
             gap: 25px;
             margin-bottom: 15px;
-            align-items: center; /* Alinea verticalmente al centro la caja y la tabla */
+            align-items: center;
         }
         .panel-izquierdo {
             flex: 1;
@@ -70,7 +69,6 @@ html<!DOCTYPE html>
         .panel-derecho {
             flex: 1.2;
         }
-
         .selector-escenarios-grid {
             border: 2px solid #cbd5e1;
             padding: 24px;
@@ -94,12 +92,11 @@ html<!DOCTYPE html>
             font-weight: 700;
             color: #1e293b;
             background-color: #ffffff;
-            border: 2px solid #2563eb; /* Resaltado en azul para invitar a la acción */
+            border: 2px solid #2563eb;
             border-radius: 8px;
             outline: none;
             cursor: pointer;
         }
-
         .tech-table {
             width: 100%;
             border-collapse: collapse;
@@ -133,68 +130,90 @@ html<!DOCTYPE html>
             text-align: center;
         }
     </style>
-
-    <!-- INYECTAMOS EL MOTOR DE CONEXIÓN EN LA CABECERA PARA CONTROL TOTAL -->
+    
+    <!-- MOTOR DE CONEXIÓN CON LAS 5 OPCIONES DE EXENCIÓN INTEGRADAS -->
     <script>
         function ejecutarCambio(valorSeleccionado) {
             var mIsai = document.getElementById('monto-isai');
             var mVendedor = document.getElementById('monto-isr-vendedor');
             var mComprador = document.getElementById('monto-isr-comprador');
             var mDictamen = document.getElementById('monto-dictamen');
-
+            
             if (valorSeleccionado === 'raul') {
                 mIsai.innerText = "$264,000";
-                mVendedor.innerText = "$0";
+                mVendedor.innerText = "$0 (Pérdida)";
+                mVendedor.style.color = "#16a34a";
                 mComprador.innerText = "$1,010,000";
-                mDictamen.innerText = "SUBVALUADO (RECHAZADO)";
-                mDictamen.style.color = "#dc2626";
+                mDictamen.innerText = "VIABLE CON AJUSTE (CASTIGO FISCAL)";
+                mDictamen.style.color = "#d97706";
             } 
-            else if (valorSeleccionado === 'piso') {
+            else if (valorSeleccionado === 'piso-sin') {
                 mIsai.innerText = "$264,000";
                 mVendedor.innerText = "$1,076,000";
+                mVendedor.style.color = "#334155";
                 mComprador.innerText = "$0";
                 mDictamen.innerText = "RANGO ÓPTIMO (ACEPTADO)";
                 mDictamen.style.color = "#16a34a";
             } 
-            else if (valorSeleccionado === 'avaluo') {
+            else if (valorSeleccionado === 'piso-con') {
+                mIsai.innerText = "$264,000";
+                mVendedor.innerText = "💥 $0 (Exento con INE)";
+                mVendedor.style.color = "#16a34a";
+                mComprador.innerText = "$0";
+                mDictamen.innerText = "RANGO ÓPTIMO (ACEPTADO)";
+                mDictamen.style.color = "#16a34a";
+            }
+            else if (valorSeleccionado === 'avaluo-sin') {
                 mIsai.innerText = "$264,000";
                 mVendedor.innerText = "$1,340,000";
+                mVendedor.style.color = "#334155";
+                mComprador.innerText = "$0";
+                mDictamen.innerText = "PRECIO ÓPTIMO (ACEPTADO)";
+                mDictamen.style.color = "#2563eb";
+            }
+            else if (valorSeleccionado === 'avaluo-con') {
+                mIsai.innerText = "$264,000";
+                mVendedor.innerText = "💥 $0 (Exento con INE)";
+                mVendedor.style.color = "#16a34a";
                 mComprador.innerText = "$0";
                 mDictamen.innerText = "PRECIO ÓPTIMO (ACEPTADO)";
                 mDictamen.style.color = "#2563eb";
             }
         }
+
+        // Evento de disparo inicial para que arranque en el caso de Don Raúl de forma automatizada
+        window.onload = function() {
+            ejecutarCambio('raul');
+        };
     </script>
 </head>
 <body>
-
     <div class="container">
-        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
-
+        <a href="operacion.html" class="nav-back">◀ Volver a la Mesa de Control</a>
         <header>
             <span class="tag">Documento de Consulta Académica Independiente</span>
             <h1>Simulador de Impacto Fiscal e Inviabilidad Transaccional</h1>
         </header>
-
+        
         <div class="revista-wrapper">
             <div style="padding: 10px 10px 0 10px;">
-                
                 <div class="split-dashboard">
                     
-                    <!-- PANEL IZQUIERDO: UNIFICADO Y SIN REDUNDANCIAS -->
+                    <!-- PANEL IZQUIERDO: UNIFICADO CON TUS 5 OPCIONES DE ENTRADA -->
                     <div class="panel-izquierdo">
                         <div class="selector-escenarios-grid">
                             <label class="selector-label" for="combo-escenarios">Auditoría Notarial (Avalúo Fijo: $13.2M):</label>
-                            <!-- Opciones homologadas con los datos de criterios eliminados -->
                             <select id="combo-escenarios" class="select-premium" onchange="ejecutarCambio(this.value)">
-                                <option value="raul">🚨 Escenario Don Raúl ($8,150,000 MXN / -38%)</option>
-                                <option value="piso">🟢 Rango Mínimo Legal ($11,880,000 MXN / -10%)</option>
-                                <option value="avaluo">🔵 Precio de Avalúo Justo ($13,200,000 MXN / 100%)</option>
+                                <option value="raul">🚨 Escenario Don Raúl ($8,150,000 MXN / Sin Acreditar)</option>
+                                <option value="piso-sin">🟢 Rango Mínimo Legal ($11,880,000 MXN / Sin Acreditar)</option>
+                                <option value="piso-con">🟢 Rango Mínimo Legal ($11,880,000 MXN / Exento con INE)</option>
+                                <option value="avaluo-sin">🔵 Precio de Avalúo Justo ($13,200,000 MXN / Sin Acreditar)</option>
+                                <option value="avaluo-con">🔵 Precio de Avalúo Justo ($13,200,000 MXN / Exento con INE)</option>
                             </select>
                         </div>
                     </div>
 
-                    <!-- PANEL DERECHO: MATRIZ DE RESULTADOS -->
+                    <!-- PANEL DERECHO: MATRIZ DE RESULTADOS FIJA -->
                     <div class="panel-derecho">
                         <table class="tech-table">
                             <thead>
@@ -208,7 +227,7 @@ html<!DOCTYPE html>
                                 <tr>
                                     <td><strong>ISAI Municipal (2%)</strong></td>
                                     <td>Comprador (Demanda)</td>
-                                    <td id="monto-isai" style="text-align: right; font-weight: 700;">$264,000</td>
+                                    <td id="monto-isai" style="text-align: right; font-weight: 700;">$0</td>
                                 </tr>
                                 <tr>
                                     <td><strong>ISR Enajenación (Est. 20%)</strong></td>
@@ -218,27 +237,6 @@ html<!DOCTYPE html>
                                 <tr>
                                     <td><strong>ISR Adquisición (Art. 125)</strong></td>
                                     <td>Comprador (Jorge)</td>
-                                    <td id="monto-isr-comprador" style="text-align: right; font-weight: 700; color: #dc2626;">$1,010,000</td>
+                                    <td id="monto-isr-comprador" style="text-align: right; font-weight: 700;">$0</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>Dictamen ante Notario</strong></td>
-                                    <td>Estatus Legal</td>
-                                    <td id="monto-dictamen" style="text-align: right; font-weight: 800; color: #dc2626;">SUBVALUADO (RECHAZADO)</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-
-                <div class="revista-controles">
-                    <a href="operacion-p4.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
-                    <a href="operacion-p5.html" class="btn-nav">Siguiente ▶</a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-</body>
-</html>
