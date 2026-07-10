@@ -13,7 +13,7 @@
             color: #334155;
         }
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             background-color: #ffffff;
             border-radius: 28px;
@@ -68,38 +68,55 @@
             margin-bottom: 24px;
         }
         .revista-pills { font-size: 12px; font-weight: 800; color: #10b981; text-transform: uppercase; letter-spacing: 0.05em; }
-        
-        .feedback-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        .revista-contador {
+            font-size: 12px;
+            font-weight: 800;
+            color: #10b981;
+            background-color: #f0fdf4;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #bbf7d0;
         }
-        .feedback-item {
+
+        .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; margin-top: 20px; }
+        .slide-titulo:first-of-type { margin-top: 0; }
+        .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
+        
+        .sub-seccion-pills {
+            font-size: 11px;
+            font-weight: 800;
+            color: #10b981;
+            background-color: #f0fdf4;
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* TABLAS COMPARATIVAS AVANZADAS */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0 30px 0;
+            font-size: 13px;
+        }
+        .tech-table th { background: #f8fafc; padding: 12px; text-align: left; font-weight: 800; color: #1e293b; border: 1px solid #cbd5e1; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.03em; }
+        .tech-table td { padding: 12px; border: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.5; }
+
+        .highlight-box {
             background-color: #f8fafc;
             border-left: 5px solid #10b981;
             padding: 20px;
             border-radius: 4px;
             font-size: 14px;
+            color: #1e293b;
             line-height: 1.6;
-            color: #334155;
-            border-top: 1px solid #e2e8f0;
-            border-right: 1px solid #e2e8f0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .pregunta-titulo {
-            font-weight: 800;
-            color: #0f172a;
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14.5px;
-            text-transform: uppercase;
-            letter-spacing: 0.01em;
-        }
-        .pregunta-num {
-            color: #10b981;
-            font-weight: 900;
+            margin-bottom: 25px;
         }
 
+        /* CONTROLES DE FLUJO INTEGRADOS */
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
@@ -139,36 +156,81 @@
         <div class="revista-wrapper">
             <div class="revista-header">
                 <span class="revista-pills">Estrategia Práctica de Campo · Unidad I</span>
+                <span class="revista-contador">Parte 1 de 3</span>
             </div>
 
-            <div style="padding: 0 10px 20px 10px;">
+            <div style="padding: 0 40px 20px 40px;">
                 
-                <div class="feedback-list">
-                    
-                    <div class="feedback-item">
-                        <span class="pregunta-titulo"><span class="pregunta-num">PASO 1.</span> Arquitectura de Prospección y Captación Digital</span>
-                        La firma debe adoptar un CRM centralizado (ej. EasyBroker) para coordinar inventarios y conectar mediante multidifusión a portales líderes en México, generando un SLA de respuesta menor a 5 minutos. El protocolo operativo para captar activos por eventos de vida (las <strong>4 Ds</strong>) prohíbe la invasión agresiva; se estructura mediante alianzas de Networking B2B con los departamentos de <strong>Recursos Humanos (RH)</strong> locales para absorber de forma prioritaria los casos de Desplazamiento de ejecutivos corporativos que se mudan a la ciudad, antes de que el inventario salga al mercado público general.
-                    </div>
+                <span class="sub-seccion-pills">Infraestructura Proptech</span>
+                <h3 class="slide-titulo">PASO 1. Arquitectura de Prospección y Captación Digital</h3>
+                <p class="slide-txt">Para estructurar una firma inmobiliaria independiente competitiva, los alumnos deben segmentar las tecnologías por su objetivo: el <strong>Portal Inmobiliario</strong> opera como una plataforma B2C para la atracción masiva de demanda, mientras que el <strong>CRM</strong> funciona como un software B2B encargado de la administración de inventarios, colaboración y control de asesores, mitigando fugas de leads y optimizando el SLA a menos de 5 minutos.</p>
+                
+                <p class="slide-txt"><strong>Comparativa de Sistemas CRM Líderes en México:</strong></p>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Variable Operativa</th>
+                            <th>EasyBroker 💻</th>
+                            <th>Nocnok ⚙️</th>
+                            <th>Tokko Broker 📊</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Costo Inicial (Base)</strong></td>
+                            <td>$490 MXN / mes (Hasta 10 anuncios)</td>
+                            <td>$440 MXN / mes (Anuncios en bolsa)</td>
+                            <td>$499 MXN / mes (Plan Inicial)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Costo Profesional</strong></td>
+                            <td>$990 MXN / mes (Hasta 25 anuncios)</td>
+                            <td>$695 a $880 MXN / mes (Plan Pro)</td>
+                            <td>$999 a $1,999 MXN / mes (Escala)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Licencia Gratuita</strong></td>
+                            <td>Sí (Solo acceso a bolsa inter-inmobiliaria)</td>
+                            <td>Sí (Propiedades limitadas en red interna)</td>
+                            <td>No (Solo periodos cortos de prueba)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Módulo Web / Usuarios</strong></td>
+                            <td>+$500 MXN al mes / Usuarios Ilimitados</td>
+                            <td>Sitio Incluido / Usuarios limitados por plan</td>
+                            <td>Sitio Incluido / Usuarios limitados por plan</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                    <div class="feedback-item">
-                        <span class="pregunta-titulo"><span class="pregunta-num">PASO 2.</span> Desactivación del Sesgo y Negociación de Precio</span>
-                        Consultando portales reales en la zona Residencial Lomas del Valle, Chihuahua, se extraen testigos para fijar que la media de mercado ronda los <strong>$13,200,000 MXN</strong>. Al ver que Don Raúl la ofrece en <strong>$8,150,000 MXN</strong> (38% abajo), el dictamen demuestra que el dueño no sufre de efecto dotación, sino de una urgencia de las 4 Ds. El verdadero sesgo de regateo irracional proviene de Jorge y su esposa. Se desactiva su sesgo confrontándolos de forma empática con la métrica dura del valor promedio por m² de la zona, demostrando que la compra ya representa una ganancia neta inmediata.
-                    </div>
-
-                    <div class="feedback-item">
-                        <span class="pregunta-titulo"><span class="pregunta-num">PASO 3.</span> Protocolo Blindado de Perfilamiento Humano</span>
-                        Jorge y su esposa reportan ingresos conjuntos de <strong>$60,000 MXN mensuales</strong>. Al aplicar el filtro de precalificación bancaria bajo la <strong>Regla Hipotecaria 3 a 1</strong>, para comprar la residencia de Don Raúl ($8.15M) la pareja requeriría ingresos mínimos comprobables de <strong>$81,500 MXN mensuales</strong> para solventar de forma segura una mensualidad promedio de $24,500 MXN. Al estar descalificados financieramente para la compra, la acción ética inmediata es redireccionarlos hacia la Unidad II: El Mercado de Arrendamiento Premium de la zona.
-                    </div>
-
-                </div>
-
-                <div class="revista-controles">
-                    <a href="operacion.html" class="btn-nav">◀ Regresar a la Mesa de Control</a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-</body>
-</html>
+                <p class="slide-txt"><strong>Comparativa de Portales Inmobiliarios Líderes en México:</strong></p>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Variable Comercial</th>
+                            <th>Inmuebles24 🌐</th>
+                            <th>Propiedades.com 🏠</th>
+                            <th>Mercado Libre Inmuebles 🚗</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Naturaleza y Costo</strong></td>
+                            <td>De Pago Premium (Packs desde $3,549/mes)</td>
+                            <td>Gratuito / Híbrido (Esquemas base sin costo)</td>
+                            <td>Híbrido (Packs desde $400 a $900/mes)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Modelo de Exposición</strong></td>
+                            <td>Simple, Destacado y Superdestacado</td>
+                            <td>Destaques individuales bajo demanda</td>
+                            <td>Clasificación Plata, Oro y Oro Premium</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Impacto de Tracción</strong></td>
+                            <td>Máximo tráfico residencial medio y residencial premium</td>
+                            <td>Excelente posicionamiento orgánico e histórico</td>
+                            <td>Alta rotación en terrenos y reventas rápidas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Alianzas de Difusión</strong></td>
