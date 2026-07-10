@@ -61,7 +61,7 @@
  display: flex;
  gap: 25px;
  margin-bottom: 15px;
- align-items: center;
+ align-items: center; /* Alinea verticalmente al centro la caja y la tabla */
  }
  .panel-izquierdo {
  flex: 1;
@@ -92,7 +92,7 @@
  font-weight: 700;
  color: #1e293b;
  background-color: #ffffff;
- border: 2px solid #2563eb;
+ border: 2px solid #2563eb; /* Resaltado en azul para invitar a la acción */
  border-radius: 8px;
  outline: none;
  cursor: pointer;
@@ -108,16 +108,28 @@
  .tech-table th { background: #f8fafc; padding: 12px; text-align: left; font-weight: 800; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 10px; }
  .tech-table td { padding: 12px; border-bottom: 1px solid #e2e8f0; }
  
+ .nota-asterisco {
+ font-size: 12px;
+ font-weight: 600;
+ color: #475569;
+ line-height: 1.4;
+ padding: 10px;
+ background-color: #f8fafc;
+ border-radius: 8px;
+ border: 1px solid #e2e8f0;
+ margin-top: 15px;
+ }
+
  .revista-controles { 
  display: flex; 
- justify-content: space-between; 
+ justify-content: center; 
  margin-top: 25px; 
- gap: 15px; 
  border-top: 2px solid #f1f5f9;
  padding-top: 15px;
  }
  .btn-nav {
- flex: 1;
+ width: 100%;
+ max-width: 400px;
  display: block;
  text-decoration: none;
  background-color: #2563eb;
@@ -128,8 +140,11 @@
  font-weight: 800;
  color: #ffffff !important;
  text-align: center;
+ transition: all 0.1s ease;
  }
+ .btn-nav:hover { background-color: #3b82f6; }
  </style>
+ <!-- INYECTAMOS EL MOTOR DE CONEXIÓN EN LA CABECERA PARA CONTROL TOTAL -->
  <script>
  function ejecutarCambio(valorSeleccionado) {
  var mIsai = document.getElementById('monto-isai');
@@ -145,14 +160,14 @@
  }
  else if (valorSeleccionado === 'piso') {
  mIsai.innerText = "$264,000";
- mVendedor.innerText = "$1,076,000";
+ mVendedor.innerText = "$1,076,000*";
  mComprador.innerText = "$0";
  mDictamen.innerText = "RANGO ÓPTIMO (ACEPTADO)";
  mDictamen.style.color = "#16a34a";
  } 
  else if (valorSeleccionado === 'avaluo') {
  mIsai.innerText = "$264,000";
- mVendedor.innerText = "$1,340,000";
+ mVendedor.innerText = "$1,340,000*";
  mComprador.innerText = "$0";
  mDictamen.innerText = "PRECIO ÓPTIMO (ACEPTADO)";
  mDictamen.style.color = "#2563eb";
@@ -162,7 +177,7 @@
 </head>
 <body>
  <div class="container">
- <a href="operacion.html" class="nav-back">◀ Volver a la Mesa de Control</a>
+ <a href="operacion-p4.html" class="nav-back">◀ Regresar a la Filmina 4</a>
  <header>
  <span class="tag">Documento de Consulta Académica Independiente</span>
  <h1>Simulador de Impacto Fiscal e Inviabilidad Transaccional</h1>
@@ -172,7 +187,7 @@
  
  <div class="split-dashboard">
  
- <!-- PANEL IZQUIERDO -->
+ <!-- PANEL IZQUIERDO: UNIFICADO Y SIN REDUNDANCIAS -->
  <div class="panel-izquierdo">
  <div class="selector-escenarios-grid">
  <label class="selector-label" for="combo-escenarios">Auditoría Notarial (Avalúo Fijo: $13.2M):</label>
@@ -184,7 +199,7 @@
  </div>
  </div>
  
- <!-- PANEL DERECHO -->
+ <!-- PANEL DERECHO: MATRIZ DE RESULTADOS -->
  <div class="panel-derecho">
  <table class="tech-table">
  <thead>
@@ -220,9 +235,13 @@
  </div>
  </div>
  
+ <!-- NOTA EXPLICATIVA CON ASTERISCO LEGAL -->
+ <div class="nota-asterisco">
+ 📌 <strong>* Nota de Exención Fiscal:</strong> En operaciones que se encuentren dentro del rango óptimo, si el vendedor presenta su credencial de elector (INE vigente) y comprobantes de domicilio timbrados (Luz CFDI o estados de cuenta bancarios) vinculados a la propiedad, podrá exentar legítimamente el pago de ISR ante Notario Público.
+ </div>
+ 
  <div class="revista-controles">
- <a href="operacion-p4.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
- <a href="operacion-p5.html" class="btn-nav">Siguiente ▶</a>
+ <a href="operacion-p4.html" class="btn-nav">◀ Regresar a la Filmina 4</a>
  </div>
  </div>
  </div>
