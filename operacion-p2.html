@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dictamen: Cuestionario Crítico Reflexivo - URN</title>
+    <title>Módulo 2: Valoración Inmobiliaria - URN</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -45,7 +45,7 @@
             letter-spacing: 0.12em;
         }
         h1 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 800;
             color: #0f172a;
             margin-top: 4px;
@@ -67,41 +67,65 @@
             padding-bottom: 16px;
             margin-bottom: 24px;
         }
-        .revista-pills { font-size: 12px; font-weight: 800; color: #2563eb; text-transform: uppercase; letter-spacing: 0.05em; }
-        
-        .feedback-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        .revista-pills { font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+        .revista-contador {
+            font-size: 12px;
+            font-weight: 800;
+            color: #2563eb;
+            background-color: #eff6ff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #dbeafe;
         }
-        .feedback-item {
+
+        .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
+        .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
+        
+        .sub-seccion-pills {
+            font-size: 11px;
+            font-weight: 800;
+            color: #2563eb;
+            background-color: #eff6ff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 15px 0 25px 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            background: #ffffff;
+        }
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            min-width: 600px;
+        }
+        .tech-table th { background: #f8fafc; padding: 12px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.03em; }
+        .tech-table td { padding: 12px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.5; }
+
+        .highlight-box {
             background-color: #f8fafc;
             border-left: 5px solid #2563eb;
             padding: 20px;
             border-radius: 4px;
             font-size: 14px;
+            color: #1e293b;
             line-height: 1.6;
-            color: #334155;
-            border-top: 1px solid #e2e8f0;
-            border-right: 1px solid #e2e8f0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .pregunta-titulo {
-            font-weight: 800;
-            color: #0f172a;
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14.5px;
-        }
-        .pregunta-num {
-            color: #2563eb;
-            font-weight: 900;
+            margin-bottom: 25px;
         }
 
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
-            margin-top: 35px; 
+            margin-top: 30px; 
             gap: 20px; 
             border-top: 2px solid #f1f5f9;
             padding-top: 25px;
@@ -127,53 +151,61 @@
 <body>
 
     <div class="container">
-        <a href="operacion.html" class="nav-back">◀ Volver a la Mesa de Control</a>
+        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
         <header>
-            <span class="tag">Documento de Consulta Académica Independiente</span>
-            <h1>Dictamen de Respuestas: Cuestionario Crítico Reflexivo</h1>
+            <span class="tag">Unidad III · Gestión y Legalidad de Inmuebles</span>
+            <h1>1. Valoración y Tasación de Inmuebles</h1>
         </header>
 
         <div class="revista-wrapper">
             <div class="revista-header">
-                <span class="revista-pills">Análisis Teórico de Postgrado · Unidad I</span>
-                <!-- No incluye contador de páginas formal para no interferir con las 11 filminas del curso -->
+                <span class="revista-pills">Métodos de Valoración y Tasación Inmobiliaria</span>
+                <span class="revista-contador">Pág. 2 de 11</span>
             </div>
 
-            <div style="padding: 0 10px 20px 10px;">
+            <div style="padding: 0 10px;">
                 
-                <div class="feedback-list">
-                    
-                    <div class="feedback-item">
-                        <span class="pregunta-titulo"><span class="pregunta-num">1.</span> ¿Cómo impacta la Asimetría de Información de Akerlof a un asesor empírico que no usa proptech?</span>
-                        Genera ceguera de mercado. El asesor empírico depende únicamente del testimonio sesgado del vendedor. Al carecer de datos PropTech validados, es incapaz de neutralizar la asimetría informativa, perdiendo credibilidad frente al comprador institucional y forzando el fracaso operativo debido a la desconfianza del entorno legal y comercial.
-                    </div>
-
-                    <div class="feedback-item">
-                        <span class="pregunta-titulo"><span class="pregunta-num">2.</span> ¿Qué métricas demuestran de forma medible que un dueño sufre el "Efecto Dotación" de Thaler?</span>
-                        Principalmente los <strong>Días en el Mercado (DOM)</strong> superiores a la media de la zona y la tasa de rebote o nula conversión de leads en portales inmobiliarios. Si un inventario homologado dinámico se desplaza en 45 días y el activo del dueño lleva inmóvil más de 90 días con cero ofertas formales, el sobreprecio emocional es matemáticamente demostrable.
-                    </div>
-
-                    <div class="feedback-item">
-                        <span class="pregunta-titulo"><span class="pregunta-num">3.</span> ¿Por qué la regla financiera 3 a 1 protege el ecosistema de originación de créditos y la liquidez familiar?</span>
-                        Porque actúa como un dique macroeconómico contra el sobreendeudamiento. Al exigir que la mensualidad hipotecaria estimada no exceda el 30% o 33% de los ingresos netos comprobables, se blinda el flujo de efectivo libre de la familia para cubrir sus necesidades básicas y de salud, impidiendo colapsos en las carteras vencidas bancarias.
-                    </div>
-
-                    <div class="feedback-item">
-                        <span class="pregunta-titulo"><span class="pregunta-num">4.</span> ¿De qué manera los buscadores (Inmuebles24, Lamudi) inyectan racionalidad de precios en zonas emocionales?</span>
-                        Operan como reguladores transparentes de la oferta. Al concentrar masivamente el inventario disponible y calcular el precio de lista promedio por metro cuadrado en tiempo real, transforman un mercado opaco y emocional en un entorno de competencia perfecta donde el comprador compara de inmediato y castiga los sobreprecios ficticios.
-                    </div>
-
-                    <div class="feedback-item">
-                        <span class="pregunta-titulo"><span class="pregunta-num">5.</span> ¿Qué implicaciones legales y de marca enfrenta un consultor que promueve propiedades sin control de documentos (SLA)?</span>
-                        A nivel legal, enfrenta riesgos críticos de demandas civiles o penales por fraude indirecto, responsabilidad solidaria en operaciones con vicios ocultos y contingencias fiscales. A nivel de marca, destruye su reputación institucional, perdiendo la confianza de notarios, brókers bancarios y la recomendación orgánica del mercado.
-                    </div>
-
+                <span class="sub-seccion-pills">Enfoques Técnicos</span>
+                <h3 class="slide-titulo">Métodos de Valoración de Propiedades</h3>
+                <p class="slide-txt">Determinar el valor de un bien raíz exige abandonar las suposiciones empíricas y aplicar metodologías normalizadas. Un Consultor Patrimonial fundamenta el precio de salida de un inmueble utilizando tres métodos científicos reconocidos por la normativa de valuación nacional:</p>
+                
+                <div class="table-responsive">
+                    <table class="tech-table">
+                        <thead>
+                            <tr>
+                                <th>Método de Valuación</th>
+                                <th>Mecánica Operativa</th>
+                                <th>Aplicación Inmobiliaria Ideal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Método de Mercado (Homologación)</strong></td>
+                                <td>Compara el activo con propiedades similares vigentes o cerradas recientes, aplicando factores de corrección por zona, conservación y dimensiones.</td>
+                                <td>Vivienda residencial usada, terrenos urbanos y zonas con alto volumen transaccional activo.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Método de Costos (Reposición)</strong></td>
+                                <td>Calcula el valor del suelo más el costo físico actual de construir la edificación de nuevo, restando la depreciación acumulada por edad.</td>
+                                <td>Inmuebles con arquitectura única, naves industriales o propiedades sin testigos comerciales cercanos.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Método de Capitalización de Rentas</strong></td>
+                                <td>Traduce los flujos de efectivo futuros estimados (arrendamientos netos) en valor presente aplicando una tasa de capitalización (Cap Rate).</td>
+                                <td>Locales comerciales, edificios corporativos y propiedades orientadas puramente a la inversión.</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
-                <!-- Único botón operativo para regresar de forma limpia a la mesa de control -->
+                <div class="highlight-box">
+                    📖 <strong>Fundamento Académico:</strong> La tasación formal es un dictamen técnico-legal que certifica el valor del activo. El precio final nunca es aislado; es el resultado de variables endógenas (calidad de materiales, conservación, distribución) y variables exógenas (plusvalía de la colonia, infraestructura urbana circundante y oferta disponible en portales).
+                </div>
+
                 <div class="revista-controles">
-                    <a href="operacion.html" class="btn-nav">◀ Regresar a la Mesa de Control</a>
+                    <a href="operacion.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
+                    <a href="operacion-p3.html" class="btn-nav">Siguiente ▶</a>
                 </div>
 
             </div>
