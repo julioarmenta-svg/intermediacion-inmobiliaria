@@ -94,7 +94,7 @@
             letter-spacing: 0.03em;
         }
 
-        /* TABLA COMPACTA DE IMPUESTOS Y CANDADOS CRÍTICOS */
+        /* TABLA MÁS COMPACTA Y DE MENOR ALTURA */
         .table-responsive {
             width: 100%;
             overflow-x: auto;
@@ -106,14 +106,12 @@
         .tech-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 11.5px;
-            min-width: 700px;
+            font-size: 12px;
+            min-width: 650px;
         }
-        .tech-table th { background: #f8fafc; padding: 10px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 9.5px; letter-spacing: 0.03em; }
+        .tech-table th { background: #f8fafc; padding: 10px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 10px; letter-spacing: 0.03em; }
         .tech-table td { padding: 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.4; }
         .tech-table tr:last-child td { border-bottom: none; }
-        .alert-row { background-color: #fff7ed; font-weight: 600; }
-        .alert-row td { color: #c2410c !important; }
 
         .highlight-box {
             background-color: #f8fafc;
@@ -126,7 +124,7 @@
             margin-bottom: 15px;
         }
 
-        /* BARRA DE CONTROLES INFERIOR RESTAURADA FIJA */
+        /* BARRA DE CONTROLES INFERIOR FIJA */
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
@@ -165,54 +163,58 @@
 
         <div class="revista-wrapper">
             <div class="revista-header">
-                <span class="revista-pills">Implicaciones Fiscales y Obligatorias</span>
+                <span class="revista-pills">Implicaciones Fiscales Transaccionales</span>
                 <span class="revista-contador">Pág. 4 de 11</span>
             </div>
 
             <div style="padding: 0 10px;">
                 
                 <span class="sub-seccion-pills">Marco Tributario</span>
-                <h3 class="slide-titulo">Carga Impositiva y Candados de Control Notarial</h3>
-                <p class="slide-txt">La viabilidad financiera de cualquier transacción inmobiliaria en México exige la demostración real de rentabilidad. El Consultor Patrimonial debe dominar los impuestos base y las reglas de rango que aplican los Notarios como retenedores solidarios:</p>
+                <h3 class="slide-titulo">Carga Impositiva: Compra, Renta y Traspaso</h3>
+                <p class="slide-txt">La viabilidad financiera de cualquier transacción inmobiliaria en México está sujeta a la demostración de rentabilidad. El Consultor Patrimonial debe dominar la carga impositiva y las obligaciones específicas que gravan a las tres operaciones base:</p>
                 
-                <!-- TABLA INTEGRADA DE IMPUESTOS, ISAI, EXENCIÓN Y REGLA DEL 10% -->
+                <!-- TABLA DE CONTROL CORTA (SÓLO IMPUESTOS BASE) -->
                 <div class="table-responsive">
                     <table class="tech-table">
                         <thead>
                             <tr>
-                                <th>Tipo de Concepto / Candado</th>
-                                <th>Impuestos e Impulsores Legales (SAT / Municipio)</th>
+                                <th>Tipo de Operación</th>
+                                <th>Impuestos Aplicables (Marco Legal)</th>
                                 <th>Obligación y Criterio Práctico Obligatorio</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>Compra / Venta de Bienes</strong></td>
-                                <td>El vendedor genera <strong>ISR por Enajenación</strong> sobre la utilidad o rentabilidad neta. El comprador absorbe el <strong>ISAI (Impuesto Sobre Adquisición de Inmuebles)</strong> local.</td>
-                                <td>El ISAI es mandatorio para registrar la escritura. El ISR del vendedor grava la ganancia real del negocio y es imposible de omitir ante Notario Público.</td>
+                                <td><strong>Compra / Venta</strong></td>
+                                <td>El vendedor genera <strong>ISR por Enajenación</strong> sobre la utilidad neta. El comprador absorbe el <strong>ISAI (Impuesto Sobre Adquisición de Inmuebles)</strong> local variable.</td>
+                                <td>El ISAI es obligatorio para escriturar. El ISR del vendedor grava la ganancia real del negocio y es retenido solidariamente por el Notario Público.</td>
                             </tr>
                             <tr>
                                 <td><strong>Arrendamiento (Renta)</strong></td>
-                                <td>El arrendador acumula ingresos para el pago de <strong>ISR mensual</strong>. Si el destino del inmueble es comercial, se traslada de forma obligatoria el <strong>16% de IVA</strong>.</td>
-                                <td>Permite al dueño optar por la <strong>Deducción Ciega (35% directo sin comprobantes)</strong> para mitigar la base gravable. La emisión de CFDI es obligatoria.</td>
+                                <td>El arrendador acumula ingresos para el pago de <strong>ISR mensual</strong>. Si el destino del inmueble es comercial, se traslada obligatoriamente el <strong>16% de IVA</strong>.</td>
+                                <td>El dueño puede optar por aplicar la <strong>Deducción Ciega (35% directo sin facturas)</strong> para mitigar su base de ISR. Emitir CFDI de arrendamiento es mandatorio.</td>
                             </tr>
                             <tr>
-                                <td><strong>Traspaso Inmobiliario</strong></td>
-                                <td>La cesión de un contrato de renta o una unidad económica genera una ganancia de capital sujeta a retención de <strong>ISR por enajenación de bienes intangibles</strong>.</td>
-                                <td>Aplica sobre el cobro de guantes comerciales o derechos de llave. Al demostrarse flujo de efectivo e ingresos de negocio, el impuesto se retiene.</td>
-                            </tr>
-                            <tr class="alert-row">
-                                <td><strong>Rango del 10% en Avalúos (Art. 125)</strong></td>
-                                <td>El precio de venta pactado debe mantenerse dentro de un rango máximo del 10% de desfase frente al avalúo comercial formal de escrituración.</td>
-                                <td>Si el precio pactado está muy abajo del avalúo, el comprador paga 20% de ISR por adquisición. Si está muy arriba, dispara masivamente el ISR del vendedor.</td>
-                            </tr>
-                            <tr class="alert-row">
-                                <td><strong>Exención por Casa Habitación (Art. 93)</strong></td>
-                                <td>Permite exentar la ganancia de la vivienda demostrando la misma dirección (INE o luz CFDI) hasta por un tope máximo de 700,000 UDIs (aprox. $5.7M a $6M).</td>
-                                <td>Si la propiedad excede este valor (como el caso de $8.15M), **el excedente genera ISR obligatorio**. Válido solo si no se ha usado el derecho en los últimos 3 años.</td>
+                                <td><strong>Traspaso Comercial</strong></td>
+                                <td>La cesión de un contrato de renta o una unidad económica genera una ganancia de capital sujeta al cálculo de <strong>ISR por enajenación de bienes intangibles</strong>.</td>
+                                <td>Aplica sobre el cobro de guantes comerciales o derechos de llave. Al demostrarse un flujo de efectivo e ingresos de negocio, el impuesto se retiene de forma obligatoria.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="highlight-box">
+                    💡 <strong>Matriz Tributaria Base:</strong> Cada una de estas transacciones económicas genera un hecho imponible independiente bajo la normativa mexicana. El Consultor Patrimonial analiza estos gravámenes básicos para estructurar la viabilidad comercial inicial de la oferta antes de formalizar cierres.
+                </div>
+
+                <div class="revista-controles">
+                    <a href="operacion-p3.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
+                    <a href="operacion-p5.html" class="btn-nav">Siguiente ▶</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
