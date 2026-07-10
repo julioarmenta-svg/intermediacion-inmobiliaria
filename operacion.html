@@ -13,7 +13,7 @@
             color: #334155;
         }
         .container {
-            max-width: 900px; /* Ancho optimizado para una sola columna legible */
+            max-width: 900px;
             margin: 0 auto;
             background-color: #ffffff;
             border-radius: 28px;
@@ -79,45 +79,84 @@
         }
 
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
-        
-        .feedback-list {
+        .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 25px; }
+
+        /* CONTENEDOR DE ENLACES INTERACTIVOS MAESTROS */
+        .hub-respuestas-nav {
             display: flex;
-            flex-direction: column;
-            gap: 16px;
+            gap: 15px;
+            margin-bottom: 30px;
         }
+        .btn-consulta {
+            flex: 1;
+            padding: 16px;
+            border: none;
+            border-radius: 14px;
+            font-size: 13.5px;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            transition: all 0.15s ease;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .btn-cuestionario {
+            background-color: #2563eb;
+            color: white;
+            border-bottom: 4px solid #1d4ed8;
+        }
+        .btn-cuestionario:hover { background-color: #3b82f6; }
+        
+        .btn-integradora {
+            background-color: #10b981;
+            color: white;
+            border-bottom: 4px solid #059669;
+        }
+        .btn-integradora:hover { background-color: #34d399; }
+        
+        .btn-consulta:active { transform: translateY(2px); border-bottom-width: 1px; }
+
+        /* BLOQUES DINÁMICOS DE RESPUESTAS */
+        .panel-contenido {
+            display: none; /* Oculto por defecto, se activa con JS */
+            animation: fadeIn 0.3s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .feedback-list { display: flex; flex-direction: column; gap: 16px; }
         .feedback-item {
             background-color: #f8fafc;
-            border-left: 5px solid #2563eb;
             padding: 16px;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 13.5px;
             line-height: 1.5;
             color: #334155;
+            border: 1px solid #e2e8f0;
         }
-        .pregunta-titulo {
-            font-weight: 800;
-            color: #0f172a;
-            display: block;
-            margin-bottom: 6px;
-        }
-        .pregunta-num {
-            color: #2563eb;
-            font-weight: 900;
-        }
+        .azul-border { border-left: 5px solid #2563eb; }
+        .verde-border { border-left: 5px solid #10b981; }
+        
+        .pregunta-titulo { font-weight: 800; color: #0f172a; display: block; margin-bottom: 6px; }
+        .pregunta-num-azul { color: #2563eb; font-weight: 900; }
+        .pregunta-num-verde { color: #10b981; font-weight: 900; text-transform: uppercase; font-size: 12px; }
 
-        /* CONTROLES ESTANDARIZADOS ABAJO */
+        /* CONTROLES DE DIRECCIÓN DE DIAPOSITIVAS */
         .revista-controles { 
             display: flex; 
             justify-content: space-between; 
-            margin-top: 30px; 
+            margin-top: 35px; 
             gap: 20px; 
         }
         .btn-nav {
             flex: 1;
             display: block;
             text-decoration: none;
-            background-color: #2563eb;
-            border-bottom: 5px solid #1d4ed8;
+            background-color: #1e293b; /* Color oscuro para diferenciar la navegación del módulo */
+            border-bottom: 5px solid #0f172a;
             padding: 18px;
             border-radius: 14px;
             font-size: 16px;
@@ -126,8 +165,8 @@
             text-align: center;
             transition: all 0.1s ease;
         }
-        .btn-nav:hover { background-color: #3b82f6; }
-        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
+        .btn-nav:hover { background-color: #334155; }
+        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #0f172a; }
         .btn-disabled { background-color: #cbd5e1; border-bottom: 5px solid #94a3b8; color: #94a3b8; cursor: not-allowed; pointer-events: none; }
     </style>
 </head>
@@ -137,58 +176,40 @@
         <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
         <header>
-            <span class="tag">Módulo 02 · Apertura e Inicio de Clase</span>
-            <h1>Retroalimentación del Módulo 1: Cuestionario Crítico Reflexivo</h1>
+            <span class="tag">Módulo 02 · Apertura de Clase e Introducción</span>
+            <h1>Unidad II: Operación Comercial - Ventas, Rentas y Traspasos</h1>
         </header>
 
         <div class="revista-wrapper">
             <div class="revista-header">
-                <span class="revista-pills">Evaluación Académica Independiente de Postgrado</span>
+                <span class="revista-pills">Mesa de Control: Respuestas de la Unidad I</span>
                 <span class="revista-contador">Pág. 1 de 11</span>
             </div>
 
-            <!-- CUERPO EN UNA SOLA COLUMNA LIMPIA SIN ENTRAR EN CONFLICTO CON BOTONES -->
             <div>
-                <h3 class="slide-titulo">Resolución Oficial de Criterios Teóricos</h3>
+                <h3 class="slide-titulo">Cierre Analítico: Evaluación de Criterios</h3>
+                <p class="slide-txt">Bienvenidos a la Unidad II. Antes de iniciar con el desglose del mercado transaccional, abriremos nuestra mesa de control para auditar las respuestas oficiales de la sesión anterior. Selecciona cualquiera de las dos secciones de evaluación para desplegar los dictámenes técnicos maestros:</p>
                 
-                <div class="feedback-list">
-                    
-                    <div class="feedback-item">
-                        <span class="pregunta-titulo"><span class="pregunta-num">1.</span> ¿Cómo impacta la Asimetría de Información de Akerlof a un asesor empírico que no usa proptech?</span>
-                        Genera ceguera de mercado. El asesor empírico depende únicamente del testimonio sesgado del vendedor. Al carecer de datos PropTech validados, es incapaz de neutralizar la asimetría informativa, perdiendo credibilidad frente al comprador institucional y forzando el fracaso operativo debido a la desconfianza del entorno legal y comercial.
-                    </div>
-
-                    <div class="feedback-item">
-                        <span class="pregunta-titulo"><span class="pregunta-num">2.</span> ¿Qué métricas demuestran de forma medible que un dueño sufre el "Efecto Dotación" de Thaler?</span>
-                        Principalmente los <strong>Días en el Mercado (DOM)</strong> superiores a la media de la zona y la tasa de rebote o nula conversión de leads en portales inmobiliarios. Si un inventario homologado dinámico se desplaza en 45 días y el activo del dueño lleva inmóvil más de 90 días con cero ofertas formales, el sobreprecio emocional es matemáticamente demostrable.
-                    </div>
-
-                    <div class="feedback-item">
-                        <span class="pregunta-titulo"><span class="pregunta-num">3.</span> ¿Por qué la regla financiera 3 a 1 protege el ecosistema de originación de créditos y la liquidez familiar?</span>
-                        Porque actúa como un dique macroeconómico contra el sobreendeudamiento. Al exigir que la mensualidad hipotecaria estimada no exceda el 30% o 33% de los ingresos netos comprobables, se blinda el flujo de efectivo libre de la familia para cubrir sus necesidades básicas y de salud, impidiendo colapsos en las carteras vencidas bancarias.
-                    </div>
-
-                    <div class="feedback-item">
-                        <span class="pregunta-titulo"><span class="pregunta-num">4.</span> ¿De qué manera los buscadores (Inmuebles24, Lamudi) inyectan racionalidad de precios en zonas emocionales?</span>
-                        Operan como reguladores transparentes de la oferta. Al concentrar masivamente el inventario disponible y calcular el precio de lista promedio por metro cuadrado en tiempo real, transforman un mercado opaco y emocional en un entorno de competencia perfecta donde el comprador compara de inmediato y castiga los sobreprecios ficticios.
-                    </div>
-
-                    <div class="feedback-item">
-                        <span class="pregunta-titulo"><span class="pregunta-num">5.</span> ¿Qué implicaciones legales y de marca enfrenta un consultor que promueve propiedades sin control de documentos (SLA)?</span>
-                        A nivel legal, enfrenta riesgos críticos de demandas civiles o penales por fraude indirecto, responsabilidad solidaria en operaciones con vicios ocultos y contingencias fiscales. A nivel de marca, destruye su reputación institucional, perdiendo la confianza de notarios, brókers bancarios y la recomendación orgánica del mercado.
-                    </div>
-
+                <!-- BOTONES DE ENLACE DE CONSULTA -->
+                <div class="hub-respuestas-nav">
+                    <button class="btn-consulta btn-cuestionario" onclick="abrirSolucion('cuestionario')">📋 1. Cuestionario Crítico</button>
+                    <button class="btn-consulta btn-integradora" onclick="abrirSolucion('integradora')">🔥 2. Tarea Integradora</button>
                 </div>
-            </div>
-        </div>
 
-        <!-- CONTROLES SIEMPRE VISIBLES Y SEGUROS -->
-        <div class="revista-controles">
-            <a href="#" class="btn-nav btn-disabled">◀ Anterior</a>
-            <a href="operacion-p2.html" class="btn-nav">Siguiente ▶</a>
-        </div>
-
-    </div>
-
-</body>
-</html>
+                <!-- BLOQUE 1: RESPUESTAS DEL CUESTIONARIO CRÍTICO (AZUL) -->
+                <div id="panel-cuestionario" class="panel-contenido">
+                    <div class="feedback-list">
+                        <div class="feedback-item azul-border">
+                            <span class="pregunta-titulo"><span class="pregunta-num-azul">1.</span> ¿Cómo impacta la Asimetría de Información de Akerlof a un asesor empírico que no usa proptech?</span>
+                            Genera ceguera de mercado. El asesor empírico depende únicamente del testimonio sesgado del vendedor. Al carecer de datos PropTech validados, es incapaz de neutralizar la asimetría informativa, perdiendo credibilidad frente al comprador institucional y forzando el fracaso operativo debido a la desconfianza del entorno legal y comercial.
+                        </div>
+                        <div class="feedback-item azul-border">
+                            <span class="pregunta-titulo"><span class="pregunta-num-azul">2.</span> ¿Qué métricas demuestran de forma medible que un dueño sufre el "Efecto Dotación" de Thaler?</span>
+                            Principalmente los <strong>Días en el Mercado (DOM)</strong> superiores a la media de la zona y la tasa de rebote o nula conversión de leads en portales inmobiliarios. Si un inventario homologado dinámico se desplaza en 45 días y el activo del dueño lleva inmóvil más de 90 días con cero ofertas formales, el sobreprecio emocional es matemáticamente demostrable.
+                        </div>
+                        <div class="feedback-item azul-border">
+                            <span class="pregunta-titulo"><span class="pregunta-num-azul">3.</span> ¿Por qué la regla financiera 3 a 1 protege el ecosistema de originación de créditos y la liquidez familiar?</span>
+                            Porque actúa como un dique macroeconómico contra el sobreendeudamiento. Al exigir que la mensualidad hipotecaria estimada no exceda el 30% o 33% de los ingresos netos comprobables, se blinda el flujo de efectivo libre de la familia para cubrir sus necesidades básicas y de salud, impidiendo colapsos en las carteras vencidas bancarias.
+                        </div>
+                        <div class="feedback-item azul-border">
+                            <span class="pregunta-titulo"><span class="pregunta-num-azul">4.</span> ¿De qué manera los buscadores (Inmuebles24, Lamudi) inyectan racionalidad de precios en zonas emocionales?</span>
