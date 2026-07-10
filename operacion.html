@@ -40,7 +40,7 @@
         .tag {
             font-size: 11px;
             font-weight: 800;
-            color: #2563eb; /* Identidad Azul Módulo 2 */
+            color: #2563eb;
             text-transform: uppercase;
             letter-spacing: 0.12em;
         }
@@ -79,7 +79,6 @@
             border: 1px solid #dbeafe;
         }
 
-        /* DISEÑO DE DIAPOSITIVA PREMIUM EN RECTA ACADÉMICA */
         .diapositiva-grid {
             display: flex;
             flex-direction: row;
@@ -99,7 +98,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            aspect-ratio: 4 / 3; /* Proporción PowerPoint Estándar */
+            aspect-ratio: 4 / 3;
             width: 100%;
         }
         
@@ -112,7 +111,6 @@
 
         .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
         
-        /* BLOQUES DE RESPUESTAS MAESTRAS ENNUMERADAS */
         .feedback-list {
             display: flex;
             flex-direction: column;
@@ -138,7 +136,13 @@
             font-weight: 900;
         }
 
-        .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
+        /* BARRA DE CONTROLES FIJA FUERA DEL GRID */
+        .revista-controles { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-top: 30px; 
+            gap: 20px; 
+        }
         .btn-nav {
             flex: 1;
             display: block;
@@ -180,7 +184,7 @@
 
             <div class="diapositiva-grid">
                 
-                <!-- Columna Izquierda: Bloque Desglosado de Respuestas Exclusivas -->
+                <!-- Columna Izquierda: Respuestas Exclusivas -->
                 <div class="col-texto">
                     <h3 class="slide-titulo">Resolución Oficial de Criterios Teóricos</h3>
                     
@@ -214,7 +218,7 @@
                     </div>
                 </div>
 
-                <!-- Columna Derecha: El Gráfico Técnico Heredado de Tu Repositorio de GitHub -->
+                <!-- Columna Derecha: Gráfico Técnico -->
                 <div class="col-visual">
                     <img src="imagenes/imagen10.png" class="img-fixed" alt="Cierre de Evaluación - Módulo 1">
                 </div>
@@ -222,6 +226,6 @@
             </div>
         </div>
 
+        <!-- CONTROLES COMPLETAMENTE OPERATIVOS ABAJO -->
         <div class="revista-controles">
             <a href="#" class="btn-nav btn-disabled">◀ Anterior</a>
-            <!-- Lanza el flujo limpio hacia el paso 2 de la tarea (Don Raúl y Jorge) -->
