@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -56,84 +56,71 @@
             padding: 25px;
             margin-bottom: 15px;
         }
-        .revista-header {
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 12px;
-            margin-bottom: 20px;
-        }
-        .revista-pills { font-size: 11px; font-weight: 800; color: #475569; text-transform: uppercase; }
 
+        /* DISEÑO SPLIT REBALANCEADO */
         .split-dashboard {
             display: flex;
             gap: 25px;
             margin-bottom: 15px;
+            align-items: center; /* Alinea verticalmente al centro la caja y la tabla */
         }
         .panel-izquierdo {
             flex: 1;
         }
         .panel-derecho {
-            flex: 1.1;
+            flex: 1.2;
         }
-        .caja-parametros-texto {
-            background-color: #f8fafc;
-            border: 1px solid #cbd5e1;
-            border-radius: 12px;
-            padding: 14px 16px;
-            font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
+
         .selector-escenarios-grid {
             border: 2px solid #cbd5e1;
-            padding: 16px;
+            padding: 24px;
             border-radius: 12px;
-            background: #ffffff;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            background: #f8fafc;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.01);
         }
-        .btn-static {
-            width: 100%;
-            padding: 12px;
-            font-size: 13.5px;
+        .selector-label {
+            display: block;
+            font-size: 12px;
             font-weight: 800;
-            text-align: left;
-            border: 2px solid #cbd5e1;
+            margin-bottom: 10px;
+            color: #0f172a;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .select-premium {
+            width: 100%;
+            padding: 14px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #1e293b;
+            background-color: #ffffff;
+            border: 2px solid #2563eb; /* Resaltado en azul para invitar a la acción */
             border-radius: 8px;
-            background-color: #f8fafc;
+            outline: none;
             cursor: pointer;
-            transition: all 0.1s ease;
         }
-        .btn-static:hover {
-            background-color: #f1f5f9;
-            border-color: #94a3b8;
-        }
-        
-        .btn-static.activo-rojo { border-color: #ef4444 !important; background-color: #fef2f2 !important; color: #991b1b !important; }
-        .btn-static.activo-verde { border-color: #10b981 !important; background-color: #f0fdf4 !important; color: #166534 !important; }
-        .btn-static.activo-azul { border-color: #2563eb !important; background-color: #eff6ff !important; color: #1e40af !important; }
 
         .tech-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 12px;
+            font-size: 12.5px;
             border: 1px solid #cbd5e1;
             border-radius: 10px;
             overflow: hidden;
         }
-        .tech-table th { background: #f8fafc; padding: 10px; text-align: left; font-weight: 800; border-bottom: 2px solid #cbd5e1; }
-        .tech-table td { padding: 10px; border-bottom: 1px solid #e2e8f0; }
+        .tech-table th { background: #f8fafc; padding: 12px; text-align: left; font-weight: 800; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 10px; }
+        .tech-table td { padding: 12px; border-bottom: 1px solid #e2e8f0; }
         
         .revista-controles { 
             display: flex; 
-            justify-content: center; 
+            justify-content: space-between; 
             margin-top: 25px; 
+            gap: 15px; 
             border-top: 2px solid #f1f5f9;
             padding-top: 15px;
         }
         .btn-nav {
-            width: 100%;
-            max-width: 400px;
+            flex: 1;
             display: block;
             text-decoration: none;
             background-color: #2563eb;
@@ -146,11 +133,43 @@
             text-align: center;
         }
     </style>
+
+    <!-- INYECTAMOS EL MOTOR DE CONEXIÓN EN LA CABECERA PARA CONTROL TOTAL -->
+    <script>
+        function ejecutarCambio(valorSeleccionado) {
+            var mIsai = document.getElementById('monto-isai');
+            var mVendedor = document.getElementById('monto-isr-vendedor');
+            var mComprador = document.getElementById('monto-isr-comprador');
+            var mDictamen = document.getElementById('monto-dictamen');
+
+            if (valorSeleccionado === 'raul') {
+                mIsai.innerText = "$264,000";
+                mVendedor.innerText = "$0";
+                mComprador.innerText = "$1,010,000";
+                mDictamen.innerText = "SUBVALUADO (RECHAZADO)";
+                mDictamen.style.color = "#dc2626";
+            } 
+            else if (valorSeleccionado === 'piso') {
+                mIsai.innerText = "$264,000";
+                mVendedor.innerText = "$1,076,000";
+                mComprador.innerText = "$0";
+                mDictamen.innerText = "RANGO ÓPTIMO (ACEPTADO)";
+                mDictamen.style.color = "#16a34a";
+            } 
+            else if (valorSeleccionado === 'avaluo') {
+                mIsai.innerText = "$264,000";
+                mVendedor.innerText = "$1,340,000";
+                mComprador.innerText = "$0";
+                mDictamen.innerText = "PRECIO ÓPTIMO (ACEPTADO)";
+                mDictamen.style.color = "#2563eb";
+            }
+        }
+    </script>
 </head>
 <body>
 
     <div class="container">
-        <a href="operacion.html" class="nav-back">◀ Volver a la Mesa de Control</a>
+        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
         <header>
             <span class="tag">Documento de Consulta Académica Independiente</span>
@@ -158,60 +177,53 @@
         </header>
 
         <div class="revista-wrapper">
-            <div class="revista-header">
-                <span class="revista-pills">Análisis de Ajustes y Rangos Legales (Avalúo Fijo: $13.2M)</span>
-            </div>
-
-            <div style="padding: 0 10px;">
+            <div style="padding: 10px 10px 0 10px;">
                 
                 <div class="split-dashboard">
                     
-                    <!-- PANEL IZQUIERDO -->
+                    <!-- PANEL IZQUIERDO: UNIFICADO Y SIN REDUNDANCIAS -->
                     <div class="panel-izquierdo">
-                        <div class="caja-parametros-texto">
-                            📍 <strong>Criterios de Escrituración:</strong><br>
-                            • Rango Mínimo (90%): $11,880,000 MXN<br>
-                            • Rango Máximo (110%): $14,520,000 MXN
-                        </div>
-
                         <div class="selector-escenarios-grid">
-                            <span style="font-size:11px; font-weight:800; color:#64748b; text-transform:uppercase;">Seleccione el Escenario Comercial:</span>
-                            <button id="btn-raul" class="btn-static">🚨 Escenario Don Raúl ($8,150,000 MXN)</button>
-                            <button id="btn-piso" class="btn-static">🟢 Rango Mínimo Legal (-10%)</button>
-                            <button id="btn-avaluo" class="btn-static">🔵 Precio de Avalúo Justo</button>
+                            <label class="selector-label" for="combo-escenarios">Auditoría Notarial (Avalúo Fijo: $13.2M):</label>
+                            <!-- Opciones homologadas con los datos de criterios eliminados -->
+                            <select id="combo-escenarios" class="select-premium" onchange="ejecutarCambio(this.value)">
+                                <option value="raul">🚨 Escenario Don Raúl ($8,150,000 MXN / -38%)</option>
+                                <option value="piso">🟢 Rango Mínimo Legal ($11,880,000 MXN / -10%)</option>
+                                <option value="avaluo">🔵 Precio de Avalúo Justo ($13,200,000 MXN / 100%)</option>
+                            </select>
                         </div>
                     </div>
 
-                    <!-- PANEL DERECHO -->
+                    <!-- PANEL DERECHO: MATRIZ DE RESULTADOS -->
                     <div class="panel-derecho">
                         <table class="tech-table">
                             <thead>
                                 <tr>
                                     <th>Concepto Tributario</th>
-                                    <th>Sujeto</th>
+                                    <th>Sujeto Obligado</th>
                                     <th style="text-align: right;">Monto Proyectado</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td><strong>ISAI Municipal (2%)</strong></td>
-                                    <td>Comprador</td>
-                                    <td id="monto-isai" style="text-align: right; font-weight: 700;">$0</td>
+                                    <td>Comprador (Demanda)</td>
+                                    <td id="monto-isai" style="text-align: right; font-weight: 700;">$264,000</td>
                                 </tr>
                                 <tr>
                                     <td><strong>ISR Enajenación (Est. 20%)</strong></td>
-                                    <td>Vendedor</td>
+                                    <td>Vendedor (Propietario)</td>
                                     <td id="monto-isr-vendedor" style="text-align: right; font-weight: 700;">$0</td>
                                 </tr>
                                 <tr>
                                     <td><strong>ISR Adquisición (Art. 125)</strong></td>
-                                    <td>Comprador</td>
-                                    <td id="monto-isr-comprador" style="text-align: right; font-weight: 700; color: #dc2626;">$0</td>
+                                    <td>Comprador (Jorge)</td>
+                                    <td id="monto-isr-comprador" style="text-align: right; font-weight: 700; color: #dc2626;">$1,010,000</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Dictamen ante Notario</strong></td>
-                                    <td>Estatus</td>
-                                    <td id="monto-dictamen" style="text-align: right; font-weight: 800;">Cargando...</td>
+                                    <td>Estatus Legal</td>
+                                    <td id="monto-dictamen" style="text-align: right; font-weight: 800; color: #dc2626;">SUBVALUADO (RECHAZADO)</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -220,38 +232,13 @@
                 </div>
 
                 <div class="revista-controles">
-                    <a href="operacion.html" class="btn-nav">◀ Regresar a la Mesa de Control</a>
+                    <a href="operacion-p4.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
+                    <a href="operacion-p5.html" class="btn-nav">Siguiente ▶</a>
                 </div>
 
             </div>
         </div>
     </div>
 
-    <script>
-        const bRaul = document.getElementById('btn-raul');
-        const bPiso = document.getElementById('btn-piso');
-        const bAvaluo = document.getElementById('btn-avaluo');
-
-        const mIsai = document.getElementById('monto-isai');
-        const mVendedor = document.getElementById('monto-isr-vendedor');
-        const mComprador = document.getElementById('monto-isr-comprador');
-        const mDictamen = document.getElementById('monto-dictamen');
-
-        function cambiarEscenario(idEscenario) {
-            if (idEscenario === 'raul') {
-                mIsai.innerText = "$264,000";
-                mVendedor.innerText = "$0";
-                mComprador.innerText = "$1,010,000";
-                mDictamen.innerText = "VIABLE CON AJUSTE (CASTIGO FISCAL)";
-                mDictamen.style.color = "#d97706"; // Ámbar de advertencia correcto
-
-                bRaul.className = "btn-static activo-rojo";
-                bPiso.className = "btn-static";
-                bAvaluo.className = "btn-static";
-            } 
-            else if (idEscenario === 'piso') {
-                mIsai.innerText = "$264,000";
-                mVendedor.innerText = "$1,076,000";
-                mComprador.innerText = "$0";
-                mDictamen.innerText = "RANGO ÓPTIMO (ACEPTADO)";
-                mDictamen.style.color = "#16a34a";
+</body>
+</html>
