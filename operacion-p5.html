@@ -81,7 +81,7 @@
         .slide-titulo { font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 12px; }
         .slide-txt { font-size: 13.5px; line-height: 1.5; color: #475569; margin-bottom: 14px; }
 
-        /* INTERFAZ DEL SIMULADOR */
+        /* INTERFAZ COMPACTA */
         .simulador-card {
             background-color: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -93,25 +93,25 @@
             display: flex;
             justify-content: space-between;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .fijo-box {
             flex: 1;
             background: #ffffff;
             border: 1px solid #cbd5e1;
-            padding: 12px;
+            padding: 10px;
             border-radius: 10px;
             text-align: center;
         }
         .fijo-box span { font-size: 10px; font-weight: 800; color: #64748b; text-transform: uppercase; }
-        .fijo-box h4 { font-size: 16px; font-weight: 800; color: #0f172a; margin-top: 4px; }
+        .fijo-box h4 { font-size: 15px; font-weight: 800; color: #0f172a; margin-top: 4px; }
 
         .control-slider-box {
             background: #ffffff;
             border: 1px solid #cbd5e1;
-            padding: 16px;
+            padding: 14px;
             border-radius: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .slider-label-flex {
             display: flex;
@@ -119,7 +119,7 @@
             font-size: 13px;
             font-weight: 800;
             color: #1e293b;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .input-slider {
             width: 100%;
@@ -131,39 +131,7 @@
             accent-color: #2563eb;
         }
 
-        /* SEMÁFORO DE DIAGNÓSTICO NOTARIAL */
-        .diagnostico-banner {
-            padding: 12px 16px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-align: center;
-            line-height: 1.4;
-        }
-        .status-optimo { background-color: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
-        .status-peligro { background-color: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
-
-        .btn-escenario-critico {
-            display: block;
-            width: 100%;
-            background-color: #7c2d12;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 12.5px;
-            font-weight: 800;
-            text-decoration: none;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            transition: background 0.1s ease;
-            border: none;
-            cursor: pointer;
-        }
-        .btn-escenario-critico:hover { background-color: #9a3412; }
-
-        /* TABLA DE RESULTADOS DE IMPUESTOS */
+        /* TABLA DE RESULTADOS INTEGRADA CON SEMÁFORO */
         .tabla-resultados {
             width: 100%;
             border-collapse: collapse;
@@ -175,7 +143,11 @@
         }
         .tabla-resultados th { background: #f1f5f9; padding: 10px; font-weight: 800; text-align: left; border-bottom: 1px solid #cbd5e1; text-transform: uppercase; font-size: 10px; }
         .tabla-resultados td { padding: 10px; border-bottom: 1px solid #e2e8f0; }
-        .tabla-resultados tr:last-child td { border-bottom: none; }
+        
+        /* Estados del Semáforo dentro de la tabla */
+        .status-cell { font-weight: 800; text-align: right; font-size: 13px; }
+        .optimo-alert { background-color: #dcfce7 !important; color: #15803d !important; }
+        .peligro-alert { background-color: #fee2e2 !important; color: #b91c1c !important; }
 
         /* CONTROLES INFERIORES */
         .revista-controles { 
@@ -222,44 +194,56 @@
 
             <div style="padding: 0 10px;">
                 <h3 class="slide-titulo">Simulador de Impacto Fiscal e Inviabilidad por Subvaluación</h3>
-                <p class="slide-txt">Mueva el control deslizable para modificar el precio de venta y observe cómo reacciona la matriz de control notarial de la Ley del ISR en base al avalúo comercial fijado para la residencia de Chihuahua:</p>
+                <p class="slide-txt">Mueva la barra para modificar el precio pactado de venta y observe en tiempo real el cálculo exacto de impuestos y el diagnóstico automático del rango legal del ±10%:</p>
 
                 <div class="simulador-card">
-                    <!-- Valores Fijos del Caso -->
+                    <!-- Valores Fijos del Caso Simplificados -->
                     <div class="valores-fijos-grid">
                         <div class="fijo-box" style="border-left: 4px solid #64748b;">
-                            <span>Avalúo Comercial Fijo</span>
+                            <span>Avalúo Comercial</span>
                             <h4>$13,200,000</h4>
                         </div>
                         <div class="fijo-box" style="border-left: 4px solid #10b981;">
-                            <span>Piso Mínimo Legal (90%)</span>
+                            <span>Piso (90%)</span>
                             <h4>$11,880,000</h4>
                         </div>
                         <div class="fijo-box" style="border-left: 4px solid #ef4444;">
-                            <span>Techo Máximo Legal (110%)</span>
+                            <span>Techo (110%)</span>
                             <h4>$14,520,000</h4>
                         </div>
                     </div>
 
-                    <!-- Botón para forzar el escenario original de Don Raúl -->
-                    <button class="btn-escenario-critico" onclick="forzarEscenarioRaul()">⚠️ Simular Escenario Crítico Don Raúl ($8,150,000)</button>
-
-                    <!-- Slider de Control Desplazable -->
+                    <!-- Slider de Control Desplazable Extendido de 80% ($10,560,000) a 120% ($15,840,000) -->
                     <div class="control-slider-box">
                         <div class="slider-label-flex">
-                            <span>Simular Precio de Venta Pactado:</span>
-                            <span id="txt-precio-actual" style="color: #2563eb; font-size: 15px;">$11,220,000</span>
+                            <span>Precio de Venta Pactado:</span>
+                            <span id="txt-precio-actual" style="color: #2563eb; font-size: 15px; font-weight: 800;">$11,220,000</span>
                         </div>
-                        <!-- Rango del 85% ($11,220,000) al 115% ($15,180,000) -->
-                        <input type="range" min="11220000" max="15180000" step="50000" value="11220000" class="input-slider" id="slider-precio" oninput="calcularImpuestos(this.value)">
+                        <input type="range" min="10560000" max="15840000" step="50000" value="11220000" class="input-slider" id="slider-precio" oninput="calcularImpuestos(this.value)">
                     </div>
 
-                    <!-- Semáforo Dinámico Notarial -->
-                    <div id="banner-status" class="diagnostico-banner status-peligro">
-                        Cargando diagnóstico...
-                    </div>
-
-                    <!-- Tabla de Resultados de Impuestos -->
+                    <!-- Tabla de Resultados de Impuestos con Diagnóstico Integrado -->
                     <table class="tabla-resultados">
                         <thead>
                             <tr>
+                                <th>Concepto Fiscal</th>
+                                <th>Sujeto Obligado</th>
+                                <th style="text-align: right;">Monto Calculado Proyectado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>ISAI Municipal (2%)</strong></td>
+                                <td>Comprador (Demanda)</td>
+                                <td id="res-isai" style="text-align: right; font-weight: 700;">$0</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ISR por Enajenación (Estimado 20%)</strong></td>
+                                <td>Vendedor (Dueño)</td>
+                                <td id="res-isr-vendedor" style="text-align: right; font-weight: 700;">$0</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ISR por Adquisición (Castigo Art. 125 LISR)</strong></td>
+                                <td>Comprador (Jorge)</td>
+                                <td id="res-isr-comprador" style="text-align: right; font-weight: 700;">$0</td>
+                            </tr>
