@@ -26,8 +26,37 @@
         .slide-txt { font-size: 13px; line-height: 1.4; color: #475569; margin-bottom: 14px; }
         .sub-seccion-pills { font-size: 9.5px; font-weight: 800; color: #2563eb; background-color: #eff6ff; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 6px; text-transform: uppercase; }
 
+        /* INTERFAZ COMPACTA DE EVALUACIÓN */
+        .quiz-container {
+            max-height: 380px;
+            overflow-y: auto;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #f8fafc;
+            margin-bottom: 15px;
+        }
+        .pregunta-item {
+            margin-bottom: 20px;
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .pregunta-item p { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+        .opciones-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+        .opciones-list button {
+            width: 100%; text-align: left; padding: 10px; font-size: 12px; font-weight: 600;
+            background-color: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 6px; cursor: pointer; transition: all 0.1s;
+        }
+        .opciones-list button:hover { background-color: #e2e8f0; border-color: #94a3b8; }
+        
+        /* Clases de respuesta */
+        .opciones-list button.correcto { background-color: #dcfce7 !important; border-color: #10b981 !important; color: #15803d !important; }
+        .opciones-list button.incorrecto { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #b91c1c !important; }
+
         .revista-controles { display: flex; justify-content: space-between; margin-top: 15px; gap: 15px; border-top: 2px solid #f1f5f9; padding-top: 12px; }
-        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 12px; border-radius: 8px; font-size: 14.5px; font-weight: 800; color: #ffffff !important; text-align: center; transition: all 0.1s ease; }
+        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 12px; border-radius: 8px; font-size: 14.5px; font-weight: 800; color: #ffffff !important; text-align: center; }
         .btn-nav:hover { background-color: #3b82f6; }
     </style>
 </head>
@@ -50,9 +79,42 @@
             <div style="padding: 0 5px;">
                 <span class="sub-seccion-pills">Examen del Módulo</span>
                 <h3 class="slide-titulo">Validación de Criterios Fiscales, Valuación y Contratos</h3>
-                <p class="slide-txt">Responda a las siguientes interrogantes diseñadas para certificar su capacidad técnica como Consultor Patrimonial frente a escenarios de toma de decisiones corporativas:</p>
+                <p class="slide-txt">Dé clic sobre la opción que considere correcta para recibir retroalimentación notarial inmediata:</p>
 
-                <!-- El sistema inyecta aquí de manera automática la interfaz del examen interactivo de postgrado -->
+                <!-- AREA INTERACTIVA AUTOMÁTICA -->
+                <div class="quiz-container">
+                    
+                    <!-- PREGUNTA 1 -->
+                    <div class="pregunta-item">
+                        <p>1. Según la Ley del ISR, ¿cada cuántos años puede una persona física exentar la venta de su casa habitación?</p>
+                        <div class="opciones-list">
+                            <button onclick="verificar(this, false, 'La ley exige un lapso mayor para evitar la especulación.')">A) Cada 1 año</button>
+                            <button onclick="verificar(this, true, '¡Correcto! El Artículo 93 estipula una temporalidad mínima de 3 años.')">B) Cada 3 años</button>
+                            <button onclick="verificar(this, false, 'El límite legal es menor a 5 años.')">C) Cada 5 años</button>
+                        </div>
+                    </div>
+
+                    <!-- PREGUNTA 2 -->
+                    <div class="pregunta-item">
+                        <p>2. ¿Cuál es el porcentaje máximo anual autorizado de depreciación aplicable a las construcciones en enajenación?</p>
+                        <div class="opciones-list">
+                            <button onclick="verificar(this, false, 'Tasa incorrecta para el Título IV.')">A) 3% anual</button>
+                            <button onclick="verificar(this, true, '¡Correcto! El Artículo 125 estipula el 5% de demerito anual sobre la obra civil.')">B) 5% anual</button>
+                            <button onclick="verificar(this, false, '10% excede el límite permitido para inmuebles.')">C) 10% anual</button>
+                        </div>
+                    </div>
+
+                    <!-- PREGUNTA 3 -->
+                    <div class="pregunta-item">
+                        <p>3. Para el cobro de la tasa del ISAI local, ¿qué valor se toma como base gravable obligatoria?</p>
+                        <div class="opciones-list">
+                            <button onclick="verificar(this, false, 'No se limita al contrato para evitar subvaluaciones.')">A) El precio del contrato de compraventa</button>
+                            <button onclick="verificar(this, true, '¡Correcto! Se toma obligatoriamente el valor más alto entre precio, catastro y avalúo.')">B) El valor más alto entre precio, catastro o avalúo</button>
+                            <button onclick="verificar(this, false, 'El catastro suele estar castigado, por lo que se cruza con avalúo.')">C) Únicamente el valor catastral del municipio</button>
+                        </div>
+                    </div>
+
+                </div> <!-- CIERRE QUIZ CONTAINER -->
 
                 <div class="revista-controles">
                     <a href="operacion-p8.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
@@ -63,5 +125,25 @@
         </div>
     </div>
 
+    <script>
+        function verificar(boton, esCorrecto, retroalimentacion) {
+            // Limpia opciones hermanas
+            var lista = boton.parentElement;
+            var botones = lista.getElementsByTagName('button');
+            for(var i=0; i<botones.length; i++) {
+                botones[i].className = '';
+                botones[i].disabled = true;
+            }
+            
+            // Pinta resultado
+            if(esCorrecto) {
+                boton.className = 'correcto';
+                alert("✅ " + retroalimentacion);
+            } else {
+                boton.className = 'incorrecto';
+                alert("❌ " + retroalimentacion);
+            }
+        }
+    </script>
 </body>
 </html>
