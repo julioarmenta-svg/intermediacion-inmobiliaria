@@ -94,34 +94,46 @@
             line-height: 1.5;
             color: #334155;
         }
-        .cuadro-input-grupo {
+
+        /* DISEÑO DE BOTONES DE SELECCIÓN COMPACTOS Y SEGUROS */
+        .selector-escenarios-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             background: #ffffff;
             border: 2px solid #cbd5e1;
             padding: 16px;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.01);
         }
-        .input-label {
-            display: block;
+        .selector-label {
             font-size: 12px;
             font-weight: 800;
             color: #0f172a;
-            margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 0.02em;
         }
-        .input-monto {
+        .btn-escenario {
             width: 100%;
             padding: 12px;
-            font-size: 16px;
+            font-size: 13.5px;
             font-weight: 800;
-            color: #2563eb;
+            text-align: left;
             border: 2px solid #cbd5e1;
             border-radius: 8px;
-            outline: none;
             background-color: #f8fafc;
+            color: #334155;
+            cursor: pointer;
+            transition: all 0.1s ease;
         }
-        .input-monto:focus { border-color: #2563eb; background-color: #ffffff; }
+        .btn-escenario:hover {
+            background-color: #f1f5f9;
+            border-color: #94a3b8;
+        }
+        /* Clase activa para el botón seleccionado */
+        .btn-escenario.activo-azul { border-color: #2563eb; background-color: #eff6ff; color: #1e40af; }
+        .btn-escenario.activo-verde { border-color: #10b981; background-color: #f0fdf4; color: #166534; }
+        .btn-escenario.activo-rojo { border-color: #ef4444; background-color: #fef2f2; color: #991b1b; }
 
         /* TABLA DE RESULTADOS INDESTRUCTIBLE */
         .tech-table {
@@ -148,24 +160,24 @@
             margin-top: 25px; 
             gap: 15px; 
             border-top: 2px solid #f1f5f9;
-            padding-top: 15px;
+            padding-top: 25px;
         }
         .btn-nav {
             flex: 1;
             display: block;
             text-decoration: none;
             background-color: #2563eb;
-            border-bottom: 4px solid #1d4ed8;
-            padding: 14px;
-            border-radius: 10px;
-            font-size: 15px;
+            border-bottom: 5px solid #1d4ed8;
+            padding: 18px;
+            border-radius: 14px;
+            font-size: 16px;
             font-weight: 800;
             color: #ffffff !important;
             text-align: center;
             transition: all 0.1s ease;
         }
         .btn-nav:hover { background-color: #3b82f6; }
-        .btn-nav:active { transform: translateY(2px); border-bottom-width: 2px; }
+        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
 
         @media (max-width: 768px) { .split-dashboard { flex-direction: column; gap: 15px; } }
     </style>
@@ -189,23 +201,33 @@
                 
                 <div class="split-dashboard">
                     
-                    <!-- PANEL IZQUIERDO -->
+                    <!-- PANEL IZQUIERDO: PARÁMETROS Y SELECTORES PREDETERMINADOS -->
                     <div class="panel-izquierdo">
                         <div class="caja-parametros-texto">
                             📍 <strong>Criterios de Escrituración:</strong><br>
-                            • Avalúo Comercial: $13,200,000 MXN<br>
-                            • Piso Mínimo (90%): $11,880,000 MXN<br>
-                            • Techo Máximo (110%): $14,520,000 MXN
+                            • Avalúo Comercial Fijo: $13,200,000 MXN<br>
+                            • Rango Mínimo (90%): $11,880,000 MXN<br>
+                            • Rango Máximo (110%): $14,520,000 MXN
                         </div>
 
-                        <div class="cuadro-input-grupo">
-                            <label class="input-label" for="monto-venta">Precio de Venta Pactado (MXN):</label>
-                            <!-- Fijado inicialmente en valor de avalúo para el arranque limpio -->
-                            <input type="number" id="monto-venta" value="13200000" class="input-monto" oninput="calcularMatrizFiscal(this.value)">
+                        <div class="selector-escenarios-grid">
+                            <span class="selector-label">Seleccione el Escenario Comercial Comercial:</span>
+                            <!-- Botón Escenario Don Raúl -->
+                            <button id="btn-raul" class="btn-escenario" onclick="cambiarEscenario('raul')">
+                                🚨 Escenario Don Raúl ($8,150,000 MXN)
+                            </button>
+                            <!-- Botón Escenario Mínimo Real -->
+                            <button id="btn-piso" class="btn-escenario" onclick="cambiarEscenario('piso')">
+                                🟢 Rango Mínimo Legal (-10%: $11,880,000 MXN)
+                            </button>
+                            <!-- Botón Escenario Avalúo Justo -->
+                            <button id="btn-avaluo" class="btn-escenario" onclick="cambiarEscenario('avaluo')">
+                                🔵 Precio de Avalúo Justo ($13,200,000 MXN)
+                            </button>
                         </div>
                     </div>
 
-                    <!-- PANEL DERECHO -->
+                    <!-- PANEL DERECHO: TABLA DE IMPUESTOS FIJOS E INDESTRUCTIBLES -->
                     <div class="panel-derecho">
                         <table class="tech-table">
                             <thead>
@@ -219,39 +241,9 @@
                                 <tr>
                                     <td><strong>ISAI Municipal (2%)</strong></td>
                                     <td>Comprador</td>
-                                    <td id="monto-isai" style="text-align: right; font-weight: 700; color: #0f172a;">$0</td>
+                                    <td id="monto-isai" style="text-align: right; font-weight: 700; color: #0f172a;">$264,000</td>
                                 </tr>
                                 <tr>
                                     <td><strong>ISR Enajenación (Est. 20%)</strong></td>
                                     <td>Vendedor</td>
                                     <td id="monto-isr-vendedor" style="text-align: right; font-weight: 700; color: #0f172a;">$0</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>ISR Adquisición (Art. 125)</strong></td>
-                                    <td>Comprador</td>
-                                    <td id="monto-isr-comprador" style="text-align: right; font-weight: 700; color: #dc2626;">$0</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Dictamen ante Notario</strong></td>
-                                    <td>Estatus</td>
-                                    <td style="text-align: right;"><span id="badge-diagnostico" class="badge-peligro">Cargando...</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-
-                <div class="revista-controles">
-                    <a href="operacion-p4.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
-                    <a href="operacion-p5.html" class="btn-nav">Siguiente ▶</a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const AVALUO_REF = 13200000;
-        const PISO_REF = 11880000;
-        const TECHO_REF = 14520000;
