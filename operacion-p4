@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 2: Aspectos Legales y Fiscales - URN</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background-color: #f1f5f9; 
+            padding: 40px 20px;
+            color: #334155;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+        .nav-back {
+            display: inline-block;
+            text-decoration: none;
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .nav-back:hover { color: #1d4ed8; }
+        header {
+            margin-bottom: 35px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 20px;
+        }
+        .tag {
+            font-size: 11px;
+            font-weight: 800;
+            color: #2563eb;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 4px;
+            letter-spacing: -0.02em;
+        }
+        .revista-wrapper {
+            background-color: #ffffff;
+            border: 3px solid #cbd5e1;
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+        }
+        .revista-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+        .revista-pills { font-size: 12px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+        .revista-contador {
+            font-size: 12px;
+            font-weight: 800;
+            color: #2563eb;
+            background-color: #eff6ff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #dbeafe;
+        }
+
+        .slide-titulo { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
+        .slide-txt { font-size: 14.5px; line-height: 1.6; color: #475569; margin-bottom: 20px; }
+        
+        .sub-seccion-pills {
+            font-size: 11px;
+            font-weight: 800;
+            color: #2563eb;
+            background-color: #eff6ff;
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* DISEÑO DE PANEL DE DEBATE EJECUTIVO */
+        .debate-box {
+            background-color: #fff7ed;
+            border: 2px solid #fed7aa;
+            border-left: 6px solid #ea580c;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0 25px 0;
+        }
+        .debate-title {
+            font-size: 12px;
+            font-weight: 900;
+            color: #c2410c;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .debate-scenerio {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #1e293b;
+            margin-bottom: 16px;
+            background: #ffffff;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #ffedd5;
+        }
+        .debate-pregunta {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #7c2d12;
+            line-height: 1.5;
+        }
+
+        .highlight-box {
+            background-color: #f8fafc;
+            border-left: 5px solid #2563eb;
+            padding: 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #1e293b;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* BARRA DE CONTROLES INFERIOR FIJA */
+        .revista-controles { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-top: 30px; 
+            gap: 20px; 
+            border-top: 2px solid #f1f5f9;
+            padding-top: 25px;
+        }
+        .btn-nav {
+            flex: 1;
+            display: block;
+            text-decoration: none;
+            background-color: #2563eb;
+            border-bottom: 5px solid #1d4ed8;
+            padding: 18px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 800;
+            color: #ffffff !important;
+            text-align: center;
+            transition: all 0.1s ease;
+        }
+        .btn-nav:hover { background-color: #3b82f6; }
+        .btn-nav:active { transform: translateY(3px); border-bottom: 2px solid #1d4ed8; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
+
+        <header>
+            <span class="tag">Unidad III · Gestión y Legalidad de Inmuebles</span>
+            <h1>2. Aspectos Legales y Fiscales en Operaciones</h1>
+        </header>
+
+        <div class="revista-wrapper">
+            <div class="revista-header">
+                <span class="revista-pills">Implicaciones Fiscales Básicas</span>
+                <span class="revista-contador">Pág. 4 de 11</span>
+            </div>
+
+            <div style="padding: 0 10px;">
+                
+                <span class="sub-seccion-pills">Marco Tributario</span>
+                <h3 class="slide-titulo">Carga Impositiva: Compra, Renta y Traspaso</h3>
+                <p class="slide-txt">La viabilidad financiera de cualquier transacción inmobiliaria en México está sujeta a su impacto fiscal. Un Consultor Patrimoninal debe dominar los impuestos base que gravan cada operación para evitar contingencias legales o minusvalías patrimoniales imprevistas a sus representados:</p>
+                
+                <div class="highlight-box">
+                    <strong>Impuestos Esenciales por Tipo de Transacción:</strong><br><br>
+                    • <strong>Venta / Compraventa:</strong> El enajenante (vendedor) está sujeto al cálculo del <strong>ISR (Impuesto Sobre la Renta)</strong> por enajenación de bienes, gravando la utilidad neta de la venta. Por su parte, el adquiriente (comprador) absorbe el <strong>ISAI (Impuesto Sobre Adquisición de Inmuebles)</strong>, una tasa local variable cobrada por el municipio.<br><br>
+                    • <strong>Arrendamiento (Renta):</strong> El arrendador está obligado a acumular sus ingresos y pagar ISR bajo el régimen fiscal correspondiente, teniendo el derecho de aplicar la <strong>Deducción Ciega (35% directo)</strong> o deducciones comprobables, además de trasladar el 16% de IVA si el uso del inmueble es comercial.<br><br>
+                    • <strong>Traspaso de Derechos:</strong> Al ceder un contrato de arrendamiento o una unidad de negocio, se genera una ganancia de capital sujeta a la retención de ISR por concepto de ingresos por la cesión de derechos de bienes intangibles.
+                </div>
+
+                <!-- COMPONENTE DINÁMICO DE CLASE: MESA DE DEBATE EN EL AULA -->
+                <div class="debate-box">
+                    <span class="debate-title">🗣️ Dilema en el Aula: Caso Práctico Fiscal Cruzado</span>
+                    <div class="debate-scenerio">
+                        <strong>Escenario de Análisis:</strong> Don Raúl decide formalizar la venta de su propiedad por $8,150,000 MXN. Sin embargo, al revisar la documentación notarial previa, descubres que la adquirió hace 30 años en un valor nominal histórico muy bajo y no cuenta con facturas que amparen las remodelaciones estructurales que le hizo al inmueble. El cálculo preliminar arroja un ISR sumamente alto debido a la enorme brecha entre el costo comprobable de adquisición ajustado y el precio de venta actual.
+                    </div>
+                    <div class="debate-pregunta">
+                        <strong>Pregunta de Debate Directivo:</strong><br>
+                        Como Consultor Estratégico, ¿qué mecanismos legales y fiscales vigentes en la normativa mexicana investigarías o aplicarías para ayudar a Don Raúl a mitigar legítimamente el impacto del ISR antes de firmar la escritura pública ante Notario?
+                    </div>
+                </div>
+
+                <div class="revista-controles">
+                    <a href="operacion-p3.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
+                    <a href="operacion-p5.html" class="btn-nav">Siguiente ▶</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
