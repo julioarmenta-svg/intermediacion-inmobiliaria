@@ -26,53 +26,52 @@
         .slide-txt { font-size: 13px; line-height: 1.4; color: #475569; margin-bottom: 10px; }
         .sub-seccion-pills { font-size: 9.5px; font-weight: 800; color: #2563eb; background-color: #eff6ff; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 6px; text-transform: uppercase; }
         
-        .table-responsive { width: 100%; overflow-x: auto; margin: 8px 0 12px 0; border: 1px solid #cbd5e1; border-radius: 8px; }
-        .tech-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 600px; }
-        .tech-table th { background: #f8fafc; padding: 8px 10px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 9.5px; }
-        .tech-table td { padding: 12px 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: middle; line-height: 1.4; }
-        .tech-table tr:last-child td { border-bottom: none; }
+        /* DISEÑO DE MATRIZ LIMPIO SIN OVERFLOW TRAIDOR */
+        .tech-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 10px 0; border: 1px solid #cbd5e1; border-radius: 8px; overflow: visible; }
+        .tech-table th { background: #f8fafc; padding: 10px; text-align: left; font-weight: 800; color: #1e293b; border-bottom: 2px solid #cbd5e1; text-transform: uppercase; font-size: 9.5px; }
+        .tech-table td { padding: 12px 10px; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: middle; line-height: 1.4; position: relative; }
 
-        /* ESTILO PARA LA VENTANA FLOTANTE (HOVER POPOVER) */
+        /* NUEVO POPUP INMUNE A CORTES DE BORDE */
         .celda-hover {
             position: relative;
             color: #2563eb;
             cursor: help;
             text-decoration: underline dotted #2563eb;
             font-weight: 800;
+            display: inline-block;
         }
         .popover-tabla {
             display: none;
             position: absolute;
-            left: 105%;
-            top: -20px;
-            width: 280px;
-            background: #0f172a;
+            left: 0;
+            top: 105%; /* Despliega hacia abajo limpiamente */
+            width: 320px;
+            background: #1e293b;
             color: #ffffff;
             border-radius: 8px;
             padding: 10px;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
-            z-index: 999;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 9999;
             font-size: 11px;
+            border: 1px solid #475569;
         }
         .popover-tabla table { width: 100%; border-collapse: collapse; }
-        .popover-tabla th { color: #94a3b8; text-align: left; border-bottom: 1px solid #334155; padding-bottom: 4px; font-size: 10px; }
-        .popover-tabla td { padding: 4px 0; border-bottom: 1px solid #1e293b; color: #e2e8f0; }
+        .popover-tabla th { color: #38bdf8; text-align: left; border-bottom: 1px solid #475569; padding-bottom: 4px; font-size: 10px; }
+        .popover-tabla td { padding: 4px 0; border-bottom: 1px solid #334155; color: #f1f5f9; }
         .popover-tabla tr:last-child td { border-bottom: none; }
         
-        /* Disparador del cursor */
-        .celda-hover:hover .popover-tabla {
-            display: block;
-        }
+        .celda-hover:hover .popover-tabla { display: block; }
 
-        .debate-box { background-color: #fff7ed; border: 1px solid #fed7aa; border-left: 5px solid #ea580c; border-radius: 10px; padding: 12px 16px; margin: 10px 0; }
-        .debate-title { font-size: 10.5px; font-weight: 900; color: #c2410c; text-transform: uppercase; margin-bottom: 4px; display: block; }
-        .debate-scenerio { font-size: 12.5px; line-height: 1.4; color: #1e293b; margin-bottom: 8px; background: #ffffff; padding: 8px; border-radius: 6px; border: 1px solid #ffedd5; }
-        .debate-pregunta { font-size: 12.5px; font-weight: 700; color: #7c2d12; line-height: 1.3; }
+        /* DILEMA COMPACTADO */
+        .debate-box { background-color: #fff7ed; border: 1px solid #fed7aa; border-left: 5px solid #ea580c; border-radius: 10px; padding: 10px 14px; margin: 10px 0; }
+        .debate-title { font-size: 10.5px; font-weight: 900; color: #c2410c; text-transform: uppercase; margin-bottom: 20px; display: block; }
+        .debate-scenerio { font-size: 12.5px; line-height: 1.4; color: #1e293b; margin-bottom: 6px; background: #ffffff; padding: 8px; border-radius: 6px; border: 1px solid #ffedd5; }
+        .debate-pregunta { font-size: 12.5px; font-weight: 700; color: #7c2d12; }
 
+        /* CONTROLES SEGUROS */
         .revista-controles { display: flex; justify-content: space-between; margin-top: 15px; gap: 15px; border-top: 2px solid #f1f5f9; padding-top: 12px; }
-        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 12px; border-radius: 8px; font-size: 14.5px; font-weight: 800; color: #ffffff !important; text-align: center; transition: all 0.1s ease; }
+        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 12px; border-radius: 8px; font-size: 14.5px; font-weight: 800; color: #ffffff !important; text-align: center; }
         .btn-nav:hover { background-color: #3b82f6; }
-        .btn-nav:active { transform: translateY(1px); border-bottom-width: 2px; }
     </style>
 </head>
 <body>
@@ -92,66 +91,69 @@
             </div>
 
             <div style="padding: 0 5px;">
-                
                 <span class="sub-seccion-pills">Operación Física</span>
                 <h3 class="slide-titulo">Mantenimiento Preventivo vs. Correctivo</h3>
-                <p class="slide-txt">Pasa el cursor sobre los conceptos subrayados para desplegar la ventana flotante con el desglose exacto de obligaciones pactadas en México:</p>
+                <p class="slide-txt">Pasa el cursor sobre los conceptos para desplegar la ventana flotante con las obligaciones reguladas en México:</p>
                 
-                <div class="table-responsive">
-                    <table class="tech-table">
-                        <thead>
-                            <tr>
-                                <th>Tipo de Clasificación</th>
-                                <th>Criterio y Mecánica de Asignación en Portafolios</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <!-- VENTANA FLOTANTE PREVENTIVO -->
-                                <td>
-                                    <span class="celda-hover">Mantenimiento Preventivo 🔍
-                                        <div class="popover-tabla">
-                                            <table>
-                                                <thead>
-                                                    <tr><th>Acción Preventiva</th><th>Quién Paga</th></tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr><td>Impermeabilización</td><td>Dueño (Plusvalía)</td></tr>
-                                                    <tr><td>Pintura Fachada</td><td>Dueño (Estructura)</td></tr>
-                                                    <tr><td>Servicio de Climas</td><td>Inquilino (Por Uso)</td></tr>
-                                                    <tr><td>Limpieza Cisterna</td><td>Inquilino (Higiene)</td></tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </span>
-                                </td>
-                                <td>Rutinas programadas para mitigar la depreciación de la obra civil. Financiado mayormente por el dueño para salvaguardar el valor de capital del activo.</td>
-                            </tr>
-                            <tr>
-                                <!-- VENTANA FLOTANTE CORRECTIVO -->
-                                <td>
-                                    <span class="celda-hover">Mantenimiento Correctivo 🔍
-                                        <div class="popover-tabla">
-                                            <table>
-                                                <thead>
-                                                    <tr><th>Falla de Emergencia</th><th>Quién Paga</th></tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr><td>Tubería Interna Rota</td><td>Dueño (Uso/Edad)</td></tr>
-                                                    <tr><td>Cortocircuito Interno</td><td>Dueño (Vicio Oculto)</td></tr>
-                                                    <tr><td>Vidrio Quebrado</td><td>Inquilino (Descuido)</td></tr>
-                                                    <tr><td>Chapa Puerta Azotada</td><td>Inquilino (Mal Uso)</td></tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </span>
-                                </td>
-                                <td>Reparaciones de emergencia ante imprevistos. El origen o causa raíz (desgaste frente a negligencia) determina legalmente quién asume la factura líquida.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 35%;">Tipo de Clasificación</th>
+                            <th>Criterio y Mecánica de Asignación Patrimonial</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="celda-hover">Mantenimiento Preventivo 🔍
+                                    <div class="popover-tabla">
+                                        <table>
+                                            <thead>
+                                                <tr><th>Acción</th><th>Quién Paga</th></tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr><td>Impermeabilización</td><td>Dueño (Plusvalía)</td></tr>
+                                                <tr><td>Pintura Fachada</td><td>Dueño (Estructura)</td></tr>
+                                                <tr><td>Servicio de Climas</td><td>Inquilino (Por Uso)</td></tr>
+                                                <tr><td>Limpieza Cisterna</td><td>Inquilino (Uso diario)</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </span>
+                            </td>
+                            <td>Rutinas programadas para mitigar la depreciación. Financiado por el dueño para salvaguardar el valor de capital del activo.</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="celda-hover">Mantenimiento Correctivo 🔍
+                                    <div class="popover-tabla">
+                                        <table>
+                                            <thead>
+                                                <tr><th>Falla</th><th>Quién Paga</th></tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr><td>Tubería Interna Rota</td><td>Dueño (Uso/Edad)</td></tr>
+                                                <tr><td>Cortocircuito Interno</td><td>Dueño (Vicio Oculto)</td></tr>
+                                                <tr><td>Vidrio Quebrado</td><td>Inquilino (Descuido)</td></tr>
+                                                <tr><td>Chapa Puerta Azotada</td><td>Inquilino (Mal Uso)</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </span>
+                            </td>
+                            <td>Reparaciones de emergencia. La causa raíz (desgaste frente a negligencia) determina legalmente quién asume la factura.</td>
+                        </tr>
+                    </tbody>
+                </table>
 
                 <div class="debate-box">
                     <span class="debate-title">🗣️ Dilema en el Aula: La Bomba de Agua Quemada</span>
                     <div class="debate-scenerio">
+                        <strong>Escenario:</strong> La bomba de agua se quemó. El inquilino exige reemplazo. El dueño se niega, demostrando que el motor trabajó en seco tres días seguidos porque el arrendatario dejó una llave abierta.
+                    </div>
+                    <div class="debate-pregunta">
+                        <strong>Pregunta:</strong> Como administrador, ¿bajo qué criterios deslindarías responsabilidades financieras apoyándote en la matriz flotante?
+                    </div>
+                </div>
+
+                <div class="revista-controles">
