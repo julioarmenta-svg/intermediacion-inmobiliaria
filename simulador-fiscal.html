@@ -87,6 +87,7 @@
             border: 2px solid #cbd5e1;
             padding: 16px;
             border-radius: 12px;
+            background: #ffffff;
         }
         .btn-static {
             width: 100%;
@@ -98,7 +99,20 @@
             border-radius: 8px;
             background-color: #f8fafc;
             margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.1s ease;
         }
+        .btn-static:hover {
+            background-color: #f1f5f9;
+            border-color: #94a3b8;
+        }
+        .btn-static:last-child { margin-bottom: 0; }
+        
+        /* Estilos de botones activos */
+        .btn-static.activo-rojo { border-color: #ef4444 !important; background-color: #fef2f2 !important; color: #991b1b !important; }
+        .btn-static.activo-verde { border-color: #10b981 !important; background-color: #f0fdf4 !important; color: #166534 !important; }
+        .btn-static.activo-azul { border-color: #2563eb !important; background-color: #eff6ff !important; color: #1e40af !important; }
+
         .tech-table {
             width: 100%;
             border-collapse: collapse;
@@ -152,7 +166,7 @@
                 
                 <div class="split-dashboard">
                     
-                    <!-- PANEL IZQUIERDO ESTÁTICO -->
+                    <!-- PANEL IZQUIERDO INTERACTIVO -->
                     <div class="panel-izquierdo">
                         <div class="caja-parametros-texto">
                             📍 <strong>Criterios de Escrituración:</strong><br>
@@ -162,13 +176,13 @@
                         </div>
 
                         <div class="selector-escenarios-grid">
-                            <button class="btn-static">🚨 Escenario Don Raúl ($8,150,000 MXN)</button>
-                            <button class="btn-static">🟢 Rango Mínimo Legal (-10%)</button>
-                            <button class="btn-static">🔵 Precio de Avalúo Justo</button>
+                            <button id="btn-raul" class="btn-static" onclick="cambiarEscenario('raul')">🚨 Escenario Don Raúl ($8,150,000 MXN)</button>
+                            <button id="btn-piso" class="btn-static" onclick="cambiarEscenario('piso')">🟢 Rango Mínimo Legal (-10%)</button>
+                            <button id="btn-avaluo" class="btn-static" onclick="cambiarEscenario('avaluo')">🔵 Precio de Avalúo Justo</button>
                         </div>
                     </div>
 
-                    <!-- PANEL DERECHO ESTÁTICO -->
+                    <!-- PANEL DERECHO CON IDENTIFICADORES DE RESPUESTA -->
                     <div class="panel-derecho">
                         <table class="tech-table">
                             <thead>
@@ -182,22 +196,22 @@
                                 <tr>
                                     <td><strong>ISAI Municipal (2%)</strong></td>
                                     <td>Comprador</td>
-                                    <td style="text-align: right; font-weight: 700;">$264,000</td>
+                                    <td id="monto-isai" style="text-align: right; font-weight: 700;">$264,000</td>
                                 </tr>
                                 <tr>
                                     <td><strong>ISR Enajenación (Est. 20%)</strong></td>
                                     <td>Vendedor</td>
-                                    <td style="text-align: right; font-weight: 700;">$0</td>
+                                    <td id="monto-isr-vendedor" style="text-align: right; font-weight: 700;">$0</td>
                                 </tr>
                                 <tr>
                                     <td><strong>ISR Adquisición (Art. 125)</strong></td>
                                     <td>Comprador</td>
-                                    <td style="text-align: right; font-weight: 700; color: #dc2626;">$1,010,000</td>
+                                    <td id="monto-isr-comprador" style="text-align: right; font-weight: 700; color: #dc2626;">$1,010,000</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Dictamen ante Notario</strong></td>
                                     <td>Estatus</td>
-                                    <td style="text-align: right; font-weight: 800; color: #dc2626;">SUBVALUADO (RECHAZADO)</td>
+                                    <td id="monto-dictamen" style="text-align: right; font-weight: 800; color: #dc2626;">SUBVALUADO (RECHAZADO)</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -214,5 +228,34 @@
         </div>
     </div>
 
-</body>
-</html>
+    <script>
+        // Diccionario de datos estáticos precargados para evitar errores lógicos de cálculo
+        const escenarios = {
+            raul: {
+                isai: "$264,000",
+                vendedor: "$0",
+                comprador: "$1,010,000",
+                dictamen: "SUBVALUADO (RECHAZADO)",
+                color: "#dc2626",
+                btnId: "btn-raul",
+                btnClass: "activo-rojo"
+            },
+            piso: {
+                isai: "$264,000",
+                vendedor: "$1,076,000",
+                comprador: "$0",
+                dictamen: "RANGO ÓPTIMO (ACEPTADO)",
+                color: "#16a34a",
+                btnId: "btn-piso",
+                btnClass: "activo-verde"
+            },
+            avaluo: {
+                isai: "$264,000",
+                vendedor: "$1,340,000",
+                comprador: "$0",
+                dictamen: "PRECIO ÓPTIMO (ACEPTADO)",
+                color: "#2563eb",
+                btnId: "btn-avaluo",
+                btnClass: "activo-azul"
+            }
+        };
