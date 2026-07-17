@@ -55,7 +55,7 @@
  <div class="simulador-box">
  <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 SIMULADOR DE CAPACIDAD DE PAGO Y PERFILAMIENTO</p>
  
- <!-- ENTRADA MANUAL VALOR VIVIENDA -->
+  <!-- ENTRADA MANUAL VALOR VIVIENDA -->
  <div class="sim-group">
  <label class="sim-label">Valor de la Vivienda (Entrada Manual):</label>
  <input type="number" id="txt-valor-vivienda" class="sim-input-text" value="3000000">
@@ -108,7 +108,7 @@
  <span id="lbl-res-banco" class="res-val-info">$0</span>
  </div>
  
- <!-- NUEVA FILA DINÁMICA: ADICIÓN DE LEYENDA CRÉDITO INFONAVIT -->
+ <!-- RENGLÓN DINÁMICO DE CRÉDITO INFONAVIT -->
  <div class="res-line" id="row-res-infonavit" style="display: none;">
  <span class="res-title">Crédito Infonavit:</span>
  <span id="lbl-res-infonavit" class="res-val-info">$0</span>
@@ -136,11 +136,11 @@
  var selectPlazo = document.getElementById('select-plazo');
  var checkInfonavit = document.getElementById('check-infonavit');
  var panelInfonavit = document.getElementById('panel-infonavit');
- var rowResInfonavit = document.getElementById('row-res-infonavit'); // Nueva variable amarrada a la fila
+ var rowResInfonavit = document.getElementById('row-res-infonavit');
  
  var txtAforo = document.getElementById('val-aforo');
  var lblBanco = document.getElementById('lbl-res-banco');
- var lblInfonavit = document.getElementById('lbl-res-infonavit'); // Nueva variable de texto amarrada
+ var lblInfonavit = document.getElementById('lbl-res-infonavit');
  var lblTasa = document.getElementById('lbl-res-tasa');
  var lblMensualidad = document.getElementById('lbl-res-mensualidad');
  var statusBox = document.getElementById('status-render');
@@ -149,15 +149,6 @@
  var valorVivienda = parseFloat(inputVivienda.value) || 0;
  var aforoBancario = parseInt(inputAforo.value);
  var plazoAnios = parseInt(selectPlazo.value);
-
- // LÓGICA DE CONTROL VISUAL CONJUNTO
- if (checkInfonavit.checked) {
- panelInfonavit.style.display = "flex";
- rowResInfonavit.style.display = "flex"; // Muestra la fila "Crédito Infonavit:" en la tabla
- } else {
- panelInfonavit.style.display = "none";
- rowResInfonavit.style.display = "none"; // Oculta la fila "Crédito Infonavit:" en la tabla
- }
 
  txtAforo.innerText = aforoBancario + '%';
  var porcentajeAforo = aforoBancario / 100;
@@ -182,15 +173,28 @@
  mensualidad = (montoCreditoBanco * tasaMensual * Math.pow(1 + 
 tasaMensual, numeroPagos)) / (Math.pow(1 + tasaMensual, numeroPagos) - 1);
  }
-
- // Capturar el valor manual de Infonavit solo para pintarlo en la fila dinámica
- var inputCreditoInfo = document.getElementById('txt-credito-info');
- var montoCreditoInfo = inputCreditoInfo ? (parseFloat(inputCreditoInfo.value) || 0) : 0;
-
  var ingresoRequerido = mensualidad * 3;
  lblBanco.innerText = '$' + Math.round(montoCreditoBanco).toLocaleString() + ' MXN';
- lblInfonavit.innerText = '$' + Math.round(montoCreditoInfo).toLocaleString() + ' MXN'; // Pinta el monto en la nueva fila
  lblTasa.innerText = tasaFinal.toFixed(2) + '%';
  lblMensualidad.innerText = '$' + Math.round(mensualidad).toLocaleString() + ' MXN';
  
  statusBox.innerHTML = "PAGO MENSUAL BANCARIO: $" + 
+Math.round(mensualidad).toLocaleString() + " MXN<br>Ingreso Mensual Mínimo Requerido: $" + Math.round(ingresoRequerido).toLocaleString() + " MXN<br><span style='font-size:12px; font-weight:600;'>Desembolso de Enganche Requerido: $" + Math.round(engancheRequerido).toLocaleString() + " MXN</span>";
+ }
+
+ // FUNCIÓN NATIVA DE CONTROL VISUAL INDEPENDIENTE (BLINDADA PARA VERCEL)
+ function toggleVisualInfonavit() {
+ if (checkInfonavit.checked) {
+ panelInfonavit.style.display = "flex";
+ rowResInfonavit.style.display = "flex";
+ // Leer de forma segura solo si ya existe en pantalla
+ var inputCreditoInfo = document.getElementById('txt-credito-info');
+ if (inputCreditoInfo) {
+ lblInfonavit.innerText = '$' + parseInt(inputCreditoInfo.value).toLocaleString() + ' MXN';
+ }
+ } else {
+ panelInfonavit.style.display = "none";
+ rowResInfonavit.style.display = "none";
+ }
+ }
+
