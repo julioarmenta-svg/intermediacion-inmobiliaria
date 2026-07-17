@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 4: Matriz de Crédito - URN</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background-color: #f1f5f9; padding: 15px; color: #334155;
+        }
+        .container {
+            max-width: 950px; margin: 0 auto; background-color: #ffffff;
+            border-radius: 20px; padding: 20px 25px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06); border: 1px solid #e2e8f0;
+        }
+        .nav-back { display: inline-block; text-decoration: none; color: #2563eb; font-size: 12px; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
+        header { margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+        .tag { font-size: 10px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.1em; }
+        h1 { font-size: 22px; font-weight: 800; color: #0f172a; margin-top: 2px; }
+        
+        .revista-wrapper { background-color: #ffffff; border: 3px solid #cbd5e1; border-radius: 16px; padding: 20px; margin-bottom: 10px; }
+        .revista-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; margin-bottom: 15px; }
+        .revista-pills { font-size: 10.5px; font-weight: 800; color: #2563eb; text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        /* ESTILOS DE LA TABLA EJECUTIVA */
+        .table-wrapper {
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            background-color: #ffffff;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 12px;
+        }
+        thead tr {
+            background-color: #f8fafc;
+            border-bottom: 2px solid #cbd5e1;
+        }
+        th {
+            padding: 12px 14px;
+            color: #475569;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 10.5px;
+            letter-spacing: 0.05em;
+        }
+        td {
+            padding: 12px 14px;
+            color: #334155;
+            line-height: 1.4;
+            vertical-align: top;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .category-row {
+            background-color: #eff6ff;
+            font-weight: 800;
+            color: #1e3a8a;
+            font-size: 11.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .bold-blue {
+            font-weight: 700;
+            color: #1d4ed8;
+        }
+        .highlight-text {
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .revista-controles { display: flex; justify-content: space-between; margin-top: 15px; gap: 15px; border-top: 2px solid #f1f5f9; padding-top: 12px; }
+        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #64748b; border-bottom: 4px solid #475569; padding: 12px; border-radius: 8px; font-size: 14.5px; font-weight: 800; color: #ffffff !important; text-align: center; }
+        .btn-nav:hover { background-color: #475569; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
+
+        <header>
+            <span class="tag">Unidad 04 · Anexo Analítico</span>
+            <h1>Estructuras de Fondeo de la Vivienda en México</h1>
+        </header>
+
+        <div class="revista-wrapper">
+            <div class="revista-header">
+                <span class="revista-pills">Matriz Comparativa de Destinos y Organismos</span>
+                <span style="font-size: 10.5px; font-weight: 800; color: #94a3b8;">Manual de Originación URN</span>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Institución / Destino</th>
+                            <th style="width: 30%;">Mecánica de Operación</th>
+                            <th style="width: 45%;">Criterio de Riesgo y Aplicación Comercial</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- SECCIÓN 1: BANCA COMERCIAL -->
+                        <tr class="category-row">
+                            <td colspan="3">1. Crédito Bancario Tradicional (Destinos Hipotecarios)</td>
+                        </tr>
+                        <tr>
+                            <td class="bold-blue">Adquisición</td>
+                            <td>Financiamiento directo para compra de vivienda nueva o usada. El banco aporta habitualmente entre el 80% y 90% del valor colateral.</td>
+                            <td>Exige <span class="highlight-text">Buró de Crédito sano</span> y comprobación formal de ingresos (recibos de nómina timbrados o estados de cuenta bancarios). Destino de mayor volumen y liquidez.</td>
+                        </tr>
+                        <tr>
+                            <td class="bold-blue">Construcción</td>
+                            <td>Línea de crédito para edificar en terreno propio. Los recursos se liberan en ministraciones periódicas supervisadas contra avance de obra civil.</td>
+                            <td>El perito de la Unidad de Valuación realiza supervisiones físicas obligatorias. Si el avance se retrasa o no coincide con el proyecto técnico aprobado, el banco congela el fondeo.</td>
+                        </tr>
+                        <tr>
+                            <td class="bold-blue">Terreno</td>
+                            <td>Crédito puro para adquisición de suelo urbano. Los aforos institucionales están topados habitualmente entre el 60% y 70% del valor comercial.</td>
+                            <td>Exige de forma estricta que el predio cuente con <span class="highlight-text">servicios municipales completos</span> (agua, luz, drenaje) a pie de lote y se localice en zonas urbanizadas formalmente.</td>
+                        </tr>
+                        <tr>
+                            <td class="bold-blue">Mejora / Remodelación</td>
+                            <td>Fondeo destinado a reparaciones, ampliaciones o cambios de acabados. Puede estructurarse con o sin garantía hipotecaria previa.</td>
+                            <td>Si el inmueble cuenta con una hipoteca activa con el mismo banco, se puede originar una línea complementaria evaluando la capacidad de pago remanente del solicitante.</td>
+                        </tr>
+                        <tr>
+                            <td class="bold-blue">Liquidez</td>
+                            <td>Línea de crédito de libre disponibilidad dejando como garantía prendaria una vivienda propia totalmente libre de gravamen.</td>
+                            <td>Los aforos máximos se limitan al 50% o 60% del avalúo. Al ser de libre destino, las tasas de interés son más altas y el impacto fiscal (<span class="highlight-text">Genera IVA sobre intereses</span>) difiere del crédito habitacional ordinario.</td>
+                        </tr>
+
+                        <!-- SECCIÓN 2: INFONAVIT -->
+                        <tr class="category-row">
+                            <td colspan="3">2. Esquemas del Instituto de la Vivienda (Infonavit)</td>
+                        </tr>
+                        <tr>
+                            <td class="bold-blue">Infonavit Tradicional</td>
+                            <td>El instituto financia hasta el 100% de su tabla interna de montos máximos, sumando de forma líquida el saldo de la Subcuenta de Vivienda del trabajador.</td>
+                            <td>Opera bajo un sistema de precalificación basado en puntos (edad, salario, estabilidad laboral y aportaciones). Ideal para derechohabientes con salarios base tabulados.</td>
+                        </tr>
+                        <tr>
+                            <td class="bold-blue">Cofinavit</td>
+                            <td>Estructura mixta de capital: el <span class="highlight-text">Banco otorga el crédito mayor</span>, Infonavit aporta un crédito menor y la Subcuenta de Vivienda se libera para cubrir el enganche en efectivo.</td>
+                            <td>Es la herramienta de oro para resolver el "boquete financiero" del LTV en propiedades de nivel medio-alto. Reduce drásticamente el desembolso inicial del comprador.</td>
+                        </tr>
+                        <tr>
+                            <td class="bold-blue">Apoyo Infonavit</td>
+                            <td>El crédito se contrata al 100% con la banca comercial, pero las aportaciones patronales futuras del 5% se aplican directo como abono a capital de la deuda bancaria.</td>
+                            <td>El saldo acumulado de la Subcuenta de Vivienda queda congelado como <span class="highlight-text">garantía de pago</span> en caso de desempleo temporal del acreditado, reduciendo el riesgo del banco.</td>
+                        </tr>
+
+                        <!-- SECCIÓN 3: ISSSTE -->
+                        <tr class="category-row">
+                            <td colspan="3">3. Esquemas del Fondo de la Vivienda (Fovissste)</td>
+                        </tr>
+                        <tr>
+                            <td class="bold-blue">Fovissste Tradicional</td>
+                            <td>Financiamiento directo para los trabajadores en activo del Estado. Históricamente ligado a sistemas de puntaje o convocatorias anuales.</td>
