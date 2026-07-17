@@ -53,7 +53,7 @@
         </header>
 
         <div class="simulador-box">
-            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 SIMULADOR DE CAPACIDAD DE PAGO Y PERFILAMIENTO (PASO 5)</p>
+            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 SIMULADOR DE CAPACIDAD DE PAGO Y PERFILAMIENTO</p>
             
             <!-- ENTRADA MANUAL VALOR VIVIENDA -->
             <div class="sim-group">
@@ -86,15 +86,15 @@
             <!-- DESGLOSE DE CAPITALES -->
             <div class="resultado-wrapper">
                 <div class="res-line">
-                    <span class="res-title">Crédito Bancario Autorizado Dinámico:</span>
+                    <span class="res-title">Crédito Bancario Autorizado:</span>
                     <span id="lbl-res-banco" class="res-val-info">$0</span>
                 </div>
                 <div class="res-line">
-                    <span class="res-title">Tasa de Interés Anual Aplicada (Ajustada):</span>
+                    <span class="res-title">Tasa de Interés Anual:</span>
                     <span id="lbl-res-tasa" class="res-val-info">0.00%</span>
                 </div>
                 <div class="res-line" style="border-top: 1px dashed #cbd5e1; padding-top: 8px; margin-top: 4px;">
-                    <span class="res-title" style="color: #2563eb;">Mensualidad Base del Crédito Bancario:</span>
+                    <span class="res-title" style="color: #2563eb;">Mensualidad del Crédito Bancario:</span>
                     <span id="lbl-res-mensualidad" style="font-weight: 800; color: #2563eb;">$0</span>
                 </div>
             </div>
@@ -124,21 +124,17 @@
             var aforoBancario = parseInt(inputAforo.value);
             var plazoAnios = parseInt(selectPlazo.value);
 
-            // A. Sincronizar texto de la barra de aforo
             txtAforo.innerText = aforoBancario + '%';
 
-            // B. Calcular crédito bancario y enganche base
             var porcentajeAforo = aforoBancario / 100;
             var montoCreditoBanco = valorVivienda * porcentajeAforo;
             var engancheRequerido = valorVivienda - montoCreditoBanco;
 
-            // C. Evaluar la tasa base del plazo
             var tasaAnual = 9.75;
             if (plazoAnios === 5) tasaAnual = 8.75;
             else if (plazoAnios === 10) tasaAnual = 9.35;
             else if (plazoAnios === 15) tasaAnual = 9.50;
 
-            // D. Matriz de descuento por bajo aforo
             var descuentoAforo = 0.0;
             if (aforoBancario <= 40) {
                 descuentoAforo = 0.20;
@@ -148,7 +144,6 @@
             
             var tasaFinal = tasaAnual - descuentoAforo;
 
-            // E. Fórmula PMT universal para la mensualidad
             var mensualidad = 0;
             if (montoCreditoBanco > 0) {
                 var tasaMensual = (tasaFinal / 100) / 12;
@@ -156,16 +151,13 @@
                 mensualidad = (montoCreditoBanco * tasaMensual * Math.pow(1 + tasaMensual, numeroPagos)) / (Math.pow(1 + tasaMensual, numeroPagos) - 1);
             }
 
-            // F. CALCULAR INGRESO MENSUAL REQUERIDO (Relación real de riesgos 3 a 1)
             var ingresoRequerido = mensualidad * 3;
 
-            // G. Render de textos en pantalla usando tu formato nativo limpio
             lblBanco.innerText = '$' + Math.round(montoCreditoBanco).toLocaleString() + ' MXN';
             lblTasa.innerText = tasaFinal.toFixed(2) + '%';
             lblMensualidad.innerText = '$' + Math.round(mensualidad).toLocaleString() + ' MXN';
             
-            // H. LINEA ÚNICA CONTINUA DE INYECCIÓN DE TEXTO TOTALMENTE COMPATIBLE CON VERCEL
-            statusBox.innerHTML = "PAGO MENSUAL BANCARIO ESTIMADO: $" + Math.round(mensualidad).toLocaleString() + " MXN<br>Ingreso Familiar Mensual Mínimo Requerido (Regla 3 a 1): $" + Math.round(ingresoRequerido).toLocaleString() + " MXN<br><span style='font-size:12px; font-weight:600;'>Desembolso Requerido de Enganche en Efectivo: $" + Math.round(engancheRequerido).toLocaleString() + " MXN</span>";
+            statusBox.innerHTML = "PAGO MENSUAL BANCARIO: $" + Math.round(mensualidad).toLocaleString() + " MXN<br>Ingreso Mensual Mínimo Requerido: $" + Math.round(ingresoRequerido).toLocaleString() + " MXN<br><span style='font-size:12px; font-weight:600;'>Desembolso de Enganche Requerido: $" + Math.round(engancheRequerido).toLocaleString() + " MXN</span>";
         }
 
         inputVivienda.oninput = realizarCalculoCompleto;
