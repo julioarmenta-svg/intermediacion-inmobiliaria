@@ -67,19 +67,20 @@
         .select-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; padding: 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; }
         .select-container select { flex: 1; padding: 4px; border: none; font-size: 13px; font-weight: 700; color: #334155; outline: none; cursor: pointer; }
         
-        /* ESTILO NUEVO Y DISCRETO PARA EL DESGLOSE DE PASO A */
+        /* DESGLOSE DEL PASO A */
         .txt-desglose-paso {
             font-size: 12px;
             font-weight: 700;
             color: #64748b;
             text-transform: uppercase;
-            padding-top: 5px;
+            padding-top: 12px;
             border-top: 1px solid #e2e8f0;
             margin-top: 5px;
         }
         .val-castigo-rojo {
-            color: #ef4444;
+            font-size: 13px;
             font-weight: 800;
+            color: #ef4444;
             float: right;
         }
 
@@ -134,7 +135,7 @@
                 </label>
             </div>
 
-            <!-- PASO A: LÍNEA DE TEXTO PARA DESGLOSAR EL CASTIGO EN PESOS -->
+            <!-- PASO A: DESGLOSE DE PÉRDIDA POR CONSERVACIÓN -->
             <div class="txt-desglose-paso">
                 <span>[Paso A] Castigo Estimado por Conservación (SHF):</span>
                 <span id="txt-castigo-pesos" class="val-castigo-rojo">$0 MXN</span>
@@ -156,7 +157,7 @@
         
         var txtPrecio = document.getElementById('val-precio');
         var txtEdad = document.getElementById('val-edad');
-        var txtCastigoPesos = document.getElementById('txt-castigo-pesos'); // Nuevo elemento amarrado
+        var txtCastigoPesos = document.getElementById('txt-castigo-pesos');
         var statusBox = document.getElementById('status-render');
 
         function formatMXN(val) {
@@ -171,36 +172,36 @@
             txtPrecio.innerText = formatMXN(precio);
             txtEdad.innerText = edad + ' Años';
 
-            // EVALUACIÓN DEL ESTADO DE CONSERVACIÓN
+            // EVALUACIÓN DE CONSERVACIÓN
             var factorCastigoAvaluo = 1.0;
             var esInaptitud = false;
 
             if (estado === "Excelente") {
                 factorCastigoAvaluo = 1.0;
             } else if (estado === "Regular") {
-                factorCastigoAvaluo = 0.95; // Demérito del 5%
+                factorCastigoAvaluo = 0.95;
             } else if (estado === "Malo") {
-                factorCastigoAvaluo = 0.80; // Castigo del 20%
+                factorCastigoAvaluo = 0.80;
             } else if (estado === "Rechazo") {
                 esInaptitud = true;
             }
 
-            // PASO A: CALCULAR LA DIFERENCIA ECONÓMICA EN PESOS
+            // CALCULO SIN CARACTERES ESPECIALES EN LA VARIABLE
             var valorComercialAvaluo = precio * factorCastigoAvaluo;
-            var pérdidaPorConservación = precio - valorComercialAvaluo;
+            var diferenciaDinero = precio - valorComercialAvaluo;
 
-            // Inyectar el monto del castigo en la pantalla
             if (esInaptitud) {
                 txtCastigoPesos.innerText = "RECHAZO DE GARANTÍA";
-            } else if (pérdidaPorConservación === 0) {
+                txtCastigoPesos.style.color = "#ef4444";
+            } else if (diferenciaDinero === 0) {
                 txtCastigoPesos.innerText = "$0 MXN";
-                txtCastigoPesos.style.color = "#64748b"; // Gris si no hay pérdida
+                txtCastigoPesos.style.color = "#64748b";
             } else {
-                txtCastigoPesos.innerText = "-" + formatMXN(pérdidaPorConservación);
-                txtCastigoPesos.style.color = "#ef4444"; // Rojo si hay pérdida
+                txtCastigoPesos.innerText = "-" + formatMXN(diferenciaDinero);
+                txtCastigoPesos.style.color = "#ef4444";
             }
 
-            // EVALUACIÓN DE RIESGO POR EDAD (VIDA ÚTIL REMANENTE)
+            // EVALUACIÓN DE RIESGO DE EDAD
             var vidaUtilTotal = 60;
             var vidaUtilRemanente = vidaUtilTotal - edad;
             var aforoFinal = 0.90;
@@ -212,9 +213,6 @@
             } else if (vidaUtilRemanente < 35) {
                 aforoFinal = 0.80;
                 motivoAforo = "Aforo Ajustado por Edad Media (20-35 años de vida remanente)";
-            } else {
-                aforoFinal = 0.90;
-                motivoAforo = "Aforo Máximo Autorizado";
             }
 
             // DESPLIEGUE FINAL DE LA MESA DE CONTROL
@@ -225,3 +223,8 @@
                 var montoCredito = valorComercialAvaluo * aforoFinal;
                 
                 if (aforoFinal < 0.90 || factorCastigoAvaluo < 1.0) {
+                    statusBox.className = "resultado-box status-alert";
+                } else {
+                    statusBox.className = "resultado-box status-success";
+                }
+                
