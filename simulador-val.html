@@ -31,7 +31,7 @@
         }
         /* PANEL DE CONSOLA DE RESULTADOS */
         .columna-consola {
-            flex: 1.1; background-color: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 16px; color: #38bdf8; font-family: monospace; font-size: 12px; line-height: 1.5; overflow-y: auto; box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
+            flex: 1.1; background-color: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 20px; color: #38bdf8; font-family: monospace; font-size: 12px; line-height: 1.6; min-height: 280px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
         }
         
         .control-group { margin-bottom: 14px; }
@@ -40,7 +40,7 @@
         .control-group select { width: 100%; padding: 6px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 12px; font-weight: 600; color: #334155; }
         .val-display { font-size: 13px; font-weight: 800; color: #a855f7; float: right; }
 
-        .console-line { margin-bottom: 6px; }
+        .console-line { margin-bottom: 6px; color: #38bdf8; }
         .console-highlight { color: #f43f5e; font-weight: bold; }
         .console-success { color: #4ade80; font-weight: bold; }
         .console-white { color: #ffffff; }
@@ -96,7 +96,7 @@
 
                     <!-- PANEL DERECHO: CONSOLA DE RIESGOS EN TIEMPO REAL -->
                     <div class="columna-consola">
-                        <div id="consola-salida"><!-- Render dinámico desde JS --></div>
+                        <div id="consola-salida"></div>
                     </div>
 
                 </div>
@@ -126,13 +126,11 @@
             document.getElementById('lbl-precio').innerText = '$' + (precioPortal / 1000000).toFixed(1) + 'M';
             document.getElementById('lbl-edad').innerText = `${edadCasa} años`;
 
-            // ALGORITMO JAVASCRIPT REPLICA DE TU PYTHON
-            // Paso 1: Castigo por Negociación
+            // ALGORITMO FINANCIERO
             const pctNegociacion = 0.08;
             const descuentoNegociacion = precioPortal * pctNegociacion;
             const subtotal1 = precioPortal - descuentoNegociacion;
 
-            // Paso 2: Depreciación por Edad y Conservación (Ross-Heidecke)
             const porcentajeVidaTranscurrida = edadCasa / vidaUtilTotal;
             const dictConservacion = { "Excelente": 0.0, "Bueno": 0.05, "Regular": 0.15, "Malo": 0.35 };
             const fConservacion = dictConservacion[conservacion];
@@ -143,12 +141,10 @@
             const descuentoDepreciacion = subtotal1 * pctDepreciacion;
             const subtotal2 = subtotal1 - descuentoDepreciacion;
 
-            // Paso 3: Castigo por Entorno/Forma
             const pctEntorno = 0.035;
             const descuentoEntorno = subtotal2 * pctEntorno;
             const valorComercialX = subtotal2 - descuentoEntorno;
 
-            // Paso 4 y 5: Criterio de Riesgo del Banco y Aforo
             const vidaUtilRemanente = vidaUtilTotal - edadCasa;
             let aforoFinal = aforoBase;
             let motivoAforo = "Propiedad joven / Excelente vida remanente";
@@ -164,7 +160,7 @@
             const montoCredito = valorComercialX * aforoFinal;
             const engancheNecesario = precioPortal - montoCredito;
 
-            // Inyección limpia de los resultados simulando la terminal de Python
+            // Inyección en la Consola
             document.getElementById('consola-salida').innerHTML = `
                 <div class="console-line console-white">--- SIMULADOR INTERACTIVO DE RIESGO ---</div>
                 <div class="console-line">Precio inicial en portales: <span class="console-white">${formatMXN(precioPortal)}</span></div>
@@ -173,3 +169,6 @@
                 <div class="console-line">&nbsp;&nbsp;&nbsp;&gt; Subtotal 1: ${formatMXN(subtotal1)}</div>
                 <br>
                 <div class="console-line">[Paso 2] Castigo Físico (Edad + Estado): <span class="console-highlight">-${formatMXN(descuentoDepreciacion)}</span></div>
+                <div class="console-line">&nbsp;&nbsp;&nbsp;&gt; Depreciación Compuesta: ${(pctDepreciacion * 100).toFixed(1)}%</div>
+                <div class="console-line">&nbsp;&nbsp;&nbsp;&gt; Subtotal 2: ${formatMXN(subtotal2)}</div>
+                <br>
