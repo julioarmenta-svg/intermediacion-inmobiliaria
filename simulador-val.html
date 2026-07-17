@@ -8,53 +8,94 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            background-color: #f1f5f9; padding: 15px; color: #334155;
+            background-color: #f1f5f9; 
+            padding: 40px 20px;
+            color: #334155;
         }
         .container {
-            max-width: 900px; margin: 0 auto; background-color: #ffffff;
-            border-radius: 20px; padding: 20px 25px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06); border: 1px solid #e2e8f0;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+            border: 1px solid #e2e8f0;
         }
-        .nav-back { display: inline-block; text-decoration: none; color: #2563eb; font-size: 12px; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
-        header { margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
-        .tag { font-size: 10px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.1em; }
-        h1 { font-size: 22px; font-weight: 800; color: #0f172a; margin-top: 2px; }
-        
-        .revista-wrapper { background-color: #ffffff; border: 3px solid #cbd5e1; border-radius: 16px; padding: 20px; margin-bottom: 10px; }
-        .revista-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; margin-bottom: 12px; }
-        .revista-pills { font-size: 10.5px; font-weight: 800; color: #a855f7; text-transform: uppercase; letter-spacing: 0.05em; }
-        
-        .proyecto-grid { display: flex; gap: 20px; margin: 10px 0 15px 0; }
-        
-        /* PANEL DE CONTROLES SLIDERS */
-        .columna-controles {
-            flex: 0.9; background-color: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 16px;
-            display: flex; flex-direction: column; justify-content: space-between;
+        .nav-back {
+            display: inline-block;
+            text-decoration: none;
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
-        /* PANEL DE CONSOLA DE RESULTADOS */
-        .columna-consola {
-            flex: 1.1; background-color: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 20px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.5); min-height: 290px;
+        .nav-back:hover { color: #1d4ed8; }
+        header {
+            margin-bottom: 35px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 20px;
         }
+        .tag {
+            font-size: 11px;
+            font-weight: 800;
+            color: #a855f7; /* Color Morado del Paso 03 */
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 4px;
+            letter-spacing: -0.02em;
+        }
+        .simulador-box {
+            background-color: #f8fafc;
+            border: 2px solid #cbd5e1;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .sim-group { display: flex; flex-direction: column; gap: 8px; }
+        .sim-label { font-size: 13px; font-weight: 700; color: #475569; }
+        .sim-input-row { display: flex; align-items: center; gap: 15px; }
+        .sim-range { flex: 1; cursor: pointer; height: 12px; accent-color: #a855f7; }
+        .sim-value { font-size: 14px; font-weight: 800; color: #a855f7; min-width: 120px; text-align: right; }
         
-        .control-group { margin-bottom: 14px; }
-        .control-group label { display: block; font-size: 11px; font-weight: 800; text-transform: uppercase; color: #475569; margin-bottom: 4px; }
-        .control-group input[type="range"] { width: 100%; accent-color: #a855f7; cursor: pointer; }
-        .control-group select { width: 100%; padding: 6px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 12px; font-weight: 600; color: #334155; cursor: pointer; }
-        .val-display { font-size: 13px; font-weight: 800; color: #a855f7; float: right; }
+        .select-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; padding: 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; }
+        .select-container select { flex: 1; padding: 4px; border: none; font-size: 13px; font-weight: 700; color: #334155; outline: none; cursor: pointer; }
+        
+        /* BLOQUES DE RESULTADO TIPO PANEL DE CONTROL */
+        .resultado-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 14px;
+            padding: 20px;
+            font-family: monospace;
+            font-size: 12.5px;
+        }
+        .res-line { display: flex; justify-content: space-between; padding: 4px 0; border-b: 1px dashed #f1f5f9; }
+        .res-title { font-weight: bold; color: #0f172a; }
+        .res-discount { color: #f43f5e; font-weight: bold; }
+        .res-total { font-weight: bold; color: #2563eb; }
 
-        /* TEXTOS DE LA CONSOLA */
-        .console-text {
-            font-family: monospace; font-size: 11.5px; line-height: 1.5; color: #38bdf8;
+        .resultado-box { padding: 20px; border-radius: 12px; text-align: center; font-weight: 800; font-size: 14px; border: 1px solid transparent; margin-top: 10px; }
+        .status-success { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
+        .status-alert { background-color: #fee2e2; border-color: #fca5a5; color: #991b1b; }
+        
+        .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
+        .btn-nav {
+            flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; transition: all 0.1s ease;
         }
-        .console-line { margin-bottom: 5px; }
-        .console-highlight { color: #f43f5e; font-weight: bold; }
-        .console-success { color: #4ade80; font-weight: bold; }
-        .console-white { color: #ffffff; font-weight: bold; }
-
-        .btn-calc { width: 100%; padding: 8px; background-color: #a855f7; border: none; border-bottom: 3px solid #7e22ce; color: white; font-size: 11px; font-weight: 800; text-transform: uppercase; border-radius: 6px; cursor: pointer; transition: background 0.1s; }
-        .btn-calc:hover { background-color: #9333ea; }
-
-        .revista-controles { display: flex; justify-content: space-between; margin-top: 15px; gap: 15px; border-top: 2px solid #f1f5f9; padding-top: 12px; }
-        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #64748b; border-bottom: 4px solid #475569; padding: 12px; border-radius: 8px; font-size: 14.5px; font-weight: 800; color: #ffffff !important; text-align: center; }
+        .btn-nav:hover { background-color: #3b82f6; }
     </style>
 </head>
 <body>
@@ -63,113 +104,105 @@
         <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
         <header>
-            <span class="tag">Unidad 03 · Dinámica Práctica</span>
+            <span class="tag">Módulo 03 · Herramienta Didáctica</span>
             <h1>Simulador Interactivo de Riesgo Hipotecario</h1>
         </header>
 
-        <div class="revista-wrapper">
-            <div class="revista-header">
-                <span class="revista-pills">Laboratorio de Valuación Financiera</span>
-                <span style="font-size: 10.5px; font-weight: 800; color: #94a3b8;">Algoritmo Ross-Heidecke</span>
-            </div>
-
-            <div style="padding: 0 5px;">
-                <div class="proyecto-grid">
-                    
-                    <!-- PANEL IZQUIERDO: INPUTS DEL ALUMNO -->
-                    <div class="columna-controles" style="border-top: 4px solid #a855f7;">
-                        <div>
-                            <h4 style="font-size: 12px; font-weight: 900; color: #0f172a; text-transform: uppercase; margin-bottom: 12px; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px;">🎛 Variables de la Residencia</h4>
-                            
-                            <div class="control-group">
-                                <label>Precio de Salida (Portal) <span id="lbl-precio" class="val-display">$2.5M</span></label>
-                                <input type="range" id="inp-precio" min="1000000" max="10000000" step="500000" value="2500000" oninput="calcularSimulador()">
-                            </div>
-
-                            <div class="control-group">
-                                <label>Edad Cronológica de la Obra <span id="lbl-edad" class="val-display">25 años</span></label>
-                                <input type="range" id="inp-edad" min="0" max="60" step="1" value="25" oninput="calcularSimulador()">
-                            </div>
-
-                            <div class="control-group">
-                                <label>Estado de Conservación (SHF)</label>
-                                <select id="inp-conservacion" onchange="calcularSimulador()">
-                                    <option value="Excelente">Excelente (Código 1/2)</option>
-                                    <option value="Bueno">Bueno (Código 3)</option>
-                                    <option value="Regular" selected>Regular (Código 4)</option>
-                                    <option value="Malo">Malo (Código 5/6)</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <button class="btn-calc" onclick="calcularSimulador()">⚡ Forzar Simulación</button>
-                    </div>
-
-                    <!-- PANEL DERECHO: CONSOLA DE RIESGOS EN TIEMPO REAL -->
-                    <div class="columna-consola">
-                        <div id="consola-salida" class="console-text"></div>
-                    </div>
-
-                </div>
-
-                <div class="revista-controles">
-                    <a href="valuacion-p3.html" class="btn-nav">◀ Regresar a la Clase (Pág. 3)</a>
+        <!-- PANEL DE CONTROL DE LA CALCULADORA -->
+        <div class="simulador-box">
+            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 ALGORITMO ROSS-HEIDECKE (ANÁLISIS DE AFORE)</p>
+            
+            <div class="sim-group">
+                <label class="sim-label">Precio de Salida (Portal):</label>
+                <div class="sim-input-row">
+                    <input type="range" id="range-precio" class="sim-range" min="1000000" max="10000000" step="500000" value="2500000">
+                    <span id="val-precio" class="sim-value">$2,500,000</span>
                 </div>
             </div>
+
+            <div class="sim-group">
+                <label class="sim-label">Edad Cronológica de la Casa:</label>
+                <div class="sim-input-row">
+                    <input type="range" id="range-edad" class="sim-range" min="0" max="60" step="1" value="25">
+                    <span id="val-edad" class="sim-value">25 Años</span>
+                </div>
+            </div>
+
+            <div class="sim-group">
+                <label class="sim-label">Estado de Conservación de la Obra (SHF):</label>
+                <label class="select-container">
+                    <select id="select-conservacion">
+                        <option value="Excelente">Excelente (Código SHF 1/2)</option>
+                        <option value="Bueno">Bueno (Código SHF 3)</option>
+                        <option value="Regular" selected>Regular (Código SHF 4)</option>
+                        <option value="Malo">Malo (Código SHF 5/6)</option>
+                    </select>
+                </label>
+            </div>
+
+            <!-- DESGLOSE MATEMÁTICO TIPO REPORTE -->
+            <div class="resultado-wrapper">
+                <div class="res-line"><span class="res-title">Fase 1: Castigo Comercial Negociación (8%)</span><span id="txt-paso1" class="res-discount">-$0</span></div>
+                <div class="res-line"><span class="res-title">Fase 2: Depreciación Física Compuesta (Fórmula)</span><span id="txt-paso2" class="res-discount">-$0</span></div>
+                <div class="res-line"><span class="res-title">Fase 3: Demérito de Entorno y Forma (3.5%)</span><span id="txt-paso3" class="res-discount">-$0</span></div>
+                <div class="res-line" style="border-top: 1px solid #cbd5e1; padding-top: 8px; margin-top: 5px;">
+                    <span class="res-title" style="color:#7e22ce;">VALOR COMERCIAL AVALÚO FINAL (X)</span>
+                    <span id="txt-valor-final" style="font-weight: 800; color:#7e22ce;">$0</span>
+                </div>
+                <div class="res-line"><span class="res-title">Vida Útil Remanente Calculada</span><span id="txt-vida-remanente">35 Años</span></div>
+                <div class="res-line"><span class="res-title">Ajuste de Aforo del Banco</span><span id="txt-aforo-final">90.0%</span></div>
+            </div>
+
+            <div id="status-render" class="resultado-box status-success">MONTO DE CRÉDITO AUTORIZADO: $0</div>
+        </div>
+
+        <!-- CONTROLES OBLIGATORIOS ABAJO -->
+        <div class="revista-controles">
+            <a href="valuacion-p3.html" class="btn-nav">◀ Regresar a la Clase (Pág. 3)</a>
         </div>
     </div>
 
     <script>
+        // Declaración firme de variables idéntico al Módulo 1
+        var inputPrecio = document.getElementById('range-precio');
+        var inputEdad = document.getElementById('range-edad');
+        var selectConservacion = document.getElementById('select-conservacion');
+        
+        var txtPrecio = document.getElementById('val-precio');
+        var txtEdad = document.getElementById('val-edad');
+        
+        var txtPaso1 = document.getElementById('txt-paso1');
+        var txtPaso2 = document.getElementById('txt-paso2');
+        var txtPaso3 = document.getElementById('txt-paso3');
+        var txtValorFinal = document.getElementById('txt-valor-final');
+        var txtVidaRemanente = document.getElementById('txt-vida-remanente');
+        var txtAforoFinal = document.getElementById('txt-aforo-final');
+        var statusBox = document.getElementById('status-render');
+
         function formatMXN(val) {
-            return '$' + Number(val).toLocaleString('es-MX', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' MXN';
+            return '$' + Math.round(val).toLocaleString('es-MX');
         }
 
-        function calcularSimulador() {
-            const precioPortal = parseFloat(document.getElementById('inp-precio').value);
-            const edadCasa = parseInt(document.getElementById('inp-edad').value);
-            const conservacion = document.getElementById('inp-conservacion').value;
+        function actualizarEvaluacion() {
+            var precioPortal = parseInt(inputPrecio.value);
+            var edadCasa = parseInt(inputEdad.value);
+            var conservacion = selectConservacion.value;
             
-            const vidaUtilTotal = 60;
-            const aforoBase = 0.90;
+            var vidaUtilTotal = 60;
+            var aforoBase = 0.90;
 
-            document.getElementById('lbl-precio').innerText = '$' + (precioPortal / 1000000).toFixed(1) + 'M';
-            document.getElementById('lbl-edad').innerText = `${edadCasa} años`;
+            // Actualizar textos rápidos de las barras
+            txtPrecio.innerText = formatMXN(precioPortal) + ' MXN';
+            txtEdad.innerText = edadCasa + ' Años';
 
-            const pctNegociacion = 0.08;
-            const descuentoNegociacion = precioPortal * pctNegociacion;
-            const subtotal1 = precioPortal - descuentoNegociacion;
+            // PASO 1: Castigo de Negociación
+            var pctNegociacion = 0.08;
+            var descuentoNegociacion = precioPortal * pctNegociacion;
+            var subtotal1 = precioPortal - descuentoNegociacion;
+            txtPaso1.innerText = '-' + formatMXN(descuentoNegociacion);
 
-            const porcentajeVidaTranscurrida = edadCasa / vidaUtilTotal;
-            const dictConservacion = { "Excelente": 0.0, "Bueno": 0.05, "Regular": 0.15, "Malo": 0.35 };
-            const fConservacion = dictConservacion[conservacion];
+            // PASO 2: Ross-Heidecke
+            var porcentajeVidaTranscurrida = edadCasa / vidaUtilTotal;
+            var dictConservacion = { "Excelente": 0.0, "Bueno": 0.05, "Regular": 0.15, "Malo": 0.35 };
+            var fConservacion = dictConservacion[conservacion];
             
-            let pctDepreciacion = (porcentajeVidaTranscurrida * 0.5) + fConservacion;
-            pctDepreciacion = Math.max(0.0, Math.min(0.70, pctDepreciacion));
-            
-            const descuentoDepreciacion = subtotal1 * pctDepreciacion;
-            const subtotal2 = subtotal1 - descuentoDepreciacion;
-
-            const pctEntorno = 0.035;
-            const descuentoEntorno = subtotal2 * pctEntorno;
-            const valorComercialX = subtotal2 - descuentoEntorno;
-
-            const vidaUtilRemanente = vidaUtilTotal - edadCasa;
-            let aforoFinal = aforoBase;
-            let motivoAforo = "Propiedad joven / Excelente vida remanente";
-
-            if (vidaUtilRemanente < 20) {
-                aforoFinal = 0.70;
-                motivoAforo = "Alta edad / Baja vida remanente (<20 años)";
-            } else if (vidaUtilRemanente < 35) {
-                aforoFinal = 0.80;
-                motivoAforo = "Edad media / Vida remanente justa (20-35 años)";
-            }
-
-            const montoCredito = valorComercialX * aforoFinal;
-            const engancheNecesario = precioPortal - montoCredito;
-
-            document.getElementById('consola-salida').innerHTML = `
-                <div class="console-line console-white">--- SIMULADOR INTERACTIVO DE RIESGO ---</div>
-                <div class="console-line">Precio inicial en portales: <span class="console-white">${formatMXN(precioPortal)}</span></div>
-                <br>
-                <div class="console-line">[Paso 1] Castigo por Negociación (8%): <span class="console-highlight">-${formatMXN(descuentoNegociacion)}</span></div>
