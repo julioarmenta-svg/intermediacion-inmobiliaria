@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 3: Simulador de Riesgo - URN</title>
+    <title>Módulo 3: Prueba de Barras - URN</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -29,9 +29,7 @@
             font-weight: 800;
             margin-bottom: 25px;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
-        .nav-back:hover { color: #1d4ed8; }
         header {
             margin-bottom: 35px;
             border-bottom: 2px solid #f1f5f9;
@@ -49,7 +47,6 @@
             font-weight: 800;
             color: #0f172a;
             margin-top: 4px;
-            letter-spacing: -0.02em;
         }
         .simulador-box {
             background-color: #f8fafc;
@@ -67,35 +64,10 @@
         .sim-range { flex: 1; cursor: pointer; height: 12px; accent-color: #a855f7; }
         .sim-value { font-size: 14px; font-weight: 800; color: #a855f7; min-width: 120px; text-align: right; }
         
-        .select-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; padding: 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; }
-        .select-container select { flex: 1; padding: 4px; border: none; font-size: 13px; font-weight: 700; color: #334155; outline: none; cursor: pointer; }
-        
-        /* CORRECCIÓN VERTICAL DEL DESGLOSE DE RESULTADOS */
-        .resultado-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            border-radius: 14px;
-            padding: 20px;
-            font-family: monospace;
-            font-size: 12.5px;
-        }
-        .res-line { display: flex; justify-content: space-between; padding: 4px 0; }
-        .res-title { font-weight: bold; color: #0f172a; }
-        .res-discount { color: #f43f5e; font-weight: bold; }
-        .res-total { font-weight: bold; color: #2563eb; }
-
-        .resultado-box { padding: 20px; border-radius: 12px; text-align: center; font-weight: 800; font-size: 14px; border: 1px solid transparent; margin-top: 10px; line-height: 1.5; }
-        .status-success { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
-        .status-alert { background-color: #fee2e2; border-color: #fca5a5; color: #991b1b; }
-        
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
         .btn-nav {
-            flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; transition: all 0.1s ease;
+            flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center;
         }
-        .btn-nav:hover { background-color: #3b82f6; }
     </style>
 </head>
 <body>
@@ -104,13 +76,12 @@
         <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
         <header>
-            <span class="tag">Módulo 03 · Herramienta Didáctica</span>
-            <h1>Simulador Interactivo de Riesgo Hipotecario</h1>
+            <span class="tag">Módulo 03 · Fase de Prueba</span>
+            <h1>Paso 1: Validación de Controles Deslizantes</h1>
         </header>
 
-        <!-- PANEL DE CONTROL DE LA CALCULADORA -->
         <div class="simulador-box">
-            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 ALGORITMO ROSS-HEIDECKE (ANÁLISIS DE AFORE)</p>
+            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 Verificación de Conectividad de Barras</p>
             
             <div class="sim-group">
                 <label class="sim-label">Precio de Salida (Portal):</label>
@@ -127,82 +98,36 @@
                     <span id="val-edad" class="sim-value">25 Años</span>
                 </div>
             </div>
-
-            <div class="sim-group">
-                <label class="sim-label">Estado de Conservación de la Obra (SHF):</label>
-                <label class="select-container">
-                    <select id="select-conservacion">
-                        <option value="Excelente">Excelente (Código SHF 1/2)</option>
-                        <option value="Bueno">Bueno (Código SHF 3)</option>
-                        <option value="Regular" selected>Regular (Código SHF 4)</option>
-                        <option value="Malo">Malo (Código SHF 5/6)</option>
-                    </select>
-                </label>
-            </div>
-
-            <!-- DESGLOSE MATEMÁTICO TIPO REPORTE -->
-            <div class="resultado-wrapper">
-                <div class="res-line"><span class="res-title">Fase 1: Castigo Comercial Negociación (8%)</span><span id="txt-paso1" class="res-discount">-$0</span></div>
-                <div class="res-line"><span class="res-title">Fase 2: Depreciación Física Compuesta (Fórmula)</span><span id="txt-paso2" class="res-discount">-$0</span></div>
-                <div class="res-line"><span class="res-title">Fase 3: Demérito de Entorno y Forma (3.5%)</span><span id="txt-paso3" class="res-discount">-$0</span></div>
-                <div class="res-line" style="border-top: 1px solid #cbd5e1; padding-top: 8px; margin-top: 5px;">
-                    <span class="res-title" style="color:#7e22ce;">VALOR COMERCIAL AVALÚO FINAL (X)</span>
-                    <span id="txt-valor-final" style="font-weight: 800; color:#7e22ce;">$0</span>
-                </div>
-                <div class="res-line"><span class="res-title">Vida Útil Remanente Calculada</span><span id="txt-vida-remanente">35 Años</span></div>
-                <div class="res-line"><span class="res-title">Ajuste de Aforo del Banco</span><span id="txt-aforo-final">90.0%</span></div>
-            </div>
-
-            <div id="status-render" class="resultado-box status-success">MONTO DE CRÉDITO AUTORIZADO: $0</div>
         </div>
 
-        <!-- CONTROLES OBLIGATORIOS ABAJO -->
         <div class="revista-controles">
             <a href="valuacion-p3.html" class="btn-nav">◀ Regresar a la Clase (Pág. 3)</a>
         </div>
     </div>
 
     <script>
+        // Vincular los elementos exactamente como en tu Módulo 1 exitoso
         var inputPrecio = document.getElementById('range-precio');
         var inputEdad = document.getElementById('range-edad');
-        var selectConservacion = document.getElementById('select-conservacion');
         
         var txtPrecio = document.getElementById('val-precio');
         var txtEdad = document.getElementById('val-edad');
-        
-        var txtPaso1 = document.getElementById('txt-paso1');
-        var txtPaso2 = document.getElementById('txt-paso2');
-        var txtPaso3 = document.getElementById('txt-paso3');
-        var txtValorFinal = document.getElementById('txt-valor-final');
-        var txtVidaRemanente = document.getElementById('txt-vida-remanente');
-        var txtAforoFinal = document.getElementById('txt-aforo-final');
-        var statusBox = document.getElementById('status-render');
 
-        function formatMXN(val) {
-            return '$' + Math.round(val).toLocaleString('es-MX');
+        function actualizarTextos() {
+            var precio = parseInt(inputPrecio.value);
+            var edad = parseInt(inputEdad.value);
+
+            // Cambiar los textos en la pantalla
+            txtPrecio.innerText = '$' + precio.toLocaleString('es-MX') + ' MXN';
+            txtEdad.innerText = edad + ' Años';
         }
 
-        function actualizarEvaluacion() {
-            var precioPortal = parseInt(inputPrecio.value);
-            var edadCasa = parseInt(inputEdad.value);
-            var conservacion = selectConservacion.value;
-            
-            var vidaUtilTotal = 60;
-            var aforoBase = 0.90;
+        // Asignar el evento de movimiento
+        inputPrecio.oninput = actualizarTextos;
+        inputEdad.oninput = actualizarTextos;
 
-            txtPrecio.innerText = formatMXN(precioPortal) + ' MXN';
-            txtEdad.innerText = edadCasa + ' Años';
-
-            // PASO 1: Castigo de Negociación
-            var pctNegociacion = 0.08;
-            var descuentoNegociacion = precioPortal * pctNegociacion;
-            var subtotal1 = precioPortal - descuentoNegociacion;
-            txtPaso1.innerText = '-' + formatMXN(descuentoNegociacion);
-
-            // PASO 2: Ross-Heidecke
-            var porcentajeVidaTranscurrida = edadCasa / vidaUtilTotal;
-            var dictConservacion = { "Excelente": 0.0, "Bueno": 0.05, "Regular": 0.15, "Malo": 0.35 };
-            var fConservacion = dictConservacion[conservacion];
-            
-            var pctDepreciacion = (porcentajeVidaTranscurrida * 0.5) + fConservacion;
-            if(pctDepreciacion < 0) pctDepreciacion = 0;
+        // Ejecutar una vez al cargar para verificar que pinte los valores iniciales
+        actualizarTextos();
+    </script>
+</body>
+</html>
