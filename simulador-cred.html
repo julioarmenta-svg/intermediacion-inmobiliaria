@@ -39,7 +39,7 @@
         .status-success { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
         
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
-        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; }
+        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; }
     </style>
 </head>
 <body>
@@ -109,7 +109,6 @@
     </div>
 
     <script>
-        // Vincular elementos de manera limpia e idéntica a tus pasos exitosos
         var inputVivienda = document.getElementById('txt-valor-vivienda');
         var inputAforo = document.getElementById('range-aforo');
         var selectPlazo = document.getElementById('select-plazo');
@@ -139,7 +138,7 @@
             else if (plazoAnios === 10) tasaAnual = 9.35;
             else if (plazoAnios === 15) tasaAnual = 9.50;
 
-            // D. Matriz estricta de descuento sin regionalismos cruzados
+            // D. Matriz de descuento por bajo aforo
             var descuentoAforo = 0.0;
             if (aforoBancario <= 40) {
                 descuentoAforo = 0.20;
@@ -157,7 +156,7 @@
                 mensualidad = (montoCreditoBanco * tasaMensual * Math.pow(1 + tasaMensual, numeroPagos)) / (Math.pow(1 + tasaMensual, numeroPagos) - 1);
             }
 
-            // F. Render de textos en pantalla usando el formato local limpio de tu Módulo 1
+            // F. Render de textos en pantalla usando el formato de tu Módulo 1 exitoso
             lblBanco.innerText = '$' + Math.round(montoCreditoBanco).toLocaleString() + ' MXN';
             lblTasa.innerText = tasaFinal.toFixed(2) + '%';
             lblMensualidad.innerText = '$' + Math.round(mensualidad).toLocaleString() + ' MXN';
@@ -176,3 +175,8 @@
         inputAforo.oninput = realizarCalculoCompleto;
         selectPlazo.onchange = realizarCalculoCompleto;
 
+        // Arrancar con total seguridad
+        realizarCalculoCompleto();
+    </script>
+</body>
+</html>
