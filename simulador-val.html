@@ -46,7 +46,7 @@
 
         <header>
             <span class="tag">Módulo 03 · Herramienta Didáctica</span>
-            <h1>Paso 5: Calibración Real SHF e Inaptitud</h1>
+            <h1>Paso 4: Conexión Funcional de la Edad</h1>
         </header>
 
         <div class="simulador-box">
@@ -64,7 +64,7 @@
                 <label class="sim-label">Edad Cronológica de la Casa:</label>
                 <div class="sim-input-row">
                     <input type="range" id="range-edad" class="sim-range" min="0" max="60" step="1" value="25">
-                    <span id="val-edad" class="sim-value">25 Años</span>
+                    <span id="val-edad" class="val-display">25 Años</span>
                 </div>
             </div>
 
@@ -72,10 +72,9 @@
                 <label class="sim-label">Estado de Conservación de la Obra (SHF):</label>
                 <label class="select-container">
                     <select id="select-conservacion">
-                        <option value="Excelente" selected>Excelente (Código SHF 1/2)</option>
-                        <option value="Bueno">Bueno (Código SHF 3)</option>
+                        <option value="Excelente">Excelente / Bueno (Código SHF 1, 2 y 3)</option>
                         <option value="Regular">Regular / Reparaciones Sencillas (Código SHF 4)</option>
-                        <option value="Malo">Malo / Daño Estructural - Ruina (Código SHF 5/6)</option>
+                        <option value="Malo" selected>Malo / Requiere Presupuesto de Obra (Código SHF 5)</option>
                     </select>
                 </label>
             </div>
@@ -110,72 +109,69 @@
             var edad = parseInt(inputEdad.value);
             var estado = selectConservacion.value;
 
-            // 1. Mostrar textos laterales usando tu formato nativo exacto
-            txtPrecio.innerText = '$' + precio.toLocaleString() + ' MXN';
+            // 1. Mostrar textos de referencia en las dos barras
+            txtPrecio.innerText = '$' + precio.toLocaleString('es-MX') + ' MXN';
             txtEdad.innerText = edad + ' Años';
 
-            // 2. Definir factor de castigo según el menú desplegable
+            // 2. Definir factor de avalúo según el menú
             var factor = 0.0;
-            var esInaptitudConservacion = false;
-
-            if (estado === "Excelente") {
-                factor = 0.0;
-            } else if (estado === "Bueno") {
+            if (estado === "Regular") {
                 factor = 0.05;
-            } else if (estado === "Regular") {
-                factor = 0.15;
             } else if (estado === "Malo") {
-                esInaptitudConservacion = true; 
+                factor = 0.20;
+            } else {
+                factor = 0.0;
             }
 
             var dineroPerdido = precio * factor;
             var valorComercialAvaluo = precio - dineroPerdido;
 
-            // 3. Pintar la línea de Castigo A en pesos de forma segura
-            if (esInaptitudConservacion) {
-                txtCastigoPesos.innerText = 'RECHAZO POR CONSERVACIÓN';
-                txtCastigoPesos.style.color = '#ef4444';
-            } else if (dineroPerdido === 0) {
-                txtCastigoPesos.innerText = '$0 MXN';
-                txtCastigoPesos.style.color = '#64748b';
+            // 3. Pintar la línea de Castigo A en pesos
+            if (dineroPerdido === 0) {
+                txtCastigoPesos.innerText = "$0 MXN";
+                txtCastigoPesos.style.color = "#64748b";
             } else {
-                txtCastigoPesos.innerText = '-$' + dineroPerdido.toLocaleString() + ' MXN';
-                txtCastigoPesos.style.color = '#ef4444';
+                txtCastigoPesos.innerText = "-$" + dineroPerdido.toLocaleString('es-MX') + " MXN";
+                txtCastigoPesos.style.color = "#ef4444";
             }
 
-            // 4. Regla de riesgo de Edad (Vida Útil Remanente) calibrada
+            // 4. Regla de riesgo de Edad (Vida Útil Remanente)
             var vidaUtilTotal = 60;
             var vidaUtilRemanente = vidaUtilTotal - edad;
             var aforoFinal = 0.90; 
-            var motivoAforo = 'Garantía Óptima';
-            var esInaptitudEdad = false;
+            var motivoAforo = "Garantía Óptima";
 
-            if (edad >= 50) {
-                esInaptitudEdad = true; 
-            } else if (vidaUtilRemanente < 20) {
+            if (vidaUtilRemanente < 20) {
                 aforoFinal = 0.70; 
-                motivoAforo = 'Aforo Castigado por Alta Edad';
+                motivoAforo = "Aforo Castigado por Alta Edad (<20 años de vida remanente)";
+                statusBox.className = "resultado-box status-alert"; 
             } else if (vidaUtilRemanente < 35) {
                 aforoFinal = 0.80; 
-                motivoAforo = 'Aforo Ajustado por Edad Media';
+                motivoAforo = "Aforo Ajustado por Edad Media (20-35 años de vida remanente)";
+                statusBox.className = "resultado-box status-alert"; 
             } else {
                 aforoFinal = 0.90;
-                motivoAforo = 'Aforo Máximo Autorizado';
+                motivoAforo = "Aforo Máximo Autorizado";
+                
+                if (estado === "Malo") {
+                    statusBox.className = "resultado-box status-alert";
+                } else {
+                    statusBox.className = "resultado-box status-success";
+                }
             }
 
-            // 5. Renderizado final sin parámetros regionales conflictivos
-            if (esInaptitudConservacion) {
-                statusBox.className = 'resultado-box status-alert';
-                statusBox.innerHTML = 'CREDITO RECHAZADO: El inmueble dictamina como NO APTO para Garantía Hipotecaria debido a daños estructurales o ruina (Código SHF 5/6)';
-            } else if (esInaptitudEdad) {
-                statusBox.className = 'resultado-box status-alert';
-                statusBox.innerHTML = 'CREDITO RECHAZADO: Inmueble NO APTO por Edad Excesiva. Su vida remanente es insuficiente para el plazo mínimo de crédito bancario.';
-            } else {
-                var montoCredito = valorComercialAvaluo * aforoFinal;
-                
-                if (aforoFinal < 0.90 || factor > 0.0) {
-                    statusBox.className = 'resultado-box status-alert';
-                } else {
-                    statusBox.className = 'resultado-box status-success';
-                }
-                
+            // 5. Calcular Crédito Autorizado usando el aforo dinámico de la edad
+            var montoCredito = valorComercialAvaluo * aforoFinal;
+
+            // 6. Inyectar resultado final firme en el recuadro inferior
+            statusBox.innerHTML = "MONTO DE CRÉDITO AUTORIZADO: $" + Math.round(montoCredito).toLocaleString('es-MX') + " MXN<br><span style='font-size:11.5px; font-weight:600;'>Mesa de Control: " + motivoAforo + " (" + (aforoFinal * 100) + "% de Aforo) sobre un Valor de Avalúo de $" + Math.round(valorComercialAvaluo).toLocaleString('es-MX') + " MXN</span>";
+        }
+
+        inputPrecio.oninput = actualizarSimulador;
+        inputEdad.oninput = actualizarSimulador;
+        selectConservacion.onchange = actualizarSimulador;
+
+        actualizarSimulador();
+    </script>
+</body>
+</html>
