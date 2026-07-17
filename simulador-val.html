@@ -40,7 +40,7 @@
         .tag {
             font-size: 11px;
             font-weight: 800;
-            color: #a855f7; /* Color Morado del Paso 03 */
+            color: #a855f7;
             text-transform: uppercase;
             letter-spacing: 0.12em;
         }
@@ -70,7 +70,7 @@
         .select-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; padding: 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; }
         .select-container select { flex: 1; padding: 4px; border: none; font-size: 13px; font-weight: 700; color: #334155; outline: none; cursor: pointer; }
         
-        /* BLOQUES DE RESULTADO TIPO PANEL DE CONTROL */
+        /* CORRECCIÓN VERTICAL DEL DESGLOSE DE RESULTADOS */
         .resultado-wrapper {
             display: flex;
             flex-direction: column;
@@ -82,12 +82,12 @@
             font-family: monospace;
             font-size: 12.5px;
         }
-        .res-line { display: flex; justify-content: space-between; padding: 4px 0; border-b: 1px dashed #f1f5f9; }
+        .res-line { display: flex; justify-content: space-between; padding: 4px 0; }
         .res-title { font-weight: bold; color: #0f172a; }
         .res-discount { color: #f43f5e; font-weight: bold; }
         .res-total { font-weight: bold; color: #2563eb; }
 
-        .resultado-box { padding: 20px; border-radius: 12px; text-align: center; font-weight: 800; font-size: 14px; border: 1px solid transparent; margin-top: 10px; }
+        .resultado-box { padding: 20px; border-radius: 12px; text-align: center; font-weight: 800; font-size: 14px; border: 1px solid transparent; margin-top: 10px; line-height: 1.5; }
         .status-success { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
         .status-alert { background-color: #fee2e2; border-color: #fca5a5; color: #991b1b; }
         
@@ -163,7 +163,6 @@
     </div>
 
     <script>
-        // Declaración firme de variables idéntico al Módulo 1
         var inputPrecio = document.getElementById('range-precio');
         var inputEdad = document.getElementById('range-edad');
         var selectConservacion = document.getElementById('select-conservacion');
@@ -191,7 +190,6 @@
             var vidaUtilTotal = 60;
             var aforoBase = 0.90;
 
-            // Actualizar textos rápidos de las barras
             txtPrecio.innerText = formatMXN(precioPortal) + ' MXN';
             txtEdad.innerText = edadCasa + ' Años';
 
@@ -206,3 +204,5 @@
             var dictConservacion = { "Excelente": 0.0, "Bueno": 0.05, "Regular": 0.15, "Malo": 0.35 };
             var fConservacion = dictConservacion[conservacion];
             
+            var pctDepreciacion = (porcentajeVidaTranscurrida * 0.5) + fConservacion;
+            if(pctDepreciacion < 0) pctDepreciacion = 0;
