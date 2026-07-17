@@ -28,22 +28,30 @@
         /* PANEL DE CONTROLES SLIDERS */
         .columna-controles {
             flex: 0.9; background-color: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 16px;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
         /* PANEL DE CONSOLA DE RESULTADOS */
         .columna-consola {
-            flex: 1.1; background-color: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 20px; color: #38bdf8; font-family: monospace; font-size: 12px; line-height: 1.6; min-height: 280px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
+            flex: 1.1; background-color: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 20px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.5); min-height: 290px;
         }
         
         .control-group { margin-bottom: 14px; }
         .control-group label { display: block; font-size: 11px; font-weight: 800; text-transform: uppercase; color: #475569; margin-bottom: 4px; }
-        .control-group input[type="range"] { width: 100%; accent-color: #a855f7; }
-        .control-group select { width: 100%; padding: 6px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 12px; font-weight: 600; color: #334155; }
+        .control-group input[type="range"] { width: 100%; accent-color: #a855f7; cursor: pointer; }
+        .control-group select { width: 100%; padding: 6px; border-radius: 6px; border: 1px solid #cbd5e1; font-size: 12px; font-weight: 600; color: #334155; cursor: pointer; }
         .val-display { font-size: 13px; font-weight: 800; color: #a855f7; float: right; }
 
-        .console-line { margin-bottom: 6px; color: #38bdf8; }
+        /* TEXTOS DE LA CONSOLA */
+        .console-text {
+            font-family: monospace; font-size: 11.5px; line-height: 1.5; color: #38bdf8;
+        }
+        .console-line { margin-bottom: 5px; }
         .console-highlight { color: #f43f5e; font-weight: bold; }
         .console-success { color: #4ade80; font-weight: bold; }
-        .console-white { color: #ffffff; }
+        .console-white { color: #ffffff; font-weight: bold; }
+
+        .btn-calc { width: 100%; padding: 8px; background-color: #a855f7; border: none; border-bottom: 3px solid #7e22ce; color: white; font-size: 11px; font-weight: 800; text-transform: uppercase; border-radius: 6px; cursor: pointer; transition: background 0.1s; }
+        .btn-calc:hover { background-color: #9333ea; }
 
         .revista-controles { display: flex; justify-content: space-between; margin-top: 15px; gap: 15px; border-top: 2px solid #f1f5f9; padding-top: 12px; }
         .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #64748b; border-bottom: 4px solid #475569; padding: 12px; border-radius: 8px; font-size: 14.5px; font-weight: 800; color: #ffffff !important; text-align: center; }
@@ -66,37 +74,40 @@
             </div>
 
             <div style="padding: 0 5px;">
-                <!-- INTERFAZ DEL SIMULADOR -->
                 <div class="proyecto-grid">
                     
                     <!-- PANEL IZQUIERDO: INPUTS DEL ALUMNO -->
                     <div class="columna-controles" style="border-top: 4px solid #a855f7;">
-                        <h4 style="font-size: 12px; font-weight: 900; color: #0f172a; text-transform: uppercase; margin-bottom: 12px; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px;">🎛 Variables de la Residencia</h4>
+                        <div>
+                            <h4 style="font-size: 12px; font-weight: 900; color: #0f172a; text-transform: uppercase; margin-bottom: 12px; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px;">🎛 Variables de la Residencia</h4>
+                            
+                            <div class="control-group">
+                                <label>Precio de Salida (Portal) <span id="lbl-precio" class="val-display">$2.5M</span></label>
+                                <input type="range" id="inp-precio" min="1000000" max="10000000" step="500000" value="2500000" oninput="calcularSimulador()">
+                            </div>
+
+                            <div class="control-group">
+                                <label>Edad Cronológica de la Obra <span id="lbl-edad" class="val-display">25 años</span></label>
+                                <input type="range" id="inp-edad" min="0" max="60" step="1" value="25" oninput="completelyRecalculate()">
+                            </div>
+
+                            <div class="control-group">
+                                <label>Estado de Conservación (SHF)</label>
+                                <select id="inp-conservacion" onchange="calcularSimulador()">
+                                    <option value="Excelente">Excelente (Código 1/2)</option>
+                                    <option value="Bueno">Bueno (Código 3)</option>
+                                    <option value="Regular" selected>Regular (Código 4)</option>
+                                    <option value="Malo">Malo (Código 5/6)</option>
+                                </select>
+                            </div>
+                        </div>
                         
-                        <div class="control-group">
-                            <label>Precio de Salida (Portal) <span id="lbl-precio" class="val-display">$2.5M</span></label>
-                            <input type="range" id="inp-precio" min="1000000" max="10000000" step="500000" value="2500000" oninput="calcularSimulador()">
-                        </div>
-
-                        <div class="control-group">
-                            <label>Edad Cronológica de la Obra <span id="lbl-edad" class="val-display">25 años</span></label>
-                            <input type="range" id="inp-edad" min="0" max="60" step="1" value="25" oninput="calcularSimulador()">
-                        </div>
-
-                        <div class="control-group">
-                            <label>Estado de Conservación (SHF)</label>
-                            <select id="inp-conservacion" onchange="calcularSimulador()">
-                                <option value="Excelente">Excelente (Código 1/2)</option>
-                                <option value="Bueno">Bueno (Código 3)</option>
-                                <option value="Regular" selected>Regular (Código 4)</option>
-                                <option value="Malo">Malo (Código 5/6)</option>
-                            </select>
-                        </div>
+                        <button class="btn-calc" onclick="calcularSimulador()">⚡ Forzar Simulación</button>
                     </div>
 
                     <!-- PANEL DERECHO: CONSOLA DE RIESGOS EN TIEMPO REAL -->
                     <div class="columna-consola">
-                        <div id="consola-salida"></div>
+                        <div id="consola-salida" class="console-text"></div>
                     </div>
 
                 </div>
@@ -114,7 +125,6 @@
         }
 
         function calcularSimulador() {
-            // Leer Inputs
             const precioPortal = parseFloat(document.getElementById('inp-precio').value);
             const edadCasa = parseInt(document.getElementById('inp-edad').value);
             const conservacion = document.getElementById('inp-conservacion').value;
@@ -122,11 +132,9 @@
             const vidaUtilTotal = 60;
             const aforoBase = 0.90;
 
-            // Actualizar etiquetas visuales de los Sliders
             document.getElementById('lbl-precio').innerText = '$' + (precioPortal / 1000000).toFixed(1) + 'M';
             document.getElementById('lbl-edad').innerText = `${edadCasa} años`;
 
-            // ALGORITMO FINANCIERO
             const pctNegociacion = 0.08;
             const descuentoNegociacion = precioPortal * pctNegociacion;
             const subtotal1 = precioPortal - descuentoNegociacion;
@@ -160,15 +168,8 @@
             const montoCredito = valorComercialX * aforoFinal;
             const engancheNecesario = precioPortal - montoCredito;
 
-            // Inyección en la Consola
             document.getElementById('consola-salida').innerHTML = `
                 <div class="console-line console-white">--- SIMULADOR INTERACTIVO DE RIESGO ---</div>
                 <div class="console-line">Precio inicial en portales: <span class="console-white">${formatMXN(precioPortal)}</span></div>
                 <br>
                 <div class="console-line">[Paso 1] Castigo por Negociación (8%): <span class="console-highlight">-${formatMXN(descuentoNegociacion)}</span></div>
-                <div class="console-line">&nbsp;&nbsp;&nbsp;&gt; Subtotal 1: ${formatMXN(subtotal1)}</div>
-                <br>
-                <div class="console-line">[Paso 2] Castigo Físico (Edad + Estado): <span class="console-highlight">-${formatMXN(descuentoDepreciacion)}</span></div>
-                <div class="console-line">&nbsp;&nbsp;&nbsp;&gt; Depreciación Compuesta: ${(pctDepreciacion * 100).toFixed(1)}%</div>
-                <div class="console-line">&nbsp;&nbsp;&nbsp;&gt; Subtotal 2: ${formatMXN(subtotal2)}</div>
-                <br>
