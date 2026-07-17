@@ -46,7 +46,7 @@
 
         <header>
             <span class="tag">Módulo 03 · Herramienta Didáctica</span>
-            <h1>Paso 4: Conexión Funcional de la Edad</h1>
+            <h1>Paso 5: Calibración Real SHF e Inaptitud</h1>
         </header>
 
         <div class="simulador-box">
@@ -72,9 +72,10 @@
                 <label class="sim-label">Estado de Conservación de la Obra (SHF):</label>
                 <label class="select-container">
                     <select id="select-conservacion">
-                        <option value="Excelente">Excelente / Bueno (Código SHF 1, 2 y 3)</option>
+                        <option value="Excelente" selected>Excelente (Código SHF 1/2)</option>
+                        <option value="Bueno">Bueno (Código SHF 3)</option>
                         <option value="Regular">Regular / Reparaciones Sencillas (Código SHF 4)</option>
-                        <option value="Malo" selected>Malo / Requiere Presupuesto de Obra (Código SHF 5)</option>
+                        <option value="Malo">Malo / Daño Estructural - Ruina (Código SHF 5/6)</option>
                     </select>
                 </label>
             </div>
@@ -113,21 +114,28 @@
             txtPrecio.innerText = '$' + precio.toLocaleString('es-MX') + ' MXN';
             txtEdad.innerText = edad + ' Años';
 
-            // 2. Definir factor de avalúo según el menú
+            // 2. Definir factor de castigo del avalúo por conservación según la SHF
             var factor = 0.0;
-            if (estado === "Regular") {
-                factor = 0.05;
+            var esInaptitud = false;
+
+            if (estado === "Excelente") {
+                factor = 0.0; // 0% castigo
+            } else if (estado === "Bueno") {
+                factor = 0.05; // 5% castigo
+            } else if (estado === "Regular") {
+                factor = 0.15; // 15% castigo
             } else if (estado === "Malo") {
-                factor = 0.20;
-            } else {
-                factor = 0.0;
+                esInaptitud = true; // Activa el rechazo automático institucional
             }
 
             var dineroPerdido = precio * factor;
             var valorComercialAvaluo = precio - dineroPerdido;
 
             // 3. Pintar la línea de Castigo A en pesos
-            if (dineroPerdido === 0) {
+            if (esInaptitud) {
+                txtCastigoPesos.innerText = "RECHAZO DE GARANTÍA";
+                txtCastigoPesos.style.color = "#ef4444";
+            } else if (dineroPerdido === 0) {
                 txtCastigoPesos.innerText = "$0 MXN";
                 txtCastigoPesos.style.color = "#64748b";
             } else {
@@ -135,46 +143,40 @@
                 txtCastigoPesos.style.color = "#ef4444";
             }
 
-            // =======================================================
-            // NUEVO CABLE: REGLA DE RIESGO DE EDAD (VIDA ÚTIL REMANENTE)
-            // =======================================================
+            // 4. Regla de riesgo de Edad (Vida Útil Remanente)
             var vidaUtilTotal = 60;
             var vidaUtilRemanente = vidaUtilTotal - edad;
-            var aforoFinal = 0.90; // Aforo base por defecto
+            var aforoFinal = 0.90; 
             var motivoAforo = "Garantía Óptima";
 
             if (vidaUtilRemanente < 20) {
-                aforoFinal = 0.70; // Castigo crítico por alta edad
+                aforoFinal = 0.70; 
                 motivoAforo = "Aforo Castigado por Alta Edad (<20 años de vida remanente)";
-                statusBox.className = "resultado-box status-alert"; // Color de alerta
             } else if (vidaUtilRemanente < 35) {
-                aforoFinal = 0.80; // Castigo moderado por edad media
+                aforoFinal = 0.80; 
                 motivoAforo = "Aforo Ajustado por Edad Media (20-35 años de vida remanente)";
-                statusBox.className = "resultado-box status-alert"; // Color de alerta
             } else {
                 aforoFinal = 0.90;
                 motivoAforo = "Aforo Máximo Autorizado";
+            }
+
+            // 5. Renderizado final e inyección de resultados
+            if (esInaptitud) {
+                statusBox.className = "resultado-box status-alert";
+                statusBox.innerHTML = "❌ CRÉDITO RECHAZADO: El inmueble dictamina como NO APTO para Garantía Hipotecaria debido a daños severos o fallas de habitabilidad (Código SHF 5/6)";
+            } else {
+                var montoCredito = valorComercialAvaluo * aforoFinal;
                 
-                // Si la edad es óptima pero el estado es malo, mantiene el color de alerta
-                if (estado === "Malo") {
+                // Si el aforo se castiga por edad o por conservación, se pinta de rojo (advertencia)
+                if (aforoFinal < 0.90 || factor > 0.0) {
                     statusBox.className = "resultado-box status-alert";
                 } else {
                     statusBox.className = "resultado-box status-success";
                 }
+                
+                statusBox.innerHTML = "MONTO DE CRÉDITO AUTORIZADO: $" + Math.round(montoCredito).toLocaleString('es-MX') + " MXN<br><span style='font-size:11.5px; font-weight:600;'>Mesa de Control: " + motivoAforo + " (" + (aforoFinal * 100) + "% de Aforo) sobre un Valor de Avalúo de $" + Math.round(valorComercialAvaluo).toLocaleString('es-MX') + " MXN</span>";
             }
-
-            // 5. Calcular Crédito Autorizado usando el aforo dinámico de la edad
-            var montoCredito = valorComercialAvaluo * aforoFinal;
-
-            // 6. Inyectar resultado final firme en el recuadro inferior
-            statusBox.innerHTML = "MONTO DE CRÉDITO AUTORIZADO: $" + Math.round(montoCredito).toLocaleString('es-MX') + " MXN<br><span style='font-size:11.5px; font-weight:600;'>Mesa de Control: " + motivoAforo + " (" + (aforoFinal * 100) + "% de Aforo) sobre un Valor de Avalúo de $" + Math.round(valorComercialAvaluo).toLocaleString('es-MX') + " MXN</span>";
         }
 
         inputPrecio.oninput = actualizarSimulador;
         inputEdad.oninput = actualizarSimulador;
-        selectConservacion.onchange = actualizarSimulador;
-
-        actualizarSimulador();
-    </script>
-</body>
-</html>
