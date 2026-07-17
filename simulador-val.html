@@ -83,12 +83,12 @@
         <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
         <header>
-            <span class="tag">Módulo 03 · Fase de Prueba</span>
-            <h1>Paso 2: Integración de Conservación y Crédito Base</h1>
+            <span class="tag">Módulo 03 · Herramienta Didáctica</span>
+            <h1>Paso 2: Criterio Real de Conservación y Aforo</h1>
         </header>
 
         <div class="simulador-box">
-            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 Verificación de Selección y Resultado Financiero</p>
+            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 Simulación de Impacto Técnico Institucional</p>
             
             <div class="sim-group">
                 <label class="sim-label">Precio de Salida (Portal):</label>
@@ -110,10 +110,10 @@
                 <label class="sim-label">Estado de Conservación de la Obra (SHF):</label>
                 <label class="select-container">
                     <select id="select-conservacion">
-                        <option value="Excelente">Excelente (Código SHF 1/2)</option>
-                        <option value="Bueno">Bueno (Código SHF 3)</option>
-                        <option value="Regular" selected>Regular (Código SHF 4)</option>
-                        <option value="Malo">Malo (Código SHF 5/6)</option>
+                        <option value="Excelente">Excelente / Bueno (Código SHF 1, 2 y 3)</option>
+                        <option value="Regular">Regular / Reparaciones Sencillas (Código SHF 4)</option>
+                        <option value="Malo">Malo / Requiere Presupuesto de Obra (Código SHF 5)</option>
+                        <option value="Rechazo">Daño Estructural / Ruina (Código SHF 6 o superior)</option>
                     </select>
                 </label>
             </div>
@@ -128,7 +128,6 @@
     </div>
 
     <script>
-        // Declaración limpia de elementos nativos
         var inputPrecio = document.getElementById('range-precio');
         var inputEdad = document.getElementById('range-edad');
         var selectConservacion = document.getElementById('select-conservacion');
@@ -142,32 +141,47 @@
             var edad = parseInt(inputEdad.value);
             var estado = selectConservacion.value;
 
-            // Actualizar los textos básicos de referencia lateral
             txtPrecio.innerText = '$' + precio.toLocaleString('es-MX') + ' MXN';
             txtEdad.innerText = edad + ' Años';
 
-            // Cálculo base temporal para validar que el resultado responda
-            // El banco presta el 90% por defecto, si es "Malo" reduce el aforo al 70%
-            var aforo = 0.90;
-            if (estado === "Malo") {
-                aforo = 0.70;
-                statusBox.className = "resultado-box status-alert";
-            } else {
+            // CRITERIO REAL HIPOTECARIO EN MÉXICO
+            var aforoBase = 0.90; // El aforo máximo del banco para el cliente
+            var factorCastigoAvaluo = 1.0; // Cómo afecta la conservación al valor de la garantía
+            var esInaptitud = false;
+
+            if (estado === "Excelente") {
+                factorCastigoAvaluo = 1.0; // Avalúo óptimo
                 statusBox.className = "resultado-box status-success";
+            } else if (estado === "Regular") {
+                factorCastigoAvaluo = 0.95; // Demérito del 5% en la obra civil
+                statusBox.className = "resultado-box status-success";
+            } else if (estado === "Malo") {
+                factorCastigoAvaluo = 0.80; // Se resta un 20% estimado para reparaciones de habitabilidad
+                statusBox.className = "resultado-box status-alert";
+            } else if (estado === "Rechazo") {
+                esInaptitud = true;
+                statusBox.className = "resultado-box status-alert";
             }
 
-            var montoCredito = precio * aforo;
-
-            // Inyectar el monto autorizado dinámicamente en el recuadro inferior
-            statusBox.innerHTML = "MONTO DE CRÉDITO AUTORIZADO: $" + Math.round(montoCredito).toLocaleString('es-MX') + " MXN";
+            if (esInaptitud) {
+                statusBox.innerHTML = "❌ CRÉDITO RECHAZADO: El inmueble Dictamina como NO APTO para Garantía Hipotecaria (Código SHF 6)";
+            } else {
+                // El banco presta el 90% (aforo) sobre el valor ajustado del avalúo
+                var valorComercialAvaluo = precio * factorCastigoAvaluo;
+                var montoCredito = valorComercialAvaluo * aforoBase;
+                
+                statusBox.innerHTML = "MONTO DE CRÉDITO AUTORIZADO: $" + Math.round(montoCredito).toLocaleString('es-MX') + " MXN<br><span style='font-size:11.5px; font-weight:600;'>Basado en un Aforo del 90% sobre un Valor de Avalúo de " + formatMXN(valorComercialAvaluo) + "</span>";
+            }
         }
 
-        // Asignar eventos de escucha nativos a los tres controles
+        function formatMXN(val) {
+            return '$' + Math.round(val).toLocaleString('es-MX') + ' MXN';
+        }
+
         inputPrecio.oninput = actualizarSimulador;
         inputEdad.oninput = actualizarSimulador;
         selectConservacion.onchange = actualizarSimulador;
 
-        // Forzar arranque inicial automático
         actualizarSimulador();
     </script>
 </body>
