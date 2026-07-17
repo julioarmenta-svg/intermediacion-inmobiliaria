@@ -29,11 +29,9 @@
  .select-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; padding: 6px 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; }
  .select-container select { flex: 1; padding: 6px; border: none; font-size: 14px; font-weight: 700; color: #334155; outline: none; cursor: pointer; }
 
- /* RECUADRO DE SELECCIÓN DE INFONAVIT */
  .checkbox-container { display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; color: #1e3a8a; cursor: pointer; padding: 14px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; margin-top: 5px; }
  .checkbox-container input { width: 18px; height: 18px; cursor: pointer; accent-color: #2563eb; }
  
- /* PANEL DE RECUADROS DE ENTRADA MANUAL INFONAVIT */
  .panel-infonavit-oculto { display: none; background-color: #ffffff; border: 1px dashed #cbd5e1; border-radius: 14px; padding: 20px; flex-direction: column; gap: 15px; margin-top: 5px; }
 
  .resultado-wrapper { display: flex; flex-direction: column; gap: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 14px; padding: 20px; font-family: monospace; font-size: 13px; }
@@ -83,7 +81,7 @@
  </label>
  </div>
 
- <!-- PASO 1 VISUAL: ADICIÓN DE RECUADRO DE SELECCIÓN -->
+ <!-- INTERRUPTOR DE INFONAVIT -->
  <div class="sim-group">
  <label class="checkbox-container">
  <input type="checkbox" id="check-infonavit">
@@ -91,7 +89,7 @@
  </label>
  </div>
 
- <!-- PASO 1 VISUAL: ADICIÓN DE CASILLAS PARA CAPTURA MANUAL OCULTAS -->
+ <!-- CASILLAS PARA CAPTURA MANUAL -->
  <div id="panel-infonavit" class="panel-infonavit-oculto">
  <div class="sim-group">
  <label class="sim-label">Monto de Crédito Infonavit (Entrada Manual):</label>
@@ -109,6 +107,13 @@
  <span class="res-title">Crédito Bancario Autorizado:</span>
  <span id="lbl-res-banco" class="res-val-info">$0</span>
  </div>
+ 
+ <!-- NUEVA FILA DINÁMICA: ADICIÓN DE LEYENDA CRÉDITO INFONAVIT -->
+ <div class="res-line" id="row-res-infonavit" style="display: none;">
+ <span class="res-title">Crédito Infonavit:</span>
+ <span id="lbl-res-infonavit" class="res-val-info">$0</span>
+ </div>
+
  <div class="res-line">
  <span class="res-title">Tasa de Interés Anual:</span>
  <span id="lbl-res-tasa" class="res-val-info">0.00%</span>
@@ -131,9 +136,11 @@
  var selectPlazo = document.getElementById('select-plazo');
  var checkInfonavit = document.getElementById('check-infonavit');
  var panelInfonavit = document.getElementById('panel-infonavit');
+ var rowResInfonavit = document.getElementById('row-res-infonavit'); // Nueva variable amarrada a la fila
  
  var txtAforo = document.getElementById('val-aforo');
  var lblBanco = document.getElementById('lbl-res-banco');
+ var lblInfonavit = document.getElementById('lbl-res-infonavit'); // Nueva variable de texto amarrada
  var lblTasa = document.getElementById('lbl-res-tasa');
  var lblMensualidad = document.getElementById('lbl-res-mensualidad');
  var statusBox = document.getElementById('status-render');
@@ -143,11 +150,13 @@
  var aforoBancario = parseInt(inputAforo.value);
  var plazoAnios = parseInt(selectPlazo.value);
 
- // EVENTO VISUAL AISLADO: INTERRUPTOR PARA MOSTRAR/OCULTAR CONTROLES
+ // LÓGICA DE CONTROL VISUAL CONJUNTO
  if (checkInfonavit.checked) {
  panelInfonavit.style.display = "flex";
+ rowResInfonavit.style.display = "flex"; // Muestra la fila "Crédito Infonavit:" en la tabla
  } else {
  panelInfonavit.style.display = "none";
+ rowResInfonavit.style.display = "none"; // Oculta la fila "Crédito Infonavit:" en la tabla
  }
 
  txtAforo.innerText = aforoBancario + '%';
@@ -173,20 +182,15 @@
  mensualidad = (montoCreditoBanco * tasaMensual * Math.pow(1 + 
 tasaMensual, numeroPagos)) / (Math.pow(1 + tasaMensual, numeroPagos) - 1);
  }
+
+ // Capturar el valor manual de Infonavit solo para pintarlo en la fila dinámica
+ var inputCreditoInfo = document.getElementById('txt-credito-info');
+ var montoCreditoInfo = inputCreditoInfo ? (parseFloat(inputCreditoInfo.value) || 0) : 0;
+
  var ingresoRequerido = mensualidad * 3;
  lblBanco.innerText = '$' + Math.round(montoCreditoBanco).toLocaleString() + ' MXN';
+ lblInfonavit.innerText = '$' + Math.round(montoCreditoInfo).toLocaleString() + ' MXN'; // Pinta el monto en la nueva fila
  lblTasa.innerText = tasaFinal.toFixed(2) + '%';
  lblMensualidad.innerText = '$' + Math.round(mensualidad).toLocaleString() + ' MXN';
  
  statusBox.innerHTML = "PAGO MENSUAL BANCARIO: $" + 
-Math.round(mensualidad).toLocaleString() + " MXN<br>Ingreso Mensual Mínimo Requerido: $" + Math.round(ingresoRequerido).toLocaleString() + " MXN<br><span style='font-size:12px; font-weight:600;'>Desembolso de Enganche Requerido: $" + Math.round(engancheRequerido).toLocaleString() + " MXN</span>";
- }
- inputVivienda.oninput = realizarCalculoCompleto;
- inputAforo.oninput = realizarCalculoCompleto;
- selectPlazo.onchange = realizarCalculoCompleto;
- checkInfonavit.onchange = realizarCalculoCompleto; // Escucha visual de la casilla
-
- realizarCalculoCompleto();
- </script>
-</body>
-</html>
