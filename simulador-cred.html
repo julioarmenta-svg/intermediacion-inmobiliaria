@@ -1,170 +1,192 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 4: Simulador de Co-Fondeo - URN</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            background-color: #f1f5f9; padding: 40px 20px; color: #334155;
-        }
-        .container {
-            max-width: 900px; margin: 0 auto; background-color: #ffffff;
-            border-radius: 28px; padding: 40px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06); border: 1px solid #e2e8f0;
-        }
-        .nav-back { display: inline-block; text-decoration: none; color: #2563eb; font-size: 13px; font-weight: 800; margin-bottom: 25px; text-transform: uppercase; }
-        header { margin-bottom: 35px; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px; }
-        .tag { font-size: 11px; font-weight: 800; color: #2563eb; text-transform: uppercase; letter-spacing: 0.12em; }
-        h1 { font-size: 32px; font-weight: 800; color: #0f172a; margin-top: 4px; }
-        .simulador-box { background-color: #f8fafc; border: 2px solid #cbd5e1; border-radius: 20px; padding: 30px; display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px; }
-        .sim-group { display: flex; flex-direction: column; gap: 8px; }
-        .sim-label { font-size: 13px; font-weight: 700; color: #475569; }
-        
-        .sim-input-text { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; font-weight: 700; color: #334155; background-color: #ffffff; outline: none; }
-        .sim-input-row { display: flex; align-items: center; gap: 15px; }
-        .sim-range { flex: 1; cursor: pointer; height: 12px; accent-color: #2563eb; }
-        .sim-value { font-size: 14px; font-weight: 800; color: #2563eb; min-width: 60px; text-align: right; }
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Módulo 4: Simulador de Co-Fondeo - URN</title>
+ <style>
+ * { box-sizing: border-box; margin: 0; padding: 0; }
+ body { 
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+ background-color: #f1f5f9; padding: 40px 20px; color: #334155;
+ }
+ .container {
+ max-width: 900px; margin: 0 auto; background-color: #ffffff;
+ border-radius: 28px; padding: 40px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06); border: 1px solid #e2e8f0;
+ }
+ .nav-back { display: inline-block; text-decoration: none; color: #2563eb; font-size: 13px; font-weight: 800; margin-bottom: 25px; text-transform: uppercase; }
+ header { margin-bottom: 35px; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px; }
+ .tag { font-size: 11px; font-weight: 800; color: #2563eb; text-transform: uppercase; letter-spacing: 0.12em; }
+ h1 { font-size: 32px; font-weight: 800; color: #0f172a; margin-top: 4px; }
+ .simulador-box { background-color: #f8fafc; border: 2px solid #cbd5e1; border-radius: 20px; padding: 30px; display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px; }
+ .sim-group { display: flex; flex-direction: column; gap: 8px; }
+ .sim-label { font-size: 13px; font-weight: 700; color: #475569; }
+ 
+ .sim-input-text { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; font-weight: 700; color: #334155; background-color: #ffffff; outline: none; }
+ .sim-input-row { display: flex; align-items: center; gap: 15px; }
+ .sim-range { flex: 1; cursor: pointer; height: 12px; accent-color: #2563eb; }
+ .sim-value { font-size: 14px; font-weight: 800; color: #2563eb; min-width: 60px; text-align: right; }
+ .select-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; padding: 6px 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; }
+ .select-container select { flex: 1; padding: 6px; border: none; font-size: 14px; font-weight: 700; color: #334155; outline: none; cursor: pointer; }
 
-        .select-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; padding: 6px 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; }
-        .select-container select { flex: 1; padding: 6px; border: none; font-size: 14px; font-weight: 700; color: #334155; outline: none; cursor: pointer; }
-        
-        .resultado-wrapper { display: flex; flex-direction: column; gap: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 14px; padding: 20px; font-family: monospace; font-size: 13px; }
-        .res-line { display: flex; justify-content: space-between; padding: 4px 0; }
-        .res-title { font-weight: bold; color: #0f172a; }
-        .res-val-info { color: #475569; font-weight: 600; }
+ /* RECUADRO DE SELECCIÓN DE INFONAVIT */
+ .checkbox-container { display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; color: #1e3a8a; cursor: pointer; padding: 14px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; margin-top: 5px; }
+ .checkbox-container input { width: 18px; height: 18px; cursor: pointer; accent-color: #2563eb; }
+ 
+ /* PANEL DE RECUADROS DE ENTRADA MANUAL INFONAVIT */
+ .panel-infonavit-oculto { display: none; background-color: #ffffff; border: 1px dashed #cbd5e1; border-radius: 14px; padding: 20px; flex-direction: column; gap: 15px; margin-top: 5px; }
 
-        .resultado-box { padding: 20px; border-radius: 12px; text-align: center; font-weight: 800; font-size: 14px; border: 1px solid transparent; margin-top: 10px; line-height: 1.6; }
-        .status-success { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
-        
-        .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
-        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; }
-    </style>
+ .resultado-wrapper { display: flex; flex-direction: column; gap: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 14px; padding: 20px; font-family: monospace; font-size: 13px; }
+ .res-line { display: flex; justify-content: space-between; padding: 4px 0; }
+ .res-title { font-weight: bold; color: #0f172a; }
+ .res-val-info { color: #475569; font-weight: 600; }
+ .resultado-box { padding: 20px; border-radius: 12px; text-align: center; font-weight: 800; font-size: 14px; border: 1px solid transparent; margin-top: 10px; line-height: 1.6; }
+ .status-success { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
+ 
+ .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
+ .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; }
+ </style>
 </head>
 <body>
+ <div class="container">
+ <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
+ <header>
+ <span class="tag">Módulo 04 · Herramienta Didáctica</span>
+ <h1>Laboratorio de Arquitectura de Crédito</h1>
+ </header>
+ <div class="simulador-box">
+ <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 SIMULADOR DE CAPACIDAD DE PAGO Y PERFILAMIENTO</p>
+ 
+ <!-- ENTRADA MANUAL VALOR VIVIENDA -->
+ <div class="sim-group">
+ <label class="sim-label">Valor de la Vivienda (Entrada Manual):</label>
+ <input type="number" id="txt-valor-vivienda" class="sim-input-text" value="3000000">
+ </div>
+ <!-- BARRA DE AFORO BANCARIO MANUAL -->
+ <div class="sim-group">
+ <label class="sim-label">Porcentaje de Aforo Bancario Solicitado:</label>
+ <div class="sim-input-row">
+ <input type="range" id="range-aforo" class="sim-range" min="10" max="90" step="5" value="90">
+ <span id="val-aforo" class="sim-value">90%</span>
+ </div>
+ </div>
+ <!-- SELECCIÓN PLAZO -->
+ <div class="sim-group">
+ <label class="sim-label">Plazo del Crédito Bancario:</label>
+ <label class="select-container">
+ <select id="select-plazo">
+ <option value="5">5 Años</option>
+ <option value="10">10 Años</option>
+ <option value="15">15 Años</option>
+ <option value="20" selected>20 Años</option>
+ </select>
+ </label>
+ </div>
 
-    <div class="container">
-        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
+ <!-- PASO 1 VISUAL: ADICIÓN DE RECUADRO DE SELECCIÓN -->
+ <div class="sim-group">
+ <label class="checkbox-container">
+ <input type="checkbox" id="check-infonavit">
+ <span>Vincular Estructura Mix (Esquema Cofonavit)</span>
+ </label>
+ </div>
 
-        <header>
-            <span class="tag">Módulo 04 · Herramienta Didáctica</span>
-            <h1>Laboratorio de Arquitectura de Crédito</h1>
-        </header>
+ <!-- PASO 1 VISUAL: ADICIÓN DE CASILLAS PARA CAPTURA MANUAL OCULTAS -->
+ <div id="panel-infonavit" class="panel-infonavit-oculto">
+ <div class="sim-group">
+ <label class="sim-label">Monto de Crédito Infonavit (Entrada Manual):</label>
+ <input type="number" id="txt-credito-info" class="sim-input-text" value="400000">
+ </div>
+ <div class="sim-group">
+ <label class="sim-label">Saldo Subcuenta de Vivienda (Entrada Manual):</label>
+ <input type="number" id="txt-subcuenta-info" class="sim-input-text" value="250000">
+ </div>
+ </div>
 
-        <div class="simulador-box">
-            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 SIMULADOR DE CAPACIDAD DE PAGO Y PERFILAMIENTO</p>
-            
-            <!-- ENTRADA MANUAL VALOR VIVIENDA -->
-            <div class="sim-group">
-                <label class="sim-label">Valor de la Vivienda (Entrada Manual):</label>
-                <input type="number" id="txt-valor-vivienda" class="sim-input-text" value="3000000">
-            </div>
+ <!-- DESGLOSE DE CAPITALES -->
+ <div class="resultado-wrapper">
+ <div class="res-line">
+ <span class="res-title">Crédito Bancario Autorizado:</span>
+ <span id="lbl-res-banco" class="res-val-info">$0</span>
+ </div>
+ <div class="res-line">
+ <span class="res-title">Tasa de Interés Anual:</span>
+ <span id="lbl-res-tasa" class="res-val-info">0.00%</span>
+ </div>
+ <div class="res-line" style="border-top: 1px dashed #cbd5e1; padding-top: 8px; margin-top: 4px;">
+ <span class="res-title" style="color: #2563eb;">Mensualidad del Crédito Bancario:</span>
+ <span id="lbl-res-mensualidad" style="font-weight: 800; color: #2563eb;">$0</span>
+ </div>
+ </div>
+ <!-- CUADRO DE ESTADO CON ANÁLISIS DE CAPACIDAD DE PAGO -->
+ <div id="status-render" class="resultado-box status-success">PAGO MENSUAL BANCARIO ESTIMADO CALCULADO</div>
+ </div>
+ <div class="revista-controles">
+ <a href="credito-p2.html" class="btn-nav">◀ Regresar a la Clase (Pág. 2)</a>
+ </div>
+ </div>
+ <script>
+ var inputVivienda = document.getElementById('txt-valor-vivienda');
+ var inputAforo = document.getElementById('range-aforo');
+ var selectPlazo = document.getElementById('select-plazo');
+ var checkInfonavit = document.getElementById('check-infonavit');
+ var panelInfonavit = document.getElementById('panel-infonavit');
+ 
+ var txtAforo = document.getElementById('val-aforo');
+ var lblBanco = document.getElementById('lbl-res-banco');
+ var lblTasa = document.getElementById('lbl-res-tasa');
+ var lblMensualidad = document.getElementById('lbl-res-mensualidad');
+ var statusBox = document.getElementById('status-render');
 
-            <!-- BARRA DE AFORO BANCARIO MANUAL -->
-            <div class="sim-group">
-                <label class="sim-label">Porcentaje de Aforo Bancario Solicitado:</label>
-                <div class="sim-input-row">
-                    <input type="range" id="range-aforo" class="sim-range" min="10" max="90" step="5" value="90">
-                    <span id="val-aforo" class="sim-value">90%</span>
-                </div>
-            </div>
+ function realizarCalculoCompleto() {
+ var valorVivienda = parseFloat(inputVivienda.value) || 0;
+ var aforoBancario = parseInt(inputAforo.value);
+ var plazoAnios = parseInt(selectPlazo.value);
 
-            <!-- SELECCIÓN PLAZO -->
-            <div class="sim-group">
-                <label class="sim-label">Plazo del Crédito Bancario:</label>
-                <label class="select-container">
-                    <select id="select-plazo">
-                        <option value="5">5 Años</option>
-                        <option value="10">10 Años</option>
-                        <option value="15">15 Años</option>
-                        <option value="20" selected>20 Años</option>
-                    </select>
-                </label>
-            </div>
+ // EVENTO VISUAL AISLADO: INTERRUPTOR PARA MOSTRAR/OCULTAR CONTROLES
+ if (checkInfonavit.checked) {
+ panelInfonavit.style.display = "flex";
+ } else {
+ panelInfonavit.style.display = "none";
+ }
 
-            <!-- DESGLOSE DE CAPITALES -->
-            <div class="resultado-wrapper">
-                <div class="res-line">
-                    <span class="res-title">Crédito Bancario Autorizado:</span>
-                    <span id="lbl-res-banco" class="res-val-info">$0</span>
-                </div>
-                <div class="res-line">
-                    <span class="res-title">Tasa de Interés Anual:</span>
-                    <span id="lbl-res-tasa" class="res-val-info">0.00%</span>
-                </div>
-                <div class="res-line" style="border-top: 1px dashed #cbd5e1; padding-top: 8px; margin-top: 4px;">
-                    <span class="res-title" style="color: #2563eb;">Mensualidad del Crédito Bancario:</span>
-                    <span id="lbl-res-mensualidad" style="font-weight: 800; color: #2563eb;">$0</span>
-                </div>
-            </div>
+ txtAforo.innerText = aforoBancario + '%';
+ var porcentajeAforo = aforoBancario / 100;
+ var montoCreditoBanco = valorVivienda * porcentajeAforo;
+ var engancheRequerido = valorVivienda - montoCreditoBanco;
+ var tasaAnual = 9.75;
+ if (plazoAnios === 5) tasaAnual = 8.75;
+ else if (plazoAnios === 10) tasaAnual = 9.35;
+ else if (plazoAnios === 15) tasaAnual = 9.50;
+ var descuentoAforo = 0.0;
+ if (aforoBancario <= 40) {
+ descuentoAforo = 0.20;
+ } else if (aforoBancario <= 70) {
+ descuentoAforo = 0.10;
+ }
+ 
+ var tasaFinal = tasaAnual - descuentoAforo;
+ var mensualidad = 0;
+ if (montoCreditoBanco > 0) {
+ var tasaMensual = (tasaFinal / 100) / 12;
+ var numeroPagos = plazoAnios * 12;
+ mensualidad = (montoCreditoBanco * tasaMensual * Math.pow(1 + 
+tasaMensual, numeroPagos)) / (Math.pow(1 + tasaMensual, numeroPagos) - 1);
+ }
+ var ingresoRequerido = mensualidad * 3;
+ lblBanco.innerText = '$' + Math.round(montoCreditoBanco).toLocaleString() + ' MXN';
+ lblTasa.innerText = tasaFinal.toFixed(2) + '%';
+ lblMensualidad.innerText = '$' + Math.round(mensualidad).toLocaleString() + ' MXN';
+ 
+ statusBox.innerHTML = "PAGO MENSUAL BANCARIO: $" + 
+Math.round(mensualidad).toLocaleString() + " MXN<br>Ingreso Mensual Mínimo Requerido: $" + Math.round(ingresoRequerido).toLocaleString() + " MXN<br><span style='font-size:12px; font-weight:600;'>Desembolso de Enganche Requerido: $" + Math.round(engancheRequerido).toLocaleString() + " MXN</span>";
+ }
+ inputVivienda.oninput = realizarCalculoCompleto;
+ inputAforo.oninput = realizarCalculoCompleto;
+ selectPlazo.onchange = realizarCalculoCompleto;
+ checkInfonavit.onchange = realizarCalculoCompleto; // Escucha visual de la casilla
 
-            <!-- CUADRO DE ESTADO CON ANÁLISIS DE CAPACIDAD DE PAGO -->
-            <div id="status-render" class="resultado-box status-success">PAGO MENSUAL BANCARIO ESTIMADO CALCULADO</div>
-        </div>
-
-        <div class="revista-controles">
-            <a href="credito-p2.html" class="btn-nav">◀ Regresar a la Clase (Pág. 2)</a>
-        </div>
-    </div>
-
-    <script>
-        var inputVivienda = document.getElementById('txt-valor-vivienda');
-        var inputAforo = document.getElementById('range-aforo');
-        var selectPlazo = document.getElementById('select-plazo');
-        
-        var txtAforo = document.getElementById('val-aforo');
-        var lblBanco = document.getElementById('lbl-res-banco');
-        var lblTasa = document.getElementById('lbl-res-tasa');
-        var lblMensualidad = document.getElementById('lbl-res-mensualidad');
-        var statusBox = document.getElementById('status-render');
-
-        function realizarCalculoCompleto() {
-            var valorVivienda = parseFloat(inputVivienda.value) || 0;
-            var aforoBancario = parseInt(inputAforo.value);
-            var plazoAnios = parseInt(selectPlazo.value);
-
-            txtAforo.innerText = aforoBancario + '%';
-
-            var porcentajeAforo = aforoBancario / 100;
-            var montoCreditoBanco = valorVivienda * porcentajeAforo;
-            var engancheRequerido = valorVivienda - montoCreditoBanco;
-
-            var tasaAnual = 9.75;
-            if (plazoAnios === 5) tasaAnual = 8.75;
-            else if (plazoAnios === 10) tasaAnual = 9.35;
-            else if (plazoAnios === 15) tasaAnual = 9.50;
-
-            var descuentoAforo = 0.0;
-            if (aforoBancario <= 40) {
-                descuentoAforo = 0.20;
-            } else if (aforoBancario <= 70) {
-                descuentoAforo = 0.10;
-            }
-            
-            var tasaFinal = tasaAnual - descuentoAforo;
-
-            var mensualidad = 0;
-            if (montoCreditoBanco > 0) {
-                var tasaMensual = (tasaFinal / 100) / 12;
-                var numeroPagos = plazoAnios * 12;
-                mensualidad = (montoCreditoBanco * tasaMensual * Math.pow(1 + tasaMensual, numeroPagos)) / (Math.pow(1 + tasaMensual, numeroPagos) - 1);
-            }
-
-            var ingresoRequerido = mensualidad * 3;
-
-            lblBanco.innerText = '$' + Math.round(montoCreditoBanco).toLocaleString() + ' MXN';
-            lblTasa.innerText = tasaFinal.toFixed(2) + '%';
-            lblMensualidad.innerText = '$' + Math.round(mensualidad).toLocaleString() + ' MXN';
-            
-            statusBox.innerHTML = "PAGO MENSUAL BANCARIO: $" + Math.round(mensualidad).toLocaleString() + " MXN<br>Ingreso Mensual Mínimo Requerido: $" + Math.round(ingresoRequerido).toLocaleString() + " MXN<br><span style='font-size:12px; font-weight:600;'>Desembolso de Enganche Requerido: $" + Math.round(engancheRequerido).toLocaleString() + " MXN</span>";
-        }
-
-        inputVivienda.oninput = realizarCalculoCompleto;
-        inputAforo.oninput = realizarCalculoCompleto;
-        selectPlazo.onchange = realizarCalculoCompleto;
-
-        realizarCalculoCompleto();
-    </script>
+ realizarCalculoCompleto();
+ </script>
 </body>
 </html>
