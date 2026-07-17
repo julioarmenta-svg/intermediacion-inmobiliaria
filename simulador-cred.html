@@ -53,7 +53,7 @@
         </header>
 
         <div class="simulador-box">
-            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 SIMULADOR DE ESCENARIOS Y AFORO BANCARIO (PASO 3)</p>
+            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 SIMULADOR DE ESCENARIOS Y PREMIO POR AFORO (PASO 4)</p>
             
             <!-- ENTRADA MANUAL VALOR VIVIENDA -->
             <div class="sim-group">
@@ -61,7 +61,7 @@
                 <input type="number" id="txt-valor-vivienda" class="sim-input-text" value="3000000">
             </div>
 
-            <!-- NUEVO CONTROL: BARRA DE AFORO BANCARIO MANUAL -->
+            <!-- BARRA DE AFORO BANCARIO MANUAL -->
             <div class="sim-group">
                 <label class="sim-label">Porcentaje de Aforo Bancario Solicitado:</label>
                 <div class="sim-input-row">
@@ -90,7 +90,7 @@
                     <span id="lbl-res-banco" class="res-val-info">$0</span>
                 </div>
                 <div class="res-line">
-                    <span class="res-title">Tasa de Interés Anual Aplicada:</span>
+                    <span class="res-title">Tasa de Interés Anual Aplicada (Ajustada):</span>
                     <span id="lbl-res-tasa" class="res-val-info">0.00%</span>
                 </div>
                 <div class="res-line" style="border-top: 1px dashed #cbd5e1; padding-top: 8px; margin-top: 4px;">
@@ -110,10 +110,10 @@
 
     <script>
         var inputVivienda = document.getElementById('txt-valor-vivienda');
-        var inputAforo = document.getElementById('range-aforo'); // Nueva variable amarrada
+        var inputAforo = document.getElementById('range-aforo');
         var selectPlazo = document.getElementById('select-plazo');
         
-        var txtAforo = document.getElementById('val-aforo'); // Texto de la barra amarrado
+        var txtAforo = document.getElementById('val-aforo');
         var lblBanco = document.getElementById('lbl-res-banco');
         var lblTasa = document.getElementById('lbl-res-tasa');
         var lblMensualidad = document.getElementById('lbl-res-mensualidad');
@@ -131,41 +131,51 @@
             // A. Sincronizar el texto del slider del aforo
             txtAforo.innerText = aforoBancario + '%';
 
-            // B. Calcular el crédito bancario basado en el aforo que mueva el alumno
+            // B. Calcular el crédito bancario basado en el aforo
             var porcentajeAforo = aforoBancario / 100;
             var montoCreditoBanco = valorVivienda * porcentajeAforo;
 
-            // C. Calcular el enganche inicial puro requerido (Valor vivienda menos lo que presta el banco)
+            // C. Calcular el enganche inicial puro requerido
             var engancheRequerido = valorVivienda - montoCreditoBanco;
 
-            // D. Determinar la tasa correspondiente según el plazo
+            // D. Determinar la tasa base según el plazo
             var tasaAnual = 9.75;
             if (plazoAnios === 5) tasaAnual = 8.75;
             else if (plazoAnios === 10) tasaAnual = 9.35;
             else if (plazoAnios === 15) tasaAnual = 9.50;
 
-            // E. Fórmula PMT para amortización mensual fija
+            // E. MATRIZ DINÁMICA DE PREMIO POR BAJO AFORO (SOLICITADO POR EL PROFESOR)
+            var descuentoAforo = 0.0;
+            if (aforoBancario <= 40) {
+                descuentoAforo = 0.20; // Rango bajo: -0.20% acumulado
+            } else if (aforoBancario <= 70) {
+                descuentoAforo = 0.10; // Rango medio: -0.10%
+            }
+            
+            // Tasa final ajustada
+            var tasaFinal = tasaAnual - descuentoAforo;
+
+            // F. Fórmula PMT para amortización mensual fija con la tasa ajustada
             var mensualidad = 0;
             if (montoCreditoBanco > 0) {
-                var tasaMensual = (tasaAnual / 100) / 12;
+                var tasaMensual = (tasaFinal / 100) / 12;
                 var numeroPagos = plazoAnios * 12;
                 mensualidad = (montoCreditoBanco * tasaMensual * Math.pow(1 + tasaMensual, numeroPagos)) / (Math.pow(1 + tasaMensual, numeroPagos) - 1);
             }
 
-            // F. Renderizar los datos en el reporte
+            // G. Renderizar los datos en el reporte
             lblBanco.innerText = formatMXN(montoCreditoBanco);
-            lblTasa.innerText = tasaAnual.toFixed(2) + '%';
+            lblTasa.innerText = tasaFinal.toFixed(2) + '%';
             lblMensualidad.innerText = formatMXN(mensualidad);
             
-            // G. Actualización del cuadro verde mostrando la Mensualidad y el Enganche Requerido del escenario actual
-            statusBox.innerHTML = "PAGO MENSUAL BANCARIO ESTIMADO: " + formatMXN(mensualidad) + "<br><span style='font-size:12.5px; font-weight:600;'>Desembolso Requerido de Enganche en Efectivo: " + formatMXN(engancheRequerido) + "</span>";
+            // H. Mensaje dinámico que indica si se aplicó premio por bajo aforo
+            var leyendaPremio = "";
+            if (descuentoAforo > 0) {
+                leyendaPremio = " (¡Premio de Tasa por bajo riesgo aplicado!)";
+            }
+
+            statusBox.innerHTML = "PAGO MENSUAL BANCARIO ESTIMADO: " + formatMXN(mensualidad) + leyendaPremio + "<br><span style='font-size:12.5px; font-weight:600;'>Desembolso Requerido de Enganche en Efectivo: " + formatMXN(engancheRequerido) + "</span>";
         }
 
         inputVivienda.oninput = realizarCalculoCompleto;
-        inputAforo.oninput = realizarCalculoCompleto; // Escucha de movimiento para el aforo
-        selectPlazo.onchange = realizarCalculoCompleto;
-
-        realizarCalculoCompleto();
-    </script>
-</body>
-</html>
+        inputAforo.oninput = realizarCalculoCompleto;
