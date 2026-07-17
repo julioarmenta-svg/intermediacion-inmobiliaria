@@ -46,7 +46,7 @@
 
         <header>
             <span class="tag">Módulo 03 · Herramienta Didáctica</span>
-            <h1>Paso 3: Incorporación Visual de Edad</h1>
+            <h1>Paso 4: Conexión Funcional de la Edad</h1>
         </header>
 
         <div class="simulador-box">
@@ -60,7 +60,6 @@
                 </div>
             </div>
 
-            <!-- ADICIÓN EXCLUSIVA DE LA SEGUNDA BARRA EN EL PANEL -->
             <div class="sim-group">
                 <label class="sim-label">Edad Cronológica de la Casa:</label>
                 <div class="sim-input-row">
@@ -97,34 +96,31 @@
 
     <script>
         var inputPrecio = document.getElementById('range-precio');
-        var inputEdad = document.getElementById('range-edad'); // Nueva variable del DOM amarrada
+        var inputEdad = document.getElementById('range-edad');
         var selectConservacion = document.getElementById('select-conservacion');
         
         var txtPrecio = document.getElementById('val-precio');
-        var txtEdad = document.getElementById('val-edad'); // Nueva variable de texto amarrada
+        var txtEdad = document.getElementById('val-edad');
         var txtCastigoPesos = document.getElementById('txt-castigo-pesos');
         var statusBox = document.getElementById('status-render');
 
         function actualizarSimulador() {
             var precio = parseInt(inputPrecio.value);
-            var edad = parseInt(inputEdad.value); // Lectura nativa de los años
+            var edad = parseInt(inputEdad.value);
             var estado = selectConservacion.value;
 
             // 1. Mostrar textos de referencia en las dos barras
             txtPrecio.innerText = '$' + precio.toLocaleString('es-MX') + ' MXN';
-            txtEdad.innerText = edad + ' Años'; // Hace correr el texto de la edad de forma fluida
+            txtEdad.innerText = edad + ' Años';
 
-            // 2. Definir factor según el menú
+            // 2. Definir factor de avalúo según el menú
             var factor = 0.0;
             if (estado === "Regular") {
                 factor = 0.05;
-                statusBox.className = "resultado-box status-success";
             } else if (estado === "Malo") {
                 factor = 0.20;
-                statusBox.className = "resultado-box status-alert";
             } else {
                 factor = 0.0;
-                statusBox.className = "resultado-box status-success";
             }
 
             var dineroPerdido = precio * factor;
@@ -139,17 +135,43 @@
                 txtCastigoPesos.style.color = "#ef4444";
             }
 
-            // 4. Calcular Crédito Autorizado de forma idéntica (Aforo del 90% fijo por ahora)
-            var aforoBase = 0.90;
-            var montoCredito = valorComercialAvaluo * aforoBase;
+            // =======================================================
+            // NUEVO CABLE: REGLA DE RIESGO DE EDAD (VIDA ÚTIL REMANENTE)
+            // =======================================================
+            var vidaUtilTotal = 60;
+            var vidaUtilRemanente = vidaUtilTotal - edad;
+            var aforoFinal = 0.90; // Aforo base por defecto
+            var motivoAforo = "Garantía Óptima";
 
-            // 5. Inyectar resultado final firme en el recuadro inferior
-            statusBox.innerHTML = "MONTO DE CRÉDITO AUTORIZADO: $" + Math.round(montoCredito).toLocaleString('es-MX') + " MXN<br><span style='font-size:11.5px; font-weight:600;'>Basado en un Aforo Máximo del 90% sobre un Valor de Avalúo de $" + Math.round(valorComercialAvaluo).toLocaleString('es-MX') + " MXN</span>";
+            if (vidaUtilRemanente < 20) {
+                aforoFinal = 0.70; // Castigo crítico por alta edad
+                motivoAforo = "Aforo Castigado por Alta Edad (<20 años de vida remanente)";
+                statusBox.className = "resultado-box status-alert"; // Color de alerta
+            } else if (vidaUtilRemanente < 35) {
+                aforoFinal = 0.80; // Castigo moderado por edad media
+                motivoAforo = "Aforo Ajustado por Edad Media (20-35 años de vida remanente)";
+                statusBox.className = "resultado-box status-alert"; // Color de alerta
+            } else {
+                aforoFinal = 0.90;
+                motivoAforo = "Aforo Máximo Autorizado";
+                
+                // Si la edad es óptima pero el estado es malo, mantiene el color de alerta
+                if (estado === "Malo") {
+                    statusBox.className = "resultado-box status-alert";
+                } else {
+                    statusBox.className = "resultado-box status-success";
+                }
+            }
+
+            // 5. Calcular Crédito Autorizado usando el aforo dinámico de la edad
+            var montoCredito = valorComercialAvaluo * aforoFinal;
+
+            // 6. Inyectar resultado final firme en el recuadro inferior
+            statusBox.innerHTML = "MONTO DE CRÉDITO AUTORIZADO: $" + Math.round(montoCredito).toLocaleString('es-MX') + " MXN<br><span style='font-size:11.5px; font-weight:600;'>Mesa de Control: " + motivoAforo + " (" + (aforoFinal * 100) + "% de Aforo) sobre un Valor de Avalúo de $" + Math.round(valorComercialAvaluo).toLocaleString('es-MX') + " MXN</span>";
         }
 
-        // Vincular la escucha de movimiento a los tres elementos
         inputPrecio.oninput = actualizarSimulador;
-        inputEdad.oninput = actualizarSimulador; // Escucha nativa para la segunda barra
+        inputEdad.oninput = actualizarSimulador;
         selectConservacion.onchange = actualizarSimulador;
 
         actualizarSimulador();
