@@ -36,7 +36,7 @@
         .status-success { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
         
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
-        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; }
+        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; }
     </style>
 </head>
 <body>
@@ -50,7 +50,7 @@
         </header>
 
         <div class="simulador-box">
-            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 SIMULADOR DE CAPACIDAD DE PAGO (PASO 1)</p>
+            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 SIMULADOR DE CAPACIDAD DE PAGO (PASO 2)</p>
             
             <!-- ENTRADA MANUAL VALOR VIVIENDA -->
             <div class="sim-group">
@@ -58,20 +58,20 @@
                 <input type="number" id="txt-valor-vivienda" class="sim-input-text" value="3000000">
             </div>
 
-            <!-- SELECCIÓN PLAZO -->
+            <!-- SELECCIÓN PLAZO LIMPIO -->
             <div class="sim-group">
                 <label class="sim-label">Plazo del Crédito Bancario:</label>
                 <label class="select-container">
                     <select id="select-plazo">
-                        <option value="5">5 Años (Tasa 8.75%)</option>
-                        <option value="10">10 Años (Tasa 9.35%)</option>
-                        <option value="15">15 Años (Tasa 9.50%)</option>
-                        <option value="20" selected>20 Años (Tasa 9.75%)</option>
+                        <option value="5">5 Años</option>
+                        <option value="10">10 Años</option>
+                        <option value="15">15 Años</option>
+                        <option value="20" selected>20 Años</option>
                     </select>
                 </label>
             </div>
 
-            <!-- DESGLOSE DE CAPITALES BASE -->
+            <!-- DESGLOSE DE CAPITALES Y FLUJOS DINÁMICOS -->
             <div class="resultado-wrapper">
                 <div class="res-line">
                     <span class="res-title">Crédito Bancario Autorizado (90% Base):</span>
@@ -81,10 +81,14 @@
                     <span class="res-title">Tasa de Interés Anual Aplicada:</span>
                     <span id="lbl-res-tasa" class="res-val-info">0.00%</span>
                 </div>
+                <div class="res-line" style="border-top: 1px dashed #cbd5e1; padding-top: 8px; margin-top: 4px;">
+                    <span class="res-title" style="color: #2563eb;">Mensualidad Base del Crédito Bancario:</span>
+                    <span id="lbl-res-mensualidad" style="font-weight: 800; color: #2563eb;">$0</span>
+                </div>
             </div>
 
-            <!-- CUADRO DE ESTADO TEMPORAL -->
-            <div id="status-render" class="resultado-box status-success">CONEXIÓN DE DATOS ACTIVA</div>
+            <!-- CUADRO DE ESTADO FINANCIERO -->
+            <div id="status-render" class="resultado-box status-success">PAGO MENSUAL ESTIMADO CALCULADO</div>
         </div>
 
         <div class="revista-controles">
@@ -93,37 +97,48 @@
     </div>
 
     <script>
-        // Vincular los únicos elementos activos de este primer paso
         var inputVivienda = document.getElementById('txt-valor-vivienda');
         var selectPlazo = document.getElementById('select-plazo');
         
         var lblBanco = document.getElementById('lbl-res-banco');
         var lblTasa = document.getElementById('lbl-res-tasa');
+        var lblMensualidad = document.getElementById('lbl-res-mensualidad');
+        var statusBox = document.getElementById('status-render');
 
-        function realizarCalculoBase() {
+        function realizarCalculoFinanciero() {
             var valorVivienda = parseFloat(inputVivienda.value) || 0;
             var plazoAnios = parseInt(selectPlazo.value);
 
-            // 1. Calcular el 90% de crédito bancario de forma directa
+            // 1. Calcular el 90% de crédito bancario base
             var montoCreditoBanco = valorVivienda * 0.90;
 
-            // 2. Determinar la tasa correspondiente según el plazo
+            // 2. Determinar la tasa correspondiente de forma interna y dinámica
             var tasaAnual = 9.75;
             if (plazoAnios === 5) tasaAnual = 8.75;
             else if (plazoAnios === 10) tasaAnual = 9.35;
             else if (plazoAnios === 15) tasaAnual = 9.50;
 
-            // 3. Pintar los resultados nativos en la tabla sin regionalismos
+            // 3. Fórmula universal de amortización fija (PMT)
+            var mensualidad = 0;
+            if (montoCreditoBanco > 0) {
+                var tasaMensual = (tasaAnual / 100) / 12;
+                var numeroPagos = plazoAnios * 12;
+                mensualidad = (montoCreditoBanco * tasaMensual * Math.pow(1 + tasaMensual, numeroPagos)) / (Math.pow(1 + tasaMensual, numeroPagos) - 1);
+            }
+
+            // 4. Renderizar los datos en la pantalla usando el formato de tu Módulo 1
             lblBanco.innerText = '$' + Math.round(montoCreditoBanco).toLocaleString() + ' MXN';
             lblTasa.innerText = tasaAnual.toFixed(2) + '%';
+            lblMensualidad.innerText = '$' + Math.round(mensualidad).toLocaleString() + ' MXN';
+            
+            // Actualizar la caja inferior principal con el desglose directo
+            statusBox.innerHTML = "PAGO MENSUAL BANCARIO ESTIMADO: $" + Math.round(mensualidad).toLocaleString() + " MXN";
         }
 
-        // Asignar eventos de escucha individuales
-        inputVivienda.oninput = realizarCalculoBase;
-        selectPlazo.onchange = realizarCalculoBase;
+        inputVivienda.oninput = realizarCalculoFinanciero;
+        selectPlazo.onchange = realizarCalculoFinanciero;
 
-        // Arrancar al cargar el archivo
-        realizarCalculoBase();
+        realizarCalculoFinanciero();
     </script>
 </body>
 </html>
