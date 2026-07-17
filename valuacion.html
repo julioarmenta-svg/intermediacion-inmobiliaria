@@ -16,12 +16,12 @@
         body {
             background-color: #f1f5f9;
             color: #334155;
-            min-height: screen;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 40px 20px;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -32,11 +32,11 @@
             max-width: 900px;
             border-radius: 32px;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
-            border: 1px solid #f1f5f9;
+            border: 1px solid #e2e8f0;
             padding: 40px;
             display: flex;
             flex-direction: column;
-            min-height: 650px;
+            min-height: 680px;
             justify-content: space-between;
         }
 
@@ -102,7 +102,7 @@
             border-radius: 9999px;
         }
 
-        /* CONTROL DE FILMINAS ACTIVAS (EVITA QUE SE AMONTONEN) */
+        /* CONTROL DE FILMINAS ACTIVAS */
         .tab-content {
             display: none;
         }
@@ -131,6 +131,7 @@
             color: #64748b;
             margin-top: 6px;
             line-height: 1.6;
+            margin-bottom: 20px;
         }
 
         /* TABLAS ESTILIZADAS PREMIUM */
@@ -138,7 +139,7 @@
             border: 1px solid #e2e8f0;
             border-radius: 16px;
             overflow: hidden;
-            margin-top: 24px;
+            margin-top: 20px;
             margin-bottom: 24px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
@@ -179,16 +180,17 @@
         .concept-column {
             font-weight: 700;
             color: #7e22ce;
-            width: 28%;
+            width: 25%;
         }
 
         .mechanic-column {
-            width: 27%;
+            width: 30%;
             color: #334155;
         }
 
         .resolution-column {
             color: #64748b;
+            width: 45%;
         }
 
         .highlight-text {
@@ -197,7 +199,10 @@
         }
 
         .badge-zero {
-            color: #c084fc;
+            color: #b51212;
+            background-color: #fef2f2;
+            padding: 2px 6px;
+            border-radius: 4px;
             font-weight: 700;
         }
 
@@ -230,9 +235,6 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
         .ul-list {
@@ -301,19 +303,11 @@
         .btn-next:hover {
             background-color: #9333ea;
         }
-
-        @media (max-width: 768px) {
-            .grid-2 { grid-template-columns: 1fr; }
-            table, thead, tbody, th, td, tr { display: block; }
-            thead tr { position: absolute; top: -9999px; left: -9999px; }
-            tr { border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 12px; padding: 8px; }
-            td { border: none; padding: 8px; width: 100% !important; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- CONTENEDOR CENTRAL PREMIUM (CSS CONFIGURADO DE MANERA INDEPENDIENTE) -->
+    <!-- CONTENEDOR CENTRAL PREMIUM -->
     <div class="card-container">
         
         <!-- PARTE SUPERIOR DE LA ESTRUCTURA -->
@@ -350,3 +344,10 @@
                         <thead>
                             <tr>
                                 <th style="width: 25%;">Área Auditada</th>
+                                <th style="width: 30%;">Criterio Técnico Aplicado</th>
+                                <th style="width: 45%;">Resolución de Mesa de Control</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="concept-column">1. Auditoría Fiscal LISR</td>
