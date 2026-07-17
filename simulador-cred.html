@@ -142,7 +142,7 @@
         function realizarCalculoCompleto() {
             var valorVivienda = parseFloat(inputVivienda.value) || 0;
             var aforoBancario = parseInt(inputAforo.value) || 0;
-            var plazoAnios = Number(selectPlazo.value) || 20; // Blindaje numérico indispensable para el servidor
+            var plazoAnios = Number(selectPlazo.value) || 20;
             var infonavitActivo = checkInfonavit.checked;
 
             txtAforo.innerText = aforoBancario + '%';
@@ -156,7 +156,6 @@
             var porcentajeAforo = aforoBancario / 100;
             var montoCreditoBanco = valorVivienda * porcentajeAforo;
 
-            // Comparador flexible de doble igual (Corrige el bloqueo de tipos de Vercel)
             var tasaAnual = 9.75;
             if (plazoAnios == 5) tasaAnual = 8.75;
             else if (plazoAnios == 10) tasaAnual = 9.35;
@@ -165,3 +164,7 @@
             var descuentoAforo = 0.0;
             if (aforoBancario <= 40) {
                 descuentoAforo = 0.20;
+            } else if (aforoBancario <= 70) {
+                descuentoAforo = 0.10;
+            }
+            
