@@ -90,7 +90,7 @@
         
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
         .btn-nav {
-            flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center;
+            flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center;
         }
     </style>
 </head>
@@ -151,6 +151,12 @@
     </div>
 
     <script>
+        // 1. DECLARACIÓN DE LA FUNCIÓN DE FORMATO EN LA PARTE SUPERIOR (EVITA ERRORES DE REFERENCIA)
+        function formatMXN(val) {
+            return '$' + Math.round(val).toLocaleString('es-MX') + ' MXN';
+        }
+
+        // 2. VINCULACIÓN DE ELEMENTOS DEL DOM
         var inputPrecio = document.getElementById('range-precio');
         var inputEdad = document.getElementById('range-edad');
         var selectConservacion = document.getElementById('select-conservacion');
@@ -158,8 +164,6 @@
         var txtPrecio = document.getElementById('val-precio');
         var txtEdad = document.getElementById('val-edad');
         var statusBox = document.getElementById('status-render');
-        
-        // [PASO A] DECLARACIÓN AISLADA DE LA NUEVA ETIQUETA
         var txtCastigoPesos = document.getElementById('txt-castigo-pesos');
 
         function actualizarSimulador() {
@@ -167,50 +171,52 @@
             var edad = parseInt(inputEdad.value);
             var estado = selectConservacion.value;
 
-            txtPrecio.innerText = '$' + precio.toLocaleString('es-MX') + ' MXN';
+            txtPrecio.innerText = formatMXN(precio);
             txtEdad.innerText = edad + ' Años';
 
-            // 1. EVALUACIÓN REAL DEL ESTADO DE CONSERVACIÓN EN EL AVALÚO
+            // 3. EVALUACIÓN DE CONSERVACIÓN
             var factorCastigoAvaluo = 1.0;
             var esInaptitud = false;
 
             if (estado === "Excelente") {
                 factorCastigoAvaluo = 1.0;
             } else if (estado === "Regular") {
-                factorCastigoAvaluo = 0.95; // Demérito del 5% en obra civil
+                factorCastigoAvaluo = 0.95; 
             } else if (estado === "Malo") {
-                factorCastigoAvaluo = 0.80; // Castigo del 20% por presupuesto de obra
+                factorCastigoAvaluo = 0.80; 
             } else if (estado === "Rechazo") {
                 esInaptitud = true;
             }
 
-            // 2. CRITERIO DE RIESGO DE EDAD: REGLA DE VIDA ÚTIL REMANENTE PARA EL AFORO
+            // 4. CRITERIO DE RIESGO DE EDAD (VIDA ÚTIL REMANENTE)
             var vidaUtilTotal = 60;
             var vidaUtilRemanente = vidaUtilTotal - edad;
-            var aforoFinal = 0.90; // Aforo base máximo
+            var aforoFinal = 0.90; 
             var motivoAforo = "Garantía Óptima";
 
             if (vidaUtilRemanente < 20) {
-                aforoFinal = 0.70; // Alto riesgo estructural por edad acumulada
+                aforoFinal = 0.70; 
                 motivoAforo = "Aforo Castigado por Alta Edad (<20 años de vida remanente)";
             } else if (vidaUtilRemanente < 35) {
-                aforoFinal = 0.80; // Riesgo moderado
+                aforoFinal = 0.80; 
                 motivoAforo = "Aforo Ajustado por Edad Media (20-35 años de vida remanente)";
             } else {
                 aforoFinal = 0.90;
                 motivoAforo = "Aforo Máximo Autorizado";
             }
 
-            // 3. RENDERIZADO DE RESPUESTA DE LA MESA DE CONTROL
+            // 5. RENDERIZADO DE RESULTADOS DE ACUERDO AL FLUJO
             if (esInaptitud) {
                 statusBox.className = "resultado-box status-alert";
                 statusBox.innerHTML = "❌ CRÉDITO RECHAZADO: El inmueble Dictamina como NO APTO para Garantía Hipotecaria (Código SHF 6)";
+                
+                txtCastigoPesos.innerText = "RECHAZO DE GARANTÍA";
+                txtCastigoPesos.style.color = "#ef4444";
             } else {
-                // Cálculo financiero definitivo combinando ambos efectos reales
                 var valorComercialAvaluo = precio * factorCastigoAvaluo;
                 var montoCredito = valorComercialAvaluo * aforoFinal;
+                var dineroPerdido = precio - valorComercialAvaluo;
                 
-                // Si el aforo se castiga por edad o conservación, pintamos la caja de alerta (rojo)
                 if (aforoFinal < 0.90 || factorCastigoAvaluo < 1.0) {
                     statusBox.className = "resultado-box status-alert";
                 } else {
