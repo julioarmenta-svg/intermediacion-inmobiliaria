@@ -35,7 +35,7 @@
         .res-title { font-weight: bold; color: #0f172a; }
         .res-val-info { color: #475569; font-weight: 600; }
 
-        .resultado-box { padding: 20px; border-radius: 12px; text-align: center; font-weight: 800; font-size: 15px; border: 1px solid transparent; margin-top: 10px; line-height: 1.6; }
+        .resultado-box { padding: 20px; border-radius: 12px; text-align: center; font-weight: 800; font-size: 14px; border: 1px solid transparent; margin-top: 10px; line-height: 1.6; }
         .status-success { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
         
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
@@ -53,7 +53,7 @@
         </header>
 
         <div class="simulador-box">
-            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 SIMULADOR DE ESCENARIOS Y PREMIO POR AFORO (PASO 4)</p>
+            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 SIMULADOR DE CAPACIDAD DE PAGO Y PERFILAMIENTO (PASO 5)</p>
             
             <!-- ENTRADA MANUAL VALOR VIVIENDA -->
             <div class="sim-group">
@@ -99,7 +99,7 @@
                 </div>
             </div>
 
-            <!-- CUADRO DE ESTADO CON ANÁLISIS DE ENGANCHE REQUERIDO -->
+            <!-- CUADRO DE ESTADO CON ANÁLISIS DE CAPACIDAD DE PAGO -->
             <div id="status-render" class="resultado-box status-success">PAGO MENSUAL BANCARIO ESTIMADO CALCULADO</div>
         </div>
 
@@ -156,22 +156,21 @@
                 mensualidad = (montoCreditoBanco * tasaMensual * Math.pow(1 + tasaMensual, numeroPagos)) / (Math.pow(1 + tasaMensual, numeroPagos) - 1);
             }
 
-            // F. Render de textos en pantalla usando el formato de tu Módulo 1 exitoso
+            // F. CALCULAR INGRESO MENSUAL REQUERIDO (Relación real de riesgos 3 a 1)
+            var ingresoRequerido = mensualidad * 3;
+
+            // G. Render de textos en pantalla usando tu formato nativo limpio
             lblBanco.innerText = '$' + Math.round(montoCreditoBanco).toLocaleString() + ' MXN';
             lblTasa.innerText = tasaFinal.toFixed(2) + '%';
             lblMensualidad.innerText = '$' + Math.round(mensualidad).toLocaleString() + ' MXN';
             
-            // G. Actualización del cuadro verde dinámico (sin la leyenda de premio por riesgo)
-            statusBox.innerHTML = "PAGO MENSUAL BANCARIO ESTIMADO: $" + Math.round(mensualidad).toLocaleString() + " MXN<br><span style='font-size:12.5px; font-weight:600;'>Desembolso Requerido de Enganche en Efectivo: $" + Math.round(engancheRequerido).toLocaleString() + " MXN</span>";
+            // H. Actualización del cuadro verde dinámico con la capacidad de pago incluida
+            statusBox.innerHTML = "PAGO MENSUAL BANCARIO ESTIMADO: $" + Math.round(mensualidad).toLocaleString() + " MXN<br>" +
+                                  "Ingreso Familiar Mensual Mínimo Requerido (Regla 3 a 1): $" + Math.round(ingresoRequerido).toLocaleString() + " MXN<br>" +
+                                  "<span style='font-size:12px; font-weight:600;'>Desembolso Requerido de Enganche en Efectivo: $" + Math.round(engancheRequerido).toLocaleString() + " MXN</span>";
         }
 
-        // Asignación limpia de eventos
         inputVivienda.oninput = realizarCalculoCompleto;
         inputAforo.oninput = realizarCalculoCompleto;
         selectPlazo.onchange = realizarCalculoCompleto;
 
-        // Arrancar con total seguridad
-        realizarCalculoCompleto();
-    </script>
-</body>
-</html>
