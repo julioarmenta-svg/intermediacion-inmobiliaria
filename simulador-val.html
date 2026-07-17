@@ -62,12 +62,12 @@
         .sim-label { font-size: 13px; font-weight: 700; color: #475569; }
         .sim-input-row { display: flex; align-items: center; gap: 15px; }
         .sim-range { flex: 1; cursor: pointer; height: 12px; accent-color: #a855f7; }
-        .sim-value { font-size: 14px; font-weight: 800; color: #a855f7; min-width: 120px; text-align: right; }
+        .sim-value { font-size: 14px; font-weight: 800; color: #a855f7; min-width: 130px; text-align: right; }
         
         .select-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; padding: 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; }
         .select-container select { flex: 1; padding: 4px; border: none; font-size: 13px; font-weight: 700; color: #334155; outline: none; cursor: pointer; }
         
-        /* DESGLOSE DEL PASO A */
+        /* BLOQUE REPORTE DEL PASO A */
         .txt-desglose-paso {
             font-size: 12px;
             font-weight: 700;
@@ -111,7 +111,7 @@
                 <label class="sim-label">Precio de Salida (Portal):</label>
                 <div class="sim-input-row">
                     <input type="range" id="range-precio" class="sim-range" min="1000000" max="10000000" step="500000" value="2500000">
-                    <span id="val-precio" class="sim-value">$2,500,000</span>
+                    <span id="val-precio" class="sim-value">$2,500,000 MXN</span>
                 </div>
             </div>
 
@@ -135,7 +135,7 @@
                 </label>
             </div>
 
-            <!-- PASO A: DESGLOSE DE PÉRDIDA POR CONSERVACIÓN -->
+            <!-- PASO A: DESGLOSE DE PÉRDIDA EN PESOS -->
             <div class="txt-desglose-paso">
                 <span>[Paso A] Castigo Estimado por Conservación (SHF):</span>
                 <span id="txt-castigo-pesos" class="val-castigo-rojo">$0 MXN</span>
@@ -151,6 +151,7 @@
     </div>
 
     <script>
+        // Declaración limpia e individual al 100%
         var inputPrecio = document.getElementById('range-precio');
         var inputEdad = document.getElementById('range-edad');
         var selectConservacion = document.getElementById('select-conservacion');
@@ -160,19 +161,16 @@
         var txtCastigoPesos = document.getElementById('txt-castigo-pesos');
         var statusBox = document.getElementById('status-render');
 
-        function formatMXN(val) {
-            return '$' + Math.round(val).toLocaleString('es-MX') + ' MXN';
-        }
-
         function actualizarSimulador() {
             var precio = parseInt(inputPrecio.value);
             var edad = parseInt(inputEdad.value);
             var estado = selectConservacion.value;
 
-            txtPrecio.innerText = formatMXN(precio);
+            // Actualizar textos dinámicos laterales de los sliders
+            txtPrecio.innerText = '$' + precio.toLocaleString('es-MX') + ' MXN';
             txtEdad.innerText = edad + ' Años';
 
-            // EVALUACIÓN DE CONSERVACIÓN
+            // EVALUACIÓN DE CONSERVACIÓN REAL
             var factorCastigoAvaluo = 1.0;
             var esInaptitud = false;
 
@@ -186,7 +184,7 @@
                 esInaptitud = true;
             }
 
-            // CALCULO SIN CARACTERES ESPECIALES EN LA VARIABLE
+            // PASO A: DINERO EN EFECTIVO PERDIDO POR CONSERVACIÓN
             var valorComercialAvaluo = precio * factorCastigoAvaluo;
             var diferenciaDinero = precio - valorComercialAvaluo;
 
@@ -197,15 +195,15 @@
                 txtCastigoPesos.innerText = "$0 MXN";
                 txtCastigoPesos.style.color = "#64748b";
             } else {
-                txtCastigoPesos.innerText = "-" + formatMXN(diferenciaDinero);
+                txtCastigoPesos.innerText = "-$" + diferenciaDinero.toLocaleString('es-MX') + " MXN";
                 txtCastigoPesos.style.color = "#ef4444";
             }
 
-            // EVALUACIÓN DE RIESGO DE EDAD
+            // EVALUACIÓN DE RIESGO DE EDAD (VIDA ÚTIL REMANENTE)
             var vidaUtilTotal = 60;
             var vidaUtilRemanente = vidaUtilTotal - edad;
             var aforoFinal = 0.90;
-            var motivoAforo = "Garantía Óptima";
+            var motivoAforo = "Aforo Máximo Autorizado";
 
             if (vidaUtilRemanente < 20) {
                 aforoFinal = 0.70;
