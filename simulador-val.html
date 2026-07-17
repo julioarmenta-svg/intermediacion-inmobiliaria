@@ -131,51 +131,51 @@
             var dineroPerdido = precio * factor;
             var valorComercialAvaluo = precio - dineroPerdido;
 
-            // 3. Pintar la línea de Castigo A en pesos
+            // 3. Pintar la línea de Castigo A en pesos de forma segura
             if (esInaptitudConservacion) {
-                txtCastigoPesos.innerText = "RECHAZO POR CONSERVACIÓN";
-                txtCastigoPesos.style.color = "#ef4444";
+                txtCastigoPesos.innerText = 'RECHAZO POR CONSERVACIÓN';
+                txtCastigoPesos.style.color = '#ef4444';
             } else if (dineroPerdido === 0) {
-                txtCastigoPesos.innerText = "$0 MXN";
-                txtCastigoPesos.style.color = "#64748b";
+                txtCastigoPesos.innerText = '$0 MXN';
+                txtCastigoPesos.style.color = '#64748b';
             } else {
-                txtCastigoPesos.innerText = "-$" + dineroPerdido.toLocaleString('es-MX') + " MXN";
-                txtCastigoPesos.style.color = "#ef4444";
+                txtCastigoPesos.innerText = '-$' + dineroPerdido.toLocaleString('es-MX') + ' MXN';
+                txtCastigoPesos.style.color = '#ef4444';
             }
 
-            // 4. Regla de riesgo de Edad (Vida Útil Remanente) - AJUSTADA A LA OBSERVACIÓN DEL PROFESOR
+            // 4. Regla de riesgo de Edad (Vida Útil Remanente)
             var vidaUtilTotal = 60;
             var vidaUtilRemanente = vidaUtilTotal - edad;
             var aforoFinal = 0.90; 
-            var motivoAforo = "Garantía Óptima";
+            var motivoAforo = 'Garantía Óptima';
             var esInaptitudEdad = false;
 
             if (edad >= 50) {
-                esInaptitudEdad = true; // El inmueble ya no alcanza el binomio Plazo Mínimo (5 años) + Seguro (5 años)
+                esInaptitudEdad = true; 
             } else if (vidaUtilRemanente < 20) {
                 aforoFinal = 0.70; 
-                motivoAforo = "Aforo Castigado por Alta Edad";
+                motivoAforo = 'Aforo Castigado por Alta Edad';
             } else if (vidaUtilRemanente < 35) {
                 aforoFinal = 0.80; 
-                motivoAforo = "Aforo Ajustado por Edad Media";
+                motivoAforo = 'Aforo Ajustado por Edad Media';
             } else {
                 aforoFinal = 0.90;
-                motivoAforo = "Aforo Máximo Autorizado";
+                motivoAforo = 'Aforo Máximo Autorizado';
             }
 
-            // 5. Renderizado final combinando inaptitudes físicas o cronológicas
+            // 5. Renderizado final seguro
             if (esInaptitudConservacion) {
-                statusBox.className = "resultado-box status-alert";
-                statusBox.innerHTML = "CREDITO RECHAZADO: El inmueble dictamina como NO APTO para Garantía Hipotecaria debido a daños estructurales o ruina (Código SHF 5/6)";
+                statusBox.className = 'resultado-box status-alert';
+                statusBox.innerHTML = 'CREDITO RECHAZADO: El inmueble dictamina como NO APTO para Garantía Hipotecaria debido a daños estructurales o ruina (Código SHF 5/6)';
             } else if (esInaptitudEdad) {
-                statusBox.className = "resultado-box status-alert";
-                statusBox.innerHTML = "CREDITO RECHAZADO: Inmueble NO APTO por Edad Excesiva (" + edad + " años). Su vida remanente es insuficiente para amortizar el plazo mínimo de crédito institucional.";
+                statusBox.className = 'resultado-box status-alert';
+                statusBox.innerHTML = 'CREDITO RECHAZADO: Inmueble NO APTO por Edad Excesiva. Su vida remanente es insuficiente para el plazo mínimo de crédito bancario.';
             } else {
                 var montoCredito = valorComercialAvaluo * aforoFinal;
                 
                 if (aforoFinal < 0.90 || factor > 0.0) {
-                    statusBox.className = "resultado-box status-alert";
+                    statusBox.className = 'resultado-box status-alert';
                 } else {
-                    statusBox.className = "resultado-box status-success";
+                    statusBox.className = 'resultado-box status-success';
                 }
                 
