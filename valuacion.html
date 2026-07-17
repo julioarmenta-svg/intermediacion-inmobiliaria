@@ -6,134 +6,124 @@
     <title>Módulo 3: Análisis & Valuación - URN</title>
     <script src="https://tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cloudflare.com">
-    <style>
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #c084fc; border-radius: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #a855f7; }
-    </style>
 </head>
-<body class="bg-slate-900 min-h-screen text-slate-100 flex flex-col antialiased font-sans selection:bg-purple-500 selection:text-white">
+<body class="bg-slate-100 min-h-screen text-slate-800 flex flex-col items-center justify-center p-4 md:p-8 antialiased font-sans">
 
-    <!-- HEADER INSTITUCIONAL -->
-    <header class="bg-slate-950 border-b border-purple-900/50 shadow-lg px-6 py-4 flex items-center justify-between sticky top-0 z-50">
-        <div class="flex items-center gap-4">
-            <div class="bg-gradient-to-tr from-purple-600 to-indigo-600 p-2.5 rounded-xl shadow-md shadow-purple-900/20">
-                <i class="fa-solid fa-chart-line text-xl text-white"></i>
-            </div>
-            <div>
-                <span class="text-xs font-bold uppercase tracking-widest text-purple-400">Maestría en Intermediación Inmobiliaria · URN</span>
-                <h1 class="text-lg font-bold text-slate-200">Módulo 3: Análisis & Valuación Patrimonial</h1>
-            </div>
-        </div>
-        <div class="flex items-center gap-3">
-            <span class="bg-purple-950 border border-purple-800 text-purple-300 text-xs px-3 py-1.5 rounded-full font-semibold">
-                <i class="fa-solid fa-graduation-cap mr-1.5 text-purple-400"></i>Clase 3: Enfoque de Riesgos
-            </span>
-            <a href="index.html" class="bg-slate-800 hover:bg-slate-700 text-slate-300 p-2 rounded-lg transition-colors border border-slate-700">
-                <i class="fa-solid fa-house"></i>
-            </a>
-        </div>
-    </header>
-
-    <!-- CONTENEDOR PRINCIPAL -->
-    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
+    <!-- CONTENEDOR CENTRAL PREMIUM (REPLICA EXACTA DEL DISEÑO URN) -->
+    <div class="bg-white w-full max-w-4xl rounded-[2.5rem] shadow-xl shadow-slate-200/80 border border-slate-100 p-6 md:p-10 flex flex-col min-h-[650px] justify-between">
         
-        <!-- MENÚ DE FILMINAS / NAVEGACIÓN IZQUIERDA -->
-        <div class="bg-slate-950 border border-slate-800 rounded-2xl p-4 shadow-xl lg:col-span-1 space-y-2">
-            <p class="text-xs font-bold uppercase tracking-wider text-slate-500 px-2 mb-3">Estructura del Paso 03</p>
-            
-            <button onclick="switchTab('tab-tarea')" id="btn-tab-tarea" class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all border text-left bg-purple-950/40 border-purple-500/50 text-purple-200 shadow-md shadow-purple-950/20">
-                <div class="w-2 h-2 rounded-full bg-purple-400"></div>
-                <span>01. Mesa de Control: Tarea</span>
-            </button>
-
-            <button onclick="switchTab('tab-banco')" id="btn-tab-banco" class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all border text-left bg-transparent border-transparent text-slate-400 hover:bg-slate-900 hover:text-slate-200">
-                <div class="w-2 h-2 rounded-full bg-slate-600"></div>
-                <span>02. Normativa y Riesgo</span>
-            </button>
-
-            <div class="pt-4 mt-2 border-t border-slate-900 text-center">
-                <span class="text-xs text-slate-600 font-mono">Fondo Morado Premium v1.0</span>
+        <!-- BLOQUE SUPERIOR: ENCABEZADO INSTITUCIONAL -->
+        <div>
+            <div class="mb-6">
+                <a href="index.html" class="text-xs font-bold uppercase tracking-wider text-purple-600 hover:text-purple-800 transition-colors flex items-center gap-2 mb-2">
+                    <i class="fa-solid fa-caret-left"></i> Regresar al Tablero Principal
+                </a>
+                <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400 block mb-1">Unidad III · Gestión y Legalidad de Inmuebles</span>
+                <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">1. Valoración y Tasación de Inmuebles</h1>
             </div>
-        </div>
 
-        <!-- CONTENIDO DINÁMICO (FILMINAS) -->
-        <div class="lg:col-span-3 space-y-6">
-            
+            <!-- SUB-HEADER DE CONTROL Y TEMÁTICA -->
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-6">
+                <span id="section-tagline" class="text-xs font-bold uppercase tracking-wider text-purple-500 font-mono">Entregables Críticos</span>
+                <span id="page-indicator" class="text-xs font-bold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">Pág. 1 de 2</span>
+            </div>
+
+            <!-- =================================================== -->
             <!-- FILMINA 1: MESA DE CONTROL (REVISIÓN DE TAREA) -->
+            <!-- =================================================== -->
             <div id="tab-tarea" class="tab-content block space-y-6">
-                <div class="bg-gradient-to-r from-purple-950/30 to-slate-950 p-6 rounded-2xl border border-purple-900/30 shadow-xl">
-                    <div class="flex items-start justify-between gap-4 mb-4">
-                        <div>
-                            <span class="bg-purple-900/50 text-purple-300 text-xs px-2.5 py-1 rounded-md font-mono border border-purple-800/40">F-01 // AUDITORÍA</span>
-                            <h2 class="text-2xl font-bold mt-2 text-white">Mesa de Control: Dictamen Patrimonial Ejecutivo</h2>
-                            <p class="text-slate-400 text-sm mt-1">Calibración de respuestas del caso práctico de la Unidad II (Fiscalidad y Legalidad en Chihuahua).</p>
-                        </div>
-                        <i class="fa-solid fa-clipboard-check text-4xl text-purple-500/30"></i>
-                    </div>
+                <div>
+                    <span class="text-xs font-bold uppercase text-purple-400 block mb-1">Caso de Estudio Directivo</span>
+                    <h2 class="text-xl font-bold text-slate-900">Mesa de Control: Dictamen Patrimonial Ejecutivo</h2>
+                    <p class="text-slate-500 text-sm mt-1 leading-relaxed">
+                        Calibración y auditoría de los entregables financieros y legales asignados al cierre del módulo de Operación Comercial.
+                    </p>
+                </div>
 
-                    <!-- MATRIZ DE RESPUESTAS INTERACTIVAS -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                        
-                        <!-- TARJETA 1: ENFOQUE FISCAL -->
-                        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col justify-between hover:border-purple-500/30 transition-all">
-                            <div>
-                                <div class="flex items-center gap-2 text-purple-400 font-semibold text-sm mb-3">
-                                    <i class="fa-solid fa-calculator"></i>
-                                    <span>Auditoría Fiscal LISR</span>
-                                </div>
-                                <p class="text-xs text-slate-400 leading-relaxed">
-                                    <strong>Vendedor:</strong> Exención de casa habitación topada a 700k UDIS. Requiere INE vigente, CFDI de luz o telefonía fija a nombre del contribuyente con el domicilio exacto. 
-                                    <br><br>
-                                    <strong>Comprador:</strong> Alerta de ISR por adquisición si el precio pactado queda >10% abajo del avalúo fiscal.
-                                </p>
-                            </div>
-                            <div class="mt-4 pt-3 border-t border-slate-800 text-right">
-                                <span class="text-[10px] font-mono bg-purple-950 text-purple-300 px-2 py-1 rounded">Check Técnico</span>
-                            </div>
-                        </div>
+                <!-- TABLA DE REVISIÓN DE TAREA -->
+                <div class="border border-slate-100 rounded-2xl overflow-hidden shadow-sm">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="bg-slate-50 border-b border-slate-100 text-slate-400 font-bold uppercase tracking-wider">
+                                <th class="p-4 w-1/4">Área Auditada</th>
+                                <th class="p-4 w-1/3">Criterio Técnico Aplicado</th>
+                                <th class="p-4 w-5/12">Resolución de Mesa de Control</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-slate-600">
+                            <tr>
+                                <td class="p-4 font-bold text-purple-700">1. Auditoría Fiscal LISR</td>
+                                <td class="p-4 leading-relaxed">Protocolo de exención del vendedor y cálculo de impacto impositivo por adquisición.</td>
+                                <td class="p-4 leading-relaxed text-slate-500">
+                                    <strong class="text-slate-700">Vendedor:</strong> Exención topada a 700,000 UDIS. Es obligatorio presentar INE vigente o CFDI (luz/teléfono) con el domicilio exacto. <br>
+                                    <strong class="text-slate-700">Comprador:</strong> Riesgo de ISR por adquisición si el precio pactado es >10% menor al avalúo fiscal.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-purple-700">2. Responsabilidad Civil</td>
+                                <td class="p-4 leading-relaxed">Deslinde operativo por controversia de mantenimiento (bomba de agua quemada).</td>
+                                <td class="p-4 leading-relaxed text-slate-500">
+                                    Se resuelve bajo el principio de <strong class="text-slate-700">Causa Raíz</strong>. Si el daño derivó de obsolescencia o desgaste natural previo a la firma, califica como vicio oculto (cargo al Vendedor). Si fue por negligencia o uso posterior a la posesión, el costo es del Comprador.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-purple-700">3. Protección Corporativa</td>
+                                <td class="p-4 leading-relaxed">Requerimiento legal de honorarios amparado en cláusula de prórroga.</td>
+                                <td class="p-4 leading-relaxed text-slate-500">
+                                    Para hacer válida la prórroga de intermediación post-exclusiva, el asesor debe comprobar formalmente (vía bitácoras, WhatsApp o fichas de visita firmadas) que el comprador definitivo fue prospectado durante la vigencia original del contrato.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                        <!-- TARJETA 2: RESPONSABILIDAD OPERATIVA -->
-                        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col justify-between hover:border-purple-500/30 transition-all">
-                            <div>
-                                <div class="flex items-center gap-2 text-purple-400 font-semibold text-sm mb-3">
-                                    <i class="fa-solid fa-faucet-drip"></i>
-                                    <span>Controversia Civil</span>
-                                </div>
-                                <p class="text-xs text-slate-400 leading-relaxed">
-                                    <strong>Caso Bomba de Agua Quemada:</strong> Resolución bajo dictamen de causa raíz. Si el daño se debió a obsolescencia o desgaste natural previo a la entrega, califica como vicio oculto (cargo al Vendedor). Si fue por falta de agua en la red o negligencia de encendido en seco posterior a la posesión, el costo lo absorbe el Comprador/Inquilino.
-                                </p>
-                            </div>
-                            <div class="mt-4 pt-3 border-t border-slate-800 text-right">
-                                <span class="text-[10px] font-mono bg-purple-950 text-purple-300 px-2 py-1 rounded">Criterio Operativo</span>
-                            </div>
-                        </div>
-
-                        <!-- TARJETA 3: BLINDAJE CORPORATIVO -->
-                        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col justify-between hover:border-purple-500/30 transition-all">
-                            <div>
-                                <div class="flex items-center gap-2 text-purple-400 font-semibold text-sm mb-3">
-                                    <i class="fa-solid fa-gavel"></i>
-                                    <span>Protección de Honorarios</span>
-                                </div>
-                                <p class="text-xs text-slate-400 leading-relaxed">
-                                    <strong>Cláusula de Prórroga Posterior:</strong> El requerimiento formal exige demostrar con bitácora de llamadas, mensajes de WhatsApp y hojas de visita firmadas, que el comprador final fue prospectado y perfilado originalmente por el asesor durante la vigencia original del contrato de exclusiva.
-                                </p>
-                            </div>
-                            <div class="mt-4 pt-3 border-t border-slate-800 text-right">
-                                <span class="text-[10px] font-mono bg-purple-950 text-purple-300 px-2 py-1 rounded">Blindaje Legal</span>
-                            </div>
-                        </div>
-
-                    </div>
+                <!-- NOTA INFORMATIVA INFERIOR (CALLOUT) -->
+                <div class="bg-purple-50/40 border-l-4 border-purple-500 p-4 rounded-r-xl">
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        <i class="fa-solid fa-circle-info text-purple-500 mr-1.5"></i>
+                        <strong>Regla de Plataforma Académica:</strong> Las calificaciones finales de este dictamen han sido cargadas en el sistema URN basándose en el rigor analítico del documento PDF Ejecutivo entregado.
+                    </p>
                 </div>
             </div>
 
+            <!-- =================================================== -->
             <!-- FILMINA 2: AVALÚO COMERCIAL VS CRITERIO BANCARIO -->
+            <!-- =================================================== -->
             <div id="tab-banco" class="tab-content hidden space-y-6">
-                <div class="bg-gradient-to-r from-purple-950/30 to-slate-950 p-6 rounded-2xl border border-purple-900/30 shadow-xl">
-                    <div class="flex items-start justify-between gap-4 mb-4">
-                        <div>
-                            <span class="bg-purple-900/50 text-purple-300 text-xs px-2.5 py-1 rounded-md font-mono border border-purple-800/40">F-02 // RIESGO BANCARIO</span>
-                            <h2 class="text-2xl font-bold mt-2 text-white">Avalúo Comercial vs. Criterios de Garantía</h2>
+                <div>
+                    <span class="text-xs font-bold uppercase text-purple-400 block mb-1">Criterios Normativos de Riesgo</span>
+                    <h2 class="text-xl font-bold text-slate-900">El Avalúo Institucional vs. Normas de Habitabilidad</h2>
+                    <p class="text-slate-500 text-sm mt-1 leading-relaxed">
+                        El banco calcula el valor comercial promediando mecánicamente la zona. Los rechazos reales no ocurren por el enfoque físico, sino por violaciones a sus normativas internas de garantías.
+                    </p>
+                </div>
+
+                <!-- TABLA DE COMPORTAMIENTO BANCARIO -->
+                <div class="border border-slate-100 rounded-2xl overflow-hidden shadow-sm">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="bg-slate-50 border-b border-slate-100 text-slate-400 font-bold uppercase tracking-wider">
+                                <th class="p-4 w-1/3">Riesgo Técnico / Jurídico</th>
+                                <th class="p-4 w-2/3">Impacto Real en la Mesa de Control del Banco (Valor Garantía)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-slate-600">
+                            <tr>
+                                <td class="p-4 font-bold text-purple-700">1. Régimen de la Tierra Inadecuado</td>
+                                <td class="p-4 leading-relaxed">
+                                    Si la propiedad se encuentra bajo <strong class="text-slate-700">Régimen Ejidal o Comunal</strong> (amparada solo con certificado parcelario), el banco rechaza la garantía inmediatamente. Exigen de forma estricta propiedad privada inscrita en el Registro Público.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-purple-700">2. Uso de Suelo Mixto o Comercial</td>
+                                <td class="p-4 leading-relaxed">
+                                    Casas con tienditas, oficinas activas o talleres en la cochera son catalogadas como <strong class="text-slate-700">Inmuebles Comerciales</strong>. El banco cancela el trámite residencial y obliga a transaccionar un crédito comercial (mayor tasa, menor plazo).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-purple-700">3. Distribución Multifamiliar (Doble Acceso)</td>
+                                <td class="p-4 leading-relaxed">
+                                    Las ampliaciones con <strong class="text-slate-700">escaleras exteriores independientes</strong> que conectan a un segundo piso con cocina y baño propio violan la política unifamiliar. El banco lo dictamina como riesgo de subarrendamiento y rechaza el colateral.
+                                </td>
+                            </tr>
+                            <tr>
