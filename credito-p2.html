@@ -46,6 +46,9 @@
             border: 1px solid #e9d5ff;
             border-radius: 10px;
             padding: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .proyecto-grid h4 {
             font-size: 12px;
@@ -75,6 +78,24 @@
             font-weight: bold;
         }
 
+        /* ESTILO DEL BOTÓN DE LABORATORIO COPIADO DE UNIDAD 3 */
+        .btn-game { 
+            display: block; 
+            text-decoration: none; 
+            background-color: #a855f7; 
+            color: white !important; 
+            font-size: 11.5px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            text-align: center; 
+            padding: 10px; 
+            border-radius: 6px; 
+            margin-top: 15px; 
+            border-bottom: 3px solid #7e22ce; 
+            transition: background 0.15s; 
+        }
+        .btn-game:hover { background-color: #9333ea; }
+
         .revista-controles { display: flex; justify-content: space-between; margin-top: 15px; gap: 15px; border-top: 2px solid #f1f5f9; padding-top: 12px; }
         .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 12px; border-radius: 8px; font-size: 14.5px; font-weight: 800; color: #ffffff !important; text-align: center; transition: all 0.1s ease; }
         .btn-nav:hover { background-color: #3b82f6; }
@@ -102,7 +123,7 @@
                 <!-- GRID DE COFINANCIAMIENTO RESIDENCIAL -->
                 <div class="proyecto-grid">
                     
-                    <!-- ESTRUCTURACIONES CLAVE CON NORMATIVA REAL -->
+                    <!-- ESTRUCTURACIONES CLAVE WITH NORMATIVA REAL -->
                     <div class="columna-instrucciones" style="border-left: 5px solid #2563eb;">
                         <h4>🛠 Modelos de Co-Fondeo Institucional</h4>
                         <ul class="lista-criterios">
@@ -113,19 +134,23 @@
 
                     <!-- MENTORÍA COMERCIAL -->
                     <div class="columna-reglas" style="border-left: 5px solid #a855f7;">
-                        <h4>💡 Estrategia para el Consultor URN</h4>
-                        <ul class="lista-criterios" style="color: #4c1d95;">
-                            <li><strong>Optimizar la Liquidez:</strong> Aunque ya no esté permitido cubrir el 100% de la operación de forma gratuita, el cofinanciamiento sigue siendo la mejor herramienta en México para rescatar operaciones con enganches limitados.</li>
-                            <li><strong>Gestión del Cierre Técnico:</strong> Informa con transparencia y desde el primer día al comprador que la subcuenta disuelve gran parte del enganche de la casa, pero que necesitará liquidez para cubrir las escrituras e impuestos notariales.</li>
-                        </ul>
+                        <div>
+                            <h4>💡 Estrategia para el Consultor URN</h4>
+                            <ul class="lista-criterios" style="color: #4c1d95;">
+                                <li><strong>Optimizar la Liquidez:</strong> Aunque ya no esté permitido cubrir el 100% de la operación de forma gratuita, el cofinanciamiento sigue siendo la mejor herramienta en México para rescatar operaciones con enganches limitados.</li>
+                                <li><strong>Gestión del Cierre Técnico:</strong> Informa con transparencia y desde el primer día al comprador que la subcuenta disuelve gran parte del enganche de la casa, pero que necesitará liquidez para cubrir las escrituras e impuestos notariales.</li>
+                            </ul>
+                        </div>
+                        <!-- NUEVO ACCESO AL JUEGO SIMULADOR INTEGRADO EN LA COLUMNA -->
+                        <a href="simulador-cred.html" class="btn-game">🎮 Abrir Simulador de Crédito</a>
                     </div>
 
                 </div>
 
-                <!-- BOTONERA DE NAVEGACIÓN -->
+                <!-- BOTONERA DE NAVEGACIÓN CORREGIDA -->
                 <div class="revista-controles">
                     <a href="credito.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
-                    <a href="simulador-cred.html" class="btn-nav">Ir al Laboratorio (Pág. 3) ▶</a>
+                    <a href="credito-p4.html" class="btn-nav">Siguiente Página ▶</a>
                 </div>
 
             </div>
