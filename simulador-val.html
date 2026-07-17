@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 3: Prueba de Controles y Crédito - URN</title>
+    <title>Módulo 3: Simulador de Riesgo - URN</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -67,6 +67,23 @@
         .select-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; padding: 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; }
         .select-container select { flex: 1; padding: 4px; border: none; font-size: 13px; font-weight: 700; color: #334155; outline: none; cursor: pointer; }
         
+        /* CUADRO INFORMATIVO DE DESGLOSE INTERMEDIO */
+        .desglose-panel {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 14px;
+            padding: 18px;
+            font-family: monospace;
+            font-size: 12.5px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .desglose-row { display: flex; justify-content: space-between; padding: 2px 0; }
+        .desglose-label { font-weight: bold; color: #1e293b; }
+        .desglose-val-minus { color: #f43f5e; font-weight: bold; }
+        .desglose-val-info { color: #475569; font-weight: 600; }
+
         .resultado-box { padding: 20px; border-radius: 12px; text-align: center; font-weight: 800; font-size: 14px; border: 1px solid transparent; margin-top: 10px; line-height: 1.5; }
         .status-success { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
         .status-alert { background-color: #fee2e2; border-color: #fca5a5; color: #991b1b; }
@@ -83,18 +100,18 @@
         <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
         <header>
-            <span class="tag">Módulo 03 · Fase de Prueba</span>
-            <h1>Paso 2: Integración de Conservación y Crédito Base</h1>
+            <span class="tag">Módulo 03 · Herramienta Didáctica</span>
+            <h1>Simulador Interactivo de Riesgo Hipotecario</h1>
         </header>
 
         <div class="simulador-box">
-            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 Verificación de Selección y Resultado Financiero</p>
+            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 ALGORITMO ROSS-HEIDECKE (ANÁLISIS DE AFORE)</p>
             
             <div class="sim-group">
                 <label class="sim-label">Precio de Salida (Portal):</label>
                 <div class="sim-input-row">
                     <input type="range" id="range-precio" class="sim-range" min="1000000" max="10000000" step="500000" value="2500000">
-                    <span id="val-precio" class="sim-value">$2,500,000</span>
+                    <span id="val-precio" class="sim-value">$2,500,000 MXN</span>
                 </div>
             </div>
 
@@ -118,7 +135,35 @@
                 </label>
             </div>
 
-            <!-- BLOQUE DE MONTO AUTORIZADO DE CRÉDITO -->
+            <!-- TABLA INFORMATIVA DE CASTIGOS SUCESIVOS -->
+            <div class="desglose-panel">
+                <div class="desglose-row">
+                    <span class="desglose-label">[Paso 1] Castigo por Negociación Comercial (8%):</span>
+                    <span id="txt-paso1" class="desglose-val-minus">-$0 MXN</span>
+                </div>
+                <div class="desglose-row">
+                    <span class="desglose-label">[Paso 2] Castigo Físico Compuesto (Edad + Conservación):</span>
+                    <span id="txt-paso2" class="desglose-val-minus">-$0 MXN</span>
+                </div>
+                <div class="desglose-row">
+                    <span class="desglose-label">[Paso 3] Castigo por Entorno e Infraestructura (3.5%):</span>
+                    <span id="txt-paso3" class="desglose-val-minus">-$0 MXN</span>
+                </div>
+                <div class="desglose-row" style="border-top: 1px solid #e2e8f0; padding-top: 6px; margin-top: 4px;">
+                    <span class="desglose-label" style="color: #7e22ce;">> VALOR COMERCIAL DEL AVALÚO FINAL (X):</span>
+                    <span id="txt-avaluo-final" style="font-weight: 800; color: #7e22ce;">$0 MXN</span>
+                </div>
+                <div class="desglose-row">
+                    <span class="desglose-label">> Vida Útil Remanente Técnica:</span>
+                    <span id="txt-vida-remanente" class="desglose-val-info">0 Años</span>
+                </div>
+                <div class="desglose-row">
+                    <span class="desglose-label">> Ajuste de Aforo de Riesgo Autorizado:</span>
+                    <span id="txt-aforo-final" class="desglose-val-info">90%</span>
+                </div>
+            </div>
+
+            <!-- RECUADRO DE MONTO AUTORIZADO Y COMPLEMENTO -->
             <div id="status-render" class="resultado-box status-success">MONTO DE CRÉDITO AUTORIZADO: $0</div>
         </div>
 
@@ -128,47 +173,42 @@
     </div>
 
     <script>
-        // Declaración limpia de elementos nativos
         var inputPrecio = document.getElementById('range-precio');
         var inputEdad = document.getElementById('range-edad');
         var selectConservacion = document.getElementById('select-conservacion');
         
         var txtPrecio = document.getElementById('val-precio');
         var txtEdad = document.getElementById('val-edad');
+        
+        var txtPaso1 = document.getElementById('txt-paso1');
+        var txtPaso2 = document.getElementById('txt-paso2');
+        var txtPaso3 = document.getElementById('txt-paso3');
+        var txtAvaluoFinal = document.getElementById('txt-avaluo-final');
+        var txtVidaRemanente = document.getElementById('txt-vida-remanente');
+        var txtAforoFinal = document.getElementById('txt-aforo-final');
         var statusBox = document.getElementById('status-render');
 
-        function actualizarSimulador() {
-            var precio = parseInt(inputPrecio.value);
-            var edad = parseInt(inputEdad.value);
-            var estado = selectConservacion.value;
-
-            // Actualizar los textos básicos de referencia lateral
-            txtPrecio.innerText = '$' + precio.toLocaleString('es-MX') + ' MXN';
-            txtEdad.innerText = edad + ' Años';
-
-            // Cálculo base temporal para validar que el resultado responda
-            // El banco presta el 90% por defecto, si es "Malo" reduce el aforo al 70%
-            var aforo = 0.90;
-            if (estado === "Malo") {
-                aforo = 0.70;
-                statusBox.className = "resultado-box status-alert";
-            } else {
-                statusBox.className = "resultado-box status-success";
-            }
-
-            var montoCredito = precio * aforo;
-
-            // Inyectar el monto autorizado dinámicamente en el recuadro inferior
-            statusBox.innerHTML = "MONTO DE CRÉDITO AUTORIZADO: $" + Math.round(montoCredito).toLocaleString('es-MX') + " MXN";
+        function formatMXN(val) {
+            return '$' + Math.round(val).toLocaleString('es-MX') + ' MXN';
         }
 
-        // Asignar eventos de escucha nativos a los tres controles
-        inputPrecio.oninput = actualizarSimulador;
-        inputEdad.oninput = actualizarSimulador;
-        selectConservacion.onchange = actualizarSimulador;
+        function actualizarSimulador() {
+            var precioPortal = parseInt(inputPrecio.value);
+            var edadCasa = parseInt(inputEdad.value);
+            var conservacion = selectConservacion.value;
+            
+            var vidaUtilTotal = 60;
+            var aforoBase = 0.90;
 
-        // Forzar arranque inicial automático
-        actualizarSimulador();
-    </script>
-</body>
-</html>
+            // Mostrar referencias básicas en los sliders
+            txtPrecio.innerText = formatMXN(precioPortal);
+            txtEdad.innerText = edadCasa + ' Años';
+
+            // ALGORITMO INTEGRAL DE TU PYTHON
+            // [Paso 1] Castigo por Negociación
+            var pctNegociacion = 0.08;
+            var descuentoNegociacion = precioPortal * pctNegociacion;
+            var subtotal1 = precioPortal - descuentoNegociacion;
+            txtPaso1.innerText = '-' + formatMXN(descuentoNegociacion);
+
+            // [Paso 2] Castigo Físico Compuesto (Fórmula Ross-Heidecke simplificada)
