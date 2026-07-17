@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 3: Análisis & Valuación - URN</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background-color: #f1f5f9; padding: 15px; color: #334155;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background-color: #ffffff;
+            border-radius: 20px; padding: 20px 25px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06); border: 1px solid #e2e8f0;
+        }
+        .nav-back { display: inline-block; text-decoration: none; color: #2563eb; font-size: 12px; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
+        header { margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+        .tag { font-size: 10px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.1em; }
+        h1 { font-size: 22px; font-weight: 800; color: #0f172a; margin-top: 2px; }
+        
+        .revista-wrapper { background-color: #ffffff; border: 3px solid #cbd5e1; border-radius: 16px; padding: 20px; margin-bottom: 10px; }
+        .revista-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; margin-bottom: 12px; }
+        .revista-pills { font-size: 10.5px; font-weight: 800; color: #a855f7; text-transform: uppercase; letter-spacing: 0.05em; }
+        .revista-contador { font-size: 10.5px; font-weight: 800; color: #2563eb; background-color: #eff6ff; padding: 3px 10px; border-radius: 20px; }
+        
+        .slide-titulo { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+        .slide-txt { font-size: 13px; line-height: 1.4; color: #475569; margin-bottom: 12px; }
+        
+        /* GRID DE AUDITORÍA TÉCNICA */
+        .proyecto-grid {
+            display: flex;
+            gap: 20px;
+            margin: 10px 0 15px 0;
+        }
+        .columna-instrucciones {
+            flex: 1.1;
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 14px;
+        }
+        .columna-reglas {
+            flex: 0.9;
+            background-color: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 10px;
+            padding: 14px;
+        }
+        .proyecto-grid h4 {
+            font-size: 12px;
+            font-weight: 900;
+            color: #0f172a;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            border-bottom: 2px solid #cbd5e1;
+            padding-bottom: 4px;
+        }
+        .lista-criterios {
+            list-style: none;
+            font-size: 11.5px;
+            line-height: 1.5;
+            color: #475569;
+        }
+        .lista-criterios li {
+            margin-bottom: 10px;
+            padding-left: 14px;
+            position: relative;
+        }
+        .lista-criterios li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: #a855f7;
+            font-weight: bold;
+        }
+
+        .revista-controles { display: flex; justify-content: space-between; margin-top: 15px; gap: 15px; border-top: 2px solid #f1f5f9; padding-top: 12px; }
+        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 12px; border-radius: 8px; font-size: 14.5px; font-weight: 800; color: #ffffff !important; text-align: center; transition: all 0.1s ease; }
+        .btn-nav:hover { background-color: #3b82f6; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
+
+        <header>
+            <span class="tag">Unidad 03 · Análisis & Valuación</span>
+            <h1>4. El Laberinto de las Casas Ampliadas</h1>
+        </header>
+
+        <div class="revista-wrapper">
+            <div class="revista-header">
+                <span class="revista-pills">Regularización Urbana vs Valuación</span>
+                <span class="revista-contador">Pág. 4 de 5</span>
+            </div>
+
+            <div style="padding: 0 5px;">
+                <p class="slide-txt">Un escenario sumamente común en los municipios de Chihuahua: propiedades residenciales con ampliaciones físicas que no existen legalmente en las boletas prediales ni en los planos originales autorizados.</p>
+                
+                <!-- GRID DE AUDITORÍA TÉCNICA -->
+                <div class="proyecto-grid">
+                    
+                    <!-- CRITERIOS DE RIESGO DE LA UV -->
+                    <div class="columna-instrucciones" style="border-left: 5px solid #a855f7;">
+                        <h4>📐 Criterio Técnico de la Unidad de Valuación (SHF)</h4>
+                        <ul class="lista-criterios">
+                            <li><strong>Metros No Manifestados:</strong> Cocheras techadas, terrazas o recámaras construidas de forma empírica. Si la ampliación no está inscrita en la boleta predial, la normativa SHF obliga al perito a valuar esa superficie en <strong style="color: #0f172a;">Cero Pesos</strong>.</li>
+                            <li><strong>Riesgo de Demolición Municipal:</strong> Si las obras invaden servidumbres, restricciones de fraccionamiento o violan los coeficientes COS/CUS, el banco cataloga la zona como contingencia jurídica y castiga el colateral.</li>
+                        </ul>
+                    </div>
+
+                    <!-- REGLAS DE CONTROL PREVENTIVO -->
+                    <div class="columna-reglas" style="border-left: 5px solid #2563eb;">
+                        <h4>🔍 Auditoría Preventiva del Consultor</h4>
+                        <ul class="lista-criterios" style="color: #1e3a8a;">
+                            <li><strong>Cotejo Documental Obligatorio:</strong> Confronta físicamente la superficie real de la casa contra las escrituras y la boleta predial antes de firmar promesas de compraventa.</li>
+                            <li><strong>Gestión de Expectativas:</strong> Si detectas metros ocultos, adviértele a las partes que el avalúo saldrá castigado y que el crédito hipotecario base podría ser insuficiente para cubrir el precio comercial pactado.</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- BOTONERA FISICA EN 3D -->
+                <div class="revista-controles">
+                    <a href="valuacion-p3.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Anterior</a>
+                    <a href="valuacion-p5.html" class="btn-nav" style="background-color: #2563eb; border-color: #1d4ed8;">Siguiente Página ▶</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
