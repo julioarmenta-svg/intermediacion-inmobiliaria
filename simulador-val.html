@@ -110,8 +110,8 @@
             var edad = parseInt(inputEdad.value);
             var estado = selectConservacion.value;
 
-            // 1. Mostrar textos de referencia laterales
-            txtPrecio.innerText = '$' + precio.toLocaleString('es-MX') + ' MXN';
+            // 1. Mostrar textos laterales usando tu formato nativo exacto
+            txtPrecio.innerText = '$' + precio.toLocaleString() + ' MXN';
             txtEdad.innerText = edad + ' Años';
 
             // 2. Definir factor de castigo según el menú desplegable
@@ -139,11 +139,11 @@
                 txtCastigoPesos.innerText = '$0 MXN';
                 txtCastigoPesos.style.color = '#64748b';
             } else {
-                txtCastigoPesos.innerText = '-$' + dineroPerdido.toLocaleString('es-MX') + ' MXN';
+                txtCastigoPesos.innerText = '-$' + dineroPerdido.toLocaleString() + ' MXN';
                 txtCastigoPesos.style.color = '#ef4444';
             }
 
-            // 4. Regla de riesgo de Edad (Vida Útil Remanente)
+            // 4. Regla de riesgo de Edad (Vida Útil Remanente) calibrada
             var vidaUtilTotal = 60;
             var vidaUtilRemanente = vidaUtilTotal - edad;
             var aforoFinal = 0.90; 
@@ -163,7 +163,7 @@
                 motivoAforo = 'Aforo Máximo Autorizado';
             }
 
-            // 5. Renderizado final seguro
+            // 5. Renderizado final sin parámetros regionales conflictivos
             if (esInaptitudConservacion) {
                 statusBox.className = 'resultado-box status-alert';
                 statusBox.innerHTML = 'CREDITO RECHAZADO: El inmueble dictamina como NO APTO para Garantía Hipotecaria debido a daños estructurales o ruina (Código SHF 5/6)';
