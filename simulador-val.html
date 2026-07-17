@@ -30,6 +30,12 @@
         
         .txt-desglose-paso { font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; padding-top: 12px; border-top: 1px solid #e2e8f0; margin-top: 5px; }
         .val-castigo-rojo { font-size: 13px; font-weight: 800; color: #ef4444; float: right; }
+        
+        /* ADICIÓN DE CAJA DE RESULTADO IDÉNTICA AL MÓDULO 1 */
+        .resultado-box { padding: 20px; border-radius: 12px; text-align: center; font-weight: 800; font-size: 14px; border: 1px solid transparent; margin-top: 10px; line-height: 1.5; }
+        .status-success { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
+        .status-alert { background-color: #fee2e2; border-color: #fca5a5; color: #991b1b; }
+
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
         .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; }
     </style>
@@ -40,12 +46,12 @@
         <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
         <header>
-            <span class="tag">Módulo 03 · Fase de Diagnóstico</span>
-            <h1>Paso 1: Aislamiento del Control de Precio</h1>
+            <span class="tag">Módulo 03 · Herramienta Didáctica</span>
+            <h1>Paso 2: Conexión de Crédito con Conservación</h1>
         </header>
 
         <div class="simulador-box">
-            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 Verificación Única de Barra y Castigo A</p>
+            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 Simulación de Impacto Técnico Institucional</p>
             
             <div class="sim-group">
                 <label class="sim-label">Precio de Salida (Portal):</label>
@@ -66,11 +72,14 @@
                 </label>
             </div>
 
-            <!-- EXCLUSIVAMENTE LA LÍNEA DEL PASO A PARA PRUEBA -->
+            <!-- LÍNEA DEL PASO A -->
             <div class="txt-desglose-paso">
                 <span>[Paso A] Castigo Estimado por Conservación (SHF):</span>
-                <span id="txt-castigo-pesos" class="val-castigo-rojo">-$500,000</span>
+                <span id="txt-castigo-pesos" class="val-castigo-rojo">$0 MXN</span>
             </div>
+
+            <!-- NUEVO CONTENEDOR AMARRADO PARA EL MONTO AUTORIZADO -->
+            <div id="status-render" class="resultado-box status-success">MONTO DE CRÉDITO AUTORIZADO: $0</div>
         </div>
 
         <div class="revista-controles">
@@ -79,33 +88,37 @@
     </div>
 
     <script>
-        // Vincular los dos únicos elementos necesarios
         var inputPrecio = document.getElementById('range-precio');
         var selectConservacion = document.getElementById('select-conservacion');
         
         var txtPrecio = document.getElementById('val-precio');
         var txtCastigoPesos = document.getElementById('txt-castigo-pesos');
+        var statusBox = document.getElementById('status-render'); // Variable del DOM amarrada
 
-        function aislarPrecioYA() {
+        function actualizarSimulador() {
             var precio = parseInt(inputPrecio.value);
             var estado = selectConservacion.value;
 
-            // 1. Mover el texto de la barra de precio al instante
+            // 1. Mostrar texto de referencia de la barra
             txtPrecio.innerText = '$' + precio.toLocaleString('es-MX') + ' MXN';
 
-            // 2. Calcular el castigo de forma directa en este bloque aislado
-            var factor = 1.0;
+            // 2. Definir factor según el menú
+            var factor = 0.0;
             if (estado === "Regular") {
-                factor = 0.05; // 5% de castigo
+                factor = 0.05;
+                statusBox.className = "resultado-box status-success";
             } else if (estado === "Malo") {
-                factor = 0.20; // 20% de castigo
+                factor = 0.20;
+                statusBox.className = "resultado-box status-alert"; // Rojo si está malo
             } else {
-                factor = 0.0;  // Excelente (0%)
+                factor = 0.0;
+                statusBox.className = "resultado-box status-success"; // Verde si es excelente
             }
 
             var dineroPerdido = precio * factor;
+            var valorComercialAvaluo = precio - dineroPerdido;
 
-            // 3. Pintar el castigo correspondiente
+            // 3. Pintar la línea de Castigo A en pesos
             if (dineroPerdido === 0) {
                 txtCastigoPesos.innerText = "$0 MXN";
                 txtCastigoPesos.style.color = "#64748b";
@@ -113,14 +126,19 @@
                 txtCastigoPesos.innerText = "-$" + dineroPerdido.toLocaleString('es-MX') + " MXN";
                 txtCastigoPesos.style.color = "#ef4444";
             }
+
+            // 4. Calcular Crédito Autorizado (90% de aforo sobre el valor neto del avalúo)
+            var aforoBase = 0.90;
+            var montoCredito = valorComercialAvaluo * aforoBase;
+
+            // 5. Inyectar resultado final firme en el recuadro inferior
+            statusBox.innerHTML = "MONTO DE CRÉDITO AUTORIZADO: $" + Math.round(montoCredito).toLocaleString('es-MX') + " MXN<br><span style='font-size:11.5px; font-weight:600;'>Basado en un Aforo Máximo del 90% sobre un Valor de Avalúo de $" + Math.round(valorComercialAvaluo).toLocaleString('es-MX') + " MXN</span>";
         }
 
-        // Asignar el evento oninput a los controles activos
-        inputPrecio.oninput = aislarPrecioYA;
-        selectConservacion.onchange = aislarPrecioYA;
+        inputPrecio.oninput = actualizarSimulador;
+        selectConservacion.onchange = actualizarSimulador;
 
-        // Arrancar una vez al abrir el archivo
-        aislarPrecioYA();
+        actualizarSimulador();
     </script>
 </body>
 </html>
