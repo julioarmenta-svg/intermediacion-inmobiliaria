@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 3: Análisis & Valuación - URN</title>
+    <script src="https://tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #c084fc; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+    </style>
+</head>
+<body class="bg-slate-900 min-h-screen text-slate-100 flex flex-col antialiased font-sans selection:bg-purple-500 selection:text-white">
+
+    <!-- HEADER INSTITUCIONAL -->
+    <header class="bg-slate-950 border-b border-purple-900/50 shadow-lg px-6 py-4 flex items-center justify-between sticky top-0 z-50">
+        <div class="flex items-center gap-4">
+            <div class="bg-gradient-to-tr from-purple-600 to-indigo-600 p-2.5 rounded-xl shadow-md shadow-purple-900/20">
+                <i class="fa-solid fa-chart-line text-xl text-white"></i>
+            </div>
+            <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-purple-400">Maestría en Intermediación Inmobiliaria · URN</span>
+                <h1 class="text-lg font-bold text-slate-200">Módulo 3: Análisis & Valuación Patrimonial</h1>
+            </div>
+        </div>
+        <div class="flex items-center gap-3">
+            <span class="bg-purple-950 border border-purple-800 text-purple-300 text-xs px-3 py-1.5 rounded-full font-semibold">
+                <i class="fa-solid fa-graduation-cap mr-1.5 text-purple-400"></i>Clase 3: Enfoque de Riesgos
+            </span>
+            <a href="index.html" class="bg-slate-800 hover:bg-slate-700 text-slate-300 p-2 rounded-lg transition-colors border border-slate-700">
+                <i class="fa-solid fa-house"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
+        
+        <!-- MENÚ DE FILMINAS / NAVEGACIÓN IZQUIERDA -->
+        <div class="bg-slate-950 border border-slate-800 rounded-2xl p-4 shadow-xl lg:col-span-1 space-y-2">
+            <p class="text-xs font-bold uppercase tracking-wider text-slate-500 px-2 mb-3">Estructura del Paso 03</p>
+            
+            <button onclick="switchTab('tab-tarea')" id="btn-tab-tarea" class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all border text-left bg-purple-950/40 border-purple-500/50 text-purple-200 shadow-md shadow-purple-950/20">
+                <div class="w-2 h-2 rounded-full bg-purple-400"></div>
+                <span>01. Mesa de Control: Tarea</span>
+            </button>
+
+            <button onclick="switchTab('tab-banco')" id="btn-tab-banco" class="tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all border text-left bg-transparent border-transparent text-slate-400 hover:bg-slate-900 hover:text-slate-200">
+                <div class="w-2 h-2 rounded-full bg-slate-600"></div>
+                <span>02. Normativa y Riesgo</span>
+            </button>
+
+            <div class="pt-4 mt-2 border-t border-slate-900 text-center">
+                <span class="text-xs text-slate-600 font-mono">Fondo Morado Premium v1.0</span>
+            </div>
+        </div>
+
+        <!-- CONTENIDO DINÁMICO (FILMINAS) -->
+        <div class="lg:col-span-3 space-y-6">
+            
+            <!-- FILMINA 1: MESA DE CONTROL (REVISIÓN DE TAREA) -->
+            <div id="tab-tarea" class="tab-content block space-y-6">
+                <div class="bg-gradient-to-r from-purple-950/30 to-slate-950 p-6 rounded-2xl border border-purple-900/30 shadow-xl">
+                    <div class="flex items-start justify-between gap-4 mb-4">
+                        <div>
+                            <span class="bg-purple-900/50 text-purple-300 text-xs px-2.5 py-1 rounded-md font-mono border border-purple-800/40">F-01 // AUDITORÍA</span>
+                            <h2 class="text-2xl font-bold mt-2 text-white">Mesa de Control: Dictamen Patrimonial Ejecutivo</h2>
+                            <p class="text-slate-400 text-sm mt-1">Calibración de respuestas del caso práctico de la Unidad II (Fiscalidad y Legalidad en Chihuahua).</p>
+                        </div>
+                        <i class="fa-solid fa-clipboard-check text-4xl text-purple-500/30"></i>
+                    </div>
+
+                    <!-- MATRIZ DE RESPUESTAS INTERACTIVAS -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                        
+                        <!-- TARJETA 1: ENFOQUE FISCAL -->
+                        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col justify-between hover:border-purple-500/30 transition-all">
+                            <div>
+                                <div class="flex items-center gap-2 text-purple-400 font-semibold text-sm mb-3">
+                                    <i class="fa-solid fa-calculator"></i>
+                                    <span>Auditoría Fiscal LISR</span>
+                                </div>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    <strong>Vendedor:</strong> Exención de casa habitación topada a 700k UDIS. Requiere INE vigente, CFDI de luz o telefonía fija a nombre del contribuyente con el domicilio exacto. 
+                                    <br><br>
+                                    <strong>Comprador:</strong> Alerta de ISR por adquisición si el precio pactado queda >10% abajo del avalúo fiscal.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-slate-800 text-right">
+                                <span class="text-[10px] font-mono bg-purple-950 text-purple-300 px-2 py-1 rounded">Check Técnico</span>
+                            </div>
+                        </div>
+
+                        <!-- TARJETA 2: RESPONSABILIDAD OPERATIVA -->
+                        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col justify-between hover:border-purple-500/30 transition-all">
+                            <div>
+                                <div class="flex items-center gap-2 text-purple-400 font-semibold text-sm mb-3">
+                                    <i class="fa-solid fa-faucet-drip"></i>
+                                    <span>Controversia Civil</span>
+                                </div>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    <strong>Caso Bomba de Agua Quemada:</strong> Resolución bajo dictamen de causa raíz. Si el daño se debió a obsolescencia o desgaste natural previo a la entrega, califica como vicio oculto (cargo al Vendedor). Si fue por falta de agua en la red o negligencia de encendido en seco posterior a la posesión, el costo lo absorbe el Comprador/Inquilino.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-slate-800 text-right">
+                                <span class="text-[10px] font-mono bg-purple-950 text-purple-300 px-2 py-1 rounded">Criterio Operativo</span>
+                            </div>
+                        </div>
+
+                        <!-- TARJETA 3: BLINDAJE CORPORATIVO -->
+                        <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col justify-between hover:border-purple-500/30 transition-all">
+                            <div>
+                                <div class="flex items-center gap-2 text-purple-400 font-semibold text-sm mb-3">
+                                    <i class="fa-solid fa-gavel"></i>
+                                    <span>Protección de Honorarios</span>
+                                </div>
+                                <p class="text-xs text-slate-400 leading-relaxed">
+                                    <strong>Cláusula de Prórroga Posterior:</strong> El requerimiento formal exige demostrar con bitácora de llamadas, mensajes de WhatsApp y hojas de visita firmadas, que el comprador final fue prospectado y perfilado originalmente por el asesor durante la vigencia original del contrato de exclusiva.
+                                </p>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-slate-800 text-right">
+                                <span class="text-[10px] font-mono bg-purple-950 text-purple-300 px-2 py-1 rounded">Blindaje Legal</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- FILMINA 2: AVALÚO COMERCIAL VS CRITERIO BANCARIO -->
+            <div id="tab-banco" class="tab-content hidden space-y-6">
+                <div class="bg-gradient-to-r from-purple-950/30 to-slate-950 p-6 rounded-2xl border border-purple-900/30 shadow-xl">
+                    <div class="flex items-start justify-between gap-4 mb-4">
+                        <div>
+                            <span class="bg-purple-900/50 text-purple-300 text-xs px-2.5 py-1 rounded-md font-mono border border-purple-800/40">F-02 // RIESGO BANCARIO</span>
+                            <h2 class="text-2xl font-bold mt-2 text-white">Avalúo Comercial vs. Criterios de Garantía</h2>
