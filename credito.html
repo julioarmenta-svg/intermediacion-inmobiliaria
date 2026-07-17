@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 4: Arquitectura de Crédito - URN</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background-color: #f1f5f9; padding: 15px; color: #334155;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background-color: #ffffff;
+            border-radius: 20px; padding: 20px 25px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06); border: 1px solid #e2e8f0;
+        }
+        .nav-back { display: inline-block; text-decoration: none; color: #2563eb; font-size: 12px; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
+        header { margin-bottom: 15px; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; }
+        .tag { font-size: 10px; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.1em; }
+        h1 { font-size: 22px; font-weight: 800; color: #0f172a; margin-top: 2px; }
+        
+        .revista-wrapper { background-color: #ffffff; border: 3px solid #cbd5e1; border-radius: 16px; padding: 20px; margin-bottom: 10px; }
+        .revista-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; margin-bottom: 12px; }
+        .revista-pills { font-size: 10.5px; font-weight: 800; color: #2563eb; text-transform: uppercase; letter-spacing: 0.05em; }
+        .revista-contador { font-size: 10.5px; font-weight: 800; color: #2563eb; background-color: #eff6ff; padding: 3px 10px; border-radius: 20px; }
+        
+        .slide-titulo { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+        .slide-txt { font-size: 13px; line-height: 1.4; color: #475569; margin-bottom: 12px; }
+        
+        .proyecto-grid { display: flex; gap: 20px; margin: 10px 0 15px 0; }
+        .columna-instrucciones { flex: 1.1; background-color: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between; }
+        .columna-reglas { flex: 0.9; background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 14px; }
+        .proyecto-grid h4 { font-size: 12px; font-weight: 900; color: #0f172a; text-transform: uppercase; margin-bottom: 8px; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px; }
+        
+        .lista-criterios { list-style: none; font-size: 11.5px; line-height: 1.5; color: #475569; }
+        .lista-criterios li { margin-bottom: 10px; padding-left: 14px; position: relative; }
+        .lista-criterios li::before { content: "✔"; position: absolute; left: 0; color: #2563eb; font-weight: bold; }
+
+        .btn-table { display: block; text-decoration: none; background-color: #2563eb; color: white !important; font-size: 11.5px; font-weight: 800; text-transform: uppercase; text-align: center; padding: 10px; border-radius: 6px; margin-top: 10px; border-bottom: 3px solid #1d4ed8; }
+        .btn-table:hover { background-color: #3b82f6; }
+
+        .revista-controles { display: flex; justify-content: space-between; margin-top: 15px; gap: 15px; border-top: 2px solid #f1f5f9; padding-top: 12px; }
+        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 12px; border-radius: 8px; font-size: 14.5px; font-weight: 800; color: #ffffff !important; text-align: center; }
+        .btn-nav:hover { background-color: #3b82f6; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
+
+        <header>
+            <span class="tag">Unidad 04 · Arquitectura de Crédito</span>
+            <h1>1. El Ecosistema de Fondeo Hipotecario</h1>
+        </header>
+
+        <div class="revista-wrapper">
+            <div class="revista-header">
+                <span class="revista-pills">Estructuras de Financiamiento Inmobiliario</span>
+                <span class="revista-contador">Pág. 1 de 5</span>
+            </div>
+
+            <div style="padding: 0 5px;">
+                <p class="slide-txt">Bienvenidos a la Unidad 04. Entramos de lleno a la ingeniería financiera residencial. El verdadero consultor patrimonial no solo tramita compras, sino que domina la baraja completa de fondeo y capitales disponibles en México.</p>
+                
+                <div class="proyecto-grid">
+                    <!-- COLUMNA IZQUIERDA: VISIÓN DE NEGOCIO Y ENLACE -->
+                    <div class="columna-instrucciones" style="border-left: 5px solid #2563eb;">
+                        <div>
+                            <h4>📊 Mapa del Mercado Mexicano</h4>
+                            <ul class="lista-criterios">
+                                <li><strong>Diversificación del Portafolio:</strong> El acceso a la vivienda en México se divide en banca comercial tradicional, organismos públicos de vivienda y esquemas alternativos de financiamiento.</li>
+                                <li><strong>Estrategia Comercial:</strong> Conocer a fondo cada destino de crédito te permite rescatar clientes perfilados o con necesidades especiales (terreno, liquidez o autoconstrucción).</li>
+                            </ul>
+                        </div>
+                        <!-- BOTÓN CONEXIÓN A LA GRAN TABLA -->
+                        <a href="matriz-credito.html" class="btn-table">📋 Abrir Matriz de Créditos</a>
+                    </div>
+
+                    <!-- COLUMNA DERECHA: APORTACIÓN PROFESOR -->
+                    <div class="columna-reglas" style="border-left: 5px solid #10b981;">
+                        <h4>💼 El Negocio de la Intermediación</h4>
+                        <ul class="lista-criterios" style="color: #1e3a8a;">
+                            <li><strong>Derrama Económica:</strong> Dominar la originación crediticia residencial multiplica tus comisiones de intermediación y te conecta directamente con desarrolladores inmobiliarios de gran escala.</li>
+                            <li><strong>Blindaje Operativo:</strong> Aprenderás a perfilar la capacidad de pago del lead antes de perder meses valiosos gestionando la venta de un inmueble en la calle.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="revista-controles">
+                    <a href="index.html" class="btn-nav" style="background-color: #64748b; border-color: #475569;">◀ Volver al Menú</a>
+                    <a href="credito-p2.html" class="btn-nav">Siguiente Página ▶</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
