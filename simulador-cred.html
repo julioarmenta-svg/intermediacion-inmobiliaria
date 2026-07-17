@@ -126,7 +126,6 @@
     </div>
 
     <script>
-        // Captura inicial solo de los elementos visibles e indispensables de la pantalla principal
         var inputVivienda = document.getElementById('txt-valor-vivienda');
         var inputAforo = document.getElementById('range-aforo');
         var selectPlazo = document.getElementById('select-plazo');
@@ -148,14 +147,12 @@
 
             txtAforo.innerText = aforoBancario + '%';
 
-            // 1. Mostrar/Ocultar paneles
             if (infonavitActivo) {
                 panelInfonavit.style.display = "flex";
             } else {
                 panelInfonavit.style.display = "none";
             }
 
-            // 2. Cálculos Bancarios Puros
             var porcentajeAforo = aforoBancario / 100;
             var montoCreditoBanco = valorVivienda * porcentajeAforo;
 
@@ -166,3 +163,8 @@
 
             var descuentoAforo = 0.0;
             if (aforoBancario <= 40) {
+                descuentoAforo = 0.20;
+            } else if (aforoBancario <= 70) {
+                descuentoAforo = 0.10;
+            }
+            
