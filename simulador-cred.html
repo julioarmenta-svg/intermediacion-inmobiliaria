@@ -164,13 +164,15 @@
             lblTasa.innerText = tasaFinal.toFixed(2) + '%';
             lblMensualidad.innerText = '$' + Math.round(mensualidad).toLocaleString() + ' MXN';
             
-            // H. Actualización del cuadro verde dinámico con la capacidad de pago incluida
-            statusBox.innerHTML = "PAGO MENSUAL BANCARIO ESTIMADO: $" + Math.round(mensualidad).toLocaleString() + " MXN<br>" +
-                                  "Ingreso Familiar Mensual Mínimo Requerido (Regla 3 a 1): $" + Math.round(ingresoRequerido).toLocaleString() + " MXN<br>" +
-                                  "<span style='font-size:12px; font-weight:600;'>Desembolso Requerido de Enganche en Efectivo: $" + Math.round(engancheRequerido).toLocaleString() + " MXN</span>";
+            // H. LINEA ÚNICA CONTINUA DE INYECCIÓN DE TEXTO TOTALMENTE COMPATIBLE CON VERCEL
+            statusBox.innerHTML = "PAGO MENSUAL BANCARIO ESTIMADO: $" + Math.round(mensualidad).toLocaleString() + " MXN<br>Ingreso Familiar Mensual Mínimo Requerido (Regla 3 a 1): $" + Math.round(ingresoRequerido).toLocaleString() + " MXN<br><span style='font-size:12px; font-weight:600;'>Desembolso Requerido de Enganche en Efectivo: $" + Math.round(engancheRequerido).toLocaleString() + " MXN</span>";
         }
 
         inputVivienda.oninput = realizarCalculoCompleto;
         inputAforo.oninput = realizarCalculoCompleto;
         selectPlazo.onchange = realizarCalculoCompleto;
 
+        realizarCalculoCompleto();
+    </script>
+</body>
+</html>
