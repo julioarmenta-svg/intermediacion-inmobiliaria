@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 3: Prueba de Barras - URN</title>
+    <title>Módulo 3: Prueba de Controles y Crédito - URN</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -64,6 +64,13 @@
         .sim-range { flex: 1; cursor: pointer; height: 12px; accent-color: #a855f7; }
         .sim-value { font-size: 14px; font-weight: 800; color: #a855f7; min-width: 120px; text-align: right; }
         
+        .select-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; padding: 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; }
+        .select-container select { flex: 1; padding: 4px; border: none; font-size: 13px; font-weight: 700; color: #334155; outline: none; cursor: pointer; }
+        
+        .resultado-box { padding: 20px; border-radius: 12px; text-align: center; font-weight: 800; font-size: 14px; border: 1px solid transparent; margin-top: 10px; line-height: 1.5; }
+        .status-success { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
+        .status-alert { background-color: #fee2e2; border-color: #fca5a5; color: #991b1b; }
+
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
         .btn-nav {
             flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center;
@@ -77,11 +84,11 @@
 
         <header>
             <span class="tag">Módulo 03 · Fase de Prueba</span>
-            <h1>Paso 1: Validación de Controles Deslizantes</h1>
+            <h1>Paso 2: Integración de Conservación y Crédito Base</h1>
         </header>
 
         <div class="simulador-box">
-            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 Verificación de Conectividad de Barras</p>
+            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 Verificación de Selección y Resultado Financiero</p>
             
             <div class="sim-group">
                 <label class="sim-label">Precio de Salida (Portal):</label>
@@ -98,6 +105,21 @@
                     <span id="val-edad" class="sim-value">25 Años</span>
                 </div>
             </div>
+
+            <div class="sim-group">
+                <label class="sim-label">Estado de Conservación de la Obra (SHF):</label>
+                <label class="select-container">
+                    <select id="select-conservacion">
+                        <option value="Excelente">Excelente (Código SHF 1/2)</option>
+                        <option value="Bueno">Bueno (Código SHF 3)</option>
+                        <option value="Regular" selected>Regular (Código SHF 4)</option>
+                        <option value="Malo">Malo (Código SHF 5/6)</option>
+                    </select>
+                </label>
+            </div>
+
+            <!-- BLOQUE DE MONTO AUTORIZADO DE CRÉDITO -->
+            <div id="status-render" class="resultado-box status-success">MONTO DE CRÉDITO AUTORIZADO: $0</div>
         </div>
 
         <div class="revista-controles">
@@ -106,28 +128,47 @@
     </div>
 
     <script>
-        // Vincular los elementos exactamente como en tu Módulo 1 exitoso
+        // Declaración limpia de elementos nativos
         var inputPrecio = document.getElementById('range-precio');
         var inputEdad = document.getElementById('range-edad');
+        var selectConservacion = document.getElementById('select-conservacion');
         
         var txtPrecio = document.getElementById('val-precio');
         var txtEdad = document.getElementById('val-edad');
+        var statusBox = document.getElementById('status-render');
 
-        function actualizarTextos() {
+        function actualizarSimulador() {
             var precio = parseInt(inputPrecio.value);
             var edad = parseInt(inputEdad.value);
+            var estado = selectConservacion.value;
 
-            // Cambiar los textos en la pantalla
+            // Actualizar los textos básicos de referencia lateral
             txtPrecio.innerText = '$' + precio.toLocaleString('es-MX') + ' MXN';
             txtEdad.innerText = edad + ' Años';
+
+            // Cálculo base temporal para validar que el resultado responda
+            // El banco presta el 90% por defecto, si es "Malo" reduce el aforo al 70%
+            var aforo = 0.90;
+            if (estado === "Malo") {
+                aforo = 0.70;
+                statusBox.className = "resultado-box status-alert";
+            } else {
+                statusBox.className = "resultado-box status-success";
+            }
+
+            var montoCredito = precio * aforo;
+
+            // Inyectar el monto autorizado dinámicamente en el recuadro inferior
+            statusBox.innerHTML = "MONTO DE CRÉDITO AUTORIZADO: $" + Math.round(montoCredito).toLocaleString('es-MX') + " MXN";
         }
 
-        // Asignar el evento de movimiento
-        inputPrecio.oninput = actualizarTextos;
-        inputEdad.oninput = actualizarTextos;
+        // Asignar eventos de escucha nativos a los tres controles
+        inputPrecio.oninput = actualizarSimulador;
+        inputEdad.oninput = actualizarSimulador;
+        selectConservacion.onchange = actualizarSimulador;
 
-        // Ejecutar una vez al cargar para verificar que pinte los valores iniciales
-        actualizarTextos();
+        // Forzar arranque inicial automático
+        actualizarSimulador();
     </script>
 </body>
 </html>
