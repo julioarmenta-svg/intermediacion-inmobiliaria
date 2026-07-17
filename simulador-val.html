@@ -116,7 +116,7 @@
 
             // 2. Definir factor de castigo según el menú desplegable
             var factor = 0.0;
-            var esInaptitud = false;
+            var esInaptitudConservacion = false;
 
             if (estado === "Excelente") {
                 factor = 0.0;
@@ -125,15 +125,15 @@
             } else if (estado === "Regular") {
                 factor = 0.15;
             } else if (estado === "Malo") {
-                esInaptitud = true; 
+                esInaptitudConservacion = true; 
             }
 
             var dineroPerdido = precio * factor;
             var valorComercialAvaluo = precio - dineroPerdido;
 
-            // 3. Pintar la línea de Castigo A en pesos de forma segura
-            if (esInaptitud) {
-                txtCastigoPesos.innerText = "RECHAZO DE GARANTÍA";
+            // 3. Pintar la línea de Castigo A en pesos
+            if (esInaptitudConservacion) {
+                txtCastigoPesos.innerText = "RECHAZO POR CONSERVACIÓN";
                 txtCastigoPesos.style.color = "#ef4444";
             } else if (dineroPerdido === 0) {
                 txtCastigoPesos.innerText = "$0 MXN";
@@ -143,13 +143,16 @@
                 txtCastigoPesos.style.color = "#ef4444";
             }
 
-            // 4. Regla de riesgo de Edad (Vida Útil Remanente)
+            // 4. Regla de riesgo de Edad (Vida Útil Remanente) - AJUSTADA A LA OBSERVACIÓN DEL PROFESOR
             var vidaUtilTotal = 60;
             var vidaUtilRemanente = vidaUtilTotal - edad;
             var aforoFinal = 0.90; 
             var motivoAforo = "Garantía Óptima";
+            var esInaptitudEdad = false;
 
-            if (vidaUtilRemanente < 20) {
+            if (edad >= 50) {
+                esInaptitudEdad = true; // El inmueble ya no alcanza el binomio Plazo Mínimo (5 años) + Seguro (5 años)
+            } else if (vidaUtilRemanente < 20) {
                 aforoFinal = 0.70; 
                 motivoAforo = "Aforo Castigado por Alta Edad";
             } else if (vidaUtilRemanente < 35) {
@@ -160,10 +163,13 @@
                 motivoAforo = "Aforo Máximo Autorizado";
             }
 
-            // 5. Renderizado final sin comillas cruzadas que rompan el script
-            if (esInaptitud) {
+            // 5. Renderizado final combinando inaptitudes físicas o cronológicas
+            if (esInaptitudConservacion) {
                 statusBox.className = "resultado-box status-alert";
-                statusBox.innerHTML = "CREDITO RECHAZADO: El inmueble dictamina como NO APTO para Garantía Hipotecaria debido a fallas severas o falta de habitabilidad (Código SHF 5/6)";
+                statusBox.innerHTML = "CREDITO RECHAZADO: El inmueble dictamina como NO APTO para Garantía Hipotecaria debido a daños estructurales o ruina (Código SHF 5/6)";
+            } else if (esInaptitudEdad) {
+                statusBox.className = "resultado-box status-alert";
+                statusBox.innerHTML = "CREDITO RECHAZADO: Inmueble NO APTO por Edad Excesiva (" + edad + " años). Su vida remanente es insuficiente para amortizar el plazo mínimo de crédito institucional.";
             } else {
                 var montoCredito = valorComercialAvaluo * aforoFinal;
                 
@@ -173,15 +179,3 @@
                     statusBox.className = "resultado-box status-success";
                 }
                 
-                statusBox.innerHTML = "MONTO DE CRÉDITO AUTORIZADO: $" + Math.round(montoCredito).toLocaleString('es-MX') + " MXN<br><span style='font-size:11.5px; font-weight:600;'>Mesa de Control: " + motivoAforo + " (" + (aforoFinal * 100) + "% de Aforo) sobre un Valor de Avalúo de $" + Math.round(valorComercialAvaluo).toLocaleString('es-MX') + " MXN</span>";
-            }
-        }
-
-        inputPrecio.oninput = actualizarSimulador;
-        inputEdad.oninput = actualizarSimulador;
-        selectConservacion.onchange = actualizarSimulador;
-
-        actualizarSimulador();
-    </script>
-</body>
-</html>
