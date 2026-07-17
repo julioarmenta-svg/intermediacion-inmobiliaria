@@ -151,7 +151,7 @@
     </div>
 
     <script>
-        // 1. DECLARACIÓN DE LA FUNCIÓN DE FORMATO EN LA PARTE SUPERIOR (EVITA ERRORES DE REFERENCIA)
+        // 1. DECLARACIÓN DE LA FUNCIÓN DE FORMATO EN LA PARTE SUPERIOR (INDISPENSABLE)
         function formatMXN(val) {
             return '$' + Math.round(val).toLocaleString('es-MX') + ' MXN';
         }
@@ -167,14 +167,12 @@
         var txtCastigoPesos = document.getElementById('txt-castigo-pesos');
 
         function actualizarSimulador() {
+            // A. Lectura de inputs numéricos iniciales
             var precio = parseInt(inputPrecio.value);
             var edad = parseInt(inputEdad.value);
             var estado = selectConservacion.value;
 
-            txtPrecio.innerText = formatMXN(precio);
-            txtEdad.innerText = edad + ' Años';
-
-            // 3. EVALUACIÓN DE CONSERVACIÓN
+            // B. Cálculos matemáticos puros en orden lineal estricto
             var factorCastigoAvaluo = 1.0;
             var esInaptitud = false;
 
@@ -188,7 +186,9 @@
                 esInaptitud = true;
             }
 
-            // 4. CRITERIO DE RIESGO DE EDAD (VIDA ÚTIL REMANENTE)
+            var valorComercialAvaluo = precio * factorCastigoAvaluo;
+            var dineroPerdido = precio - valorComercialAvaluo;
+
             var vidaUtilTotal = 60;
             var vidaUtilRemanente = vidaUtilTotal - edad;
             var aforoFinal = 0.90; 
@@ -205,21 +205,24 @@
                 motivoAforo = "Aforo Máximo Autorizado";
             }
 
-            // 5. RENDERIZADO DE RESULTADOS DE ACUERDO AL FLUJO
+            var montoCredito = valorComercialAvaluo * aforoFinal;
+
+            // C. Inyección limpia de textos al final (Evita errores de referencia congelantes)
+            txtPrecio.innerText = formatMXN(precio);
+            txtEdad.innerText = edad + ' Años';
+
+            // Actualización visual de la etiqueta del Paso A
             if (esInaptitud) {
-                statusBox.className = "resultado-box status-alert";
-                statusBox.innerHTML = "❌ CRÉDITO RECHAZADO: El inmueble Dictamina como NO APTO para Garantía Hipotecaria (Código SHF 6)";
-                
                 txtCastigoPesos.innerText = "RECHAZO DE GARANTÍA";
                 txtCastigoPesos.style.color = "#ef4444";
+            } else if (dineroPerdido === 0) {
+                txtCastigoPesos.innerText = "$0 MXN";
+                txtCastigoPesos.style.color = "#64748b";
             } else {
-                var valorComercialAvaluo = precio * factorCastigoAvaluo;
-                var montoCredito = valorComercialAvaluo * aforoFinal;
-                var dineroPerdido = precio - valorComercialAvaluo;
-                
-                if (aforoFinal < 0.90 || factorCastigoAvaluo < 1.0) {
-                    statusBox.className = "resultado-box status-alert";
-                } else {
-                    statusBox.className = "resultado-box status-success";
-                }
-                
+                txtCastigoPesos.innerText = "-" + formatMXN(dineroPerdido);
+                txtCastigoPesos.style.color = "#ef4444";
+            }
+
+            // Actualización visual del bloque de estatus final
+            if (esInaptitud) {
+                statusBox.className = "resultado-box status-alert";
