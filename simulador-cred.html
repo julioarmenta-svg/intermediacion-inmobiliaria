@@ -144,8 +144,8 @@
 
         function realizarCalculoCompleto() {
             var valorVivienda = parseFloat(inputVivienda.value) || 0;
-            var aforoBancario = parseInt(inputAforo.value);
-            var plazoAnios = parseInt(selectPlazo.value);
+            var aforoBancario = parseInt(inputAforo.value) || 0;
+            var plazoAnios = parseInt(selectPlazo.value) || 20;
             var infonavitActivo = checkInfonavit.checked;
 
             txtAforo.innerText = aforoBancario + '%';
@@ -166,4 +166,3 @@
 
             var descuentoAforo = 0.0;
             if (aforoBancario <= 40) {
-                descuentoAforo = 0.20;
