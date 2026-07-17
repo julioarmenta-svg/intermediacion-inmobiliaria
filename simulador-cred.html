@@ -30,6 +30,13 @@
         .select-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; padding: 6px 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; }
         .select-container select { flex: 1; padding: 6px; border: none; font-size: 14px; font-weight: 700; color: #334155; outline: none; cursor: pointer; }
         
+        /* CASILLA CHECKBOX ESTILIZADA URBANA */
+        .checkbox-container { display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; color: #1e3a8a; cursor: pointer; padding: 14px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; margin-top: 5px; }
+        .checkbox-container input { width: 18px; height: 18px; cursor: pointer; accent-color: #2563eb; }
+        
+        /* PANEL DINÁMICO OCULTO INFONAVIT */
+        .panel-infonavit-oculto { display: none; background-color: #ffffff; border: 1px dashed #cbd5e1; border-radius: 14px; padding: 20px; flex-direction: column; gap: 15px; margin-top: 5px; }
+
         .resultado-wrapper { display: flex; flex-direction: column; gap: 10px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 14px; padding: 20px; font-family: monospace; font-size: 13px; }
         .res-line { display: flex; justify-content: space-between; padding: 4px 0; }
         .res-title { font-weight: bold; color: #0f172a; }
@@ -83,24 +90,36 @@
                 </label>
             </div>
 
-            <!-- DESGLOSE DE CAPITALES -->
-            <div class="resultado-wrapper">
-                <div class="res-line">
-                    <span class="res-title">Crédito Bancario Autorizado:</span>
-                    <span id="lbl-res-banco" class="res-val-info">$0</span>
+            <!-- INTERRUPTOR DE ESTRUCTURA MIXTA -->
+            <div class="sim-group">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="check-infonavit">
+                    <span>Vincular Estructura Mix (Esquema Cofonavit)</span>
+                </label>
+            </div>
+
+            <!-- PANEL ACORDAL OCULTO DE INPUTS INFONAVIT -->
+            <div id="panel-infonavit" class="panel-infonavit-oculto">
+                <div class="sim-group">
+                    <label class="sim-label">Monto de Crédito Infonavit (Entrada Manual):</label>
+                    <input type="number" id="txt-credito-info" class="sim-input-text" value="400000">
                 </div>
-                <div class="res-line">
-                    <span class="res-title">Tasa de Interés Anual:</span>
-                    <span id="lbl-res-tasa" class="res-val-info">0.00%</span>
-                </div>
-                <div class="res-line" style="border-top: 1px dashed #cbd5e1; padding-top: 8px; margin-top: 4px;">
-                    <span class="res-title" style="color: #2563eb;">Mensualidad del Crédito Bancario:</span>
-                    <span id="lbl-res-mensualidad" style="font-weight: 800; color: #2563eb;">$0</span>
+                <div class="sim-group">
+                    <label class="sim-label">Saldo Subcuenta de Vivienda (Entrada Manual):</label>
+                    <input type="number" id="txt-subcuenta-info" class="sim-input-text" value="250000">
                 </div>
             </div>
 
+            <!-- DESGLOSE DE CAPITALES -->
+            <div class="resultado-wrapper">
+                <div class="res-line"><span class="res-title">Crédito Bancario Autorizado:</span><span id="lbl-res-banco" class="res-val-info">$0</span></div>
+                <div class="res-line"><span class="res-title">Tasa de Interés Anual:</span><span id="lbl-res-tasa" class="res-val-info">0.00%</span></div>
+                <div class="res-line"><span class="res-title">Fondeo Total de Operación:</span><span id="lbl-res-fondeo-total" class="res-val-info">$0</span></div>
+                <div class="res-line" style="border-top: 1px dashed #cbd5e1; padding-top: 8px; margin-top: 4px;"><span class="res-title" style="color: #2563eb;">Mensualidad del Crédito Bancario:</span><span id="lbl-res-mensualidad" style="font-weight: 800; color: #2563eb;">$0</span></div>
+            </div>
+
             <!-- CUADRO DE ESTADO CON ANÁLISIS DE CAPACIDAD DE PAGO -->
-            <div id="status-render" class="resultado-box status-success">PAGO MENSUAL BANCARIO ESTIMADO CALCULADO</div>
+            <div id="status-render" class="resultado-box status-success">CÁLCULO ACTIVO</div>
         </div>
 
         <div class="revista-controles">
@@ -112,10 +131,16 @@
         var inputVivienda = document.getElementById('txt-valor-vivienda');
         var inputAforo = document.getElementById('range-aforo');
         var selectPlazo = document.getElementById('select-plazo');
+        var checkInfonavit = document.getElementById('check-infonavit');
+        var panelInfonavit = document.getElementById('panel-infonavit');
         
+        var inputCreditoInfo = document.getElementById('txt-credito-info');
+        var inputSubcuentaInfo = document.getElementById('txt-subcuenta-info');
+
         var txtAforo = document.getElementById('val-aforo');
         var lblBanco = document.getElementById('lbl-res-banco');
         var lblTasa = document.getElementById('lbl-res-tasa');
+        var lblFondeoTotal = document.getElementById('lbl-res-fondeo-total');
         var lblMensualidad = document.getElementById('lbl-res-mensualidad');
         var statusBox = document.getElementById('status-render');
 
@@ -123,48 +148,21 @@
             var valorVivienda = parseFloat(inputVivienda.value) || 0;
             var aforoBancario = parseInt(inputAforo.value);
             var plazoAnios = parseInt(selectPlazo.value);
+            var infonavitActivo = checkInfonavit.checked;
 
             txtAforo.innerText = aforoBancario + '%';
 
+            // 1. Mostrar/Ocultar paneles
+            if (infonavitActivo) {
+                panelInfonavit.style.display = "flex";
+            } else {
+                panelInfonavit.style.display = "none";
+            }
+
+            // 2. Cálculos Bancarios
             var porcentajeAforo = aforoBancario / 100;
             var montoCreditoBanco = valorVivienda * porcentajeAforo;
-            var engancheRequerido = valorVivienda - montoCreditoBanco;
 
             var tasaAnual = 9.75;
             if (plazoAnios === 5) tasaAnual = 8.75;
             else if (plazoAnios === 10) tasaAnual = 9.35;
-            else if (plazoAnios === 15) tasaAnual = 9.50;
-
-            var descuentoAforo = 0.0;
-            if (aforoBancario <= 40) {
-                descuentoAforo = 0.20;
-            } else if (aforoBancario <= 70) {
-                descuentoAforo = 0.10;
-            }
-            
-            var tasaFinal = tasaAnual - descuentoAforo;
-
-            var mensualidad = 0;
-            if (montoCreditoBanco > 0) {
-                var tasaMensual = (tasaFinal / 100) / 12;
-                var numeroPagos = plazoAnios * 12;
-                mensualidad = (montoCreditoBanco * tasaMensual * Math.pow(1 + tasaMensual, numeroPagos)) / (Math.pow(1 + tasaMensual, numeroPagos) - 1);
-            }
-
-            var ingresoRequerido = mensualidad * 3;
-
-            lblBanco.innerText = '$' + Math.round(montoCreditoBanco).toLocaleString() + ' MXN';
-            lblTasa.innerText = tasaFinal.toFixed(2) + '%';
-            lblMensualidad.innerText = '$' + Math.round(mensualidad).toLocaleString() + ' MXN';
-            
-            statusBox.innerHTML = "PAGO MENSUAL BANCARIO: $" + Math.round(mensualidad).toLocaleString() + " MXN<br>Ingreso Mensual Mínimo Requerido: $" + Math.round(ingresoRequerido).toLocaleString() + " MXN<br><span style='font-size:12px; font-weight:600;'>Desembolso de Enganche Requerido: $" + Math.round(engancheRequerido).toLocaleString() + " MXN</span>";
-        }
-
-        inputVivienda.oninput = realizarCalculoCompleto;
-        inputAforo.oninput = realizarCalculoCompleto;
-        selectPlazo.onchange = realizarCalculoCompleto;
-
-        realizarCalculoCompleto();
-    </script>
-</body>
-</html>
