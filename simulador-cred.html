@@ -23,7 +23,10 @@
         .sim-label { font-size: 13px; font-weight: 700; color: #475569; }
         
         .sim-input-text { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; font-weight: 700; color: #334155; background-color: #ffffff; outline: none; }
-        
+        .sim-input-row { display: flex; align-items: center; gap: 15px; }
+        .sim-range { flex: 1; cursor: pointer; height: 12px; accent-color: #2563eb; }
+        .sim-value { font-size: 14px; font-weight: 800; color: #2563eb; min-width: 60px; text-align: right; }
+
         .select-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; padding: 6px 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; }
         .select-container select { flex: 1; padding: 6px; border: none; font-size: 14px; font-weight: 700; color: #334155; outline: none; cursor: pointer; }
         
@@ -36,7 +39,7 @@
         .status-success { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
         
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
-        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; }
+        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 5px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; }
     </style>
 </head>
 <body>
@@ -50,7 +53,7 @@
         </header>
 
         <div class="simulador-box">
-            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 SIMULADOR DE CAPACIDAD DE PAGO (PASO 2)</p>
+            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 SIMULADOR DE ESCENARIOS Y AFORO BANCARIO (PASO 3)</p>
             
             <!-- ENTRADA MANUAL VALOR VIVIENDA -->
             <div class="sim-group">
@@ -58,7 +61,16 @@
                 <input type="number" id="txt-valor-vivienda" class="sim-input-text" value="3000000">
             </div>
 
-            <!-- SELECCIÓN PLAZO LIMPIO -->
+            <!-- NUEVO CONTROL: BARRA DE AFORO BANCARIO MANUAL -->
+            <div class="sim-group">
+                <label class="sim-label">Porcentaje de Aforo Bancario Solicitado:</label>
+                <div class="sim-input-row">
+                    <input type="range" id="range-aforo" class="sim-range" min="10" max="90" step="5" value="90">
+                    <span id="val-aforo" class="sim-value">90%</span>
+                </div>
+            </div>
+
+            <!-- SELECCIÓN PLAZO -->
             <div class="sim-group">
                 <label class="sim-label">Plazo del Crédito Bancario:</label>
                 <label class="select-container">
@@ -71,10 +83,10 @@
                 </label>
             </div>
 
-            <!-- DESGLOSE DE CAPITALES Y FLUJOS DINÁMICOS -->
+            <!-- DESGLOSE DE CAPITALES -->
             <div class="resultado-wrapper">
                 <div class="res-line">
-                    <span class="res-title">Crédito Bancario Autorizado (90% Base):</span>
+                    <span class="res-title">Crédito Bancario Autorizado Dinámico:</span>
                     <span id="lbl-res-banco" class="res-val-info">$0</span>
                 </div>
                 <div class="res-line">
@@ -87,8 +99,8 @@
                 </div>
             </div>
 
-            <!-- CUADRO DE ESTADO FINANCIERO -->
-            <div id="status-render" class="resultado-box status-success">PAGO MENSUAL ESTIMADO CALCULADO</div>
+            <!-- CUADRO DE ESTADO CON ANÁLISIS DE ENGANCHE REQUERIDO -->
+            <div id="status-render" class="resultado-box status-success">PAGO MENSUAL BANCARIO ESTIMADO CALCULADO</div>
         </div>
 
         <div class="revista-controles">
@@ -98,27 +110,41 @@
 
     <script>
         var inputVivienda = document.getElementById('txt-valor-vivienda');
+        var inputAforo = document.getElementById('range-aforo'); // Nueva variable amarrada
         var selectPlazo = document.getElementById('select-plazo');
         
+        var txtAforo = document.getElementById('val-aforo'); // Texto de la barra amarrado
         var lblBanco = document.getElementById('lbl-res-banco');
         var lblTasa = document.getElementById('lbl-res-tasa');
         var lblMensualidad = document.getElementById('lbl-res-mensualidad');
         var statusBox = document.getElementById('status-render');
 
-        function realizarCalculoFinanciero() {
+        function formatMXN(val) {
+            return '$' + Math.round(val).toLocaleString('es-MX') + ' MXN';
+        }
+
+        function realizarCalculoCompleto() {
             var valorVivienda = parseFloat(inputVivienda.value) || 0;
+            var aforoBancario = parseInt(inputAforo.value);
             var plazoAnios = parseInt(selectPlazo.value);
 
-            // 1. Calcular el 90% de crédito bancario base
-            var montoCreditoBanco = valorVivienda * 0.90;
+            // A. Sincronizar el texto del slider del aforo
+            txtAforo.innerText = aforoBancario + '%';
 
-            // 2. Determinar la tasa correspondiente de forma interna y dinámica
+            // B. Calcular el crédito bancario basado en el aforo que mueva el alumno
+            var porcentajeAforo = aforoBancario / 100;
+            var montoCreditoBanco = valorVivienda * porcentajeAforo;
+
+            // C. Calcular el enganche inicial puro requerido (Valor vivienda menos lo que presta el banco)
+            var engancheRequerido = valorVivienda - montoCreditoBanco;
+
+            // D. Determinar la tasa correspondiente según el plazo
             var tasaAnual = 9.75;
             if (plazoAnios === 5) tasaAnual = 8.75;
             else if (plazoAnios === 10) tasaAnual = 9.35;
             else if (plazoAnios === 15) tasaAnual = 9.50;
 
-            // 3. Fórmula universal de amortización fija (PMT)
+            // E. Fórmula PMT para amortización mensual fija
             var mensualidad = 0;
             if (montoCreditoBanco > 0) {
                 var tasaMensual = (tasaAnual / 100) / 12;
@@ -126,19 +152,20 @@
                 mensualidad = (montoCreditoBanco * tasaMensual * Math.pow(1 + tasaMensual, numeroPagos)) / (Math.pow(1 + tasaMensual, numeroPagos) - 1);
             }
 
-            // 4. Renderizar los datos en la pantalla usando el formato de tu Módulo 1
-            lblBanco.innerText = '$' + Math.round(montoCreditoBanco).toLocaleString() + ' MXN';
+            // F. Renderizar los datos en el reporte
+            lblBanco.innerText = formatMXN(montoCreditoBanco);
             lblTasa.innerText = tasaAnual.toFixed(2) + '%';
-            lblMensualidad.innerText = '$' + Math.round(mensualidad).toLocaleString() + ' MXN';
+            lblMensualidad.innerText = formatMXN(mensualidad);
             
-            // Actualizar la caja inferior principal con el desglose directo
-            statusBox.innerHTML = "PAGO MENSUAL BANCARIO ESTIMADO: $" + Math.round(mensualidad).toLocaleString() + " MXN";
+            // G. Actualización del cuadro verde mostrando la Mensualidad y el Enganche Requerido del escenario actual
+            statusBox.innerHTML = "PAGO MENSUAL BANCARIO ESTIMADO: " + formatMXN(mensualidad) + "<br><span style='font-size:12.5px; font-weight:600;'>Desembolso Requerido de Enganche en Efectivo: " + formatMXN(engancheRequerido) + "</span>";
         }
 
-        inputVivienda.oninput = realizarCalculoFinanciero;
-        selectPlazo.onchange = realizarCalculoFinanciero;
+        inputVivienda.oninput = realizarCalculoCompleto;
+        inputAforo.oninput = realizarCalculoCompleto; // Escucha de movimiento para el aforo
+        selectPlazo.onchange = realizarCalculoCompleto;
 
-        realizarCalculoFinanciero();
+        realizarCalculoCompleto();
     </script>
 </body>
 </html>
