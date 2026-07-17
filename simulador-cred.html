@@ -109,6 +109,7 @@
     </div>
 
     <script>
+        // Vincular elementos de manera limpia e idéntica a tus pasos exitosos
         var inputVivienda = document.getElementById('txt-valor-vivienda');
         var inputAforo = document.getElementById('range-aforo');
         var selectPlazo = document.getElementById('select-plazo');
@@ -119,43 +120,36 @@
         var lblMensualidad = document.getElementById('lbl-res-mensualidad');
         var statusBox = document.getElementById('status-render');
 
-        function formatMXN(val) {
-            return '$' + Math.round(val).toLocaleString('es-MX') + ' MXN';
-        }
-
         function realizarCalculoCompleto() {
             var valorVivienda = parseFloat(inputVivienda.value) || 0;
             var aforoBancario = parseInt(inputAforo.value);
             var plazoAnios = parseInt(selectPlazo.value);
 
-            // A. Sincronizar el texto del slider del aforo
+            // A. Sincronizar texto de la barra de aforo
             txtAforo.innerText = aforoBancario + '%';
 
-            // B. Calcular el crédito bancario basado en el aforo
+            // B. Calcular crédito bancario y enganche base
             var porcentajeAforo = aforoBancario / 100;
             var montoCreditoBanco = valorVivienda * porcentajeAforo;
-
-            // C. Calcular el enganche inicial puro requerido
             var engancheRequerido = valorVivienda - montoCreditoBanco;
 
-            // D. Determinar la tasa base según el plazo
+            // C. Evaluar la tasa base del plazo
             var tasaAnual = 9.75;
             if (plazoAnios === 5) tasaAnual = 8.75;
             else if (plazoAnios === 10) tasaAnual = 9.35;
             else if (plazoAnios === 15) tasaAnual = 9.50;
 
-            // E. MATRIZ DINÁMICA DE PREMIO POR BAJO AFORO (SOLICITADO POR EL PROFESOR)
+            // D. Matriz estricta de descuento sin regionalismos cruzados
             var descuentoAforo = 0.0;
             if (aforoBancario <= 40) {
-                descuentoAforo = 0.20; // Rango bajo: -0.20% acumulado
+                descuentoAforo = 0.20;
             } else if (aforoBancario <= 70) {
-                descuentoAforo = 0.10; // Rango medio: -0.10%
+                descuentoAforo = 0.10;
             }
             
-            // Tasa final ajustada
             var tasaFinal = tasaAnual - descuentoAforo;
 
-            // F. Fórmula PMT para amortización mensual fija con la tasa ajustada
+            // E. Fórmula PMT universal para la mensualidad
             var mensualidad = 0;
             if (montoCreditoBanco > 0) {
                 var tasaMensual = (tasaFinal / 100) / 12;
@@ -163,19 +157,22 @@
                 mensualidad = (montoCreditoBanco * tasaMensual * Math.pow(1 + tasaMensual, numeroPagos)) / (Math.pow(1 + tasaMensual, numeroPagos) - 1);
             }
 
-            // G. Renderizar los datos en el reporte
-            lblBanco.innerText = formatMXN(montoCreditoBanco);
+            // F. Render de textos en pantalla usando el formato local limpio de tu Módulo 1
+            lblBanco.innerText = '$' + Math.round(montoCreditoBanco).toLocaleString() + ' MXN';
             lblTasa.innerText = tasaFinal.toFixed(2) + '%';
-            lblMensualidad.innerText = formatMXN(mensualidad);
+            lblMensualidad.innerText = '$' + Math.round(mensualidad).toLocaleString() + ' MXN';
             
-            // H. Mensaje dinámico que indica si se aplicó premio por bajo aforo
+            // G. Actualización del cuadro verde dinámico
             var leyendaPremio = "";
             if (descuentoAforo > 0) {
-                leyendaPremio = " (¡Premio de Tasa por bajo riesgo aplicado!)";
+                leyendaPremio = " (Premio por bajo riesgo aplicado)";
             }
 
-            statusBox.innerHTML = "PAGO MENSUAL BANCARIO ESTIMADO: " + formatMXN(mensualidad) + leyendaPremio + "<br><span style='font-size:12.5px; font-weight:600;'>Desembolso Requerido de Enganche en Efectivo: " + formatMXN(engancheRequerido) + "</span>";
+            statusBox.innerHTML = "PAGO MENSUAL BANCARIO ESTIMADO: $" + Math.round(mensualidad).toLocaleString() + " MXN" + leyendaPremio + "<br><span style='font-size:12.5px; font-weight:600;'>Desembolso Requerido de Enganche en Efectivo: $" + Math.round(engancheRequerido).toLocaleString() + " MXN</span>";
         }
 
+        // Asignación limpia de eventos
         inputVivienda.oninput = realizarCalculoCompleto;
         inputAforo.oninput = realizarCalculoCompleto;
+        selectPlazo.onchange = realizarCalculoCompleto;
+
