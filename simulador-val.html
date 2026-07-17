@@ -3,61 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 3: Prueba de Controles y Crédito - URN</title>
+    <title>Módulo 3: Prueba Quirúrgica - URN</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            background-color: #f1f5f9; 
-            padding: 40px 20px;
-            color: #334155;
+            background-color: #f1f5f9; padding: 40px 20px; color: #334155;
         }
         .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            border-radius: 28px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
-            border: 1px solid #e2e8f0;
+            max-width: 900px; margin: 0 auto; background-color: #ffffff;
+            border-radius: 28px; padding: 40px; box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06); border: 1px solid #e2e8f0;
         }
-        .nav-back {
-            display: inline-block;
-            text-decoration: none;
-            color: #2563eb;
-            font-size: 13px;
-            font-weight: 800;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-        }
-        header {
-            margin-bottom: 35px;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 20px;
-        }
-        .tag {
-            font-size: 11px;
-            font-weight: 800;
-            color: #a855f7;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-        }
-        h1 {
-            font-size: 32px;
-            font-weight: 800;
-            color: #0f172a;
-            margin-top: 4px;
-        }
-        .simulador-box {
-            background-color: #f8fafc;
-            border: 2px solid #cbd5e1;
-            border-radius: 20px;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
+        .nav-back { display: inline-block; text-decoration: none; color: #2563eb; font-size: 13px; font-weight: 800; margin-bottom: 25px; text-transform: uppercase; }
+        header { margin-bottom: 35px; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px; }
+        .tag { font-size: 11px; font-weight: 800; color: #a855f7; text-transform: uppercase; letter-spacing: 0.12em; }
+        h1 { font-size: 32px; font-weight: 800; color: #0f172a; margin-top: 4px; }
+        .simulador-box { background-color: #f8fafc; border: 2px solid #cbd5e1; border-radius: 20px; padding: 30px; display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px; }
         .sim-group { display: flex; flex-direction: column; gap: 8px; }
         .sim-label { font-size: 13px; font-weight: 700; color: #475569; }
         .sim-input-row { display: flex; align-items: center; gap: 15px; }
@@ -67,31 +28,10 @@
         .select-container { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: #475569; padding: 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; }
         .select-container select { flex: 1; padding: 4px; border: none; font-size: 13px; font-weight: 700; color: #334155; outline: none; cursor: pointer; }
         
-        /* [PASO A] ADICIÓN VISUAL EXCLUSIVA Y SEPARADA */
-        .txt-desglose-paso {
-            font-size: 12px;
-            font-weight: 700;
-            color: #64748b;
-            text-transform: uppercase;
-            padding-top: 12px;
-            border-top: 1px solid #e2e8f0;
-            margin-top: 5px;
-        }
-        .val-castigo-rojo {
-            font-size: 13px;
-            font-weight: 800;
-            color: #ef4444;
-            float: right;
-        }
-
-        .resultado-box { padding: 20px; border-radius: 12px; text-align: center; font-weight: 800; font-size: 14px; border: 1px solid transparent; margin-top: 10px; line-height: 1.5; }
-        .status-success { background-color: #d1fae5; border-color: #a7f3d0; color: #065f46; }
-        .status-alert { background-color: #fee2e2; border-color: #fca5a5; color: #991b1b; }
-        
+        .txt-desglose-paso { font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; padding-top: 12px; border-top: 1px solid #e2e8f0; margin-top: 5px; }
+        .val-castigo-rojo { font-size: 13px; font-weight: 800; color: #ef4444; float: right; }
         .revista-controles { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
-        .btn-nav {
-            flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center;
-        }
+        .btn-nav { flex: 1; display: block; text-decoration: none; background-color: #2563eb; border-bottom: 4px solid #1d4ed8; padding: 18px; border-radius: 14px; font-size: 16px; font-weight: 800; color: #ffffff; text-align: center; }
     </style>
 </head>
 <body>
@@ -100,12 +40,12 @@
         <a href="index.html" class="nav-back">◀ Regresar al Tablero Principal</a>
 
         <header>
-            <span class="tag">Módulo 03 · Herramienta Didáctica</span>
-            <h1>Paso 4: Conexión del Riesgo por Edad Cronológica</h1>
+            <span class="tag">Módulo 03 · Fase de Diagnóstico</span>
+            <h1>Paso 1: Aislamiento del Control de Precio</h1>
         </header>
 
         <div class="simulador-box">
-            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 Simulación de Impacto Técnico Institucional</p>
+            <p style="font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 10px;">🔧 Verificación Única de Barra y Castigo A</p>
             
             <div class="sim-group">
                 <label class="sim-label">Precio de Salida (Portal):</label>
@@ -116,33 +56,21 @@
             </div>
 
             <div class="sim-group">
-                <label class="sim-label">Edad Cronológica de la Casa:</label>
-                <div class="sim-input-row">
-                    <input type="range" id="range-edad" class="sim-range" min="0" max="60" step="1" value="25">
-                    <span id="val-edad" class="sim-value">25 Años</span>
-                </div>
-            </div>
-
-            <div class="sim-group">
                 <label class="sim-label">Estado de Conservación de la Obra (SHF):</label>
                 <label class="select-container">
                     <select id="select-conservacion">
                         <option value="Excelente">Excelente / Bueno (Código SHF 1, 2 y 3)</option>
                         <option value="Regular">Regular / Reparaciones Sencillas (Código SHF 4)</option>
-                        <option value="Malo">Malo / Requiere Presupuesto de Obra (Código SHF 5)</option>
-                        <option value="Rechazo">Daño Estructural / Ruina (Código SHF 6 o superior)</option>
+                        <option value="Malo" selected>Malo / Requiere Presupuesto de Obra (Código SHF 5)</option>
                     </select>
                 </label>
             </div>
 
-            <!-- [PASO A] AGREGADO EXCLUSIVO ABAJO DE LOS CONTROLES -->
+            <!-- EXCLUSIVAMENTE LA LÍNEA DEL PASO A PARA PRUEBA -->
             <div class="txt-desglose-paso">
                 <span>[Paso A] Castigo Estimado por Conservación (SHF):</span>
-                <span id="txt-castigo-pesos" class="val-castigo-rojo">$0 MXN</span>
+                <span id="txt-castigo-pesos" class="val-castigo-rojo">-$500,000</span>
             </div>
-
-            <!-- BLOQUE DE MONTO AUTORIZADO DE CRÉDITO -->
-            <div id="status-render" class="resultado-box status-success">MONTO DE CRÉDITO AUTORIZADO: $0</div>
         </div>
 
         <div class="revista-controles">
@@ -151,78 +79,48 @@
     </div>
 
     <script>
-        // 1. DECLARACIÓN DE LA FUNCIÓN DE FORMATO EN LA PARTE SUPERIOR (INDISPENSABLE)
-        function formatMXN(val) {
-            return '$' + Math.round(val).toLocaleString('es-MX') + ' MXN';
-        }
-
-        // 2. VINCULACIÓN DE ELEMENTOS DEL DOM
+        // Vincular los dos únicos elementos necesarios
         var inputPrecio = document.getElementById('range-precio');
-        var inputEdad = document.getElementById('range-edad');
         var selectConservacion = document.getElementById('select-conservacion');
         
         var txtPrecio = document.getElementById('val-precio');
-        var txtEdad = document.getElementById('val-edad');
-        var statusBox = document.getElementById('status-render');
         var txtCastigoPesos = document.getElementById('txt-castigo-pesos');
 
-        function actualizarSimulador() {
-            // A. Lectura de inputs numéricos iniciales
+        function aislarPrecioYA() {
             var precio = parseInt(inputPrecio.value);
-            var edad = parseInt(inputEdad.value);
             var estado = selectConservacion.value;
 
-            // B. Cálculos matemáticos puros en orden lineal estricto
-            var factorCastigoAvaluo = 1.0;
-            var esInaptitud = false;
+            // 1. Mover el texto de la barra de precio al instante
+            txtPrecio.innerText = '$' + precio.toLocaleString('es-MX') + ' MXN';
 
-            if (estado === "Excelente") {
-                factorCastigoAvaluo = 1.0;
-            } else if (estado === "Regular") {
-                factorCastigoAvaluo = 0.95; 
+            // 2. Calcular el castigo de forma directa en este bloque aislado
+            var factor = 1.0;
+            if (estado === "Regular") {
+                factor = 0.05; // 5% de castigo
             } else if (estado === "Malo") {
-                factorCastigoAvaluo = 0.80; 
-            } else if (estado === "Rechazo") {
-                esInaptitud = true;
-            }
-
-            var valorComercialAvaluo = precio * factorCastigoAvaluo;
-            var dineroPerdido = precio - valorComercialAvaluo;
-
-            var vidaUtilTotal = 60;
-            var vidaUtilRemanente = vidaUtilTotal - edad;
-            var aforoFinal = 0.90; 
-            var motivoAforo = "Garantía Óptima";
-
-            if (vidaUtilRemanente < 20) {
-                aforoFinal = 0.70; 
-                motivoAforo = "Aforo Castigado por Alta Edad (<20 años de vida remanente)";
-            } else if (vidaUtilRemanente < 35) {
-                aforoFinal = 0.80; 
-                motivoAforo = "Aforo Ajustado por Edad Media (20-35 años de vida remanente)";
+                factor = 0.20; // 20% de castigo
             } else {
-                aforoFinal = 0.90;
-                motivoAforo = "Aforo Máximo Autorizado";
+                factor = 0.0;  // Excelente (0%)
             }
 
-            var montoCredito = valorComercialAvaluo * aforoFinal;
+            var dineroPerdido = precio * factor;
 
-            // C. Inyección limpia de textos al final (Evita errores de referencia congelantes)
-            txtPrecio.innerText = formatMXN(precio);
-            txtEdad.innerText = edad + ' Años';
-
-            // Actualización visual de la etiqueta del Paso A
-            if (esInaptitud) {
-                txtCastigoPesos.innerText = "RECHAZO DE GARANTÍA";
-                txtCastigoPesos.style.color = "#ef4444";
-            } else if (dineroPerdido === 0) {
+            // 3. Pintar el castigo correspondiente
+            if (dineroPerdido === 0) {
                 txtCastigoPesos.innerText = "$0 MXN";
                 txtCastigoPesos.style.color = "#64748b";
             } else {
-                txtCastigoPesos.innerText = "-" + formatMXN(dineroPerdido);
+                txtCastigoPesos.innerText = "-$" + dineroPerdido.toLocaleString('es-MX') + " MXN";
                 txtCastigoPesos.style.color = "#ef4444";
             }
+        }
 
-            // Actualización visual del bloque de estatus final
-            if (esInaptitud) {
-                statusBox.className = "resultado-box status-alert";
+        // Asignar el evento oninput a los controles activos
+        inputPrecio.oninput = aislarPrecioYA;
+        selectConservacion.onchange = aislarPrecioYA;
+
+        // Arrancar una vez al abrir el archivo
+        aislarPrecioYA();
+    </script>
+</body>
+</html>
