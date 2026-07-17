@@ -110,28 +110,28 @@
             var edad = parseInt(inputEdad.value);
             var estado = selectConservacion.value;
 
-            // 1. Mostrar textos de referencia en las dos barras
+            // 1. Mostrar textos de referencia laterales
             txtPrecio.innerText = '$' + precio.toLocaleString('es-MX') + ' MXN';
             txtEdad.innerText = edad + ' Años';
 
-            // 2. Definir factor de castigo del avalúo por conservación según la SHF
+            // 2. Definir factor de castigo según el menú desplegable
             var factor = 0.0;
             var esInaptitud = false;
 
             if (estado === "Excelente") {
-                factor = 0.0; // 0% castigo
+                factor = 0.0;
             } else if (estado === "Bueno") {
-                factor = 0.05; // 5% castigo
+                factor = 0.05;
             } else if (estado === "Regular") {
-                factor = 0.15; // 15% castigo
+                factor = 0.15;
             } else if (estado === "Malo") {
-                esInaptitud = true; // Activa el rechazo automático institucional
+                esInaptitud = true; 
             }
 
             var dineroPerdido = precio * factor;
             var valorComercialAvaluo = precio - dineroPerdido;
 
-            // 3. Pintar la línea de Castigo A en pesos
+            // 3. Pintar la línea de Castigo A en pesos de forma segura
             if (esInaptitud) {
                 txtCastigoPesos.innerText = "RECHAZO DE GARANTÍA";
                 txtCastigoPesos.style.color = "#ef4444";
@@ -151,23 +151,22 @@
 
             if (vidaUtilRemanente < 20) {
                 aforoFinal = 0.70; 
-                motivoAforo = "Aforo Castigado por Alta Edad (<20 años de vida remanente)";
+                motivoAforo = "Aforo Castigado por Alta Edad";
             } else if (vidaUtilRemanente < 35) {
                 aforoFinal = 0.80; 
-                motivoAforo = "Aforo Ajustado por Edad Media (20-35 años de vida remanente)";
+                motivoAforo = "Aforo Ajustado por Edad Media";
             } else {
                 aforoFinal = 0.90;
                 motivoAforo = "Aforo Máximo Autorizado";
             }
 
-            // 5. Renderizado final e inyección de resultados
+            // 5. Renderizado final sin comillas cruzadas que rompan el script
             if (esInaptitud) {
                 statusBox.className = "resultado-box status-alert";
-                statusBox.innerHTML = "❌ CRÉDITO RECHAZADO: El inmueble dictamina como NO APTO para Garantía Hipotecaria debido a daños severos o fallas de habitabilidad (Código SHF 5/6)";
+                statusBox.innerHTML = "CREDITO RECHAZADO: El inmueble dictamina como NO APTO para Garantía Hipotecaria debido a fallas severas o falta de habitabilidad (Código SHF 5/6)";
             } else {
                 var montoCredito = valorComercialAvaluo * aforoFinal;
                 
-                // Si el aforo se castiga por edad o por conservación, se pinta de rojo (advertencia)
                 if (aforoFinal < 0.90 || factor > 0.0) {
                     statusBox.className = "resultado-box status-alert";
                 } else {
@@ -180,3 +179,9 @@
 
         inputPrecio.oninput = actualizarSimulador;
         inputEdad.oninput = actualizarSimulador;
+        selectConservacion.onchange = actualizarSimulador;
+
+        actualizarSimulador();
+    </script>
+</body>
+</html>
