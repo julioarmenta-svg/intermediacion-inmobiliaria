@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad 04: Promoción & Marketing - URN</title>
+    <style>
+        /* Estilos Base coincidentes con tu tablero principal */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #f1f5f9; 
+            padding: 40px 20px;
+            color: #334155;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+        /* Botón Regresar superior */
+        .btn-regresar {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 800;
+            color: #2563eb;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 24px;
+        }
+        .btn-regresar:hover { text-decoration: underline; }
+        
+        /* Encabezado */
+        header {
+            margin-bottom: 32px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 24px;
+        }
+        .modulo-tag {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            color: #64748b;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 6px;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+
+        /* Tarjeta de Contenido Estilo Captura */
+        .tarjeta-clase {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 32px;
+            position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+        }
+        .pag-indicador {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            background-color: #eff6ff;
+            color: #2563eb;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+        .subtitulo-seccion {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        .descripcion-texto {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #475569;
+            margin-bottom: 32px;
+        }
+
+        /* Botón de Descarga / Apertura de PDF */
+        .bloque-recurso {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #f43f5e; /* Color rojo correspondiente al paso 5 */
+            border-radius: 16px;
+            padding: 20px 24px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .bloque-recurso:hover {
+            background-color: #f1f5f9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .recurso-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .recurso-titulo {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .recurso-sub {
+            font-size: 13px;
+            color: #64748b;
+        }
+        .flecha-accion {
+            font-size: 18px;
+            color: #f43f5e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Enlace de regreso al menú principal index.html -->
+        <a href="index.html" class="btn-regresar">◀ Regresar al tablero principal</a>
+
+        <header>
+            <span class="modulo-tag">Módulo 05 · Promoción & Marketing</span>
+            <h1>Unidad IV: Promoción & Marketing Inmobiliario</h1>
+        </header>
+
+        <div class="tarjeta-clase">
+            <!-- Indicador opcional superior derecho -->
+            <div class="pag-indicador">Material de Apoyo</div>
+            
+            <h2 class="subtitulo-seccion">Control & Cierre Legal: Presentación Oficial</h2>
+            
+            <p class="descripcion-texto">
+                Bienvenidos a la Unidad 04. Para esta sesión tenemos como ponente a la Dra. Lily Armenta, quien compartirá las estrategias clave de comercialización y los aspectos normativos indispensables para asegurar el éxito en la promoción de tus inmuebles. Selecciona el siguiente recurso para abrir y estudiar el material de la clase.
+            </p>
+
+            <!-- ENLACE AL ARCHIVO PDF DENTRO DE TU CARPETA /imagenes/ -->
+            <a href="imagenes/tu-archivo-presentacion.pdf" target="_blank" class="bloque-recurso">
+                <div class="recurso-info">
+                    <span class="recurso-titulo">📄 1. Presentación Ejecutiva de la Unidad</span>
+                    <span class="recurso-sub">Visualizar o descargar el archivo PDF oficial expuesto por la ponente.</span>
+                </div>
+                <div class="flecha-accion">➔</div>
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>
